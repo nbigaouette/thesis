@@ -6,34 +6,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% Useful guides/links:
-%   More Info
-%       Most detailed information of formatting
-%       http://web5.uottawa.ca/www3/fespfgps/theses/do-en-2point5num1.htm
-%   University of Ottawa Thesis LaTeX Template
-%       Wail Gueaieb, Ph.D., P.Eng., SMIEEE, Associate Professor
-%       http://miram1.site.uottawa.ca/~wgueaieb/site/index.php?id=9
-%       Saved in folder ``template''
-%   Thesis Style Files
-%       Monica Nevins, Associate Professor
-%       http://padic.mathstat.uottawa.ca/~mnevins/thesis/
-%   Guide for Doctoral thesis
-%       http://www.grad.uottawa.ca/Default.aspx?tabid=1373
-%   General Regulations
-%       http://www.grad.uottawa.ca/Default.aspx?tabid=1807&msId=21
-
-
-\documentclass[12pt,letterpaper]{article}
-% \documentclass[12pt,letterpaper,draft]{article}
+\newcommand{\Title}{Full Thesis Title}
+\newcommand{\Author}{Nicolas Bigaouette}
 
 % University of Ottawa thesis formatting
-\usepackage{uottawa}
+\documentclass[author={\Author},title={\Title},draft=false]{uottawa}
 
-\newcommand{\mytitle}{Thesis}
-\title{\mytitle}
-\date{}
-\author{Nicolas Bigaouette}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Useful macros
@@ -45,68 +23,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Needed packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Needed for \begin{subequations}...\end{subequations}
-\usepackage{amsmath}
-% Multiple figures
-\usepackage{subfigure}
-\usepackage{cancel}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{ifthen}
+\usepackage{amsmath}    % Needed for \begin{subequations}...\end{subequations}
+\usepackage{subfigure}  % Multiple figures
+\usepackage{cancel}     % Striking an element in an equation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%
-% Voir http://forums.gentoo.org/viewtopic-t-202973-highlight-fonts+latex.html
-% \usepackage{mathptmx}
-% \usepackage[scaled=.90]{helvet}
-% \usepackage{courier}
-%%%%
 
-% cd /tmp
-% wget http://ftp.ktug.or.kr/tex-archive/macros/latex/contrib/misc/cases.sty
-% sudo mkdir /usr/share/texmf/tex/latex/cases/
-% sudo cp test/cases.sty /usr/share/texmf/tex/latex/cases/
-% sudo texhash
-%\usepackage{cases}                  % http://ftp.ktug.or.kr/tex-archive/macros/latex/contrib/misc/cases.sty
-
-\usepackage{ifpdf}
-\ifpdf
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % PDF compilation with "pdflatex"
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \usepackage[pdftex]{graphicx}
-    \def\pdfshellescape{1}
-    \pdfcompresslevel=9
-    %%%
-    % PDF options
-    % See http://barrault.free.fr/ressources/rapports/pdflatex/
-    \usepackage[pdftex,
-        bookmarks = true,
-        bookmarksnumbered = true,
-        bookmarksopen = true,
-        pdfpagemode = UseOutlines,
-        pdfstartview = FitH,
-        colorlinks,
-        citecolor=black,urlcolor=blue,linkcolor=black,
-        pdfauthor={Nicolas Bigaouette},
-        pdftitle={\mytitle},
-        unicode = true,
-        plainpages = false,pdfpagelabels
-    ]{hyperref}
-\else
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % DVI compilation with "latex"
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \usepackage[dvips]{graphicx}
-    \newcommand{\url}[1]{{\color{blue}#1}}
-\fi
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\maketitle
-% \vspace{-50 pts}
 
-\tableofcontents
-\newpage
+\CoverPage
+
+\ToC
+
+\Content
 
 \include{lorem_ipsum}
 
