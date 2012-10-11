@@ -1,0 +1,154 @@
+% LaTeX (version 2e) source for "LaTeX for Thesis and Large Documents"
+% By Stephen Carr and Wail Gueaieb
+% Updated 2005-04-07
+%
+% Parts to edit are marked by the following block:
+%###################################
+%## Edit this part
+%###################################
+% 
+% Do NOT edit anything else unless you know what you are doing.
+%
+%======================================================================
+%   P R E A M B L E
+%======================================================================
+\documentclass[%
+12pt,   % font size
+oneside,  % final version of thesis has to be submitted single-sided
+%twoside, % in case you want to print a draft on both sides of the page
+]{report} 
+%----------------------------------------------------------------------
+%###################################
+%## Edit this part
+%###################################
+\newcommand{\thesisauthor}{Stephen M. Carr and Wail Gueaieb}
+\newcommand{\thesistitlecoverpage}{%
+  \LaTeX \\ 
+  for Thesis \\
+  and Large Documents
+}
+\newcommand{\thesistitleheadings}{\LaTeX for Thesis and Large Documents}
+\newcommand{\degree}{Ph.D.} % possible values are:
+                          % M.A. / M.A.Sc. / M.Sc. / MCS / Ph.D.
+\newcommand{\nameofprogram}{Electrical and Computer Engineering}
+\newcommand{\academicunit}{School of Information Technology and Engineering}
+\newcommand{\faculty}{Faculty of Engineering}
+\newcommand{\graduationyear}{2005}
+
+\newcommand{\abstractfile}{abstract.tex}
+\newcommand{\acknowledgementfile}{acknowledgement.tex}
+%----------------------------------------------------------------------
+% Reprocess only those files which have changed recently:
+% \includeonly{intro,creating,commands} 
+%----------------------------------------------------------------------
+% Create a listing in the log of all files needed to process this document
+\listfiles
+%----------------------------------------------------------------------
+\makeindex % activate index-making
+%----------------------------------------------------------------------
+\input{private/thesis-preamble} % thesis-specific settings
+%----------------------------------------------------------------------
+% My own command and environment definitions:
+\newcommand{\program}[1]{\textbf{#1}} % program names in bold text
+\newcommand{\exten}[1]{\texttt{#1}} % file extensions in bold text (use caps)
+\newcommand{\cmmd}[1]{\textbackslash\texttt{#1}} % command name in tt font 
+\newcommand{\enviro}[1]{\texttt{#1}} % environment name in tt font
+
+\newcommand{\eg}{\textit{e.g.},} % some Latin abreviations in italic
+\newcommand{\ie}{\textit{i.e.},}
+\newcommand{\etc}{\textit{etc}.\@}
+
+\newcommand{\mat}[1]{\ensuremath{\mathcal{#1}}} 
+	% matrix names in uppercase caligraphic
+\newcommand{\vect}[1]{\ensuremath{\mathit{#1}}} 
+% vector names in math italic
+\newcommand{\rv}[1]{\ensuremath{\mathbf{#1}}} 
+% math bold for random variables
+\newcommand{\degg}[1]{\mbox{\raisebox{3pt}{$\circ$}\hspace{-.5pt}#1}}
+% command to produce a degree sign. Example: \degg[C] gives degrees Celcius
+
+\newenvironment{definition}[1]{\begin{quote}\emph{#1}:}{\end{quote}}
+  % Provides indented formal definition and emphasizes the word.
+  % e.g. \begin{definition}{Reliability} ... \end{definition}
+
+\newenvironment{where}[1]% Equation symbol lists
+ {\begin{list}{}%
+  {\renewcommand{\makelabel}[1]{\hfill\textnormal{##1 =}}%
+   \settowidth{\labelwidth}{\textnormal{#1 =}}%
+   \setlength{\leftmargin}{\labelwidth}%
+   \addtolength{\leftmargin}{\labelsep}%
+   \setlength{\itemsep}{-\parsep}}}%
+ {\end{list}}
+% Example:
+% \begin{where}{where $E$}
+%  \item[where $E$] least squares error term;
+%  \item[$w$] weighting factor associated with each measured variable.
+% \end{where}
+%----------------------------------------------------------------------
+% Standard LaTeX2e packages I am using (as seen in "The LaTeX Companion"):
+\usepackage[dvips]{graphicx} 
+	% ... if you want to include encapsulated postscript figures
+\usepackage{makeidx} % ... if you want an index
+\usepackage{amsmath} % ... if you need lots of math symbols
+\usepackage[dvips=true,bookmarks=true]{hyperref} 
+	% ... only needed for PDF generation
+%----------------------------------------------------------------------
+% Non-standard packages I am using (things I've written, borrowed, etc.):
+%\usepackage{} % ... note that old .sty files can be included here
+
+%======================================================================
+%   L O G I C A L    D O C U M E N T
+%======================================================================
+\begin{document}
+%----------------------------------------------------------------------
+% FRONT MATERIAL
+%----------------------------------------------------------------------
+\include{private/thesis-frontpages} 
+% Title page, declaration, borrowers' page, abstract, acknowlegements, 
+% dedication, table of contents, list of tables, list of figures
+
+%----------------------------------------------------------------------
+% MAIN BODY
+%----------------------------------------------------------------------
+\input{private/thesis-headings} % Specify thesis headings
+%----------------------------------------------------------------------
+%###################################
+%## Edit this part
+%###################################
+% Chapters 
+% Include your "sub" source files here (must have extension .tex)
+\include{chapter1-intro} %"What is LaTeX, Why Use It, and Where to Find It?"
+\include{chapter2-creating} %"Creating Your Source File"
+\include{chapter3-commands} %"Example \LaTeX\ Commands for Large Documents" 
+\include{chapter4-processing} %"Processing the Source File"
+%----------------------------------------------------------------------
+% END MATERIAL
+%----------------------------------------------------------------------
+%###################################
+%## Edit this part
+%###################################
+% Appendices
+\appendix
+% Designate with \appendix declaration which just changes numbering style 
+% from here on
+%\include{useful_pkgs} %"Some Useful \LaTeX2e Packages"
+\include{appendix1-help} %"Sources of Information and Help"
+
+% Glossary
+% You could use a \begin{description} ... \end{description} for this
+\include{glossary}
+
+% Bibliography 
+% If done using the BibTeX program, use
+\bibliographystyle{plain} % sorted alphabetically, labeled with numbers
+\bibliography{bibliography/keylatex} % names file keylatex.bib as my bibliography file 
+% OR, do it "by hand" inside a "thebibliography" enivironment
+
+% Index 
+% Put a \makeindex command in the Preamble if you use MakeIndex program
+% and put 
+\printindex % here
+% OR, do it "by hand" inside \begin{theindex} ... \end{theindex}
+%----------------------------------------------------------------------
+\end{document}
+%======================================================================

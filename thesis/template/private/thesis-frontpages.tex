@@ -1,0 +1,95 @@
+% TITLE PAGE 
+% By Stephen Carr and Wail Gueaieb
+% Updated 2005-04-07
+
+\pagestyle{empty} % No headers or page numbers
+
+\begin{center}
+
+\vspace*{1.0cm}
+{\bf \LARGE %
+  \thesistitlecoverpage}
+
+\vspace*{1.0cm}
+\normalsize
+by \\
+\vspace*{1.0cm}
+\Large
+\thesisauthor\\
+\vspace*{2.0cm}
+\normalsize
+Thesis submitted to the\\
+Faculty of Graduate and Postdoctoral Studies\\
+In partial fulfillment of the requirements\\
+For the \degree~degree in\\
+\nameofprogram\\
+
+\vspace*{2.0cm}
+\academicunit\\
+\faculty\\
+University of Ottawa\\
+
+\vspace*{2.0cm}
+\copyright~\thesisauthor, Ottawa, Canada, \graduationyear\\
+
+\end{center}
+
+\newpage
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PRELIMINARY PAGES
+\pagestyle{plain} % No headers, just page numbers
+\pagenumbering{roman} % Roman numerals
+\setcounter{page}{2}
+
+%----------------------------------------------------------------------
+% This page is not needed for the University of Ottawa
+% % Declaration Page
+% \noindent
+% I hereby declare that I am the sole author of this thesis.
+
+% \noindent
+% I authorize the University of Ottawa to lend this thesis to other
+% institutions or individuals for the purpose of scholarly research.
+% \vspace{4cm}
+
+% \noindent
+% \thesisauthor
+
+% \vspace{4cm}
+
+% \noindent
+% I further authorize the University of Ottawa to reproduce this thesis by
+% photocopying or other means, in total or in part, at the request of other
+% institutions or individuals for the purpose of scholarly research.
+% \vspace{4cm}
+
+% \noindent
+% \thesisauthor
+% \newpage
+%----------------------------------------------------------------------
+
+% Long abstract (manually formatted)
+\begin{center}
+\Large
+\textbf{Abstract}
+\end{center}
+\input{\abstractfile}
+\newpage
+
+% Acknowledgements and/or Dedication Pages
+\begin{center}\textbf{Acknowledgements}\end{center}
+\input{\acknowledgementfile}
+\newpage
+
+% Pages which are generated automatically
+\setcounter{page}{6} % Set this counter to get correct page numbers
+\tableofcontents
+\listoftables
+\listoffigures
+\newpage
+
+% Change page numbering back to Arabic numerals
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
