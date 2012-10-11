@@ -1,0 +1,334 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                             Usefull macros                                       %%
+%%                           Nicolas Bigaouette                                     %%
+%%                          nbigaouette@gmail.com                                   %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\mailto}[1]{\href{mailto:#1}{#1}}
+
+\newcommand{\angstrom}{{\AA}ngstr\"om}
+
+% \newcommand{\vecnabla}{\vec{\nabla}}
+\newcommand{\vecnabla}{\bm{\nabla}}
+\newcommand{\laplacien}[1]{\vecnabla^2 #1}           % Laplacien
+\newcommand{\laplacian}[1]{\laplacien{#1}}           % Laplacien
+\newcommand{\laplacient}[1]{\vecnabla_{\bot}^{2} #1} % Laplacien transverse
+\newcommand{\gradient}[1]{\vecnabla #1}              % Gradient
+\newcommand{\grad}[1]{\vecnabla #1}                  % Gradient
+\newcommand{\divergence}[1]{\vecnabla \cdot #1}      % Divergence
+\newcommand{\rotationnel}[1]{\vecnabla \times #1}    % Rotationnel
+
+% \newcommand{\spherical}{\ensuremath{\mathcal{Y}}_{l,m}\pa{\theta,\phi}}
+%                                                     % Spherical Harmonics Y_lm
+\newcommand{\spherical}{Y_{l,m}\pa{\theta,\phi}}         % Spherical Harmonics Y_lm
+\newcommand{\sphericalp}{Y_{l,m}\pa{\theta',\phi'}}      % Spherical Harmonics Y_lm
+\newcommand{\sphericallmp}{Y_{l',m'}\pa{\theta,\phi}}    % Spherical Harmonics Y_lm
+\newcommand{\sphericalpc}{Y_{l,m}^*\pa{\theta',\phi'}}   % Spherical Harmonics Y_lm
+\newcommand{\sphericalc}{Y_{l,m}^*\pa{\theta,\phi}}      % Spherical Harmonics Y_lm
+\newcommand{\gspherical}{\ensuremath{\mathcal{Y}}_{j,l,m}\pa{\theta,\phi}}
+                                                         % Genralized Spherical Harmonics
+                                                         % Y_jml
+% Needs ``\usepackage{ltugcomn}''
+\newcommand{\onehalf}{\sfrac{1}{2}}
+\newcommand{\onethird}{\sfrac{1}{3}}
+\newcommand{\onefourth}{\sfrac{1}{4}}
+\newcommand{\twothird}{\sfrac{2}{3}}
+\newcommand{\threehalf}{\sfrac{3}{2}}
+\newcommand{\fivehalf}{\sfrac{5}{2}}
+\newcommand{\eighthalf}{\sfrac{8}{2}}
+\newcommand{\summation}[2]{\sum\limits_{#1}^{#2}}
+
+\newcommand{\im}{\textrm{i}}                                    % i = sqrt{-1}
+
+\newcommand{\mum}{\mu \textrm{m}}                               % mu m
+
+\newcommand{\hbartwo}{\frac{\hbar}{2}}
+\newcommand{\twohbar}{\frac{2}{\hbar}}
+
+\newcommand{\dd}[1]{~\textrm{d} #1}
+
+\newcommand{\del}{\partial}                                     % del
+
+\newcommand{\delexp}[3]{\frac{\del^{#3} #1}{\del #2^{#3}}}          % del^? ? / del?
+\newcommand{\dexp}[3]{\frac{\textrm{d}^{#3} #1}{\textrm{d} #2^{#3}}}% d^? ? / d?
+
+\newcommand{\delx}[1]{\delexp{#1}{x}{{}}}                     % del ? / delx
+\newcommand{\dely}[1]{\delexp{#1}{y}{{}}}                     % del ? / dely
+\newcommand{\delz}[1]{\delexp{#1}{z}{{}}}                     % del ? / delz
+\newcommand{\delr}[1]{\delexp{#1}{r}{{}}}                     % del ? / delr
+\newcommand{\delt}[1]{\delexp{#1}{t}{{}}}                     % del ? / delt
+\newcommand{\deli}[2]{\delexp{#1}{{#2}}{{}}}                  % del ? / del?
+
+\newcommand{\delxs}[1]{\delexp{{#1}}{x}{2}}                     % del^2 ? / delx^2
+\newcommand{\delys}[1]{\delexp{{#1}}{y}{2}}                     % del^2 ? / dely^2
+\newcommand{\delzs}[1]{\delexp{{#1}}{z}{2}}                     % del^2 ? / delz^2
+\newcommand{\delts}[1]{\delexp{{#1}}{t}{2}}                     % del^2 ? / delt^2
+\newcommand{\delrs}[1]{\delexp{{#1}}{r}{2}}                     % del^2 ? / delr^2
+\newcommand{\delis}[2]{\delexp{{#1}}{#2}{2}}                    % del^2 ? / del?^2
+
+\newcommand{\delxt}[1]{\delexp{{#1}}{x}{3}}                     % del^3 ? / delx^3
+\newcommand{\delyt}[1]{\delexp{{#1}}{y}{3}}                     % del^3 ? / dely^3
+\newcommand{\delzt}[1]{\delexp{{#1}}{z}{3}}                     % del^3 ? / delz^3
+\newcommand{\deltt}[1]{\delexp{{#1}}{t}{3}}                     % del^3 ? / delt^3
+\newcommand{\delrt}[1]{\delexp{{#1}}{r}{3}}                     % del^3 ? / delr^3
+\newcommand{\delit}[2]{\delexp{{#1}}{#2}{3}}                    % del^3 ? / del?^3
+
+\newcommand{\delxf}[1]{\delexp{{#1}}{x}{4}}                     % del^4 ? / delx^4
+\newcommand{\delyf}[1]{\delexp{{#1}}{y}{4}}                     % del^4 ? / dely^4
+\newcommand{\delzf}[1]{\delexp{{#1}}{z}{4}}                     % del^4 ? / delz^4
+\newcommand{\deltf}[1]{\delexp{{#1}}{t}{4}}                     % del^4 ? / delt^4
+\newcommand{\delrf}[1]{\delexp{{#1}}{r}{4}}                     % del^4 ? / delr^4
+\newcommand{\delif}[2]{\delexp{{#1}}{#2}{4}}                    % del^4 ? / del?^4
+
+\newcommand{\dx}[1]{\delexp{{#1}}{x}{{}}}                       % d ? / dx
+\newcommand{\dy}[1]{\delexp{{#1}}{y}{{}}}                       % d ? / dy
+\newcommand{\dz}[1]{\delexp{{#1}}{z}{{}}}                       % d ? / dz
+\newcommand{\dr}[1]{\delexp{{#1}}{t}{{}}}                       % d ? / dr
+\newcommand{\dt}[1]{\delexp{{#1}}{r}{{}}}                       % d ? / dt
+\newcommand{\di}[2]{\delexp{{#1}}{#2}{{}}}                      % d ? / d?
+
+\newcommand{\dxs}[1]{\delexp{{#1}}{x}{{2}}}                     % d^2 ? / dx^2
+\newcommand{\dys}[1]{\delexp{{#1}}{y}{{2}}}                     % d^2 ? / dy^2
+\newcommand{\dzs}[1]{\delexp{{#1}}{z}{{2}}}                     % d^2 ? / dz^2
+\newcommand{\drs}[1]{\delexp{{#1}}{t}{{2}}}                     % d^2 ? / dr^2
+\newcommand{\dts}[1]{\delexp{{#1}}{r}{{2}}}                     % d^2 ? / dt^2
+\newcommand{\dis}[2]{\delexp{{#1}}{#2}{{2}}}                    % d^2 ? / d?^2
+
+\newcommand{\dtreal}[1]{\frac{\textrm{d} #1}{\textrm{d} t}}         % d ? / dt
+\newcommand{\dtsreal}[1]{\frac{\textrm{d}^2 #1}{\textrm{d}t^2}}     % d^2 ? / dt^2
+% \newcommand{\dt}[1]{\dot{#1}}                                   % d ? / dt
+% \newcommand{\dts}[1]{\ddot{#1}}                                 % d^2 ? / dt^2
+
+\newcommand{\erf}[1]{~\textrm{erf} \left\{#1\right\}}                      % erf{?}
+\newcommand{\ex}[1]{\exp{ \left\{ #1 \right\}}}                 % exp{?}
+\newcommand{\ep}[1]{\textrm{e}^{\left( #1 \right) }}            % e^(?)
+\newcommand{\e}[1]{\textrm{e}^{#1}}                             % e^?
+\newcommand{\lnp}[1]{\textrm{ln} \left( #1 \right)}            % ln(?)
+\newcommand{\logp}[1]{\textrm{log} \left( #1 \right)}          % log(?)
+
+\newcommand{\cosinus}[1]{\cos #1 }                              % cos
+\newcommand{\cosine}[1]{\cosinus{#1}}                           % cos
+\newcommand{\sinus}[1]{\sin #1 }                                % sin
+\newcommand{\sine}[1]{\sinus{#1}}                               % sin
+\newcommand{\cosp}[1]{\cos \left( #1 \right)}                   % cos()
+\newcommand{\sinp}[1]{\sin \left( #1 \right)}                   % sin()
+\newcommand{\tanp}[1]{\tan \left( #1 \right)}                   % tan()
+\newcommand{\sintheta}{\sin \theta}                             % sin theta
+\newcommand{\costheta}{\cos \theta}                             % cos theta
+\newcommand{\sinptheta}{\sinp{ \theta }}                        % sin(theta)
+\newcommand{\cosptheta}{\cosp{ \theta}}                         % cos(theta)
+\newcommand{\sinec}[1]{\textrm{ sinc} \left( #1 \right)}        % sinc()
+\newcommand{\sinecsquared}[1]{\textrm{ sinc}^2 \left( #1 \right)} % sinc^2()
+\newcommand{\cossquared}[1]{\cos^2 \left( #1 \right)}           % cos^2()
+\newcommand{\sinsquared}[1]{\sin^2 \left( #1 \right)}           % sin^2()
+\newcommand{\tansquared}[1]{\tan^2 \left( #1 \right)}           % tan^2()
+\newcommand{\acos}[1]{\textrm{acos} \left( #1 \right)}          % acos()
+\newcommand{\asin}[1]{\textrm{asin} \left( #1 \right)}          % asin()
+\newcommand{\atan}[1]{\textrm{atan} \left( #1 \right)}          % atan()
+\newcommand{\sech}[1]{\textrm{sech} \left( #1 \right)}          % sech()
+\newcommand{\tanhyp}[1]{\textrm{tanh} \left( #1 \right)}          % tanh()
+\newcommand{\sechsquared}[1]{\textrm{sech}^2 \left( #1 \right)} % sech^2()
+
+\newcommand{\thetatwo}{\frac{\theta}{2}}
+\newcommand{\betatwo}{\beta/2}
+
+\newcommand{\dix}[1]{\times 10^{#1}}                            % ? x 10^?
+
+\newcommand{\dint}[1]{~\textrm{d}#1}
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\epsz}{\epsilon_0}
+\newcommand{\epsr}{\epsilon_r}
+\newcommand{\muz}{\mu_0}
+\newcommand{\om}{\omega}
+\newcommand{\omi}[1]{\omega_{#1}}
+\newcommand{\omegaz}{\omega_0}
+\newcommand{\omegasquared}{\omega^2}
+\newcommand{\omegazsquared}{\omega_0^2}
+\newcommand{\omegazsquaredomegasquared}{\omegazsquared - \omegasquared}
+
+% \newcommand{\ve}[1]{\vec{#1}}
+\newcommand{\ve}[1]{\textbf{#1}}
+\newcommand{\vE}{\ve{E}}
+\newcommand{\vA}{\ve{A}}
+\newcommand{\vB}{\ve{B}}
+\newcommand{\vC}{\ve{C}}
+\newcommand{\vD}{\ve{D}}
+\newcommand{\vF}{\ve{F}}
+\newcommand{\vH}{\ve{H}}
+\newcommand{\vJ}{\ve{J}}
+\newcommand{\vL}{\ve{L}}
+\newcommand{\vM}{\ve{M}}
+\newcommand{\vP}{\ve{P}}
+\newcommand{\vR}{\ve{R}}
+\newcommand{\vS}{\ve{S}}
+\newcommand{\vU}{\ve{U}}
+\newcommand{\va}{\ve{a}}
+\newcommand{\vb}{\ve{b}}
+\newcommand{\vc}{\ve{c}}
+\newcommand{\vd}{\ve{d}}
+\renewcommand{\vee}{\ve{e}}
+\newcommand{\vf}{\ve{f}}
+\newcommand{\vg}{\ve{g}}
+\newcommand{\vh}{\ve{h}}
+\newcommand{\vi}{\ve{i}}
+\newcommand{\vj}{\ve{j}}
+\newcommand{\vk}{\ve{k}}
+\newcommand{\vl}{\ve{l}}
+\newcommand{\vm}{\ve{m}}
+\newcommand{\vn}{\ve{n}}
+\newcommand{\vp}{\ve{p}}
+\newcommand{\vq}{\ve{q}}
+\newcommand{\vr}{\ve{r}}
+\newcommand{\vqd}{\dot{\vq}}
+\newcommand{\vv}{\ve{v}}
+\newcommand{\vs}{\ve{s}}
+\newcommand{\vt}{\ve{t}}
+\newcommand{\vx}{\ve{x}}
+\newcommand{\vz}{\ve{z}}
+
+\newcommand{\vomega}{\bm{\omega}}
+\newcommand{\vmu}{\bm{\mu}}
+\newcommand{\vepsilon}{\bm{\epsilon}}
+\newcommand{\vDelta}{\bm{\Delta}}
+\newcommand{\vxi}{\bm{\xi}}
+\newcommand{\vsigma}{\bm{\sigma}}
+
+\newcommand{\operator}[1]{ \hat{#1} }
+\newcommand{\operatorvector}[1]{ \hat{\textbf{#1}} }
+
+\newcommand{\oa}{\operator{a}}
+\newcommand{\ob}{\operator{b}}
+\newcommand{\oc}{\operator{c}}
+\newcommand{\oi}{\operator{i}}
+\newcommand{\oj}{\operator{j}}
+\newcommand{\ok}{\operator{k}}
+\newcommand{\op}{\operator{p}}
+\newcommand{\os}{\operator{s}}
+\newcommand{\ox}{\operator{x}}
+\newcommand{\oy}{\operator{y}}
+\newcommand{\oz}{\operator{z}}
+\newcommand{\oA}{\operator{A}}
+\newcommand{\oB}{\operator{B}}
+\newcommand{\oD}{\operator{D}}
+\newcommand{\oH}{\operator{H}}
+\newcommand{\oJ}{\operator{J}}
+\newcommand{\oK}{\operator{K}}
+\newcommand{\oL}{\operator{L}}
+\newcommand{\oO}{\operator{O}}
+\newcommand{\oP}{\operator{P}}
+\newcommand{\oS}{\operator{S}}
+\newcommand{\oT}{\operator{T}}
+\newcommand{\oU}{\operator{U}}
+\newcommand{\oxi}{\operator{\xi}}
+
+
+\newcommand{\ograd}{ \hat{\bm{\nabla}} }
+\newcommand{\olapl}{ \hat{\bm{\nabla}}^2 }
+\newcommand{\osig}{ \hat{\sigma} }
+\newcommand{\osigv}{ \hat{\vsigma} }
+\newcommand{\oepsv}{ \hat{\vepsilon} }
+\newcommand{\obv}{\operatorvector{b}}
+\newcommand{\okv}{\operatorvector{k}}
+\newcommand{\orv}{\operatorvector{r}}
+\newcommand{\onv}{\operatorvector{n}}
+\newcommand{\opv}{\operatorvector{p}}
+\newcommand{\osv}{\operatorvector{s}}
+\newcommand{\oxv}{\operatorvector{x}}
+\newcommand{\oyv}{\operatorvector{y}}
+\newcommand{\ozv}{\operatorvector{z}}
+\newcommand{\oAv}{\operatorvector{A}}
+\newcommand{\oBv}{\operatorvector{B}}
+\newcommand{\oEv}{\operatorvector{E}}
+\newcommand{\oHv}{\operatorvector{H}}
+\newcommand{\oJv}{\operatorvector{J}}
+\newcommand{\oLv}{\operatorvector{L}}
+\newcommand{\oPv}{\operatorvector{P}}
+\newcommand{\oSv}{\operatorvector{S}}
+\newcommand{\omuv}{\hat{\vmu}}
+
+\newcommand{\obd}{\ob^{\dagger}}
+\newcommand{\oad}{\oa^{\dagger}}
+
+\newcommand{\hvp}{\hat{\textbf{p}}}
+\newcommand{\hvq}{\hat{\textbf{q}}}
+\newcommand{\hvr}{\hat{\textbf{r}}}
+\newcommand{\hvu}{\hat{\textbf{u}}}
+\newcommand{\hvx}{\hat{\textbf{x}}}
+\newcommand{\hvy}{\hat{\textbf{y}}}
+\newcommand{\hvz}{\hat{\textbf{z}}}
+\newcommand{\hvtheta}{\hat{\bm{\theta}}}
+\newcommand{\hvphi}{\hat{\bm{\phi}}}
+
+\newcommand{\tA}{\tilde{A}}
+\newcommand{\tB}{\tilde{B}}
+\newcommand{\tC}{\tilde{C}}
+\newcommand{\tE}{\tilde{E}}
+\newcommand{\tP}{\tilde{P}}
+\newcommand{\tvA}{\tilde{\vA}}
+\newcommand{\tvB}{\tilde{\vB}}
+\newcommand{\tvC}{\tilde{\vC}}
+\newcommand{\tvE}{\tilde{\vE}}
+\newcommand{\tvP}{\tilde{\vP}}
+
+
+\newcommand{\vEo}{\vE_{\omega}}
+\newcommand{\vEto}{\vE_{2 \omega}}
+\newcommand{\vPo}{\vP_{\omega}}
+\newcommand{\vPto}{\vP_{2 \omega}}
+
+\newcommand{\schrodinger}{Schr\"odinger }
+\newcommand{\schrodingers}{Schr\"odinger's }
+
+\newcommand{\Hermitte}[2]{\textrm{H}_{#1}\pa{#2}}
+
+\newcommand{\unit}[1]{~\textrm{#1}}
+\newcommand{\units}[1]{\unit{#1}}
+\newcommand{\unite}[1]{\unit{#1}}
+\newcommand{\unites}[1]{\unit{#1}}
+\newcommand{\se}{\hspace{3pt}}                          % Espace pour les équations
+\newcommand{\su}{\hspace{3pt}}                          % Espace pour les unités
+
+\newcommand{\real}[1]{ \mathcal{R}e\pa{#1} }
+\newcommand{\imag}[1]{ \mathcal{Im}\pa{#1} }
+
+\newcommand{\pa}[1]{\left( #1 \right)}
+\newcommand{\cro}[1]{\left[ #1 \right]}
+\newcommand{\cbraket}[1]{\left\{ #1 \right\}}
+\newcommand{\mean}[1]{\left< #1 \right>}
+
+\newcommand{\ft}[1]{\textrm{FT}\pa{#1}}
+\newcommand{\fti}[1]{\textrm{FT}^{-1}\pa{#1}}
+
+\newcommand{\chiun}{\chi^{(1)}}
+\newcommand{\chideux}{\chi^{(2)}}
+\newcommand{\chitrois}{\chi^{(3)}}
+
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\trace}[1]{\textrm{tr}\pa{ #1 }}
+\newcommand{\tr}[1]{\trace{#1}}
+
+\newcommand{\identity}{\textbf{1}}
+
+% \newcommand{\bra}[1]{\left. \langle #1 \right|}
+% \newcommand{\ket}[1]{\left| #1 \rangle \right.}
+% \newcommand{\braket}[3]{\bra{#1} #2 \ket{#3}}
+% \newcommand{\crossp}[2]{\langle #1 | #2 \rangle}
+\newcommand{\bra}[1]{\left< #1 \right|}
+\newcommand{\ket}[1]{\left| #1 \right>}
+\newcommand{\braket}[3]{\left< #1 \left|\left. #2  \right|\right. #3 \right>}
+\newcommand{\crossp}[2]{\left< #1 \left| #2 \right.\right>}
+\newcommand{\matrixelem}[3]{\braket{#1}{#2}{#3}}
+\newcommand{\expectation}[2]{\braket{#1}{#2}{#1}}
+\newcommand{\expectationsmall}[1]{\left< #1 \right>}
+
+% \newcommand{\cqfd}{\begin{flushright}$\Box$\end{flushright}}
+% Needs: \usepackage{latexsym}
+\newcommand{\cqfd}[1]{\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}#1&$\Box$\end{tabular*}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
