@@ -1,0 +1,91 @@
+==== Introduction ====
+
+=== General Introduction ===
+
+~5 pages. "Big picture"
+
+
+
+=== Detailed Introduction ===
+  - Big picture -- Story
+    - Study and control atoms and molecules using light
+    - Biomolecules imaging
+      - X-Ray crystallography failing for many biomolecules, proteins
+      - Short wavelength (X-rays) required
+        - High energy absorption: single shot required
+    - Ultra short length-scales and ultra fast time-scales
+    - Dynamics probing: molecular and electronic
+    - $\rightarrow$ Molecular movie
+    - Light-Matter
+      - Extremes scales well understood (solid vs. single atom)
+      - What about in-between? ``Intermediate'' systems: nanoparticles
+    - Wavelength
+      - lot of work @ 800 nm
+      - HHG after tunnel ionization
+      - FEL allows much shorted wavelengths, where less work has been done
+      - Recent studies @ 100 nm and 32 nm $\rightarrow$ surprising results
+    - Cluster studies
+      - Nano-scale objects
+      - Solid density
+      - Experimentally accessible
+      - Small system (numerically solvable)
+      - Boundary effects
+      - Absorb energy more efficiently than gas. Emission of:
+        - Highly energetic electrons (~10 keV)
+        - Highly charged ions (MeV ?)
+        - X-Rays
+        - Fusion? Neutrons?
+    - Is energy absorption well understood?
+    - Current heating mechanisms
+      - Single photon ionization
+      - Impact ionization
+      - Tunnel ionization
+    - Proposed new heating mechanisms:
+      - Barrier lowering (for single photon)
+      - Atomic potential
+      - MBR
+      - Impact excitation (ACI)
+  - Thesis goals:
+    - Study the influence of these on the cluster dynamics, energy absorption and distribution
+      - laser field
+      - cluster environment
+    - Introduce a simple new mechanism (ACI)
+  - Methodology and Tools
+    - Molecular Dynamics (MD)
+      - Writing of MD code and ionization library from scratch
+        - Why from scratch? we had specific needs:
+        - New particles created
+        - Ionization routines
+        - Previous tools (treecode) not satisfactory
+      - Classical approximation to particles dynamics
+      - Tracking of every particles in the system
+      - Quantum effects added as cross-sections
+        - Single photon ionization
+        - Impact ionization
+        - Tunnel (possible, not used)
+        - Impact excitation (ACI)
+      - Interaction of every pair of particles is calculated
+        - Scales as O(N2)
+          - Good for small clusters
+          - Intractable for larger clusters
+          - Acceleration through OpenCL and GP-GPUs
+    - Quantum FDTD
+      - Study effect of a laser field and cluster environment on:
+        - Ionization
+        - Cross-sections
+        - Grid-based
+          - Scales as O(N3)
+          - High precision required close to atoms $\rightarrow$ Non-linear mapping
+          - Acceleration through OpenCL and GP-GPUs
+      - Study the quantum states in a cluster environment: is ACI a valid model?
+        - We needed a quantum solver to look at states
+        - Past experience with FDTD showed great potential
+        - FDTD easy to understand, implement and parallelize
+        - $\rightarrow$ QFDTD/Mapping paper
+
+Contributions:
+  - MD from scratch
+  - Libraries from scratch
+  - QFDTD from scratch
+
+
