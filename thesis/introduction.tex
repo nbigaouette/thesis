@@ -1,6 +1,17 @@
 \section{Introduction}
 
-\subsection{Field (``big picture''}
+
+
+
+
+\subsection{General Introduction}
+TODO --> same as detailed, but simplified.
+The goal is to let the reader understands where I am going, why I'm doing
+it, before he starts reading. This should allow him to grasp my explanations
+more easily.
+
+
+\subsection{Detailed Introduction}
 
 \begin{enumerate}
 \item Study and control atoms and molecules using light
@@ -13,7 +24,12 @@
 \item Light-Matter
     \begin{enumerate}
         \item Extremes scales well understood (solid vs. single atom)
-        \item What about in-between? “Intermediate” systems: nanoparticles
+        \item What about in-between? ``Intermediate'' systems: nanoparticles
+    \end{enumerate}
+\item Wavelength
+    \begin{enumerate}
+        \item lot of work @ 800 nm
+        \item FEL allows much shorted wavelengths, where less work has been done
     \end{enumerate}
 \item Cluster studies
     \begin{enumerate}
@@ -23,112 +39,115 @@
         \item Small system (numerically solvable)
         \item Boundary effects
     \end{enumerate}
-\end{enumerate}
-
-
-
-
-\subsection{Goals}
-\begin{enumerate}
-\item Study the influence of these on the cluster dynamics, energy absorption and distribution
-\begin{enumerate}
-    \item laser field
-    \item cluster environment
-    \end{enumerate}
-\item Introduce a simple new mechanism (ACI)
+\item Is energy absorption well understood?
 \end{enumerate}
 
 
 
 
 
-\subsection{Story}
-\begin{enumerate}
-    \item Writing of MD code and ionization library from scratch
-    \begin{enumerate}
-        \item Why from scratch? we had specific needs:
-        \begin{enumerate}
-            \item New particles created
-            \item Ionization routines
-            \item Previous tools (treecode) not satisfactory
-        \end{enumerate}
-    \end{enumerate}
-    \item Develop ACI model and its implementation
-    \item Study ACI effect at XUV regime with Argon (matching experiments)
-    \begin{enumerate}
-        \item First paper
-    \end{enumerate}
-    \item Study cluster size effect at XUV regime with Argon (matching experiments)
-    \begin{enumerate}
-        \item Second paper
-    \end{enumerate}
-    \item Study the quantum states in a cluster environment: is ACI a valid model?
-    \begin{enumerate}
-        \item We needed a quantum solver to look at states
-        \item Past experience with FDTD showed great potential
-        \item FDTD easy to understand, implement and parallelize
-        \item Third paper (QFDTD)
-    \end{enumerate}
-    \item Applications of ACI to a different regime; is it still valid?
-    \begin{enumerate}
-        \item Fourth paper (100 nm)
-    \end{enumerate}
-\end{enumerate}
 
-
-
-
-\subsection{Tools}
-\begin{enumerate}
-    \item Molecular Dynamics (MD)
-        \begin{enumerate}
-        \item Classical approximation to particles dynamics
-        \item Tracking of every particles in the system
-        \item Quantum effects added as cross-sections
-            \begin{enumerate}
-            \item Single photon ionization
-            \item Impact ionization
-            \item Impact excitation
-            \item Tunnel (possible, not used)
-            \end{enumerate}
-        \item Interaction of every pair of particles is calculated
-            \item Scales as O(N2)
-                \begin{enumerate}
-                \item Good for small clusters
-                \item Intractable for larger clusters
-                \end{enumerate}
-            \item Acceleration through OpenCL and GP-GPUs
-        \end{enumerate}
-    \item Quantum FDTD
-        \begin{enumerate}
-        \item Study effect of a laser field and cluster environment on:
-            \begin{enumerate}
-            \item Ionization
-            \item Cross-sections
-            \end{enumerate}
-        \item Grid-based
-            \begin{enumerate}
-            \item Scales as O(N3)
-            \item High precision required close to atoms –> Non-linear mapping
-            \item Acceleration through OpenCL and GP-GPUs
-            \end{enumerate}
-        \end{enumerate}
-\end{enumerate}
-
-
-
-
-\subsection{Contributions}
-Contributions of Collaborators and/or Co-Authors
-
-Clearly distinguishes the contributions of the student from those of all other collaborators or co-authors, and 
-identifies in detail all other contributions.
-
-\begin{enumerate}
-\item MD from scratch
-\item QFDTD from scratch
-\item Library organization
-\end{enumerate}
+% \subsection{Goals}
+% \begin{enumerate}
+% \item Study the influence of these on the cluster dynamics, energy absorption and distribution
+% \begin{enumerate}
+%     \item laser field
+%     \item cluster environment
+%     \end{enumerate}
+% \item Introduce a simple new mechanism (ACI)
+% \end{enumerate}
+% 
+% 
+% 
+% 
+% \subsection{Tools}
+% \begin{enumerate}
+%     \item Molecular Dynamics (MD)
+%         \begin{enumerate}
+%         \item Classical approximation to particles dynamics
+%         \item Tracking of every particles in the system
+%         \item Quantum effects added as cross-sections
+%             \begin{enumerate}
+%             \item Single photon ionization
+%             \item Impact ionization
+%             \item Impact excitation
+%             \item Tunnel (possible, not used)
+%             \end{enumerate}
+%         \item Interaction of every pair of particles is calculated
+%             \item Scales as O(N2)
+%                 \begin{enumerate}
+%                 \item Good for small clusters
+%                 \item Intractable for larger clusters
+%                 \end{enumerate}
+%             \item Acceleration through OpenCL and GP-GPUs
+%         \end{enumerate}
+%     \item Quantum FDTD
+%         \begin{enumerate}
+%         \item Study effect of a laser field and cluster environment on:
+%             \begin{enumerate}
+%             \item Ionization
+%             \item Cross-sections
+%             \end{enumerate}
+%         \item Grid-based
+%             \begin{enumerate}
+%             \item Scales as O(N3)
+%             \item High precision required close to atoms –> Non-linear mapping
+%             \item Acceleration through OpenCL and GP-GPUs
+%             \end{enumerate}
+%         \end{enumerate}
+% \end{enumerate}
+% 
+% 
+% 
+% \subsection{Story of the thesis and papers}
+% \begin{enumerate}
+%     \item Writing of MD code and ionization library from scratch
+%     \begin{enumerate}
+%         \item Why from scratch? we had specific needs:
+%         \begin{enumerate}
+%             \item New particles created
+%             \item Ionization routines
+%             \item Previous tools (treecode) not satisfactory
+%         \end{enumerate}
+%     \end{enumerate}
+%     \item Develop ACI model and its implementation
+%     \item Study ACI effect at XUV regime with Argon (matching experiments)
+%     \begin{enumerate}
+%         \item First paper
+%     \end{enumerate}
+%     \item Study cluster size effect at XUV regime with Argon (matching experiments)
+%     \begin{enumerate}
+%         \item Second paper
+%     \end{enumerate}
+%     \item Study the quantum states in a cluster environment: is ACI a valid model?
+%     \begin{enumerate}
+%         \item We needed a quantum solver to look at states
+%         \item Past experience with FDTD showed great potential
+%         \item FDTD easy to understand, implement and parallelize
+%         \item Third paper (QFDTD)
+%     \end{enumerate}
+%     \item Applications of ACI to a different regime; is it still valid?
+%     \begin{enumerate}
+%         \item Fourth paper (100 nm)
+%     \end{enumerate}
+% \end{enumerate}
+% 
+% 
+% 
+% 
+% 
+% 
+% \subsection{Contributions}
+% Contributions of Collaborators and/or Co-Authors
+% 
+% Clearly distinguishes the contributions of the student from those of all other collaborators or co-authors, and 
+% identifies in detail all other contributions.
+% 
+% \begin{enumerate}
+% \item MD from scratch
+% \item QFDTD from scratch
+% \item Library organization
+% \end{enumerate}
 
 
 
