@@ -1,6 +1,134 @@
 \section{Introduction}
 
-See outline.txt
+% See https://wiki.cphoton.science.uottawa.ca/lr/doku.php?id=members:nbigaouette:labbook:thesis:outline
 
+\subsection{General objectives}
+% ~5 pages. “Big picture”. Same as detailed, but simplified. The goal is to let
+% the reader understands where I am going, why I'm doing it, before he starts
+% reading. This should allow him to grasp my explanations more easily. General
+% litterature search goes here.
+
+%     Study and control atoms and molecules using light
+%     Biomolecules imaging
+%         X-Ray crystallography failing for many biomolecules, proteins
+%         Short wavelength (X-rays) required
+%             High energy absorption: single shot required
+%     Ultra short length-scales and ultra fast time-scales
+%     Dynamics probing: molecular and electronic
+%     → Molecular movie
+%     Light-Matter
+%         Extremes scales well understood (solid vs. single atom)
+%         What about in-between? ``Intermediate'' systems: nanoparticles
+%     Wavelength
+%         lot of work @ 800 nm
+%         HHG after tunnel ionization
+%         FEL allows much shorted wavelengths, where less work has been done
+%         Recent studies @ 100 nm and 32 nm → surprising results
+
+Our capacity control atoms and molecules, specifically with light,
+will drive the evolution of nanosciences. The method of choice to study 
+bio-molecules today is X-ray crystallography, a method that lead Watson and 
+Crick on their discovery of DNA's double-helix structure in 1953. 
+Unfortunately, only a small fraction of bio-molecules can be crystallized 
+efficiently. Additionally, obtaining large amounts of these molecules can be 
+challenging in itself. Could it be possible to obtain a diffraction pattern, 
+the basis of X-ray crystallography, with only a single one of them? Could the 
+measurement be made directly in water droplets as to prevent bio-molecules' 
+denaturation during crystallization? Because large amounts of atoms are 
+required for normal X-ray crystallography experiments, the X-ray source will 
+have to be many times more energetic to get interesting contrast in the 
+case of single-molecule imaging. Since X-rays are ionizing, increasing their 
+total energy will have unfortunate consequences for the molecule. This 
+light-matter interaction will thus set an upper range on the light duration.
+
+Today's X-ray sources such as synchrotrons don't have the intensity and 
+duration required for such experiments but new Free-Electron Laser (FEL) are 
+able to fill the gap. By sending relativistic electrons through an ondulator, 
+one can efficiently control the wavelength of the resulting laser pulse, from 
+microwave to X-rays. FEL installations at the Linac Coherent Light Source 
+(LCLS) in Stanford and Free-Electron Laser in Hamburg (FLASH) have generated 
+ultra-short (femtosecond) laser pulses at ultra-short wavelength and 
+unprecedented intensities. By concentrating the energy during a short pulse, 
+the light-matter interaction time scale is now on the same order as the 
+electrons movement, allowing such pulses to act as the equivalent of a camera 
+flash. Such a useful tool can thus be used for probing of molecular 
+and, more importantly, electronic dynamics. Multiple images could be assembled 
+to reconstruct a molecular movie; studying how a protein is folding has great 
+potential for new drug treatment for example.
+
+Light and matter interaction is well understood at the two size extremes: 
+single atoms and solid systems. Intermediate systems, like nano-particles and 
+bio-molecules, offer greater challenges. To study these, clusters of atoms are 
+a useful tool. They bridge the gap between single atoms and solid state 
+matter. They are nanoscale objects, ranging from less than ten atoms to tens of 
+thousands of atoms or even more. Even though they are small in size, their 
+density is close to solid matter and can thus exhibit the same collective 
+effects that are present in large scale systems. Additionally, they are easily 
+accessible experimentally; simply forcing a gas through a small enough nozzle 
+will ``stick'' atoms together and clusters will emerge from the nozzle's pin 
+hole. Varying the gas pressure will result in different cluster sizes. 
+Clusters normally have a structure in icosahedral shells.
+Different combinations of atoms are also possible, for example getting a core of 
+one kind of atom surrounded by shells of another element. More importantly for 
+the following work is the fact that clusters of atoms are small enough to be 
+studied numerically. Complexifying a system by adding more particles will 
+result in extra computational burden, so smaller systems are obviously easier 
+to simulate. Solving quantum mechanically an atom with many electrons is an 
+extremely hard problem. A system composed of dozens of atom is thus intractable 
+without using approximations. Keeping the system as small as possible allows to 
+reduce to a maximum the number of approximations and stay as close as possible 
+to the physical system.
+
+Another interesting aspect of clusters is the relative importance of 
+their boundaries compared to their volume. Because the surface of a sphere 
+scales as radius squared and the volume as radius cubed, smaller objects can 
+exhibit more boundary effects.
+
+Experiments with clusters have shown interestingly large energy absorption 
+compared with gas. High energetic electrons (tens of keV) have been observed. 
+Ions can also be accelerated to MeV energies and X-rays can be generated by the 
+electrons' movement around ions in the cluster.
+
+This brings important questions; do we understand fully how the energy is 
+absorbed by the clusters from the laser? How is that energy distributed 
+inside a nanoparticle? What are the different mechanisms that play a role in 
+the interaction? What is the effect and importance of these mechanisms? These 
+are the kind of questions theoretical studies can answer.
+
+Certain heating mechanisms are known. Three of them are of great importance. 
+First, single- or multi-photon ionization is the absorption by a bound electron 
+of one or more photons which promotes this electron to the continuum. This 
+mechanism is dependent on the photon density; higher intensities mean more 
+photons which in turns increases the probability of an electron absorbing one 
+(or more) photon. The resulting electron will have, as its kinetic energy, the 
+remaining between the ionization potential energy and the photon energy. This 
+extra kinetic energy is clearly visible in electron spectra obtained from 
+experiments.
+
+
+
+Theoretical investigations are essentials to open the door to a better 
+understanding of ultra-short and ultra-intense laser energy absorption by 
+nanoscale objects.
+
+%     Heating mechanisms (general description)
+%         Current
+%             Single photon ionization
+%             Impact ionization
+%             Tunnel ionization
+%         Possible new
+%             Barrier lowering (for single photon)
+%             Atomic potential
+%             MBR
+%             Impact excitation (ACI)
+
+
+
+
+\subsection{Details}
+% Describe in more details the work done: The physics, the models. The specific
+% litterature search goes here. 
+
+Don't forget a review/description of each sections of the thesis.
 
 \ReferencesSubsection{references}
