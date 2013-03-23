@@ -215,16 +215,6 @@ mode=LaTeX
 open=true
 order=2
 
-[item:lorem_ipsum.tex]
-archive=true
-column=0
-encoding=
-highlight=
-line=0
-mode=
-open=false
-order=-1
-
 [item:macros.tex]
 archive=true
 column=24
