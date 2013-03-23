@@ -89,10 +89,99 @@ remaining between the ionization potential energy and the photon energy. This
 extra kinetic energy is clearly visible in electron spectra obtained from
 experiments.
 
+Single photon ionization is obviously dependent on the photon's wavelength; if
+the photon's energy is not enough to bring the electron to the continuum,
+ionization cannot take place. A second heating mechanism though is not
+(directly) dependent on the wavelength but on the laser field strength. If the
+laser pulse's intensity is strong enough it will bend the Coulomb potential the
+electrons are feeling. The electronic wavefunction will thus be able to tunnel
+through the potential barrier and the probability of finding electrons
+outside their parent atom (or ion), an ionization event, will increase. This
+process if called \textit{tunnel} or \textit{field} ionization  since it
+requires strong laser fields to happen. Laser intensity and atom type are the
+main influence of tunnel ionization and the Keldysh parameter will give
+information on whether the process is possible or not. Tunnel ionization is the
+heart of the High Harmonic Generation (HHG) process; an electron tunnels out of
+its parent ion potential and is then accelerated into the laser field. When the
+field polarity is inverted during its oscillation cycle the electron will be
+forced back to the parent ion where it recombines, emitting high energy photons.
+
+The two previous ionization processes are dominant at the start of the laser
+pulse since they are the only way for the system to absorb energy in the
+absence of free electrons. But once free electrons are created by these
+processes a third one appear: impact ionization where an energetic electron
+collides with an atom or ion and transfer some of its kinetic energy to a bound
+electron, pushing it to the continuum.
+
+While not a heating mechanism \textit{per se} (the cluster does not absorb
+energy from the laser in this process), free electrons can absorb energy from
+the laser during the \textit{Inverse Bremsstrahlung Heating} (IBH) process.
+Bremsstrahlung is the emission of photons during electron collisions with
+heavier charged particles (ions). IBH is simply the opposite: electrons
+absorbing photons in the presence of ions and being deflected. IBH is an
+important heating mechanism at long wavelength (800 nm for example) while being
+marginally efficient at shorter wavelength regimes (X-rays).
+
+The previous processes, while conceptually being simple and elegant, are not
+enough to explain high charge states seen in recent experiments at FEL
+facilities. Many research groups have proposed new models to
+explain the large absorption rates. The older model is called \textit{barrier
+suppression} or \textit{barrier lowering} and is conceptually similar to tunnel
+ionization. In this model, the potential barrier a bound electron sees will be
+lowered by the presence of a neighbouring ion. This has been applied in
+simulations to single photon ionization to allow less energetic photons to be
+absorbed by electrons in a cluster environment. If the neighbour ion is close
+enough, the energy level the electron is sitting at could even become above the
+potential barrier between the two ions. In this case, an electron might be
+considered quasi-free between the ions.
+
+The second major model is based on \textit{atomic potentials} usage in
+simulations instead of pure Coulombic ones. In all but hydrogen (or hydrogenic)
+atoms, many electrons are present around the nucleus. Exact solutions (to the
+non-relativistic \schrodinger equation) for many electron systems are not known
+but are approximated by different methods. For example, the Hartree-Fock
+method, used to solve for ground state electronic wavefunctions of a
+multi-electron system, uses a mean field created by all other particles. This
+mean field could also be used instead of a pure Coulomb one to portrait a more
+realistic interaction between a moving electron and an ion.
+
+A third model has been proposed for describing large energy absorption by
+clusters. This model is based on the density of electronic states just under
+the continuum. There is an infinity of bound states for any potential shape;
+the lowest is the ground state which is followed by excited states, many of
+which are well defined. But as the level increases, the difference in energy
+between them decreases. As the levels get closer and closer together,
+distinguishing them becomes harder and it is possible to approximate them, in
+simulations, as continuum states instead. This is the basis of the \textit{Many
+Body Recombination} (MBR) heating process. An electron could collide with
+another electron and loose some kinetic energy, becoming trapped in the ion's
+potential or recombined to a highly excited state. Since the difference in
+energy between this high excited state and the continuum is small, the electron
+could easily absorb a new photon from the laser field and be promoted to the
+continuum where the process can start over. This has the net effect of
+depositing an extra photon worth of energy into the cluster environment.
+
+The last model, introduced by our group, also explores the quantized nature of
+the electronic states. Instead of looking at the highly excited states like
+in the case of MBR the lowest energy levels are included as heating mechanisms.
+Normally during impact ionization, an electron will need enough kinetic energy
+to bring a bound electron from the ground state to the continuum as explained
+previously. This put a limit on the number of electrons in the cluster
+environment that can participate in such a process; all electrons with
+kinetic energy lower than the ionization potential cannot impact ionize an atom
+or ion. The novel idea here is to also include these electrons in the process
+by letting them transfer some of their kinetic energy, through collisions, to a
+bound electron, bringing it to an excited state. Having a relatively long decay
+time, these electrons in an excited state can then be transferred to the
+continuum by the collision of a second electron. Because the two impacting
+electrons don't need as much energy as in the case of impact ionization, many
+more electrons can participate in this many-step process. We called this
+process \textit{Augmented Collisional Ionization} (ACI).
 
 
-Theoretical investigations are essentials to open the door to a better 
-understanding of ultra-short and ultra-intense laser energy absorption by 
+
+Theoretical investigations are essentials to open the door to a better
+understanding of ultra-short and ultra-intense laser energy absorption by
 nanoscale objects.
 
 
