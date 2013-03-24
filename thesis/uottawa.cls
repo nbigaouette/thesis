@@ -30,7 +30,8 @@
 
 
 % Bibliography's style
-\bibliographystyle{plain}
+% \bibliographystyle{plain}
+\bibliographystyle{uottawa}
 
 % ************************************************************************************
 % ************************************************************************************
