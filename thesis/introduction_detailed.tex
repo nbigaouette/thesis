@@ -16,14 +16,166 @@ ultra-short and ultra-intense laser pulse is important.
 
 \subsubsection{Laser-Cluster interaction}
 
+
+\subsubsubsection{Clusters}
+\label{section:intro:clusters:clusters}
+
+Clusters of atoms are an extremely useful tool to study laser-matter
+interaction. They are experimentally easy to produce since many
+years\cite{Haberland1994}. Their size and constitution can be varied almost at
+will \cite{Martin1996}.
+
+\cite{Fennel2010}
+
 \subsubsubsection{Heating mechanisms}
+\label{section:intro:clusters:heating}
 
 \subsubsubsection{Studied parameters}
 
 
 \subsubsection{Methodology and Tools}
+A large selection of tools exist to study laser-cluster interaction,
+differentiating themselves through the amount of approximation taken.
+
+Exact solution of the quantum mechanical system is, most of the time,
+intractable. Theoretical investigations thus require some degree of
+approximation, a compromise between feasibility and exactitude. On one end of
+the spectrum, the most general methods is solving the
+Time-Dependent \schrodinger Equation (TDSE) directly or the Quantum Monte-Carlo
+(QMC) method. Unfortunately, these methods can only be applied to the simplest
+systems of small numbers of electrons; clusters cannot be studied using these
+methods.
+
+Larger systems can be studied using \textit{ab initio} methods (``from
+first principles'') which covers a wide range of techniques. In this class of
+methods one can find \textit{Hartree-Fock} (HF) methods which consist on
+approximating the ground state wavefunction by a single Slater determinant.
+In HF methods, instantaneous electron-electron Coulomb repulsion is not
+included directly in the system's Hamiltonian. Instead, only the average field
+resulting from other electrons is used, giving the often used name of
+\textit{self-consistent field} methods. Other \textit{ab
+initio} methods are the \textit{Post Hartree-Fock} methods where electron
+correlation is added. An example is the \textit{Configuration Interaction} (CI)
+method. Because of their great accuracy, these methods are restricted to
+relatively small systems, generally less then 10 atoms. Full \textit{ab initio}
+treatment of clusters is not possible.
+
+Larger systems requires more approximations. \textit{Density Functional Theory}
+is an often used method for cluster studies requiring quantum aspects, with
+either quantum or semiclassical propagation. It starts by formulating an
+expression for the total energy of electrons and ions and derives static and
+dynamic equations from it. All approximations are done in the selection of this
+(energy) functional. The upper limit on these methods is of practical reasons,
+mainly computational power available. On the other side, because the chosen
+functional approximate the underlying quantum system, specific quantum effects
+might not be included, for example shell effects or tunnelling are neglected.
+
+Because DFT methods are mean field in nature, they cannot account for the large
+field fluctuations seen in strong field cluster dynamics.
+
+On the end of the methods spectrum lies the rate equations.
+
+
+
+
+
+
+For a detailed review of the different methods, see Ref. \cite{Fennel2010}.
+
+
 
 \subsubsubsection{Molecular Dynamics (MD)}
+Due to the high charge states seen in experiment with clusters the only
+practical method to microscopically study the ionization dynamics is
+\textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
+classically.
+
+In MD, particles interact directly through classical instantaneous forces. The
+total force acting on particle $i$ of mass $m_i$ from all other $N$ particles in
+the system is:
+\begin{align}
+m_i \va_i & = \vF_i = \sum_{j \ne i} \vF_{j \rightarrow i}
+\label{eqn:md:newton}
+\end{align}
+In the present work, the force between charged particles is the instantaneous
+electrostatic Coulomb force:
+\begin{align}
+\vF_{C,j \rightarrow i}\pa{\vr} & =\frac{k q_i q_j}{r_{ji}^2} \hvr_{ji}.
+\label{eqn:md:coulomb:F}
+\end{align}
+which only depends on the distance between particles. Equation
+\eqref{eqn:md:newton} can be time integrated using the Velocity-Verlet (VV)
+scheme:
+\begin{subequations}
+\begin{align}
+\vx_{i}^{\pa{n+1}} & = \vx_{i}^{\pa{n}} + \vv_{i}^{\pa{n}} \Delta t +
+\frac{\va_{i}^{\pa{n}}}{2} \Delta t^2, \\
+\va_{i}^{\pa{n+1}} & = \frac{\vF^{\pa{n}}}{m_i} \label{eqn:md:vv:a} \\
+\vv_{i}^{\pa{n+1}} & = \vv_{i}^{\pa{n}} + \frac{\va_{i}^{\pa{n}} +
+\va_{i}^{\pa{n+1}}}{2} \Delta t,
+\end{align}
+\label{eqn:md:vv}
+\end{subequations}
+where $\Delta t$ is the integration time step, $\vx_{i}$ the position vector,
+$\vv_{i}$ the velocity vector and $\va_{i}$ the acceleration vector of
+particle $i$, all evaluated at either the time step $n$ or the next one $n+1$.
+Equations \eqref{eqn:md:vv}, when applied to every particles $i$ of the system,
+can thus be used to propagate in time the whole cluster. Note that many
+variation of equations \eqref{eqn:md:vv} are possible but all are equivalent.
+
+Every particle in the system stores its position $\vx^{\pa{n}}$, its velocity
+$\vv^{\pa{n}}$ and also the total force acting on it $\vF^{\pa{n}}$. This total
+force is the sum of all contribution of equation \eqref{eqn:md:coulomb:F} from
+all other particles in the system.
+
+The MD algorithm basically calculates the force between every pair of particles
+in the system. Since there is $N$ total particles, there is $O\pa{N^2}$
+interactions to calculate. Doubling the number of particles will quadruple the
+computational burden, effectively putting an upper limit on the number of
+particles that can be simulated to tens of thousands.
+
+An important problem to consider is the close range behaviour of equation
+\eqref{eqn:md:coulomb:F} which diverges. Additionally, electrons should not be
+able to classically recombine to an ion under the atomic energy level. To
+prevent the later, electron recombination, as described in section
+\ref{section:intro:clusters:heating}, can be enabled. But this does not prevent
+the divergence of the Coulomb force. Instead, the problem is resolved by
+changing the shape of equation \eqref{eqn:md:coulomb:F} at close range.
+
+Different \textit{smoothing potentials} can be used to prevent the
+discontinuity of the Coulomb potential (or force). An efficient way is to treat
+electrons as charge distributions instead of point particles. As such, the
+electrostatic potential due to a charge particle $j$ (of gaussian shape of
+width $\sigma$) at location $\vr = r \hvr$ is:
+\begin{align}
+\phi_{j}\pa{\vr} & = \frac{k q_j}{r} \erf{\frac{r}{\sigma
+\sqrt{2}}}
+\end{align}
+The associated electrostatic field is thus:
+\begin{align}
+\vE_{j}\pa{\vr} & = -\grad{\phi\pa{\vr}} = k q_j \pa{
+    \frac{ \erf{\frac{r}{\sigma\sqrt{2}}} }{r^2}
+    - \sqrt{\frac{2}{\pi}} \frac{ \ex{-\frac{r^2}{2 \sigma^2}} }{\sigma r}
+}
+\end{align}
+When the distance $r$ is large compared to $\sigma$, the error function
+is close to 1 and the potential becomes Coulombic. Also, the exponential
+term in the electric field will tend towards 0 (since it's a gaussian shape).
+The error function will tend towards 1, so the electric field will
+be the field of a discrete point charge.
+
+
+
+
+
+
+
+POTENTIAL SMOOTHING
+
+RECOMBINATION
+
+COMPUTATIONAL COST
+
 \subsubsubsection{Quantum FDTD (QFDTD)}
 \subsubsubsection{Acceleration through OpenCL and GP-GPUs}
 
