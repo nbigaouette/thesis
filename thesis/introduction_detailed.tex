@@ -427,6 +427,49 @@ curve and time step) can be used with good confidence. Figure
 \emptyfig{NUMERICAL HEATING}{fig:potential:heating}
 
 
+\subsubsubsection{Implementation details}
+
+Our group previously used Barnes and Hut treecode implementation,
+freely available\cite{treecode} through the GPL version 2. The code was adapted
+to simulate charged particles (Coulomb force) instead of masses (gravitational
+force) with some ionization routines added (see for example reference
+\cite{Jungreuthmayer2005}). While reducing development time by re-using already
+written code, the maintenance burden introduced by many factors (initial
+implementation written in the C language, usage of global variables
+throughout the code, multiple coding styles from different people throughout
+the years, lack of vision, lack of revision control system to give the freedom
+of deleting code from the active version without loosing the ability to roll
+back, many subtle and important bugs, stability issues, etc.) pushed the author
+to restart from scratch. This allowed using modern development techniques to be
+used. For example, all development was done through a revision control system
+(subversion\cite{svn} at first, then switched to git\cite{git}) in the C++
+language instead of C. The object oriented nature of C++ allowed encapsulation
+of different parts of the code which could then be tested and validated
+individually. This gave better flexibility to the code, a required asset to
+push further the development of features.
+
+A substantial number of MD packages are freely available and were
+their usage was considered instead of re-implementing a new one from scratch.
+Examples are GROMACS\footnote{GROMACS:
+\url{http://www.gromacs.org/}} or NAMD\footnote{NAMD:
+\url{http://www.ks.uiuc.edu/Research/namd/}}. A major issue with these
+pre-existing MD packages is their target audience; they aim to simulate large
+bio-molecules with mostly short range interactions. Another important problem
+is the number of particles throughout the simulations; while many packages
+assume a constant number of particles, the present work required creating
+(ionization) and annihilating (recombination) particles throughout simulations.
+Controlling the MD part of the code allowed better integration of the
+ionization aspects.
+
+Other MD packages were not mature enough or simply non-existent at the time.
+For example the largely used HOOMD-blue\footnote{HOOMD-blue:
+\url{http://codeblue.umich.edu/hoomd-blue/}} which uses extensively
+Nvidia GPUs released its first version (v0.6.0) in February 2008.
+Additionally, the knowledge and experience gained by writing from scratch such
+a package is invaluable.
+
+
+
 
 
 \subsubsubsection{Quantum FDTD (QFDTD)}
