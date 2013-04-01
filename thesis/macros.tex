@@ -334,9 +334,11 @@
 % Needs: \usepackage{latexsym}
 \newcommand{\cqfd}[1]{\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lr}#1&$\Box$\end{tabular*}}
 
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{5}
-\newcommand{\subsubsubsection}[1]{\paragraph{#1}}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand{\subsubsubsubsection}[1]{\subparagraph{#1}\mbox{}\\}
+
 \newcommand{\emptyfig}[2]{
 \begin{figure}
     \begin{center}
