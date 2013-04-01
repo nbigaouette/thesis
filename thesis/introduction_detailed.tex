@@ -153,6 +153,130 @@ interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
+\subsubsubsection{Hierarchical Tree algorithms}
+The $O\pa{N^2}$ scaling of MD algorithm can be problematic when the number of
+particles simulated is more than many thousands, which is a potential target
+for laser-cluster interaction. Some interesting variations of the MD algorithm
+exist to reduce the computational burden. These \textit{hierarchical tree}
+algorithms were introduced\cite{Barnes1986} by Barnes and Hut in 1986. To
+reduce the computational burden, particles are grouped in a hierarchical tree
+(quadtree in two dimensions, octree in three). While Barnes used his
+\textit{treecode} to solve the N-body problem in the context of gravitational
+interactions, it can also be applied in the electrostatic case.
+
+The main issue with the direct calculation of forces in MD is the lack of
+distinction between the close particles and distant ones. While the resulting
+potential of a distant particle is small, the computational cost required to
+calculate it is the same as in the case of a nearby particle. Some MD
+calculation use an artificial cutoff; particles farther then this cutoff will
+be ignored in the calculation of the force on one particle. This is acceptable
+when the force acting on particles is short range, either due to screening or
+to the nature of the force. In the present work, the dominant force is the
+Coulomb force and is a long range one by nature; it thus cannot be artificially
+cutoff as in the case of close range forces used in other fields.
+
+Could distant particles be grouped together, with their contribution to the
+force (or potential) being calculated only once (per ``group'')? Because
+individual particles which are part of a distant group will have a similar
+contribution to the potential at the location of particle $i$, the interaction
+with this group can be instead approximated through the multipole
+expansion\cite{Gibbon2002} of the group of particles, or cell in terms of the
+tree algorithm:
+\begin{align}
+\phi_i & = \sum_{j~\textrm{cell}} \phi_{j \rightarrow i} = \sum_{j~{\rm cell}}
+\frac{k q_j}{r_{ji}} \\
+& \approx \frac{M_{c}}{R}
++ \sum_{\alpha} \frac{r_{\alpha} D_{c,\alpha}}{R^3}
++ \frac{1}{2} \sum_{\alpha,\beta} \frac{
+        Q_{c,\alpha,\beta} r_{\alpha} r_{\beta}
+    }{R^5}
+\end{align}
+where $M_{c}$, $D_{c,\alpha}$ and $Q_{c,\alpha,\beta}$ are the monopole, dipole
+and quadrupole moments of the cell defined as:
+\begin{subequations}
+\begin{align}
+M_{c}           ~~~~& = \sum_{j~\textrm{cell}} q_{j} \\
+D_{c,\alpha}      ~~& = \sum_{j~\textrm{cell}} q_{j} r_{j,\alpha} \\
+Q_{c,\alpha,\beta}  & = \sum_{j~\textrm{cell}} q_{j} \pa{3 r_{j,\alpha}
+r_{j,\beta} - r_{j}^2} \delta_{\alpha,\beta}
+\end{align}
+\label{eqn:tree:moments}
+\end{subequations}
+and $R$ is the distance between the cell's centre-of-charge and the
+particle of interest $i$.
+
+\emptyfig{QUAD TREE}{fig:tree:quadtree}
+
+The tree algorithm first split the computational domain into a quadtree until
+only a maximum of one particle is present per cell. The tips of the tree,
+containing only one particle, are called leaves. Once every particles in the
+system are inserted in the tree, the electrostatic moments are propagated from
+the leaves up to the root cell, the top cell enclosing the whole domain.
+
+Then, instead of iterating through all particles for the calculation of the
+force on the particle of interest $i$, the tree is traversed. If the cell is
+``far enough'' (with a given definition of far enough, discussed next) it can
+be added to the a cell interaction list for later processing. In the case of
+the cell being to close, it must be resolved into its  eight \textit{daughter}
+cells. The daughter cells containing particles are visited, while the empty
+ones are ignored. The leaf cells can be reached using this process; in this
+case, the particles in the leaves are considered close enough to the particle
+of interest $i$ and a direct interaction is wanted. The leaf particle will thus
+be added to a second interaction list containing particle-particle direct
+interactions. The process is recursively repeated until all particles
+are added to an interaction list, either directly or through a parent cell.
+
+Different selection rules exist for the criteria of ``far enough''. These
+rules are called \textit{Multipole Acceptance Criteria} or
+MAC\cite{Pfalzner1996}. Barnes' original one simply referred as
+``\textit{s/d}'' compares an input parameter $\theta$ with the cell's size $s$
+divided by the distance between the cell's center-of-charge and particle of
+interest $i$. If the ratio $s/d$ is smaller than the parameter $\theta$, the
+group of particles contained inside the cell is approximated through the cell's
+moments and the cell is added to the cells interaction list. At the opposite, if
+the ratio is larger than $\theta$, the cell will be resolved into its daughters.
+In the limit where $\theta$ reaches zero, no more cells are added to the
+cells interaction list (they are all resolved) and the MD algorithm emerges.
+
+Unfortunately, this MAC can cause huge errors when large amount of charge is
+present in a corner of a cell. In this case, a cell could be added to the cell
+interaction list even though the error introduced by the multipole expansion is
+significant. Different MAC have thus been proposed to mitigate this problem.
+The \textit{minimum distance} MAC replaces the distance $d$ in the MAC with the
+minimum distance to one of the cell's edge. The \textit{B-max} MAC instead
+replaces the size of the cell with the largest distance between one of the
+cell's corner to the center-of-charge. Another MAC was proposed by Bédorf
+\textit{et. al.} \cite{Bedorf2012} and is a mix of the two previous. The MAC
+reads:
+\begin{align}
+d > \frac{s}{\theta} + \delta
+\end{align}
+where $\delta$ is the distance between the cell's geometric center and its
+center-of-charge. If the previous equation holds ($d$ is large enough) then the
+multipole expansion is used; the cell is added to the interaction list.
+
+The different MAC can be seen on figure \ref{fig:tree:mac}.
+
+\emptyfig{MAC DIAGRAM}{fig:tree:mac}
+
+Because not all interaction pairs are considered in the calculation of the
+force and potential, a significant speedup is obtained. Due to the tree
+traversal algorithm, the scaling passes\cite{Barnes1986,Gibbon2002,Pfalzner1996}
+from $O\pa{N^2}$ to $O\pa{N \ln{N}}$.
+
+A variation to the hierarchical treecode is obtained when a sufficiently large
+$\theta$ is used. In this case, the root cell (the largest one) is never
+resolved into its daughters. By adding more moments to the approximation then
+the first three ones of equations \eqref{eqn:tree:moments} and removing
+contributions of nearby particles, the \textit{Fast Multipole Method} (FMM) is
+obtained\cite{Pfalzner1996}. FMM was developed by Greegard in
+1988\cite{Greengard1987} independently of Barnes' hierarchical tree method.
+While conceptually similar, its implementation details are quite different and
+has not been implemented in the current work.
+
+\emptyfig{TREECODE SCALING}{fig:tree:scaling}
+
+
 An important problem to consider is the close range behaviour of equation
 \eqref{eqn:md:coulomb:F} which diverges. Additionally, electrons should not be
 able to classically recombine to an ion under the atomic energy level. To
