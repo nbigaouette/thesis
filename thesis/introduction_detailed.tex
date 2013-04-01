@@ -342,6 +342,90 @@ linear variation between time steps. If the time step is too large and the
 curvature of equation \eqref{eqn:md:smoothed:E} can be sampled by the moving
 particle between each time steps, then the energy will not be conserved.
 
+Other potential shapes were investigated for the close range potential. Figures
+\ref{fig:potential:shapes} plots the different shapes of potentials and their
+respective electrostatic field. These shapes are obtained by simply finding the
+location $R$ where the value and the slope of the close-range shape
+$\phi_{cr}$ fits with the Coulomb potential $\phi_C$.
+\begin{subequations}
+\begin{align}
+\left. \phi_C        \right|_{R} & = \left. \phi_{cr} \right|_{R} \\
+\left. \delr{\phi_C} \right|_{R} & = \left. \delr{\phi_{cr}} \right|_{R}
+\end{align}
+\label{eqn:potential:to_match}
+\end{subequations}
+These locations are the cutoff radius of these shapes.
+
+\subsubsubsubsection{Harmonic}
+For the harmonic potential, we have:
+\begin{align}
+\phi_{j,H} & = -A r^2 + \phi_0
+\end{align}
+We note that at $r_{j,i} = 0$, the potential value is the ``potential depth''
+$\phi_0$.
+Matching equations \eqref{eqn:potential:to_match} at $R$ gives:
+\begin{subequations}
+\begin{align}
+\phi_{j,H}\pa{\vr_i} & = \frac{-4 \phi_0^3}{27 \pa{k q_j}^2} r_{j,i}^2 + \phi_0
+\\
+R & = \frac{3 k q_j}{2 \phi_0} \\
+\vE_{j,H}\pa{\vr_i} & = \frac{k q_j}{R^3} \vr_{j,i}
+\end{align}
+\end{subequations}
+
+
+\subsubsubsubsection{Super-Gaussian}
+The super-gaussian potential is given by:
+\begin{align}
+\phi_{j,SG}\pa{\vr_i} & = \phi_0 \ex{
+                            -\frac{1}{2} \pa{\frac{r_{j,i}}{\sigma}}^{2m}
+                        }
+\label{eqn:potential:shapes:sg:pot}
+\end{align}
+In the case where $m = 1$, equation \ref{eqn:potential:shapes:sg:pot} is simply
+a gaussian shape. Matching equations \eqref{eqn:potential:to_match} at $R$ gives
+values for $\sigma$ and $R$:
+\begin{subequations}
+\begin{align}
+\sigma  & = \frac{k q_j m^{1/2m}}{\phi_0} \ex{\frac{1}{2m}} \\
+R       & = \frac{k q_j}{\phi_0} \ex{\frac{1}{2m}} \\
+\vE_{j,SG} & = \frac{\phi_0 m}{r_{j,i}}
+                \ex{-\frac{1}{2} \pa{\frac{r_{j,i}}{\sigma}}^{2m}}
+                \pa{ \frac{r_{j,i}}{\sigma} }^{2m}
+                \hvr_{j,i}
+\end{align}
+\label{eqn:potential:shapes:sg}
+\end{subequations}
+
+Figure \ref{fig:potential:shapes} show the different potential shapes and their
+respective electrostatic field.
+
+\begin{figure}
+    \begin{center}
+\includegraphics[width=0.98\columnwidth]{figures/potential_shapes}
+    \end{center}
+    \caption{\label{fig:potential:shapes}Potential shapes and their respective
+electric field. Note the use of atomic units and $\phi_0$ = 1.5 Hartree.}
+\end{figure}
+
+It was found that the potential given by the charge distribution of equation
+\eqref{eqn:md:smoothed:phi} and the associated electrostatic field of
+\eqref{eqn:md:smoothed:E} give the less numerical heating. As explained
+previously, the time discretization used to integrate the equations of motion
+assume that the change in force between two time steps is linear. As can be
+seen on figure \ref{fig:potential:shapes}, the charge distribution curve
+(magenta) does not have a discontinuity and is therefore the prefered one.
+
+To validate the selection of the smoothing curve, photo-ionization was forced
+on a single atom and the total energy tacked. In this ionization case, the
+electron comes out of the ion with a maximum of kinetic energy. It is thus a
+good candidate to test if numerical heating is present or not. If the total
+energy is conserved, then the selected parameters (potential depth, smoothing
+curve and time step) can be used with good confidence. Figure
+\ref{fig:potential:heating} shows numerical heating.
+
+\emptyfig{NUMERICAL HEATING}{fig:potential:heating}
+
 
 
 
