@@ -156,3 +156,147 @@
 	year = {1996}
 }
 
+@article{Barnes1986,
+	abstract = {Until recently the gravitational N-body problem has been modelled numerically either by direct integration, in which the computation needed increases as N 2, or by an iterative potential method in which the number of operations grows as N log N. Here we describe a novel method of directly calculating the force on N bodies that grows only as N log N. The technique uses a tree-structured hierarchical subdivision of space into cubic cells, each of which is recursively divided into eight subcells whenever more than one particle is found to occupy the same cell. This tree is constructed anew at every time step, avoiding ambiguity and tangling. Advantages over potential-solving codes are: accurate local interactions; freedom from geometrical assumptions and restrictions; and applicability to a wide class of systems, including (proto-)planetary, stellar, galactic and cosmological ones. Advantages over previous hierarchical tree-codes include simplicity and the possibility of rigorous analysis of error. Although we concentrate here on stellar dynamical applications, our techniques of efficiently handling a large number of long-range interactions and concentrating computational effort where most needed have potential applications in other areas of astrophysics as well.},
+	author = {Joshua E. Barnes and Piet Hut},
+	doi = {10.1038/324446a0},
+	file = {:home/nicolas/fichiers/documents/universite/doc/articles/2006\_Y.C. Neil Na, Yoshihisa Yamamoto\_Time-domain simulation of Schr{\"o}dinger equation to determine the effective potential induced by an oscillating standing wave.pdf:pdf},
+	issn = {0028-0836},
+	journal = {Nature},
+	keywords = {file-import-09-06-16; n-body; tree},
+	mendeley-tags = {file-import-09-06-16,n-body,tree},
+	month = dec,
+	number = {6096},
+	pages = {446--449},
+	title = {{A hierarchical O(N log N) force-calculation algorithm}},
+	type = {Journal article},
+	url = {http://www.nature.com/doifinder/10.1038/324446a0},
+	volume = {324},
+	year = {1986}
+}
+
+@incollection{Gibbon2002,
+	abstract = {Numerical algorithms for accelerating the computation of N-body problems dominated by long-range inter-particle forces are reviewed. For periodic systems, the optimised Ewald lattice sum with an O(N\^{}3/2) scaling forms a reference standard against which the newer, potentially faster Particle-Particle Particle-Mesh and Fast Multipole Methods can be measured. The more general N-body problem with arbitrary boundary conditions is also described, in which various multipole methods are now routinely used instead of direct summation for particle numbers in excess of 10\^{}4 . These techniques are described in a tutorial fashion and rough comparisons given of their respective computational performance on scalar and parallel machine architectures.},
+	annote = {ISBN 3-00-009057-6},
+	author = {Paul Gibbon and Godehard Sutmann},
+	booktitle = {{Quantum Simulations of Complex Many-Body Systems: From Theory to Algorithms}},
+	file = {:home/nicolas/fichiers/documents/universite/doc/articles/2002\_Gibbon, Sutmann\_Long-Range Interactions in Many-Particle Simulation.pdf:pdf},
+	keywords = {fast; file-import-09-06-16; interaction; long-range; many-particle; multipole; review; tree},
+	mendeley-tags = {fast,file-import-09-06-16,interaction,long-range,many-particle,multipole,review,tree},
+	pages = {467--506},
+	series = {{NIC Series}},
+	title = {{Long-Range Interactions in Many-Particle Simulation}},
+	type = {Book part (with own title)},
+	url = {http://www.fz-juelich.de/nic-series/volume10},
+	volume = {10},
+	year = {2002}
+}
+
+@book{Pfalzner1996,
+	author = {Susanne Pfalzner and Paul Gibbon},
+	file = {:home/nicolas/fichiers/documents/universite/doc/articles/1996\_Pfalzner, Gibbon\_Many-Body Tree Methods in Physics.djvu:djvu},
+	keywords = {file-import-09-06-16; many-body; tree},
+	mendeley-tags = {file-import-09-06-16,many-body,tree},
+	publisher = {Cambridge University Press},
+	title = {{Many-Body Tree Methods in Physics}},
+	type = {Book},
+	url = {http://www.amazon.com/Many-Body-Methods-Physics-Susanne-Pfalzner/dp/0521495644},
+	year = {1996}
+}
+
+@article{Bedorf2012,
+	abstract = {We present the implementation and performance of a new gravitational N-body tree-code that is specifically designed for the graphics processing unit (GPU).1 All parts of the tree-code algorithm are executed on the GPU. We present algorithms for parallel construction and traversing of sparse octrees. These algorithms are implemented in CUDA and tested on NVIDIA GPUs, but they are portable to OpenCL and can easily be used on many-core devices from other manufacturers. This portability is achieved by using general parallel-scan and sort methods. The gravitational tree-code outperforms tuned CPU code during the tree-construction and shows a performance improvement of more than a factor 20 overall, resulting in a processing rate of more than 2.8 million particles per second.},
+	author = {Jeroen B{\'e}dorf and Evghenii Gaburov and Simon {Portegies Zwart}},
+	doi = {10.1016/j.jcp.2011.12.024},
+	file = {:home/nicolas/fichiers/documents/universite/doc/articles/2012\_B{\'e}dorf, Gaburov, Portegies Zwart\_A sparse octree gravitational N-body code that runs entirely on the GPU processor.pdf:pdf},
+	issn = {00219991},
+	journal = {Journal of Computational Physics},
+	keywords = {cuda; gpgpu; gpu; gravity; hierarchical; n-body; parallel; tree; tree-code; z-order},
+	mendeley-tags = {cuda,gpgpu,tree,z-order},
+	month = apr,
+	number = {7},
+	pages = {2825--2839},
+	title = {{A sparse octree gravitational N-body code that runs entirely on the GPU processor}},
+	url = {http://dx.doi.org/10.1016/j.jcp.2011.12.024},
+	volume = {231},
+	year = {2012}
+}
+
+@book{Greengard1987,
+	abstract = {The Rapid Evaluation of Potential Fields in Particle Systems presents a group of algorithms for the computation of the potential and force fields in large-scale systems of particles that are likely to revolutionize a whole class of computer applications in science and engineering. In many areas of scientific computing, from studying the evolution of galaxies, to simulating the behavior of plasmas and fluids, to modeling chemical systems, a numerical scheme is used to follow the trajectories of a collection of particles moving in accordance with Newton's second law of motion in a field generated by the whole ensemble. Extending the earlier work of Rokhlin, Greengard has developed general, numerically stable methods for evaluating all pairwise interactions in linear time, a great improvement over the quadratic time required by the naive approach, and significantly better than any other proposed alternative. The "Rokhlin-Greengard" algorithm promises to make previously prohibitive simulations feasible, with speedups of three to four orders of magnitude in a system of a million particles. Moreover, the algorithm is well-suited for vector and parallel machines, and should make full use of their capabilities. The author presents his work with great clarity, and demonstrates the superiority of his methods both by mathematical analysis and by the results of numerical experiments.},
+	author = {Leslie F. Greengard},
+	file = {:home/nicolas/fichiers/documents/universite/doc/articles/1987\_Greengard\_The Rapid Evaluation Of Potential Fields In Particle Systems.pdf:pdf},
+	isbn = {9780262571920},
+	keywords = {fmm; treecode},
+	mendeley-tags = {fmm,treecode},
+	pages = {106},
+	title = {{The Rapid Evaluation Of Potential Fields In Particle Systems}},
+	year = {1987}
+}
+
+@misc{treecode,
+	abstract = {treecode is a program for self-consistent N-body simulation. It is faster than previous codes, and generally provides better error control. This document describes treecode Version 1.4; it provides an overview of the algorithm, instructions for compiling and running the code, and links to the actual sources.},
+	author = {Joshua E. Barnes},
+	institution = {Institute for Astronomy, University of Hawaii,},
+	keywords = {n-body; self-consistent; simulation; tree},
+	mendeley-tags = {file-import-09-06-16,n-body,self-consistent,simulation,tree},
+	note = {Code available through the terms of the GPL v2},
+	pages = {1--18},
+	title = {{Treecode Guide}},
+	type = {Web site},
+	url = {http://www.ifa.hawaii.edu/~barnes/treecode/treeguide.html},
+	year = {2001}
+}
+
+@article{Jungreuthmayer2005,
+	abstract = {The interaction of noble gas clusters with intense, VUV radiation is investigated by molecular dynamics simulations. It is shown that the free-electron laser cluster interaction creates a strongly coupled plasma. A new heating mechanism is identified that is more efficient than inverse Bremsstrahlung heating and explains the observation of unusually high charge states in recent experiments at DESY. The heating mechanism is a consequence of the strongly coupled plasma dynamics, in which collisional processes are strongly modified. Energy absorption takes place in the following cycle: many-body collisions, resulting in an enhanced recombination of free electrons to exited states, and subsequent reionization.},
+	author = {Christian Jungreuthmayer and Lora Ramunno and J{\"u}rgen Zanghellini and Thomas Brabec},
+	doi = {10.1088/0953-4075/38/16/013},
+	file = {:home/nicolas/fichiers/documents/universite/doc/articles/2005\_Jungreuthmayer et al.\_Intense VUV laser cluster interaction in the strong coupling regime.pdf:pdf},
+	journal = {Journal of Physics B: Atomic, Molecular and Optical Physics},
+	keywords = {MBRH; Multi-Body Recombination Heating; vuv},
+	mendeley-tags = {MBRH,Multi-Body Recombination Heating,vuv},
+	number = {16},
+	pages = {3029--3036},
+	title = {{Intense VUV laser cluster interaction in the strong coupling regime}},
+	type = {Journal article},
+	url = {http://iopscience.iop.org/0953-4075/38/16/013},
+	volume = {38},
+	year = {2005}
+}
+
+@misc{svn,
+	title = {{Subversion}},
+	url = {http://subversion.apache.org}
+}
+
+@misc{git,
+	title = {{Git}},
+	url = {http://git-scm.com}
+}
+
+@incollection{prng2009,
+	abstract = {We propose a pseudorandom number generator specialized to generate double precision floating point numbers. It generates 52-bit pseudorandom patterns supplemented by a constant most significant 12 bits (sign and exponent), so that the concatenated 64 bits represents a floating point number obeying the IEEE 754 format. To keep the constant part, we adopt an affine transition function instead of the usual F2 -linear transition, and extend algorithms computing the period and the dimensions of equidistribution to the affine case. The resulted generator generates double precision floating point numbers faster than the Mersenne Twister, whoes output numbers only have 32-bit precision.},
+	author = {Mutsuo Saito and Makoto Matsumoto},
+	booktitle = {{Monte Carlo and Quasi-Monte Carlo Methods 2008}},
+	doi = {10.1007/978-3-642-04107-5_38},
+	isbn = {978-3-642-04107-5},
+	keywords = {prng},
+	mendeley-tags = {prng},
+	pages = {589--602},
+	title = {{A PRNG Specialized in Double Precision Floating Point Numbers Using an Affine Transition}},
+	url = {http://link.springer.com/chapter/10.1007\%2F978-3-642-04107-5\_38 http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/ http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/ARTICLES/earticles.html\#dsfmt},
+	year = {2009}
+}
+
+@article{tinyxml,
+	author = {Lee Thomason},
+	title = {{TinyXML}},
+	url = {http://www.grinninglizard.com/tinyxml/index.html}
+}
+
+@misc{netcdf,
+	title = {{NetCDF}},
+	url = {http://www.unidata.ucar.edu/software/netcdf}
+}
+
