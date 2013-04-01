@@ -103,6 +103,7 @@
     \newcommand{\url}[1]{{\color{blue}#1}}
 \fi
 
+\usepackage[toc,page]{appendix}
 
 \usepackage{fancyhdr}
 \renewcommand{\headrule}{}  % Disable the header ruler
