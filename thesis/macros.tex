@@ -337,6 +337,15 @@
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 \newcommand{\subsubsubsection}[1]{\paragraph{#1}}
+\newcommand{\emptyfig}[2]{
+\begin{figure}
+    \begin{center}
+        \framebox[0.50\columnwidth]{\rule{0pt}{150pt}}
+    \end{center}
+    \caption{\label{#2}#1}
+\end{figure}
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
