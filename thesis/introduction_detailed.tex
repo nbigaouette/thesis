@@ -103,9 +103,28 @@ electrostatic Coulomb force:
 \vF_{C,j \rightarrow i}\pa{\vr} & =\frac{k q_i q_j}{r_{ji}^2} \hvr_{ji}.
 \label{eqn:md:coulomb:F}
 \end{align}
-which only depends on the distance between particles. Equation
-\eqref{eqn:md:newton} can be time integrated using the Velocity-Verlet (VV)
-scheme:
+which only depends on the distance between particles. Figure
+\ref{fig:md:vectors} shows the vectors definition used throughout this work. We
+define particle $i$ the particle we are interested in (for example, the
+particle we are calculating the force on), and particle $j$ the particle that
+is generating the field or potential that is measured at location $i$. We thus
+have:
+\begin{align}
+\vr_{j} + \vr_{j,i} & = \vr_{i} \\
+\vr_{j,i} & = \vr_{i} - \vr_{j}
+\end{align}
+%       _j
+%       /|\
+%  r_j /   \ r_ji
+%     /    _\/
+%    /------>i
+%       r_i
+
+\emptyfig{Vectors definition}{fig:md:vectors}
+
+
+Equation \eqref{eqn:md:newton} can be time integrated using the
+Velocity-Verlet (VV) scheme:
 \begin{subequations}
 \begin{align}
 \vx_{i}^{\pa{n+1}} & = \vx_{i}^{\pa{n}} + \vv_{i}^{\pa{n}} \Delta t +
