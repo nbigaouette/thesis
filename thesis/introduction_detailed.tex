@@ -526,7 +526,76 @@ read in appendix \ref{appendix:code}.
 
 
 \subsubsubsection{Quantum FDTD (QFDTD)}
+
+
+
 \subsubsubsection{Acceleration through OpenCL and GP-GPUs}
+A new trend lately in High Performance Computing (HPC) has been acceleration
+through graphics cards. Similar to the ubiquitous Moore's Law in the CPU world,
+video cards power evolved exponentially during the last twenty years, pushed
+by the never ending need of more realistic video games. From ``dumb'' devices
+drawing primitive shapes on a display, they evolved to extremely powerful
+devices and started to act more like CPU by being programmable (shaders) during
+the first half of 2000. The term \textit{Graphical Processing Unit} (GPU) was
+coined in 1999 by Nvidia, the biggest vendor of video cards, as a selling point
+to their product and to emphasize the fact that their chips were becoming more
+and more alike CPUs. Nvidia's competitor, ATI (now part of AMD) tried to coin
+the term \textit{Visual Processing Unit} (VPU) but only GPU stayed.
+
+Due to this increase in power, people tried to use these video cards as
+accelerators for other things than real video operations. Because GPUs have
+intrinsically high parallelism (the same operation is performed on all pixels
+of an image in parallel for example) HPC users and developers got interested.
+In his 2005 book, Taflove described a way to use a video card's GPU to
+accelerate his electrodynamics FDTD solver \cite{Taflove2005}. At that time no
+General-Programming GPU (GP-GPU) framework existed so Taflove (and anyone
+interested in using GPUs at that time) had to ``translate'' the FDTD algorithm
+into that could be understood by a video card. This process was extremely hard
+as it required using low level graphic primitives; in his case, OpenGL calls.
+Normally OpenGL is used to draw animated scenes on the user's screen. Notable
+examples of OpenGL usage is video games where the user is immersed in a virtual
+three dimensional space. The process of re-writing an algorithm into OpenGL
+calls is one that only a few highly skilled and knowledgeable people can tackle.
+
+In 2007, Nvidia saw an opportunity for an even bigger market. Why not let
+non-videogames programmer use the powerful GPUs for something else then video
+operations? For this to happen, a programming framework had to be released; the
+amount of programmers and scientists able to exploit OpenGL to their advantage
+was limited. They thus released their \textit{Compute Unified Device
+Architecture} (CUDA), later just renamed CUDA. CUDA allows writing normal C or
+C++ programs with some extensions, called \textit{kernels}, that can be run on
+the GPU. These kernels have the same structure as C functions but are executed
+concurrently by every cores on the GPU\footnote{Technically, GPUs don't have
+``cores'' \textit{per se} like CPUs do and the usage of the term cores}. The
+number of cores on a recent consumer grade video cards is now of the order of
+many hundreds; a 50\$ Nvidia GT 620 has 96 CUDA cores and 1 GB of RAM, while the
+GTX TITAN has 2688 CUDA cores and 6 GB but cost more than 1,000 \$. Even though
+the highest priced GPU can be more expensive than complete workstations
+including the screen, no CPUs can offer close to three thousand cores for an
+affordable price.
+
+A year after CUDA was released, Apple wanted a framework that would allow
+programs to be accelerated on their top-of-the-line product's GPU while still
+being able to run on their lower-end range of products (which did not have a
+discrete video card). Additionally, some Apple products were released with ATI
+video cards which, understandably, never supported CUDA. They thus released
+a framework called \textit{OpenCL} (which stands for Open Compute Language) in
+2008 with the help of many partners (IBM, ATI, Intel and even Nvidia). While
+conceptually similar to CUDA (smaller routines are written in a kernel function
+and launched individually on the GPUs by the main program) OpenCL has the
+advantage of targeting heterogeneous platforms consisting of (possibly and not
+limited to) many CPUs, many cores and GPUs. The main advantage of OpenCL is its
+portability; a program written in OpenCL can not only run on GPUs from ATI and
+Nvidia but also on traditional CPUs, exploiting all cores available on the CPUs
+transparently.
+
+It was thus decided to port the two codes (MD and QFDTD) to OpenCL to take
+advantage of the GPU power while retaining portability.
+
+Some things are important to consider when porting codes to GPU frameworks.
+First, because a core on a GPU is quite slower than a core on a CPU,
+
+80x times faster
 
 
 \subsubsection{Thesis Outline}
