@@ -183,6 +183,12 @@
 \date{}
 
 
+\setcounter{secnumdepth}{3} % Depth of section numbering
+\setcounter{tocdepth}{4}    % Depth of sections to include in Table of Content
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand{\subsubsubsubsection}[1]{\subparagraph{#1}\mbox{}\\}
+
 % ************************************************************************************
 % Title page
 \newcommand{\CoverPage}{
