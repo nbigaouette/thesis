@@ -6,7 +6,7 @@ The previous section described the general goals of this thesis and was used to
 give the reader an overview picture of the field. The following will go
 into more details.
 
-\subsubsection{Goals}
+\subsection{Goals}
 In view of the previous section, the goal of the current thesis is to increase
 to global knowledge of laser-matter interaction. More specifically, the
 question of \textit{how} the energy is deposited in a nanoscale object by an
@@ -14,10 +14,10 @@ ultra-short and ultra-intense laser pulse is important.
 
 \cite{Young2010,Chapman2011}
 
-\subsubsection{Laser-Cluster interaction}
+\subsection{Laser-Cluster interaction}
 
 
-\subsubsubsection{Clusters}
+\subsubsection{Clusters}
 \label{section:intro:clusters:clusters}
 
 Clusters of atoms are an extremely useful tool to study laser-matter
@@ -27,13 +27,13 @@ will \cite{Martin1996}.
 
 \cite{Fennel2010}
 
-\subsubsubsection{Heating mechanisms}
+\subsubsection{Heating mechanisms}
 \label{section:intro:clusters:heating}
 
-\subsubsubsection{Studied parameters}
+\subsubsection{Studied parameters}
 
 
-\subsubsection{Methodology and Tools}
+\subsection{Methodology and Tools}
 A large selection of tools exist to study laser-cluster interaction,
 differentiating themselves through the amount of approximation taken.
 
@@ -84,7 +84,7 @@ For a detailed review of the different methods, see Ref. \cite{Fennel2010}.
 
 
 
-\subsubsubsection{Molecular Dynamics (MD)}
+\subsubsection{Molecular Dynamics (MD)}
 Due to the high charge states seen in experiment with clusters the only
 practical method to microscopically study the ionization dynamics is
 \textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
@@ -153,7 +153,7 @@ interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
-\subsubsubsection{Hierarchical Tree algorithms}
+\subsubsection{Hierarchical Tree algorithms}
 The $O\pa{N^2}$ scaling of MD algorithm can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
@@ -279,7 +279,7 @@ has not been implemented in the current work.
 
 
 
-\subsubsubsection{Potential shapes}
+\subsubsection{Potential shapes}
 
 An important problem to consider is the close range behaviour of equation
 \eqref{eqn:md:coulomb:F} which diverges. Additionally, electrons should not be
@@ -356,7 +356,7 @@ $\phi_{cr}$ fits with the Coulomb potential $\phi_C$.
 \end{subequations}
 These locations are the cutoff radius of these shapes.
 
-\subsubsubsubsection{Harmonic}
+\subsubsubsection{Harmonic}
 For the harmonic potential, we have:
 \begin{align}
 \phi_{j,H} & = -A r^2 + \phi_0
@@ -374,7 +374,7 @@ R & = \frac{3 k q_j}{2 \phi_0} \\
 \end{subequations}
 
 
-\subsubsubsubsection{Super-Gaussian}
+\subsubsubsection{Super-Gaussian}
 The super-gaussian potential is given by:
 \begin{align}
 \phi_{j,SG}\pa{\vr_i} & = \phi_0 \ex{
@@ -427,7 +427,7 @@ curve and time step) can be used with good confidence. Figure
 \emptyfig{NUMERICAL HEATING}{fig:potential:heating}
 
 
-\subsubsubsection{Implementation details}
+\subsubsection{Implementation details}
 
 Our group previously used Barnes and Hut treecode implementation,
 freely available\cite{treecode} through the GPL version 2. The code was adapted
@@ -473,7 +473,7 @@ a package is invaluable.
 
 
 
-\subsubsubsection{Quantum FDTD (QFDTD)}
+\subsubsection{Quantum FDTD (QFDTD)}
 One model proposed to explain the high charge states seen in some experiments
 is the lowering of the ionization barrier, used in conjunction with classical
 MD simulations. This model assumes that an electron can be inner ionized when
@@ -706,7 +706,7 @@ A detailed guide on the compilation and usage of the simulation package can be
 read in appendix \ref{appendix:code}.
 
 
-\subsubsubsection{Acceleration through OpenCL and GP-GPUs}
+\subsubsection{Acceleration through OpenCL and GP-GPUs}
 A new trend lately in High Performance Computing (HPC) is code acceleration
 through graphics cards. Similar to the ubiquitous Moore's Law in the CPU world,
 video cards power evolved exponentially during the last twenty years, pushed
@@ -803,7 +803,7 @@ transfers.
 
 
 
-\subsubsubsection{Libraries}
+\subsubsection{Libraries}
 
 Additionally, a total of seven other libraries were developed to support some
 generic features of the code. These libraries are:
@@ -855,7 +855,7 @@ A detailed guide on the compilation and usage of the simulation package can be
 read in appendix \ref{appendix:code}.
 
 
-\subsubsection{Thesis Outline}
+\subsection{Thesis Outline}
 Don't forget a review/description of each sections of the thesis.
 
 
