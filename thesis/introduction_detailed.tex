@@ -470,6 +470,10 @@ a package is invaluable.
 
 
 
+
+
+
+\subsubsubsection{Quantum FDTD (QFDTD)}
 \subsubsubsection{Libraries}
 
 Additionally, a total of seven other libraries were developed to support some
@@ -520,13 +524,6 @@ output files, used in simulation snapshots.
 \end{itemize}
 A detailed guide on the compilation and usage of the simulation package can be
 read in appendix \ref{appendix:code}.
-
-
-
-
-
-\subsubsubsection{Quantum FDTD (QFDTD)}
-
 
 
 \subsubsubsection{Acceleration through OpenCL and GP-GPUs}
@@ -622,6 +619,60 @@ kernels since the imaginary time method did not require long simulation times.
 As in the case of the MD, the real time algorithm is left running on the GPU
 until data needs to be saved to a snapshot or post-processed to reduce
 transfers.
+
+
+
+
+\subsubsubsection{Libraries}
+
+Additionally, a total of seven other libraries were developed to support some
+generic features of the code. These libraries are:
+\begin{itemize}
+\item ionization.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/ionization}}:
+    All ionization routines described in section
+    \ref{section:intro:clusters:heating}
+\item timing.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/timing}}:
+    Timing routines used to measure running time, estimated time of arrival
+(ETA), etc.
+\item stdcout.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/stdcout}}:
+    Logging features allowing saving the output of any simulations to a log
+    (compressed) file.
+\item prng.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/prng}}:
+    Pseudo-random number generator (PRNG) library. Wrapper around
+dSFMT\cite{prng2009}. Defines easy to use PRNG functions, distributions, seed,
+etc. Keeps track of how many times it has been called for easy reloading
+exactly where simulation left off.
+\item memory.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/memory}}:
+    Wrappers around malloc() and calloc() that will automatically check that
+    the allocation succeeded. Will also keep track of the amount of
+    memory allocated and allow setting a maximum value, preventing
+    over-allocation due to bugs or user errors. Can also print values directly
+    in binary for easy debugging.
+\item io.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/io}}:
+    Input and Output library. Wrappers around TinyXML library\cite{tinyxml} for
+reading input file. Wrappers around NetCDF\cite{netcdf} for self-contained
+output files, used in simulation snapshots.
+\item libpotentials.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/libpotentials}}:
+    Functions implementing and abstracting different potential shapes.
+\item oclutils.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/oclutils}}:
+    Library to ease the use of OpenCL devices. Allows selecting the best GPUs
+    available on a workstation and locking it to prevent other simulations from
+    using it.
+\item get\_libraries.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/get_libraries}}:
+    Simple script that will download all the previous required libraries,
+    compile them and install them in the user's directory.
+\end{itemize}
+A detailed guide on the compilation and usage of the simulation package can be
+read in appendix \ref{appendix:code}.
 
 
 \subsubsection{Thesis Outline}
