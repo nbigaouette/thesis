@@ -204,64 +204,14 @@ prevent the later, electron recombination, as described in section
 \ref{section:intro:clusters:heating}, can be enabled. But this does not prevent
 the divergence of the Coulomb force. Instead, the problem is resolved by
 changing the shape of equation \eqref{eqn:md:coulomb:F} at close range.
-
 Different \textit{smoothing potentials} can be used to prevent the
-discontinuity of the Coulomb potential (or force). An efficient way is to treat
-electrons as charge distributions instead of point particles. As such, the
-electrostatic potential due to a charge particle $j$ (of gaussian shape of
-width $\sigma$) at location $\vr = r \hvr$ is:
-\begin{align}
-\phi_{j}\pa{\vr} & = \frac{k q_j}{r} \erf{\frac{r}{\sigma \sqrt{2}}}
-\label{eqn:md:smoothed:phi}
-\end{align}
-The associated electrostatic field is thus:
-\begin{align}
-\vE_{j}\pa{\vr} & = -\grad{\phi_j\pa{\vr}} = k q_j \pa{
-    \frac{ \erf{\frac{r}{\sigma\sqrt{2}}} }{r^2}
-    - \sqrt{\frac{2}{\pi}} \frac{ \ex{-\frac{r^2}{2 \sigma^2}} }{\sigma r}
-} \hvr
-\label{eqn:md:smoothed:E}
-\end{align}
-When the distance $r$ is large compared to $\sigma$, the error function
-is close to 1 and the potential becomes Coulombic. Also, the exponential
-term in the electric field will tend towards 0 (since it's a gaussian shape).
-The error function will tend towards 1, so the electric field will
-be the field of a discrete point charge.
+discontinuity of the Coulomb potential (or force).
 
-The value of $\sigma$ is arbitrary: the smaller it is, the closer the potential
-will be from the pure Coulomb one. We can set a value for $\sigma$ from the
-extremum value of the potential which occurs at $\vr = 0$. At $\vr = 0$, an
-indetermination $\frac{0}{0}$ occurs. Using l'Hospital rule, we get the limit
-of $\phi$ as $\vr$ reaches 0:
-\begin{align}
-\lim_{\vr \rightarrow 0} \phi_j\pa{\vr}
-    & \equiv \phi_j\pa{0} = \frac{ k q_j }{ \sigma } \sqrt{\frac{2}{\pi}}
-\end{align}
-from which we get the particle width:
-\begin{align}
-\sigma & = \frac{ k q_j }{ \phi_j\pa{0} } \sqrt{ \frac{2}{\pi}}.
-\label{eqn:md:sigma}
-\end{align}
-The free parameter is thus the ``potential depth'' $\phi_j\pa{0}$. We call this
-parameter ``depth'' since the potential energy of an electron on top of an ion
-would be minimum, similar to the gravitational potential energy of a ball is
-minimum at the bottom of a well.
 
-Another problem that the smoothing of equations \eqref{eqn:md:smoothed:phi} and
-\eqref{eqn:md:smoothed:E} solve is the one of \textit{numerical heating} which
-occurs when particles artificially gain (or loose) energy during the
-calculation of equations \eqref{eqn:md:vv}. This absence of conservation of
-energy is due to a time step $\Delta t$ which is too large. Indeed, the
-discretization of equations \eqref{eqn:md:vv}, and most importantly of
-subequation \eqref{eqn:md:vv:a}, assumes the force on each particle to have a
-linear variation between time steps. If the time step is too large and the
-curvature of equation \eqref{eqn:md:smoothed:E} can be sampled by the moving
-particle between each time steps, then the energy will not be conserved.
-
-Other potential shapes were investigated for the close range potential. Figures
-\ref{fig:potential:shapes} plots the different shapes of potentials and their
-respective electrostatic field. These shapes are obtained by simply finding the
-location $R$ where the value and the slope of the close-range shape
+Different potential shapes were investigated for the close range potential.
+Figure~\ref{fig:potential:shapes} plots the different shapes of potentials and
+their respective electrostatic field. These shapes are obtained by simply
+finding the location $R$ where the value and the slope of the close-range shape
 $\phi_{cr}$ fits with the Coulomb potential $\phi_C$.
 \begin{subequations}
 \begin{align}
@@ -313,6 +263,64 @@ R       & = \frac{k q_j}{\phi_0} \ex{\frac{1}{2m}} \\
 \label{eqn:potential:shapes:sg}
 \end{subequations}
 
+
+
+
+
+\subsubsubsection{Gaussian distribution}
+An efficient way is to treat electrons as charge distributions instead of point
+particles. As such, the electrostatic potential due to a charge particle $j$
+(of gaussian shape of width $\sigma$) at location $\vr = r \hvr$ is:
+\begin{align}
+\phi_{j}\pa{\vr} & = \frac{k q_j}{r} \erf{\frac{r}{\sigma \sqrt{2}}}
+\label{eqn:md:smoothed:phi}
+\end{align}
+The associated electrostatic field is thus:
+\begin{align}
+\vE_{j}\pa{\vr} & = -\grad{\phi_j\pa{\vr}} = k q_j \pa{
+    \frac{ \erf{\frac{r}{\sigma\sqrt{2}}} }{r^2}
+    - \sqrt{\frac{2}{\pi}} \frac{ \ex{-\frac{r^2}{2 \sigma^2}} }{\sigma r}
+} \hvr
+\label{eqn:md:smoothed:E}
+\end{align}
+When the distance $r$ is large compared to $\sigma$, the error function
+is close to 1 and the potential becomes Coulombic. Also, the exponential
+term in the electric field will tend towards 0 (since it's a gaussian shape).
+The error function will tend towards 1, so the electric field will
+be the field of a discrete point charge.
+
+The value of $\sigma$ is arbitrary: the smaller it is, the closer the potential
+will be from the pure Coulomb one. We can set a value for $\sigma$ from the
+extremum value of the potential which occurs at $\vr = 0$. At $\vr = 0$, an
+indetermination $\frac{0}{0}$ occurs. Using l'Hospital rule, we get the limit
+of $\phi$ as $\vr$ reaches 0:
+\begin{align}
+\lim_{\vr \rightarrow 0} \phi_j\pa{\vr}
+    & \equiv \phi_j\pa{0} = \frac{ k q_j }{ \sigma } \sqrt{\frac{2}{\pi}}
+\end{align}
+from which we get the particle width:
+\begin{align}
+\sigma & = \frac{ k q_j }{ \phi_j\pa{0} } \sqrt{ \frac{2}{\pi}}.
+\label{eqn:md:sigma}
+\end{align}
+The free parameter is thus the ``potential depth'' $\phi_j\pa{0}$. We call this
+parameter ``depth'' since the potential energy of an electron on top of an ion
+would be minimum, similar to the gravitational potential energy of a ball is
+minimum at the bottom of a well.
+
+Another problem that the smoothing of equations \eqref{eqn:md:smoothed:phi} and
+\eqref{eqn:md:smoothed:E} solve is the one of \textit{numerical heating} which
+occurs when particles artificially gain (or loose) energy during the
+calculation of equations \eqref{eqn:md:vv}. This absence of conservation of
+energy is due to a time step $\Delta t$ which is too large. Indeed, the
+discretization of equations \eqref{eqn:md:vv}, and most importantly of
+subequation \eqref{eqn:md:vv:a}, assumes the force on each particle to have a
+linear variation between time steps. If the time step is too large and the
+curvature of equation \eqref{eqn:md:smoothed:E} can be sampled by the moving
+particle between each time steps, then the energy will not be conserved.
+
+
+
 Figure \ref{fig:potential:shapes} show the different potential shapes and their
 respective electrostatic field.
 
@@ -339,6 +347,7 @@ good candidate to test if numerical heating is present or not. If the total
 energy is conserved, then the selected parameters (potential depth, smoothing
 curve and time step) can be used with good confidence. Figure
 \ref{fig:potential:heating} shows numerical heating.
+
 
 \emptyfig{NUMERICAL HEATING}{fig:potential:heating}
 
