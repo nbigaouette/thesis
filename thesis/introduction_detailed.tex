@@ -474,6 +474,186 @@ a package is invaluable.
 
 
 \subsubsubsection{Quantum FDTD (QFDTD)}
+One model proposed to explain the high charge states seen in some experiments
+is the lowering of the ionization barrier, used in conjunction with classical
+MD simulations. This model assumes that an electron can be inner ionized when
+the potential of a neighbouring ion lowers the potential of the electron's
+parent ion. If this barrier is lowered enough so that it drops below the
+electron's energy level, the electron becomes free to leave the ion and evolve
+in the cluster environment. An open question is how close this model, used
+with a classical MD, is to reality. Special care needs to be taken when a
+particle, evolving in a quantum world, is to be treated classically. How does
+the bound electron's wavefunction reacts to the presence of a second ion
+perturbing the potential? Is the wavefunction really evolving into a state
+where we can say the electron is shared by the two ions? If the electron is
+really shared by the two ions, can we classically let it evolve inside the
+cluster environment?
+
+These questioned pushed us to look at the quantum aspects in more details. Many
+different tools exist to calculate the ground state of system, even with
+multiple electrons, as describe previously. Additionally, excited states are
+capital in ACI and as such we wanted a tool that could give us information not
+only on the ground state but also on excited states.
+
+After stumbling on an interesting article that used the Finite-Difference
+Time-Domain (FDTD) algorithm to solve \schrodinger equation\cite{Sudiarta2007}
+it was decided to explore this idea since not much work could be found on this
+\textit{Quantum FDTD} (QFDTD) method and due to previous experiences
+implementing electrodynamics FDTD.
+
+FDTD is an (old) algorithm developed in 1966 by Yee\cite{Yee1966} to solve
+Maxwell's equation on a grid using a leap-frog integration. The number of
+scientific articles using FDTD has exponentially increased since the '80s
+largely due to the increase in computation resources. Indeed, a three
+dimensional grid with the three vector components of both the electric and
+magnetic fields requires huge amount of memory that were definitely not present
+in the late '60s. The reader is invited to read the excellent book on FDTD by
+Allen Taflove and Susan Hagness\cite{Taflove2005} covering 40 years of FDTD
+development in electrodynamics simulations.
+
+Sudiarta's idea was to use the FDTD algorithm, normally applied to
+electrodynamics problems, to solve the time dependent \schrodinger equation
+describing a wavefunction $\psi$ inside a potential $V$:
+\begin{align}
+\im \hbar \delt{  } \ket{\psi\pa{\vr, t}}
+    & = \pa{-\frac{\hbar^2}{2 m} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr,
+t}}
+\label{eqn:schrodinger:si}
+\end{align}
+To ease the calculation, let's switch to atomic units where $\hbar = 1$ and $m
+= 1$:
+\begin{align}
+\im \delt{  } \ket{\psi\pa{\vr, t}}
+    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr, t}}
+\label{eqn:schrodinger:au}
+\end{align}
+
+To solve equation \eqref{eqn:schrodinger:au}, finite differences are
+used. The time derivative is discretized using first-order forward-difference
+(evaluated at time step $n$):
+\begin{align}
+\cro{ \im \deli{}{t} \ket{\psi\pa{\vr, t}} }^{n}
+    & = \cro{
+            \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} }
+            \ket{\psi\pa{\vr,t}}
+        }^{n} \\
+\im \pa{\frac{\psi_{i,j,k}^{n+1} - \psi_{i,j,k}^{n}}{\Delta t}}
+& = \pa{-\frac{1}{2} \laplacian{} + V_{i,j,k}^{n} } \psi_{i,j,k}^{n} \\
+\psi_{i,j,k}^{n+1} & =
+    \cro{
+        1 + \im \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
+    } \psi_{i,j,k}^{n}
+\label{eqn:schrodinger:discretized}
+\end{align}
+Additionally, the Laplacian is discretized on a grid using second-order
+central-differences:
+\begin{align}
+\laplacian{} \psi_{i,j,k}^{n} \approx
+      \frac{ \psi_{i+1,j,k}^{n} - \psi_{i-1,j,k}^{n} }{2 \Delta x}
+    + \frac{ \psi_{i,j+1,k}^{n} - \psi_{i,j-1,k}^{n} }{2 \Delta y}
+    + \frac{ \psi_{i,j,k+1}^{n} - \psi_{i,j,k-1}^{n} }{2 \Delta z}
+\label{eqn:laplacian:discretized}
+\end{align}
+
+Equations \eqref{eqn:schrodinger:discretized} and
+\eqref{eqn:laplacian:discretized} are the basis of the (explicit) QFDTD
+algorithm.
+
+
+These equations can be approached by two different ways. The first
+one proposed by Sullivan\cite{Sullivan2000} in 2000 separates the wavefunction
+$\psi$ into its real and imaginary parts:
+\begin{align}
+      \psi_{i,j,k,\textrm{R}}^{n+1}
++ \im \psi_{i,j,k,\textrm{I}}^{n+1}
+& =
+    \cro{
+        1 + \im \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
+    } \pa{
+              \psi_{i,j,k,\textrm{R}}^{n}
+        + \im \psi_{i,j,k,\textrm{I}}^{n}
+    }
+\end{align}
+Taking the real and imaginary parts separately we get:
+FIXME: WRONG!!
+\begin{subequations}
+\begin{align}
+\psi_{i,j,k,\textrm{R}}^{n+1} & =
+    \psi_{i,j,k,\textrm{R}}^{n}
+    - \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
+                \psi_{i,j,k,\textrm{I}}^{n}
+\\
+\psi_{i,j,k,\textrm{I}}^{n+1} & =
+    \psi_{i,j,k,\textrm{I}}^{n}
+    + \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
+                \psi_{i,j,k,\textrm{R}}^{n}
+\end{align}
+\end{subequations}
+
+
+
+
+These two components are then solved alternatively in a leap-frog way,
+similarly to the electrodynamics FDTD with the electric and magnetic field. In
+opposition to the second approach, it is called the \textit{real time} QFDTD.
+
+The second approach, proposed by Sudiarta\cite{Sudiarta2007} and expanded by
+Strickland\cite{Strickland2010} is called the \textit{imaginary-time} QFDTD.
+If the potential is constant ($V\pa{\vr, t} \rightarrow V\pa{\vr}$) and a Wick
+rotation is performed in time ($\im t \rightarrow \tau$), then the \schrodinger
+equation in \textit{imaginary time} is obtained:
+\begin{align}
+- \deli{}{\tau} \ket{\psi\pa{\vr, \tau}}
+    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr, \tau}}
+\label{eqn:schrodinger:imaginary}
+\end{align}
+and its time discretization is, similarly to equation
+\eqref{eqn:schrodinger:discretized}:
+\begin{align}
+\psi_{i,j,k}^{n+1} & =
+    \cro{
+        1 + \Delta \tau \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
+    } \psi_{i,j,k}^{n}
+\label{eqn:schrodinger:imaginary:discretized}
+\end{align}
+
+
+At initial time $\tau = 0$, the wavefunction $\ket{\psi\pa{\vr, \tau}}$ can be
+decomposed into its eigenstate basis:
+\begin{align}
+\ket{\psi\pa{\vr, \tau=0}} & = \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
+\label{eqn:wavefunction:imag:initial}
+\end{align}
+The time-evolution operator (or propagator) $\oU\pa{t}$ is:
+\begin{align}
+\oU\pa{t} & = \ex{ - \im t \oH }
+\label{eqn:propagator:real} \\
+\oU\pa{\tau} & = \ex{ - \tau \oH }
+\label{eqn:propagator:imag}
+\end{align}
+When applied to the initial state \eqref{eqn:wavefunction:imag:initial}, the
+propagator \eqref{eqn:propagator:imag} gives the (imaginary) time evolution of
+the wavefunction:
+\begin{align}
+\oU\pa{\tau} \ket{\psi\pa{\vr, \tau=0}}
+    = \ket{\psi\pa{\vr, \tau}}
+  & = \e{ - \tau \oH } \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
+\end{align}
+Since the operator $\oH$ applied to the eigenstates
+$\ket{\phi_n\pa{\vr}}$ gives the eigenvalues $E_n$, the previous equation
+becomes:
+\begin{align}
+\ket{\psi\pa{\vr, \tau}}
+ & = \sum_{n=0}^{\infty} c_n \e{ - \tau E_n } \ket{\phi_n\pa{\vr}}
+\end{align}
+The imaginary time evolution is thus an exponential growth with the different
+eigenstates having different growth rates. It thus becomes possible to isolate
+the different eigenstates from each other. A novel method to isolate these
+states is described in the published article of section
+\ref{section:papers:qfdtd} (page \pageref{section:papers:qfdtd}).
+
+
+
 \subsubsubsection{Libraries}
 
 Additionally, a total of seven other libraries were developed to support some
