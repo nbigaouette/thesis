@@ -69,7 +69,7 @@ interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
-\subsubsection{Hierarchical Tree algorithms}
+\subsubsection{Long range potential: Hierarchical Tree algorithms}
 The $O\pa{N^2}$ scaling of MD algorithm can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
@@ -195,7 +195,7 @@ has not been implemented in the current work.
 
 
 
-\subsubsection{Potential shapes}
+\subsubsection{Short range potential: shapes}
 
 An important problem to consider is the close range behaviour of equation
 \eqref{eqn:md:coulomb:F} which diverges. Additionally, electrons should not be
