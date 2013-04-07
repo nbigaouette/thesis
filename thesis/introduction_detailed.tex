@@ -511,9 +511,65 @@ in the late '60s. The reader is invited to read the excellent book on FDTD by
 Allen Taflove and Susan Hagness\cite{Taflove2005} covering 40 years of FDTD
 development in electrodynamics simulations.
 
-Sudiarta's idea was to use the FDTD algorithm, normally applied to
-electrodynamics problems, to solve the time dependent \schrodinger equation
-describing a wavefunction $\psi$ inside a potential $V$:
+Other simulation techniques like Finite-Element Methods (FEM) or Finite-Volume
+Methods (FVM) can be seen as more complex then Finite-Differences Methods
+(FDM). This gives some elegance and simplicity in the FDM algorithms.
+Additionally, since FDTD is an explicit algorithm, implementations are
+generally easy and efficient and the local nature of the algorithm makes it
+easily parallelizable on distributed memory systems.
+
+Sullivan was the first to apply the FDTD method to solve the \schrodinger
+equation in his 2000 book\cite{Sullivan2000} where he obtains the wavefunction
+of an electron hitting a potential barrier. Latter in 2001 he used the FDTD
+method to simulate one and two electrons in a quantum dot\cite{Sullivan2001}.
+The Hartree-Fock approximation was used to describe the two electrons problem
+and thus required the use of Fourier transforms to calculate the Coulomb
+and exchange terms. Due to this extra required calculation, the problem was
+restricted to two dimensions only. The following year, he introduced a method
+to calculate the eigenstates of an arbitrary system using
+FDTD\cite{Sullivan2002}. This method requires two distinct simulations: the
+first one finds the eigenvalues and the second one stores the states
+corresponding to these eigenvalues, doubling the simulation time required.
+The interaction with a magnetic field was included through the vector potential
+and later\cite{Sullivan2003,Sullivan2004} used to calculate spin interaction.
+Only in 2005 did the first three dimensional
+simulations\cite{Sullivan2005a} were performed as proof of concept; only a
+single electron was simulated. Eigenstates and eigenvalues were obtained for an
+example quantum well as well as a two ions system. A more complicated three
+dimensional system was later simulated in \cite{Sullivan2005b}, still with a
+single electron.
+
+Later Sudiarta suggested\cite{Sudiarta2007} a new way to use the FDTD method to
+solve the \schrodinger equation for a single electron system. By switching to
+\textit{imaginary time}, \schrodinger equation can be solved more easily and
+more efficiently to get the eigenvalues and eigenstates of the system. It was
+later shown that the interaction with a magnetic field could also be added to
+the imaginary-time method\cite{Sudiarta2008} and that FDTD could be used to
+construct the thermal density matrix of single particle\cite{Sudiarta2009}.
+
+Due to the explicit nature of the FDTD algorithm (values can be obtained at the
+next time step from values at the current time step only) the method is
+conditionally stable; an upper bound on the time step size must be taken. The
+Courant-Friedrichs-Lewy (CFL) condition gives the upper bound. Dai \textit{et
+al.} derive\cite{Dai2005} the stability condition for a constant in time
+potential:
+\begin{align}
+\Delta t < \frac{2}{
+    \frac{2 \hbar}{m} \pa{
+         \frac{1}{\Delta x}
+        +\frac{1}{\Delta y}
+        +\frac{1}{\Delta z}
+        }
+        + \textrm{max}\abs{V\pa{\vr}} / \hbar
+    }
+\end{align}
+
+
+Both real-time and imaginary-time methods were implemented. Let's describe the
+two algorithms.
+
+First, let's define the time dependent \schrodinger equation describing a
+wavefunction $\psi$ inside a potential $V$:
 \begin{align}
 \im \hbar \delt{  } \ket{\psi\pa{\vr, t}}
     & = \pa{-\frac{\hbar^2}{2 m} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr,
@@ -527,25 +583,91 @@ To ease the calculation, let's switch to atomic units where $\hbar = 1$ and $m
     & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr, t}}
 \label{eqn:schrodinger:au}
 \end{align}
-
-To solve equation \eqref{eqn:schrodinger:au}, finite differences are
-used. The time derivative is discretized using first-order forward-difference
-(evaluated at time step $n$):
+At initial time $t = 0$, the wavefunction $\ket{\psi\pa{\vr, t}}$ is
+decomposed into its eigenstates basis:
 \begin{align}
-\cro{ \im \deli{}{t} \ket{\psi\pa{\vr, t}} }^{n}
-    & = \cro{
-            \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} }
-            \ket{\psi\pa{\vr,t}}
-        }^{n} \\
-\im \pa{\frac{\psi_{i,j,k}^{n+1} - \psi_{i,j,k}^{n}}{\Delta t}}
-& = \pa{-\frac{1}{2} \laplacian{} + V_{i,j,k}^{n} } \psi_{i,j,k}^{n} \\
-\psi_{i,j,k}^{n+1} & =
-    \cro{
-        1 + \im \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
-    } \psi_{i,j,k}^{n}
-\label{eqn:schrodinger:discretized}
+\ket{\psi\pa{\vr, t=0}} & = \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
+\label{eqn:wavefunction:real:initial}
 \end{align}
-Additionally, the Laplacian is discretized on a grid using second-order
+The time-evolution operator (or propagator) $\oU\pa{t}$ is, in atomic units:
+\begin{align}
+\oU\pa{t} & = \ex{ - \im t \oH }
+\label{eqn:propagator:real}
+\end{align}
+and when applied to the initial state \eqref{eqn:wavefunction:real:initial}
+gives the time evolution of the wavefunction:
+\begin{align}
+\oU\pa{t} \ket{\psi\pa{\vr, t=0}}
+    = \ket{\psi\pa{\vr, t}}
+  & = \e{ - \im t \oH } \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
+\end{align}
+Since the operator $\oH$ applied to the eigenstates
+$\ket{\phi_n\pa{\vr}}$ gives the eigenvalues $E_n$, the previous equation
+becomes:
+\begin{align}
+\ket{\psi\pa{\vr, t}}
+ & = \sum_{n=0}^{\infty} \e{ - \im t E_n } c_n \ket{\phi_n\pa{\vr}}
+\label{eqn:wavefunction:eigenstates:time_evolution:real}
+\end{align}
+The time evolution of each eigenstates is thus an oscillation between their real
+and imaginary parts of which the frequency is given by the eigenvalue $E_n$.
+
+
+
+Equation \eqref{eqn:schrodinger:au} can now be solved either in real-time or
+imaginary-time, the former being explained first.
+
+Let's separate the real and imaginary components of equation
+\eqref{eqn:schrodinger:au} (simplifying the notation):
+\begin{align}
+\im \delt{  } \pa{ \psi_R + \im \psi_I}
+    & = \pa{-\frac{1}{2} \laplacian{} + V }
+        \pa{ \psi_R + \im \psi_I} \\
+\im \delt{  } \psi_R - \delt{  } \psi_I
+    & = \pa{-\frac{1}{2} \laplacian{} + V } \psi_R
+      + \im \pa{-\frac{1}{2} \laplacian{} + V } \psi_I
+\end{align}
+giving two equations describing the time evolution of two effective fields:
+\begin{subequations}
+\begin{align}
+\delt{  } \psi_R & =   \pa{-\frac{1}{2} \laplacian{} + V } \psi_I
+\label{eqn:schrodinger:real:real} \\
+\delt{  } \psi_I & = - \pa{-\frac{1}{2} \laplacian{} + V } \psi_R
+\label{eqn:schrodinger:real:imag}
+\end{align}
+\label{eqn:schrodinger:real}
+\end{subequations}
+The real and imaginary parts in equation \eqref{eqn:schrodinger:real} can be
+compared to the electric and magnetic fields in the traditional electrodynamics
+FDTD method. The integration is performed using a leap-frog scheme. We
+first define $\psi_{i,j,k}^{n}$ the wavefunction located at the grid cell
+$\pa{i,j,k}$ and at time step $n$. Then equation equation
+\eqref{eqn:schrodinger:real:imag} is evaluated at time step $n$ and, using
+(second order) central-differences, we get:
+\begin{align}
+\left. \delt{  } \psi_I \right|_{n}
+& = \left. - \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_R \right|_{n} \\
+\frac{\psi_{I}^{n+1/2} - \psi_{I}^{n-1/2}}{\Delta t}
+& = - \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_{R}^{n} \\
+\psi_{I}^{n+1/2}
+& = \psi_{I}^{n-1/2} - \Delta t \pa{-\frac{1}{2} \laplacian{} + V^{n} }
+\psi_{R}^{n}
+\label{eqn:schrodinger:real:imag:discretized}
+\end{align}
+Similarly, defining the time derivative in \eqref{eqn:schrodinger:real:real} at
+time step $n$ and again using (second order) central-differences:
+\begin{align}
+\left. \delt{  } \psi_R \right|_{n+1/2}
+& = \left. \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_I \right|_{n+1/2} \\
+\frac{\psi_{R}^{n+1} - \psi_{R}^{n}}{\Delta t}
+& = \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_{I}^{n+1/2} \\
+\psi_{R}^{n+1}
+& = \psi_{R}^{n} + \Delta t \pa{-\frac{1}{2} \laplacian{} + V^{n} }
+\psi_{I}^{n+1/2}
+\label{eqn:schrodinger:real:real:discretized}
+\end{align}
+
+Lastly, the Laplacian is discretized on a grid using (second order)
 central-differences:
 \begin{align}
 \laplacian{} \psi_{i,j,k}^{n} \approx
@@ -555,93 +677,58 @@ central-differences:
 \label{eqn:laplacian:discretized}
 \end{align}
 
-Equations \eqref{eqn:schrodinger:discretized} and
-\eqref{eqn:laplacian:discretized} are the basis of the (explicit) QFDTD
-algorithm.
+Equations \eqref{eqn:schrodinger:real:imag:discretized},
+\eqref{eqn:schrodinger:real:real:discretized} and
+\eqref{eqn:laplacian:discretized} are then used to propagate in time the real
+and imaginary components of the electronic wavefunction. Note that, contrary
+to the Yee cell in the electrodynamics FDTD, the two components of the
+wavefunction don't have to be defined at different location inside the grid
+cell; they are defined at the same location as shown on figure
+\ref{fig:qfdtd:cell}.
 
+\emptyfig{YEE CELL VS QFDTD CELL}{fig:qfdtd:cell}
 
-These equations can be approached by two different ways. The first
-one proposed by Sullivan\cite{Sullivan2000} in 2000 separates the wavefunction
-$\psi$ into its real and imaginary parts:
-\begin{align}
-      \psi_{i,j,k,\textrm{R}}^{n+1}
-+ \im \psi_{i,j,k,\textrm{I}}^{n+1}
-& =
-    \cro{
-        1 + \im \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
-    } \pa{
-              \psi_{i,j,k,\textrm{R}}^{n}
-        + \im \psi_{i,j,k,\textrm{I}}^{n}
-    }
-\end{align}
-Taking the real and imaginary parts separately we get:
-FIXME: WRONG!!
-\begin{subequations}
-\begin{align}
-\psi_{i,j,k,\textrm{R}}^{n+1} & =
-    \psi_{i,j,k,\textrm{R}}^{n}
-    - \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
-                \psi_{i,j,k,\textrm{I}}^{n}
-\\
-\psi_{i,j,k,\textrm{I}}^{n+1} & =
-    \psi_{i,j,k,\textrm{I}}^{n}
-    + \Delta t \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
-                \psi_{i,j,k,\textrm{R}}^{n}
-\end{align}
-\end{subequations}
+Equations \eqref{eqn:schrodinger:real:imag:discretized} and
+\eqref{eqn:schrodinger:real:real:discretized} by themselves only describe the
+time evolution of a wavefunction inside a potential; it does not give a direct
+way to obtain the eigenstates of an Hamiltonian. Different approaches exist to
+obtain these; Sullivan describes some of them. Eigenvalues though are
+relatively easy to obtain though.
+
+By numerically propagating in time a wavefunction $\psi$ using equations
+\eqref{eqn:schrodinger:real:imag:discretized} and
+\eqref{eqn:schrodinger:real:real:discretized} the system's eigenstates will
+evolve according to equation
+\eqref{eqn:wavefunction:eigenstates:time_evolution:real}. This evolution is an
+oscillation between real and imaginary part at a specific frequency; the states'
+eigenvalue. By taking a Fourier transform of the time evolution, eigenvalues
+can be identified on a power spectrum. The published article of section
+\ref{section:papers:qfdtd} describes a novel method of extracting the
+eigenvalues of all eigenstates present in the simulated wavefunction $\psi$.
 
 
 
-
-These two components are then solved alternatively in a leap-frog way,
-similarly to the electrodynamics FDTD with the electric and magnetic field. In
-opposition to the second approach, it is called the \textit{real time} QFDTD.
-
-The second approach, proposed by Sudiarta\cite{Sudiarta2007} and expanded by
-Strickland\cite{Strickland2010} is called the \textit{imaginary-time} QFDTD.
-If the potential is constant ($V\pa{\vr, t} \rightarrow V\pa{\vr}$) and a Wick
-rotation is performed in time ($\im t \rightarrow \tau$), then the \schrodinger
-equation in \textit{imaginary time} is obtained:
+The second QFDTD method, called the \textit{imaginary-time} method, differs in
+that it first requires that the potential be constant in time ($V\pa{\vr, t}
+\rightarrow V\pa{\vr}$). Further, a Wick rotation is performed in time ($\im t
+\rightarrow \tau$) and the \schrodinger equation in imaginary time is
+obtained:
 \begin{align}
 - \deli{}{\tau} \ket{\psi\pa{\vr, \tau}}
-    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr, \tau}}
+    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr} } \ket{\psi\pa{\vr, \tau}}
 \label{eqn:schrodinger:imaginary}
 \end{align}
-and its time discretization is, similarly to equation
-\eqref{eqn:schrodinger:discretized}:
-\begin{align}
-\psi_{i,j,k}^{n+1} & =
-    \cro{
-        1 + \Delta \tau \pa{ \frac{1}{2} \laplacian{} - V_{i,j,k}^{n} }
-    } \psi_{i,j,k}^{n}
-\label{eqn:schrodinger:imaginary:discretized}
-\end{align}
+Note that equation \eqref{eqn:schrodinger:imaginary} is not complex and is
+similar to the heat equation.
 
 
-At initial time $\tau = 0$, the wavefunction $\ket{\psi\pa{\vr, \tau}}$ can be
-decomposed into its eigenstate basis:
+Contrary to the real-time method, the ``time'' evolution of the imaginary
+method is not oscillatory. Indeed, the propagator of equation
+\eqref{eqn:propagator:real} becomes, in imaginary time:
 \begin{align}
-\ket{\psi\pa{\vr, \tau=0}} & = \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
-\label{eqn:wavefunction:imag:initial}
+\oU\pa{\tau} & = \ex{ - \tau \oH } \label{eqn:propagator:imag}
 \end{align}
-The time-evolution operator (or propagator) $\oU\pa{t}$ is:
-\begin{align}
-\oU\pa{t} & = \ex{ - \im t \oH }
-\label{eqn:propagator:real} \\
-\oU\pa{\tau} & = \ex{ - \tau \oH }
-\label{eqn:propagator:imag}
-\end{align}
-When applied to the initial state \eqref{eqn:wavefunction:imag:initial}, the
-propagator \eqref{eqn:propagator:imag} gives the (imaginary) time evolution of
-the wavefunction:
-\begin{align}
-\oU\pa{\tau} \ket{\psi\pa{\vr, \tau=0}}
-    = \ket{\psi\pa{\vr, \tau}}
-  & = \e{ - \tau \oH } \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
-\end{align}
-Since the operator $\oH$ applied to the eigenstates
-$\ket{\phi_n\pa{\vr}}$ gives the eigenvalues $E_n$, the previous equation
-becomes:
+and the wavefunctions evolution becomes:
 \begin{align}
 \ket{\psi\pa{\vr, \tau}}
  & = \sum_{n=0}^{\infty} c_n \e{ - \tau E_n } \ket{\phi_n\pa{\vr}}
@@ -652,6 +739,35 @@ the different eigenstates from each other. A novel method to isolate these
 states is described in the published article of section
 \ref{section:papers:qfdtd} (page \pageref{section:papers:qfdtd}).
 
+Because equation \eqref{eqn:schrodinger:imaginary} is real, a single scalar
+field needs to be discretized on the grid. The discretization is similar to the
+real-time method: equation \eqref{eqn:schrodinger:imaginary} is evaluated at
+time step $n$ and the time derivative is discretized, in this case using (first
+order) forward-differences (and again simplifying the notation):
+\begin{align}
+- \left. \deli{}{\tau} \psi \right|_{n}
+    & = \cro{ \pa{-\frac{1}{2} \laplacian{} + V} \psi }_{n}
+\\
+\frac{\psi^{n+1} - \psi^{n}}{\Delta \tau}
+    & = \pa{\frac{1}{2} \laplacian{} - V} \psi_{n}
+\\
+\psi^{n+1} & = \cro{1 + \Delta \tau \pa{\frac{1}{2} \laplacian{} - V}} \psi^{n}
+\label{eqn:schrodinger:imaginary:discretized}
+\end{align}
+The Laplacian is discretized with equation \eqref{eqn:laplacian:discretized}.
+Since a single scalar field is used to describe $\psi$, special care needs to
+be taken in the code implementation. Indeed, equation
+\eqref{eqn:schrodinger:imaginary:discretized} uses the Laplacian of the
+wavefunction at the previous time step $n$ to update the wavefunction to
+time step $n+1$. For example, calculating $\psi^{n+1}_{i,j,k}$ requires
+$\psi^{n}_{i-1,j,k}$ and $\psi^{n}_{i+1,j,k}$ (for the $x$ derivative in the
+Laplacian) but when calculating the next value in $x$ ($\psi^{n+1}_{i+1,j,k}$)
+the required values are now $\psi^{n}_{i,j,k}$ and $\psi^{n}_{i+2,j,k}$, the
+former being already updated. The easiest and simplest way to solve this
+dependency problem is to store two grids; one for $\psi^{n}$ and another for
+$\psi^{n+1}$, alternating between them when calculating equations
+\eqref{eqn:schrodinger:real:imag:discretized} and
+\eqref{eqn:schrodinger:real:real:discretized}.
 
 
 
