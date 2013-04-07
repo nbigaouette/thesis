@@ -1,0 +1,94 @@
+\subsubsection{Acceleration through OpenCL and GP-GPUs}
+A new trend lately in High Performance Computing (HPC) is code acceleration
+through graphics cards. Similar to the ubiquitous Moore's Law in the CPU world,
+video cards power evolved exponentially during the last twenty years, pushed
+by the never ending need of more realistic video games. From ``dumb'' devices
+drawing primitive shapes on a display, they evolved to extremely powerful
+devices and started to act more like CPU by being programmable (shaders) during
+the first half of 2000. The term \textit{Graphical Processing Unit} (GPU) was
+coined in 1999 by Nvidia, the biggest vendor of video cards, as a selling point
+to their product and to emphasize the fact that their chips were becoming more
+and more alike CPUs.
+
+Due to this increase in power, people tried to use these video cards as
+accelerators for other things than real video operations. Because GPUs have
+intrinsically high parallelism (for example the same operation is performed on
+all pixels of an image in parallel) HPC users and developers got interested.
+In his 2005 book, Taflove described a way to use a video card's GPU to
+accelerate his electrodynamics FDTD solver \cite{Taflove2005}. At that time no
+General-Programming GPU (GP-GPU) framework existed so Taflove (and anyone
+interested in using GPUs at that time) had to ``translate'' the FDTD algorithm
+into one that could be understood by a video card. This process was extremely
+hard as it required using low level graphic primitives; in his case, OpenGL
+calls. Normally OpenGL is used to draw animated scenes on the user's screen.
+Notable examples of OpenGL usage is video games where the user is immersed in a
+virtual three dimensional space. The process of re-writing an algorithm into
+OpenGL calls is one that only a few highly skilled and knowledgeable people can
+tackle.
+
+In 2007, Nvidia saw an opportunity for market expansion. Why not let
+non-videogames programmer use the powerful GPUs for something else then video
+operations? For this to happen, a programming framework had to be released; the
+amount of programmers and scientists able to exploit OpenGL to their advantage
+was limited. They thus released their \textit{Compute Unified Device
+Architecture} (CUDA), later just renamed CUDA. CUDA allows writing normal C or
+C++ programs with some extensions, called \textit{kernels}, that can be run on
+the GPU. These kernels have the same structure as C functions but are executed
+concurrently by every cores on the GPU\footnote{Technically, GPUs don't have
+``cores'' \textit{per se} like CPUs but the comparison can still be made.}. The
+number of cores on a recent consumer grade video card is now of the order of
+many hundreds; a 50\$ Nvidia GT 620 has 96 CUDA cores and 1 GB of RAM, while the
+GTX TITAN has 2688 CUDA cores and 6 GB but cost more than 1,000 \$. Even though
+the highest priced GPU can be more expensive than complete workstations, no CPUs
+can offer close to three thousand cores for a still affordable price.
+
+A year after CUDA was released, Apple wanted a framework that would allow
+programs to be accelerated on their top-of-the-line product's GPU while still
+being able to run on their lower-end range of products (which did not have a
+discrete video card). Additionally, some Apple products were released with ATI
+video cards (Nvidia's main competitor) which, understandably, never supported
+CUDA. They thus released a framework called \textit{OpenCL} (standing for
+Open Compute Language) in 2008 with the help of many partners (IBM, ATI, Intel
+and even Nvidia). While conceptually similar to CUDA (smaller routines are
+written in a kernel function and launched individually on the GPUs by the main
+program) OpenCL has the advantage of targeting heterogeneous platforms
+consisting of (possibly and not limited to) many CPUs, many cores and GPUs. The
+main advantage of OpenCL is its portability; a program written in OpenCL can
+not only run on GPUs from ATI and Nvidia but also on traditional CPUs,
+exploiting all cores available on the CPUs transparently.
+
+It was thus decided to port the two codes (MD and QFDTD) to OpenCL to take
+advantage of the GPU power while retaining portability.
+
+Some things are important to consider when porting codes to GPU frameworks.
+First, because a core on a GPU is quite slower than a core on a CPU,
+parallelisms must be extracted from algorithms. Second, the main drawback of
+GP-GPU programming is the fact that GPUs have their own memory, independent of
+the system's memory; kernels will only have access to the device's memory. Data
+required for kernel calculation must thus be first transferred to the device's
+memory and similarly the resulting data must be transferred back to the host
+memory where it can be further processed by the rest of the main program. Video
+cards today are connected to a computer through PCI-Express (PCIe) connections.
+While fast, it can still be a bottleneck if data is to be transferred back and
+forth similarly to main memory. It is thus necessary to reduce to a minimum the
+data transfer between the host and the device, similarly to communications in a
+distributed memory parallel programming paradigm.
+
+In the case of the MD algorithm, every interaction pair is independent of all
+others and can thus be calculated concurrently; this is thus the basis of the
+OpenCL implementation. The main loop that calculates the electrostatic field
+and potential at every particle's position is implemented as an OpenCL kernel.
+Each thread on the GPU will thus calculate the interaction between one particle
+and all others. Once the MD kernels are launched on the GPU, they are only
+halted when either ionization is to be calculated (at each femtoseconds) or
+when data needs to be saved (to take a snapshot of the simulation for example).
+This prevent the GPU from being interrupted too often and reduces the amount of
+data transfers. Using this OpenCL implementation, MD simulations could be run
+80 times faster than on conventional CPUs.
+
+As for the QFDTD, only the real time algorithm was implemented as OpenCL
+kernels since the imaginary time method did not require long simulation times.
+As in the case of the MD, the real time algorithm is left running on the GPU
+until data needs to be saved to a snapshot or post-processed to reduce
+transfers.
+
