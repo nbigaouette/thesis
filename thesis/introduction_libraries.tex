@@ -1,50 +1,55 @@
 \subsection{Libraries}
 
-Additionally, a total of seven other libraries were developed to support some
-generic features of the code. These libraries are:
+Additionally, eight libraries were developed to support some generic features
+in the MD and QFDTD package. These libraries are:
 \begin{itemize}
-\item ionization.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/ionization}}:
-    All ionization routines described in section
-    \ref{section:intro:clusters:heating}
 \item timing.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/timing}}:
     Timing routines used to measure running time, estimated time of arrival
-(ETA), etc.
+    (ETA), code profiling, etc.
 \item stdcout.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/stdcout}}:
-    Logging features allowing saving the output of any simulations to a log
-    (compressed) file.
+    Logging features allowing saving the output of any simulations to a
+    (compressed) log file.
 \item prng.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/prng}}:
     Pseudo-random number generator (PRNG) library. Wrapper around
-dSFMT\cite{prng2009}. Defines easy to use PRNG functions, distributions, seed,
-etc. Keeps track of how many times it has been called for easy reloading
-exactly where simulation left off.
+    dSFMT\cite{prng2009}, a SIMD-oriented Fast Mersenne Twister implementation.
+    Defines easy to use PRNG functions, distributions, seed, etc. Keeps track of
+    the seed and how many times pseudo-random numbers were generated, allowing
+    to replay the series in case of simulation reloading.
 \item memory.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/memory}}:
     Wrappers around malloc() and calloc() that will automatically check that
     the allocation succeeded. Will also keep track of the amount of
     memory allocated and allow setting a maximum value, preventing
-    over-allocation due to bugs or user errors. Can also print values directly
-    in binary for easy debugging.
+    over-allocation due to bugs or user errors. Can also return the binary
+    representation of a numbers as a string for better debugging.
 \item io.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/io}}:
     Input and Output library. Wrappers around TinyXML library\cite{tinyxml} for
-reading input file. Wrappers around NetCDF\cite{netcdf} for self-contained
-output files, used in simulation snapshots.
+    reading input file. Wrappers around NetCDF\cite{netcdf} for self-contained
+    output files, used for post-processing and simulation snapshots.
 \item libpotentials.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/libpotentials}}:
-    Functions implementing and abstracting different potential shapes.
+    Functions implementing and abstracting different potential shapes as
+    described in section \ref{section:intro:md:potentials}.
+\item ionization.git\footnote{ \url{
+    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/ionization}}:
+    All ionization routines described in section
+    \ref{section:intro:clusters:heating}
 \item oclutils.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/oclutils}}:
-    Library to ease the use of OpenCL devices. Allows selecting the best GPUs
-    available on a workstation and locking it to prevent other simulations from
-    using it.
+    Library to ease the use of OpenCL devices. Allows listing and selecting the
+    best GPU available on a workstation and locking it to prevent
+    other simulations from using it. Contains an array abstraction to ease the
+    transfer of data from the host (main memory) to device (GPU memory) and
+    vice-versa.
 \item get\_libraries.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/get_libraries}}:
-    Simple script that will download all the previous required libraries,
-    compile them and install them in the user's directory.
+    Simple script that will download all the previous required libraries or
+    update to the lasted version from git, compile them and install them in the
+    user's directory.
 \end{itemize}
 A detailed guide on the compilation and usage of the simulation package can be
 read in appendix \ref{appendix:code}.
