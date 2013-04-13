@@ -10,3 +10,8 @@
 *.lof
 *.lot
 *.backup
+*.doc
+*.bib~*
+*.pyc
+*.pdf
+*.in
