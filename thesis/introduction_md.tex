@@ -1,6 +1,6 @@
 
 
-\subsubsection{Molecular Dynamics (MD)}
+\subsection{Molecular Dynamics (MD)}
 Due to the high charge states seen in experiment with clusters the only
 practical method to microscopically study the ionization dynamics is
 \textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
@@ -69,7 +69,7 @@ interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
-\subsubsection{Long range potential: Hierarchical Tree algorithms}
+\subsection{Long range potential: Hierarchical Tree algorithms}
 The $O\pa{N^2}$ scaling of MD algorithm can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
@@ -195,7 +195,7 @@ has not been implemented in the current work.
 
 
 
-\subsubsection{Short range potential: shapes}
+\subsection{Short range potential: shapes}
 
 An important problem to consider is the close range behaviour of equation
 \eqref{eqn:md:coulomb:F} which diverges. Additionally, electrons should not be
@@ -354,7 +354,7 @@ curve and time step) can be used with good confidence. Figure
 \emptyfig{NUMERICAL HEATING}{fig:potential:heating}
 
 
-\subsubsection{Implementation details}
+\subsection{Implementation details}
 
 Our group previously used Barnes and Hut treecode implementation,
 freely available\cite{treecode} through the GPL version 2. The code was adapted
