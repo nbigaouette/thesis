@@ -1,22 +1,20 @@
 
 
 \subsection{Molecular Dynamics (MD)}
-NOTES:
-\begin{itemize}
-\item MD is a generic term: any kind of forces
-\end{itemize}
-
-
-
 
 Due to the high charge states seen in experiment with clusters the only
 practical method to microscopically study the ionization dynamics is
 \textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
 classically.
 
-In MD, particles interact directly through classical instantaneous forces. The
-total force acting on particle $i$ of mass $m_i$ from all other $N$ particles in
-the system is:
+In MD, bodies interact directly through classical instantaneous forces. Even
+though the method's name contains the term ``molecular'', these forces can be
+of any nature; gravitational, van der Waals, Lennard-Jones, electrostatic, etc.
+The method numerically integrates Newton's equations of motion, resulting in a
+time evolution of the system.
+
+The total force acting on particle $i$ of mass $m_i$ from all other $N$
+particles in the system is:
 \begin{align}
 m_i \va_i & = \vF_i = \sum_{j \ne i} \vF_{j \rightarrow i}
 \label{eqn:md:newton}
