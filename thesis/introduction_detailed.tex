@@ -48,12 +48,19 @@ wavelength).
 Don't talk about tunnel ionization. Just mention it, maybe one paragraph (not
 one page). Giving Keldysh parameter, we are most interested in another regime.
 
+TALK ABOUT IBH HERE!!!
+
 
 \subsubsubsection{Single Photon Ionization}
+Notes:
+\begin{itemize}
+\item Cite: Wabnitz2002, Young2010, Bosted2010, Murphy2008
+\end{itemize}
+
 The first energy absorption mechanisms is single photon ionization. Initially
 described described by Einstein as the photoelectric effect, a bound electron
 absorbs a photon from the laser and is promoted to the continuum where it is
-free to leave its parent ion. Figure \ref{fig:ionization:single} describes
+free to leave its parent ion. Figure~\ref{fig:ionization:single} describes
 shows the mechanism in detail. For the process to be present, the photon energy
 needs to be at least the binding energy of the electron. In the case of
 atomic Xenon, the first energy level is at -12.3 eV which requires a photon
@@ -61,20 +68,131 @@ of a wavelength equal or shorter than 100.8 nm. These wavelength are normally
 called \textit{vacuum ultra-violet} (VUV) and also \textit{extreme
 ultra-violet} (XUV).
 
-
 \emptyfig{Single photon ionization}{fig:ionization:single}
+
+The photon's extra energy will be transferred as kinetic energy in the
+resulting photoelectron. This can thus be used to sample the states in the
+target by measuring the photoelectron energy spectrum.
+
+Implementing single photon ionization in the model is done through a
+transition rate which is itself obtained from the cross-section. Because
+cross-sections can be obtained from experiments for any kind of target, it is
+easily integrated into the model.
+
+The rate of single photon ionization $\Gamma$ is obtained using the laser
+pulse intensity profile $I\pa{t}$ and cross-section $\sigma$:
+\begin{align}
+\Gamma & = I\pa{t} \sigma\pa{\omega}
+\end{align}
+For the present work, Xenon cross-sections $\sigma\pa{\omega}$ were obtained
+from \cite{West1978} and Argon from \cite{Marr1976}.
+
+Once the rate $\Gamma$ is calculated, it is weighted by the time step size and
+compared to a random number $r$. If the random number is smaller:
+\begin{align}
+1 - \e{-\Gamma \Delta t} > r
+\end{align}
+than ionization is performed in the code. When a photon is absorbed, a new
+electron is created in the code with its kinetic energy set as the difference
+between the ionization potential and the photon energy. Then, the intensity
+profile of the laser $I\pa{t}$ is decreased by one photon for better
+description of low fluence pulses.
+
+FIXME: Where the hell does that come from?
+
+
 
 
 \subsubsubsection{Impact Ionization}
+Impact ionization can also be described in terms of cross-sections. These
+cross-sections are normally obtained from the semi-empirical Lotz
+formula\cite{Lotz1967}:
+\begin{align}
+\sigma & = \sum_{i}^{N} a_i q_i \frac{\ln{\pa{E/P_i}}}{E P_i} \pa{1 - b_i
+\ex{-c_i \pa{E/P_i - 1}}}
+\label{eqn:impact:ionization:lotz}
+\end{align}
+where $P_i$ is the ionization potential of the $i^{\textrm{th}}$ shell and $E$
+the impacting electron's kinetic energy \textit{at infinity}.
+Data for Xenon was obtained from Ref. \cite{Tawara1987} for neutrals
+% Figure 254, page 317
+and Ref. \cite{Heidenreich2005} for charged states.
+% Parameters were taken from figure 1 (a), (b) and (c)
+% Note that parameters from figure 1 (a) and (b) for
+% the 4+ and 5+ do not give satisfactory results. They were
+% obtained by fitting the data directly from the figures
+
+Special care needs to be taken with equation \eqref{eqn:impact:ionization:lotz}
+as it was obtained for electrons coming ``from infinity''. In the case of
+clusters, electrons are not coming from an infinite distance. We thus need to
+extrapolate the kinetic energy of the electron as if it was coming from
+infinity. For this, when impact ionization is tested on an electron, its
+potential energy with respect to the impacted ion is removed from the kinetic
+energy. This effectively gets an energy far from the ion. The cluster
+environment is taken into account by considering the potential from the cluster
+at the impacted ion as the threshold under which the bound electron lies.
+Figure \ref{fig:ionization:impact} shows the energy diagram used during the
+process.
+
+\emptyfig{Impact ionization}{fig:ionization:impact}
+
+
 \subsubsubsection{Tunnel Ionization}
 Laser mater interaction cannot be studied without at least mentioning
-\textit{tunnel} or \textit{field ionization}.
+\textit{tunnel} or \textit{field ionization}. For sufficiently strong laser
+fields and long wavelength, the Coulomb potential of an atom can be bent enough
+that the probability of a bound electron tunnelling out becomes significant, as
+shown on figure \ref{fig:ionization:tunnel}.
+
+\emptyfig{Tunnel ionization}{fig:ionization:tunnel}
+
+The Keldysh adiabatic parameter $\gamma$ separates two regimes\cite{Fennel2010}.
+On one side tunnel ionization is dominant and $\gamma \ll 1$, while single
+photon ionization dominates when $\gamma~\gg~1$. The regime of interest in the
+current work has $\gamma \gg 1$ and as such, tunnel ionization is not
+considered.
+
 
 \subsubsubsection{Other mechanisms}
-\subsubsubsubsection{Many-Body Recombination}
-\subsubsubsubsection{Atomic Potentials}
-\subsubsubsubsection{Barrier Lowering}
+Other mechanisms were proposed in lights of results from recent experiments at
+FEL installations. Because the previous mechanisms cannot explain by themselves
+the results, many different groups proposed extra mechanisms.
+
+
+First, Santra \& Greene proposed using \textit{atomic potentials} instead of a
+pure Coulomb one in a rate equation model (with infinite spacial extension and
+constant density). This potential shape represents a shielding potential: when
+entering the ion vicinity, an electron begins to see an unshielded ionic core.
+In Ref. \cite{Greene2003}, they used an analytic form, fitting one parameter
+with the first ionization potential. Later\cite{Walters2006}, they used a
+potential shape generated by the code written by Herman and
+Skillman\cite{HS1963} (HS) to describe a more valid potential, based on a
+Hartree-Fock formulation. Using these atomic potentials, they saw Xe$^{3+}$,
+Xe$^{5+}$ and Xe$^{7+}$ for intensities of $\ten{1.4}{12}$, $\ten{1.4}{13}$ and
+$\ten{7.3}{13}$ W/cm$^2$ respectively for Xe$_{1,500}$ clusters.
+
+Another model proposed by Siedschlag and Rost\cite{Siedschlag2004} in 2004 was
+the barrier suppression in single photon absorption. Due to the close proximity
+of neighbours, a transition to the continuum in the isolated atom case could be
+possible with a single photon when neighbours lowered the barrier. 
+
+\textit{Many-Body Recombination} (MBR) was proposed in 2005
+as a simple mechanism to explain the high charge states seen in VUV
+experiments at FEL-DESY\cite{Jungreuthmayer2005}. In a strongly coupled plasma
+generated by the VUV pulse, electrons can recombine easily to a high excited
+state. Later, these newly bound electrons can absorb a photon from the laser
+field, re-ionizing it. Because MBR is much more efficient than three-body
+recombination, much more photons are absorbs this way. The simplicity of the
+method lies in the fact that in a classical MD simulation, MBR is automatically
+included without extra implementation. Jungreuthmayer \textit{et al.} were able
+to see Xe$^{3+}$, Xe$^{5+}$ and Xe$^{7+}$ for intensities of $\ten{1.5}{12}$,
+$\ten{1.5}{13}$ and $\ten{7}{13}$ W/cm$^2$ respectively when simulating
+Xe$_{1,000}$ clusters.
+
+
 \subsubsubsubsection{Augmented Collisional Ionization}
+The problem with the previous models is that they were proposed before the
+intensity of the FEL pulse was re-calibrated from ??? to ???.
 
 
 \subsubsection{Studied parameters}
