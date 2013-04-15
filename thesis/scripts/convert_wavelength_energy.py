@@ -59,12 +59,15 @@ if (options.wavelength != None):
 
     k       = 2.0 * pi / wavelength
     omega   = k * c
+    f       = omega / (2.0 * pi)
     gamma   = hbar * omega
 
     print "Wavelength to energy:"
     print "    {: 12g} m           {: 12g} J".format(wavelength, gamma)
     print "    {: 12g} nm   --->   {: 12g} eV".format(wavelength * m_to_nm, gamma * J_to_eV)
     print "    {: 12g} A           {: 12g} Eh".format(wavelength * m_to_angstrom, gamma * J_to_Eh)
+    print "                 -->        f = {: 12g} THz".format(f     * 1.0e-12)
+    print "                 -->    omega = {: 12g} THz".format(omega * 1.0e-12)
 
 
 if (options.energy != None):
@@ -80,6 +83,7 @@ if (options.energy != None):
         sys.exit(0)
 
     omega       = energy / hbar
+    f       = omega / (2.0 * pi)
     k           = omega / c
     wavelength  = 2.0 * pi / k
 
@@ -87,4 +91,6 @@ if (options.energy != None):
     print "    {: 12g} J           {: 12g} m".format(energy, wavelength)
     print "    {: 12g} eV   --->   {: 12g} nm".format(energy * J_to_eV, wavelength * m_to_nm)
     print "    {: 12g} Eh          {: 12g} Angstrom".format(energy * J_to_Eh, wavelength * m_to_angstrom)
+    print "                 -->        f = {: 12g} THz".format(f     * 1.0e-12)
+    print "                 -->    omega = {: 12g} THz".format(omega * 1.0e-12)
 
