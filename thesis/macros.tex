@@ -53,6 +53,13 @@
 \newcommand{\hbartwo}{\frac{\hbar}{2}}
 \newcommand{\twohbar}{\frac{2}{\hbar}}
 
+% See:
+% http://tex.stackexchange.com/questions/18298/prevent-line-breaking-in-inline-mat
+% h-but-allow-flexible-spacing
+\newcommand{\preventlinebreak}[1]{{}$\kern-2\mathsurround${}
+  \binoppenalty10000 \relpenalty10000 #1{}$\kern-2\mathsurround${}}
+\newcommand{\ten}[2]{\preventlinebreak{#1\times10^{#2}}}
+
 \newcommand{\dd}[1]{~\textrm{d} #1}
 
 \newcommand{\del}{\partial}                                     % del
