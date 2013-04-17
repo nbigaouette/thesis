@@ -87,18 +87,17 @@ pulse intensity profile $I\pa{t}$ and cross-section $\sigma$:
 For the present work, Xenon cross-sections $\sigma\pa{\omega}$ were obtained
 from \cite{West1978} and Argon from \cite{Marr1976}.
 
-Once the rate $\Gamma$ is calculated, it is weighted by the time step size and
-compared to a random number $r$. If the random number is smaller:
+Once the rate $\Gamma$ is calculated, it is weighted\cite{Lax2006} by the time
+step size and compared to a random number $r$:
 \begin{align}
 1 - \e{-\Gamma \Delta t} > r
 \end{align}
-than ionization is performed in the code. When a photon is absorbed, a new
-electron is created in the code with its kinetic energy set as the difference
-between the ionization potential and the photon energy. Then, the intensity
-profile of the laser $I\pa{t}$ is decreased by one photon for better
-description of low fluence pulses.
+When the previous test succeeds, ionization takes place and a new electron is
+created in the code with its kinetic energy set as the difference between the
+ionization potential and the photon energy. Then, the intensity profile of the
+laser $I\pa{t}$ is decreased by one photon for better description of low fluence
+pulses.
 
-FIXME: Where the hell does that come from?
 
 
 
@@ -174,7 +173,7 @@ $\ten{7.3}{13}$ W/cm$^2$ respectively for Xe$_{1,500}$ clusters.
 Another model proposed by Siedschlag and Rost\cite{Siedschlag2004} in 2004 was
 the barrier suppression in single photon absorption. Due to the close proximity
 of neighbours, a transition to the continuum in the isolated atom case could be
-possible with a single photon when neighbours lowered the barrier. 
+possible with a single photon when neighbours lowered the barrier.
 
 \textit{Many-Body Recombination} (MBR) was proposed in 2005
 as a simple mechanism to explain the high charge states seen in VUV
@@ -191,8 +190,22 @@ Xe$_{1,000}$ clusters.
 
 
 \subsubsubsubsection{Augmented Collisional Ionization}
-The problem with the previous models is that they were proposed before the
-intensity of the FEL pulse was re-calibrated from ??? to ???.
+The previous models are without doubt interesting, but they were developed with
+the goal of describing Wabnitz's 2002 experiments. In 2010, Bosted
+re-calibrated the intensity used during the 2002 experiments at FLASH-DESY.
+Instead of the previously though $\ten{2}{13}$ W/cm$^2$, the power density was
+re-calibrated to $\ten{8}{12}$ W/cm$^2$, less than half of the initial value.
+Could the different models still produce the same amount of high charge states
+seen at the lower intensities?
+
+Our group proposed another mechanism for energy transfer from the laser field
+to the cluster. In the case of MBR, electrons recombine to highly excited
+states to be later re-ionized. 
+
+\emptyfig{ACI}{fig:ionization:aci}
+
+Results of ACI applied on Argon clusters were published in 2011 and the
+article is included in section \label{section:papers:aci}.
 
 
 \subsubsection{Studied parameters}
