@@ -42,7 +42,13 @@ have:
 %    /------>i
 %       r_i
 
-\emptyfig{Vectors definition}{fig:md:vectors}
+% \emptyfig{Vectors definition}{fig:md:vectors}
+\begin{figure}
+ \centering
+ \includegraphics[width=0.38\columnwidth]{figures/mockups/vectors}
+ \caption{Vectors definition}
+ \label{fig:md:vectors}
+\end{figure}
 
 
 Equation \eqref{eqn:md:newton} can be time integrated using the
@@ -127,7 +133,13 @@ r_{j,\beta} - r_{j}^2} \delta_{\alpha,\beta}
 and $R$ is the distance between the cell's centre-of-charge and the
 particle of interest $i$.
 
-\emptyfig{QUAD TREE}{fig:tree:quadtree}
+% \emptyfig{QUAD TREE}{fig:tree:quadtree}
+\begin{figure}
+ \centering
+ \includegraphics[width=0.38\columnwidth]{figures/mockups/quadtree}
+ \caption{Quadtree: 2D's equivalent of the 3D octree}
+ \label{fig:tree:quadtree}
+\end{figure}
 
 The tree algorithm first split the computational domain into a quadtree until
 only a maximum of one particle is present per cell. The tips of the tree,
@@ -179,7 +191,13 @@ multipole expansion is used; the cell is added to the interaction list.
 
 The different MAC can be seen on figure \ref{fig:tree:mac}.
 
-\emptyfig{MAC DIAGRAM}{fig:tree:mac}
+% \emptyfig{MAC DIAGRAM}{fig:tree:mac}
+\begin{figure}
+ \centering
+ \includegraphics[width=0.8\columnwidth]{figures/mockups/mac}
+ \caption{Different Multipole Acceptance Criteria (MAC)}
+ \label{fig:tree:mac}
+\end{figure}
 
 Because not all interaction pairs are considered in the calculation of the
 force and potential, a significant speedup is obtained. Due to the tree
