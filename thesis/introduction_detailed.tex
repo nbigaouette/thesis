@@ -2,30 +2,7 @@
 % Describe in more details the work done: The physics, the models. The specific
 % litterature search goes here.
 
-The previous section described the general goals of this thesis and was used to
-give the reader an overview picture of the field. The following will go
-into more details.
-
-NOTES:
-\begin{itemize}
-\item Current work motivated by recent FEL experiments at specific regime.
-\end{itemize}
-
-
-\subsection{Goals}
-In view of the previous section, the goal of the current thesis is to increase
-to global knowledge of laser-matter interaction. More specifically, the
-question of \textit{how} the energy is deposited in a nanoscale object by an
-ultra-short and ultra-intense laser pulse is important. This interaction
-largely depends on the specific target material and on the pulse's wavelength
-and duration, both making up the interaction ``regime''. A specific regime will
-thus be targeted; mainly short wavelengths, from VUV to XUV, as many questions
-raising from recent experiments are still debated.
-
-\cite{Young2010,Chapman2011}
-
 \subsection{Laser-Cluster interaction}
-\cite{Reinhard2004}
 
 
 \subsubsection{Clusters}
@@ -34,21 +11,23 @@ raising from recent experiments are still debated.
 Clusters of atoms are an extremely useful tool to study laser-matter
 interaction. They are experimentally easy to produce since many
 years\cite{Haberland1994}. Their size and constitution can be varied almost at
-will \cite{Martin1996}.
+will \cite{Martin1996}. Because of their scalability\cite{Reinhard2004}, they
+are the perfect test-bed for the study of nanoscale objects. New coherent light
+sources, in this case FEL, now gives us the needed tools to probe these. While
+the infrared (IR) regime has been thoroughly studied\cite{Fennel2010}, shorter
+wavelength -- Vacuum Ultra-Violet (VUV), Extreme Ultra-Violet (XUV), soft
+X-Rays, etc. -- still is a relatively unexplored field.
 
-\cite{Fennel2010}
 
 \subsubsection{Energy Absorption Mechanisms}
 \label{section:intro:clusters:heating}
-FIXME: Rename ``heating'' to something else.
-
-Specify that the different mechanisms depends on the regime (material and
-wavelength).
-
-Don't talk about tunnel ionization. Just mention it, maybe one paragraph (not
-one page). Giving Keldysh parameter, we are most interested in another regime.
-
-TALK ABOUT IBH HERE!!!
+Interaction of light with single atoms is a well understood problem but the
+collective effects of the high density of atoms in a cluster gives rise to many
+different mechanisms of energy absorption and redistribution throughout the
+cluster. The following will go over the different mechanisms. While the
+mechanisms are highly dependent on the regime (cluster material and
+laser wavelength combination), I will concentrate on the VUV and XUV
+regime mostly.
 
 
 \subsubsubsection{Single Photon Ionization}
@@ -170,6 +149,18 @@ current work has $\gamma \gg 1$ and as such, tunnel ionization is not
 considered.
 
 
+\subsubsubsection{Inverse Bremsstrahlung}
+Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
+where an electron emits a photon when deflected, either by a heavier ion in the
+case of plasma or by magnetic fields in the case of synchrotrons. IBH plays an
+important role in the IR regime\cite{Fennel2010} where the laser field easily
+drives the electrons through the cluster. This linear momentum is redistributed
+as thermal energy by collisions and scattering on heavier ions. While not as
+strong as in the IR regime, IBH is still important in the VUV\cite{Krainov2000}.
+
+
+
+
 \subsubsubsection{Other mechanisms}
 Other mechanisms were proposed in lights of results from recent experiments at
 FEL installations. Because the previous mechanisms cannot explain by themselves
@@ -226,31 +217,92 @@ opportunity to low energy electrons to still participate in the cluster
 ionization, giving the name \textit{augmented collisional ionization} (ACI) to
 the process.
 
-% Figure \ref{fig:ionization:aci} shows the energy levels of the states
+Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
+different transitions possible.
 % \emptyfig{ACI}{fig:ionization:aci}
+\begin{figure}
+ \centering
+ \includegraphics[width=0.38\columnwidth]{figures/mockups/ionization_aci}
+ \caption{ACI. First electron (in blue) gives $K_1$ energy for the transition
+          to an excited state. Second electron (in green) gives the remaining
+          $K_2$ necessary for the transition to continuum.}
+ \label{fig:ionization:aci}
+\end{figure}
 
 More details on ACI are given in section \ref{section:papers:aci} along with
 results on Argon cluster. Section \ref{section:papers:size} studies the cluster
 size influence when ACI is used in the XUV regime. In section
-\ref{section:papers:100nm} ACI is applied tothe VUV regime and the
+\ref{section:papers:100nm} ACI is applied to the VUV regime and the
 2002 experiments at FLASH-DESY.
 
 
-\subsubsection{Studied parameters}
-NOTES:
-\begin{itemize}
-\item Put here why we chose a classical model. Cite
-Reinhard2004\cite{Reinhard2004}.
-\end{itemize}
 
 
+\subsection{Goals}
+
+In view of the previous section, the goal of the current thesis is to increase
+to global knowledge of laser-matter interaction. More specifically, the
+question of \textit{how} the energy is deposited in a nanoscale object by an
+ultra-short and ultra-intense laser pulse will be studied. This interaction
+largely depends on the specific target material and on the pulse's wavelength
+and duration, both making up the interaction regime. A specific regime will
+thus be targeted; mainly short wavelengths, from VUV to XUV, as many questions
+raising from recent experiments are still debated.
+
+While many tools exist to study laser-mater interaction, it was decided to use
+a classical approach since it allows for relatively large systems to be
+simulated. Large field fluctuations are also best described with
+classical approaches\cite{Fennel2010}.
+
+\cite{Young2010,Chapman2011}
 
 
 \input{introduction_tools.tex}
 
 \subsection{Thesis Outline}
-Don't forget a review/description of each sections of the thesis.
+Notes:
+\begin{itemize}
+\item Don't forget a review/description of each sections of the thesis.
+\item Include a subsection with each of my contributions from each paper.
+\end{itemize}
 
-Include a subsection with each of my contributions from each paper.
+This thesis is presented as a series of published or almost published articles.
+First, section \ref{section:tools} describes the different tools and models
+that were developed and implemented for the current work. While section
+\ref{section:tools:md} concentrate on the classical aspect of the problem,
+section \ref{section:tools:qfdtd} deals with a quantum approach that was
+used. Note that all implementation used are original work; all code packages
+were developed and written by me, with a few exceptions on the ACI
+cross-sections calculations.
+
+Section \ref{section:papers:aci} presents the article ``Augmented collisional
+ionization via excited states in XUV cluster interactions'' published in 2011
+in \textit{Journal of Physics B: Atomic, Molecular and Optical Physics}. This
+was the first article on the topic and looked at the influence of ACI with Argon
+clusters.
+
+Second, section \ref{section:papers:size} presents the article ``Clusters in
+intense XUV pulses: Effects of cluster size on expansion dynamics and
+ionization''. Also published in 2011, Argon clusters were simulated in the XUV
+regime and many cluster parameters were studied.
+
+Later in section \ref{section:papers:qfdtd} the article ``Nonlinear grid mapping
+applied to an FDTD-based, multi-center 3D Schr\"odinger equation solver'' is
+presented. Published in 2012 in \textit{Computer Physics Communications}, it
+explains the QFDTD method and its implementation, with emphasis on the new
+nonlinear mapping introduced for faster calculation.
+
+Finally, section \ref{section:papers:100nm} contains the draft of the article
+(\textbf{FIXME}) ``Revisiting the 100nm experiment with ACI''. In it, ACI is
+applied to the VUV regime and Xenon clusters, similar parameters as the 2002
+FEL experiment. This is an important step as the previous theoretical works
+used to explain the experiment's results used an intensity that was
+recalibrated in 2010. We show in the article that ACI can explain the high
+charge states seen in experiments, even at the lower intensity.
+
+Additionally, section \ref{section:other} specifies other, non-published,
+contributions that were made during the years. The reader will find, in appendix
+\ref{appendix:code}, an overview of the usage of the different simulation
+packages and libraries developed.
 
 \ReferencesSubsection{references_intro}
