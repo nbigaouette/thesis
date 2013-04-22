@@ -142,11 +142,13 @@ particle of interest $i$.
  \label{fig:tree:quadtree}
 \end{figure}
 
-The tree algorithm first split the computational domain into a quadtree until
-only a maximum of one particle is present per cell. The tips of the tree,
-containing only one particle, are called leaves. Once every particles in the
-system are inserted in the tree, the electrostatic moments are propagated from
-the leaves up to the root cell, the top cell enclosing the whole domain.
+The tree algorithm first split the computational domain into an octree (in
+three dimension) or quadtree (in two dimensions) until
+only a maximum of one particle is present per cell; see figure
+\ref{fig:tree:quadtree}. The tips of the tree, containing only one particle,
+are called leaves. Once every particles in the system are inserted in the tree,
+the electrostatic moments are propagated from the leaves up to the root cell,
+the top cell enclosing the whole domain.
 
 Then, instead of iterating through all particles for the calculation of the
 force on the particle of interest $i$, the tree is traversed. If the cell is
@@ -160,6 +162,10 @@ of interest $i$ and a direct interaction is wanted. The leaf particle will thus
 be added to a second interaction list containing particle-particle direct
 interactions. The process is recursively repeated until all particles
 are added to an interaction list, either directly or through a parent cell.
+Note that an optimization done in the
+implementation is to allow many particles per leaves and automatically add them
+to the particles interaction list when traversing the tree, preventing trees
+which are overly unbalanced.
 
 Different selection rules exist for the criteria of ``far enough''. These
 rules are called \textit{Multipole Acceptance Criteria} or
@@ -180,16 +186,15 @@ significant. Different MAC have thus been proposed to mitigate this problem.
 The \textit{minimum distance} MAC replaces the distance $d$ in the MAC with the
 minimum distance to one of the cell's edge. The \textit{B-max} MAC instead
 replaces the size of the cell with the largest distance between one of the
-cell's corner to the center-of-charge. Another MAC was proposed by Bédorf
-\textit{et. al.} \cite{Bedorf2012} and is a mix of the two previous. The MAC
-reads:
+cell's corner to the center-of-charge. Another MAC was proposed by
+B\'edorf~\textit{et.~al.}~\cite{Bedorf2012} and is a mix of the two previous.
+The MAC reads:
 \begin{align}
 d > \frac{s}{\theta} + \delta
 \end{align}
 where $\delta$ is the distance between the cell's geometric center and its
 center-of-charge. If the previous equation holds ($d$ is large enough) then the
 multipole expansion is used; the cell is added to the interaction list.
-
 The different MAC can be seen on figure \ref{fig:tree:mac}.
 
 % \emptyfig{MAC DIAGRAM}{fig:tree:mac}
@@ -203,7 +208,9 @@ The different MAC can be seen on figure \ref{fig:tree:mac}.
 Because not all interaction pairs are considered in the calculation of the
 force and potential, a significant speedup is obtained. Due to the tree
 traversal algorithm, the scaling passes\cite{Barnes1986,Gibbon2002,Pfalzner1996}
-from $O\pa{N^2}$ to $O\pa{N \ln{N}}$.
+from $O\pa{N^2}$ to $O\pa{N \ln{N}}$; see figure \ref{fig:tree:scaling}.
+
+\emptyfig{TREECODE SCALING}{fig:tree:scaling}
 
 A variation to the hierarchical treecode is obtained when a sufficiently large
 $\theta$ is used. In this case, the root cell (the largest one) is never
@@ -214,8 +221,6 @@ obtained\cite{Pfalzner1996}. FMM was developed by Greegard in
 1988\cite{Greengard1987} independently of Barnes' hierarchical tree method.
 While conceptually similar, its implementation details are quite different and
 has not been implemented in the current work.
-
-\emptyfig{TREECODE SCALING}{fig:tree:scaling}
 
 
 
@@ -296,8 +301,10 @@ R       & = \frac{k q_j}{\phi_0} \ex{\frac{1}{2m}} \\
 
 
 \subsubsubsection{Gaussian distribution}
-An efficient way is to treat electrons as charge distributions instead of point
-particles. As such, the electrostatic potential due to a charge particle $j$
+An efficient way to correct the close range problem is to treat electrons as
+charge distributions instead of point particles. There is thus no
+discontinuity when the two charged distribution (particles) overlap. As such,
+the electrostatic potential due to a charged particle $j$
 (of gaussian shape of width $\sigma$) at location $\vr = r \hvr$ is:
 \begin{align}
 \phi_{j}\pa{\vr} & = \frac{k q_j}{r} \erf{\frac{r}{\sigma \sqrt{2}}}
@@ -331,10 +338,10 @@ from which we get the particle width:
 \sigma & = \frac{ k q_j }{ \phi_j\pa{0} } \sqrt{ \frac{2}{\pi}}.
 \label{eqn:md:sigma}
 \end{align}
-The free parameter is thus the ``potential depth'' $\phi_j\pa{0}$. We call this
-parameter ``depth'' since the potential energy of an electron on top of an ion
-would be minimum, similar to the gravitational potential energy of a ball is
-minimum at the bottom of a well.
+The free parameter is thus the ``potential depth'' $\phi_j\pa{0}$. Even
+though $\phi_j\pa{0} > 0$ we call this parameter ``depth'' since the potential
+energy of an electron on top of an ion would be minimum, similar to the
+gravitational potential energy of a ball is minimum at the bottom of a well.
 
 Another problem that the smoothing of equations \eqref{eqn:md:smoothed:phi} and
 \eqref{eqn:md:smoothed:E} solve is the one of \textit{numerical heating} which
@@ -344,7 +351,7 @@ energy is due to a time step $\Delta t$ which is too large. Indeed, the
 discretization of equations \eqref{eqn:md:vv}, and most importantly of
 subequation \eqref{eqn:md:vv:a}, assumes the force on each particle to have a
 linear variation between time steps. If the time step is too large and the
-curvature of equation \eqref{eqn:md:smoothed:E} can be sampled by the moving
+curvature of equation \eqref{eqn:md:smoothed:E} cannot be sampled by the moving
 particle between each time steps, then the energy will not be conserved.
 
 
@@ -357,7 +364,8 @@ respective electrostatic field.
 \includegraphics[width=0.98\columnwidth]{figures/potential_shapes}
     \end{center}
     \caption{\label{fig:potential:shapes}Potential shapes and their respective
-electric field. Note the use of atomic units and $\phi_0$ = 1.5 Hartree.}
+    electric field. Note the use of atomic units and $\phi_0$ = 1.5 Hartree =
+    40.8 eV.}
 \end{figure}
 
 It was found that the potential given by the charge distribution of equation
