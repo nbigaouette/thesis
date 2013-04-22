@@ -52,12 +52,19 @@ might not be included, for example shell effects or tunnelling are neglected.
 Because DFT methods are mean field in nature, they cannot account for the large
 field fluctuations seen in strong field cluster dynamics.
 
-On the end of the methods spectrum lies the rate equations.
+Continuing on the spectrum of methods, Molecular Dynamics (MD) solves Newton
+equations of motion with any kind of forces between particles. When used in
+laser-cluster simulations, MD generally uses the instantaneous electrostatic
+(Coulomb) force between charged particles. MD codes have the advantage of being
+simple to implement and use, give macroscopic properties easily and allows a
+relatively large amount of particles to be simulated, while still allowing
+specific quantum treatment when necessary (for example for ionization). For
+these reasons it is the method of choice for use in the present work.
 
-
-
-
-
+On the end of the methods spectrum lies rate equations methods where a time
+dependence for parameters is written down and solved. Too many approximations
+are made for use in the current work. For example, they often assume an
+infinite bulk.
 
 For a detailed review of the different methods, see Ref. \cite{Fennel2010}.
 
