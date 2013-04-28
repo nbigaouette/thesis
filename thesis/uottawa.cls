@@ -7,7 +7,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+% http://en.wikibooks.org/wiki/LaTeX/Creating_Packages#Creating_your_own_class
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{uottawa}[2012/10/10 Nicolas Bigaouette]
 
 % Useful guides/links:
 %   More Info
@@ -25,6 +27,7 @@
 %   General Regulations
 %       http://www.grad.uottawa.ca/Default.aspx?tabid=1807&msId=21
 
+\NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{uottawa}[2012/10/10 Nicolas Bigaouette]
 
