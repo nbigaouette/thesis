@@ -272,4 +272,3 @@
     \subsection{References}                     % Add a subsection instead
     \ReferencesGeneric{#1}
 }
-
