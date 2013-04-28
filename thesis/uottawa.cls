@@ -28,9 +28,7 @@
 
 \ProvidesClass{uottawa}[2012/10/10 Nicolas Bigaouette]
 
-
 % Bibliography's style
-% \bibliographystyle{plain}
 \bibliographystyle{uottawa}
 
 % ************************************************************************************
@@ -59,7 +57,6 @@
 % Load the ``article'' class with the right options
 % \LoadClass[12pt,letterpaper\extraoptions]{article}
 \LoadClass[12pt,letterpaper]{article}
-
 
 % Define the margins
 \usepackage[left=3.25cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
@@ -145,35 +142,6 @@
         [\vspace*{1cm}]
 }
 
-
-%%%%
-% Voir http://forums.gentoo.org/viewtopic-t-202973-highlight-fonts+latex.html
-% \usepackage{mathptmx}
-% \usepackage[scaled=.90]{helvet}
-% \usepackage{courier}
-%%%%
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %                       Page format
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \textheight=21cm
-% \textwidth=17.0cm
-% \oddsidemargin=0cm
-% \evensidemargin=0cm
-% \topmargin=0cm
-% \headsep=20pt
-% \topskip=10pt
-% \large
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% % These adjust how LaTeX puts figures onto pages with text. These values
-% % reduce the likelihood that a figure will end up by itself on a page.
-% \renewcommand{\topfraction}{0.85}
-% \renewcommand{\textfraction}{0.1}
-% \renewcommand{\floatpagefraction}{0.75}
-
-
-% \renewcommand{\labelenumi}{\alph{enumi}) }
 
 % Set title and author from arguments to class
 \title{\uottawa@title}
