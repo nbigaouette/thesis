@@ -30,8 +30,8 @@ which only depends on the distance between particles. Figure
 \ref{fig:md:vectors} shows the vectors definition used throughout this work. We
 define particle $i$ the particle we are interested in (for example, the
 particle we are calculating the force on), and particle $j$ the particle that
-is generating the field or potential that is measured at location $i$. We thus
-have:
+is generating the field or potential that is measured at location of particle
+$i$. We thus have:
 \begin{align}
 \vr_{j} + \vr_{j,i} & = \vr_{i} \\
 \vr_{j,i} & = \vr_{i} - \vr_{j}
@@ -52,8 +52,8 @@ have:
 \end{figure}
 
 
-Equation \eqref{eqn:md:newton} can be time integrated using the
-Velocity-Verlet (VV) scheme:
+Equation \eqref{eqn:md:newton} can be time integrated for every particles
+$i$ using the Velocity-Verlet~(VV) scheme:
 \begin{subequations}
 \begin{align}
 \vx_{i}^{\pa{n+1}} & = \vx_{i}^{\pa{n}} + \vv_{i}^{\pa{n}} \Delta t +
@@ -65,11 +65,11 @@ Velocity-Verlet (VV) scheme:
 \label{eqn:md:vv}
 \end{subequations}
 where $\Delta t$ is the integration time step, $\vx_{i}$ the position vector,
-$\vv_{i}$ the velocity vector and $\va_{i}$ the acceleration vector of
-particle $i$, all evaluated at either the time step $n$ or the next one $n+1$.
+$\vv_{i}$ the velocity vector and $\va_{i}$ the acceleration vector, all evaluated
+for particle $i$ at either the time step $n$ or the next one $n+1$.
 Equations \eqref{eqn:md:vv}, when applied to every particles $i$ of the system,
-can thus be used to propagate in time the whole cluster. Note that many
-variation of equations \eqref{eqn:md:vv} are possible but all are equivalent.
+can thus be used to propagate in time the whole cluster. Note that some
+variations of equations \eqref{eqn:md:vv} are possible but are equivalent.
 
 Every particle in the system stores its position $\vx^{\pa{n}}$, its velocity
 $\vv^{\pa{n}}$ and also the total force acting on it $\vF^{\pa{n}}$. This total
@@ -154,8 +154,8 @@ Then, instead of iterating through all particles for the calculation of the
 force on the particle of interest $i$, the tree is traversed. If the cell is
 ``far enough'' (with a given definition of far enough, discussed next) it can
 be added to the a cell interaction list for later processing. In the case of
-the cell being to close, it must be resolved into its  eight \textit{daughter}
-cells. The daughter cells containing particles are visited, while the empty
+the cell being too close, it must be resolved into its  eight \textit{daughter}
+cells (or four in 2D). The daughter cells containing particles are visited, while the empty
 ones are ignored. The leaf cells can be reached using this process; in this
 case, the particles in the leaves are considered close enough to the particle
 of interest $i$ and a direct interaction is wanted. The leaf particle will thus
@@ -177,10 +177,13 @@ group of particles contained inside the cell is approximated through the cell's
 moments and the cell is added to the cells interaction list. At the opposite, if
 the ratio is larger than $\theta$, the cell will be resolved into its daughters.
 In the limit where $\theta$ reaches zero, no more cells are added to the
-cells interaction list (they are all resolved) and the MD algorithm emerges.
+cells interaction list (they are all resolved) and the MD algorithm emerges, though
+with a large overhead due to the tree construction and traversal.
 
 Unfortunately, this MAC can cause huge errors when large amount of charge is
-present in a corner of a cell. In this case, a cell could be added to the cell
+present in a corner of a cell\cite{Pfalzner1996}.
+% Page 85 (97), figure 4.13
+In this case, a cell could be added to the cell
 interaction list even though the error introduced by the multipole expansion is
 significant. Different MAC have thus been proposed to mitigate this problem.
 The \textit{minimum distance} MAC replaces the distance $d$ in the MAC with the
@@ -233,7 +236,7 @@ An important problem to consider is the close range behaviour of equation
 able to classically recombine to an ion under the atomic energy level. To
 prevent the later, electron recombination, as described in section
 \ref{section:intro:clusters:heating}, can be enabled. But this does not prevent
-the divergence of the Coulomb force. Instead, the problem is resolved by
+the divergence of the Coulomb force at $r = 0$. Instead, the problem is resolved by
 changing the shape of equation \eqref{eqn:md:coulomb:F} at close range.
 Different \textit{smoothing potentials} can be used to prevent the
 discontinuity of the Coulomb potential (or force).
@@ -377,21 +380,26 @@ seen on figure \ref{fig:potential:shapes}, the charge distribution curve
 (magenta) does not have a discontinuity and is therefore the prefered one.
 
 To validate the selection of the smoothing curve, photo-ionization was forced
-on a single atom and the total energy tacked. In this ionization case, the
+on a single atom and the total energy calculated. In this ionization case, the
 electron comes out of the ion with a maximum of kinetic energy. It is thus a
 good candidate to test if numerical heating is present or not. If the total
 energy is conserved, then the selected parameters (potential depth, smoothing
 curve and time step) can be used with good confidence. Figure
-\ref{fig:potential:heating} shows numerical heating.
+\ref{fig:potential:heating} shows the energy variation as a function
+of potential depth and time step.
 
 
 \emptyfig{NUMERICAL HEATING}{fig:potential:heating}
 
 
 \subsection{Implementation details}
+Notes:
+\begin{itemize}
+\item Lookup tables
+\end{itemize}
 
 Our group previously used Barnes and Hut treecode implementation,
-freely available\cite{treecode} through the GPL version 2. The code was adapted
+freely available\cite{treecode} through the GPL version 2 license. The code was adapted
 to simulate charged particles (Coulomb force) instead of masses (gravitational
 force) with some ionization routines added (see for example reference
 \cite{Jungreuthmayer2005}). While reducing development time by re-using already
@@ -400,7 +408,7 @@ implementation written in the C language, usage of global variables
 throughout the code, multiple coding styles from different people throughout
 the years, lack of vision, lack of revision control system to give the freedom
 of deleting code from the active version without loosing the ability to roll
-back, many subtle and important bugs, stability issues, etc.) pushed the author
+back, many subtle and important bugs, stability issues, etc.) pushed me
 to restart from scratch. This allowed using modern development techniques to be
 used. For example, all development was done through a revision control system
 (subversion\cite{svn} at first, then switched to git\cite{git}) in the C++
@@ -409,7 +417,7 @@ of different parts of the code which could then be tested and validated
 individually. This gave better flexibility to the code, a required asset to
 push further the development of features.
 
-A substantial number of MD packages are freely available and were
+A substantial number of MD packages are freely available and
 their usage was considered instead of re-implementing a new one from scratch.
 Examples are GROMACS\footnote{GROMACS:
 \url{http://www.gromacs.org/}}, NAMD\footnote{NAMD:
@@ -423,7 +431,7 @@ assume a constant number of particles, the present work required creating
 Controlling the MD part of the code allowed better integration of the
 ionization aspects.
 
-Other MD packages were not mature enough or simply non-existent at the time.
+Additionally, other MD packages were not mature enough or simply non-existent at the time.
 For example the largely used HOOMD-blue\footnote{HOOMD-blue:
 \url{http://codeblue.umich.edu/hoomd-blue/}} which uses extensively
 Nvidia GPUs released its first version (v0.6.0) in February 2008.

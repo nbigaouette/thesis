@@ -24,12 +24,12 @@ support some generic features shared between the two. These libraries are:
     the allocation succeeded. Will also keep track of the amount of
     memory allocated and allow setting a maximum value, preventing
     over-allocation due to bugs or user errors. Can also return the binary
-    representation of a numbers as a string for better debugging.
+    representation of a number as a string for easier debugging.
 \item io.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/io}}:
-    Input and Output library. Wrappers around TinyXML library\cite{tinyxml} for
-    reading input file. Wrappers around NetCDF\cite{netcdf} for self-contained
-    output files, used for post-processing and simulation snapshots.
+    Input and Output library. Includes wrappers around TinyXML library\cite{tinyxml} for
+    reading input file, wrappers around NetCDF\cite{netcdf} for self-contained
+    output files, used for both post-processing and simulation snapshots.
 \item libpotentials.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/libpotentials}}:
     Functions implementing and abstracting different potential shapes as
@@ -44,7 +44,8 @@ support some generic features shared between the two. These libraries are:
     best GPU available on a workstation and locking it to prevent
     other simulations from using it. Contains an array abstraction to ease the
     transfer of data from the host (main memory) to device (GPU memory) and
-    vice-versa.
+    vice-versa. Also includes a SHA512 checksum check to validate memory
+    and detect any issue during transfers.
 \item get\_libraries.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/get_libraries}}:
     Simple script that will download all the previous required libraries or

@@ -27,7 +27,7 @@ really shared by the two ions, can we classically let it evolve inside the
 cluster environment?
 
 These questioned pushed us to look at the quantum aspects in more details. Many
-different tools exist to calculate the ground state of system, even with
+different tools exist to calculate the ground state of a system, even with
 multiple electrons, as describe previously. Additionally, excited states are
 capital in ACI and as such we wanted a tool that could give us information not
 only on the ground state but also on excited states.
@@ -113,8 +113,8 @@ wavefunction $\psi$ inside a potential $V$:
 t}}
 \label{eqn:schrodinger:si}
 \end{align}
-To ease the calculation, let's switch to atomic units where $\hbar = 1$ and $m
-= 1$:
+To ease the calculation, let's switch to atomic units where $\hbar = 1$, $m
+= 1$ and $e_0 = 1$:
 \begin{align}
 \im \delt{  } \ket{\psi\pa{\vr, t}}
     & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr, t}}
@@ -155,7 +155,7 @@ Equation \eqref{eqn:schrodinger:au} can now be solved either in real-time or
 imaginary-time, the former being explained first.
 
 Let's separate the real and imaginary components of equation
-\eqref{eqn:schrodinger:au} (simplifying the notation):
+\eqref{eqn:schrodinger:au} (and simplifying the notation):
 \begin{align}
 \im \delt{  } \pa{ \psi_R + \im \psi_I}
     & = \pa{-\frac{1}{2} \laplacian{} + V }
@@ -227,7 +227,7 @@ cell; they are defined at the same location as shown on figure
 \begin{figure}
  \centering
  \includegraphics[width=0.8\columnwidth]{figures/mockups/yee_vs_qfdtd}
- \caption{Yee cell vs QFDTD cell}
+ \caption{Yee cell used in electrodynamic FDTD vs QFDTD cell\newline FIXME: $\phi$ is a scalar field!!!}
  \label{fig:qfdtd:cell}
 \end{figure}
 
