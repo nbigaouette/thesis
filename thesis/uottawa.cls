@@ -36,6 +36,8 @@
 %   Options to pass to the class
 % ************************************************************************************
 
+\RequirePackage[utf8]{inputenc}
+
 % \RequirePackage{kvoptions-patch}
 \RequirePackage{kvoptions}
 
