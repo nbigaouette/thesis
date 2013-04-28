@@ -59,25 +59,26 @@
 \LoadClass[12pt,letterpaper]{article}
 
 % Define the margins
-\usepackage[left=3.25cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RequirePackage[left=3.25cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
 
 % Line spacing
 \linespread{1.3}    % ``One and a half''
 %\linespread{1.6}    % ``Double''
 
-\usepackage{ifthen}
-\usepackage{ifpdf}
+\RequirePackage{ifthen}
+\RequirePackage{ifpdf}
 \ifpdf
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % PDF compilation with "pdflatex"
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \usepackage[pdftex]{graphicx}
+    \RequirePackage[pdftex]{graphicx}
     \def\pdfshellescape{1}
     \pdfcompresslevel=9
     %%%
     % PDF options
     % See http://barrault.free.fr/ressources/rapports/pdflatex/
-    \usepackage[pdftex,
+    \RequirePackage[pdftex,
         bookmarks = true,
         bookmarksnumbered = true,
         bookmarksopen = true,
@@ -91,18 +92,18 @@
         plainpages = false,pdfpagelabels
     ]{hyperref}
     % Figure hyperlink to top of figure, not caption
-    \usepackage[all]{hypcap}
+    \RequirePackage[all]{hypcap}
 \else
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % DVI compilation with "latex"
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \usepackage[dvips]{graphicx}
+    \RequirePackage[dvips]{graphicx}
     \newcommand{\url}[1]{{\color{blue}#1}}
 \fi
 
-\usepackage[toc,page]{appendix}
+\RequirePackage[toc,page]{appendix}
 
-\usepackage{fancyhdr}
+\RequirePackage{fancyhdr}
 \renewcommand{\headrule}{}  % Disable the header ruler
 \newcommand{\pagenumberstyle}{
 \lhead{}
@@ -117,10 +118,10 @@
 % Allow to include PDF files directly
 % See http://mirror.its.dal.ca/ctan/macros/latex/contrib/pdfpages/pdfpages.pdf
 % (Need to be _after_ hyperref)
-\usepackage{pdfpages}
+\RequirePackage{pdfpages}
 \includepdfset{pagecommand=\pagenumberstyle}   % Include page number too
 
-\usepackage{titlesec}
+\RequirePackage{titlesec}
 \newcommand{\SectionStyleContent}{
     \titleformat
         {\section}
