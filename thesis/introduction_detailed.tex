@@ -2,65 +2,100 @@
 % Describe in more details the work done: The physics, the models. The specific
 % litterature search goes here.
 
-\subsection{Laser-Cluster interaction}
+\section{Laser-Cluster interaction}
+
+\subsection{Clusters}
 Clusters of atoms have been in use for a longer time than we might normally
 think. For example, gold clusters were used in ancient Rome for their optical
-properties where their size could be controlled to produce different glass colors.
+properties where their size could be controlled to produce different glass colours.
 Gustav Mie was the first to theoretically describe the interaction of light
 with (gold) ``spheres'' in 1908, explaining the cluster size dependence of the
 light absorption. During the last part of the twentieth century, the discovery of
 C$_{60}$ fullerenes marked the real beginning of cluster studies.
 
+As the Roman saw, the size of clusters is a key property. Techniques to fully
+control the size of produced clusters allowed a wide range of studies and
+applications. The advance of high-power and short duration lasers opened the
+door for further interesting ultra-fast studies. With femtosecond
+(1 fs = 10$^{-15}$ s) lasers it became possible to study electron motion,
+similarly to a camera flash that captures a moving scene. Many femtosecond lasers
+have a wavelength of 800 nm in the infrared (IR) and cluster have been studied
+thoroughly with this ``long'' wavelength. Investigation of energetic
+electrons (keV) or highly charged ions (MeV) emission, X-rays production or even
+table-top neutron sources were performed since the 1990s\cite{Haberland1994,Brabec2009}.
 
-\begin{itemize}
-\item Cluster studies done for many years
-\item Shown interesting phenomena
-    \begin{itemize}
-    \item Enhanced absorption
-    \item Nuclear processes
-    \item Others
-    \item Etc.
-    \end{itemize}
-\item Interesting because:
-    \begin{itemize}
-    \item Bridge the gap between single atom and solids
-    \item Test of light-matter interaction
-    \item Explosions products accessible
-        \begin{itemize}
-        \item Not the case with solids/bulks
-        \item Provides detailed info about dynamics
-        \end{itemize}
-    \item Numerical studies possible
-    \end{itemize}
-\item Light sources moving towards lower wavelengths
-    \begin{itemize}
-    \item What is important at these wavelengths?
-    \item Talk about X-rays here, but not too much
-    \item Experiments at DESY
-    \item Experiments at SLAC
-    \end{itemize}
-\end{itemize}
+Clusters are invaluable tools because they bridge the gap between single atoms
+and solids. Their high density allows them to exhibit collective effects similarly
+to bulk materials while their small icosahedral\cite{Martin1996} size increases
+their surface to volume ratio.
+At the smallest range, clusters can be used as models for small molecules and
+at the opposite they still present interesting optical properties at 10,000
+atoms\cite{Reinhard2004}.
+
+Additionally to their great size scalability, clusters explosion by-products
+after interaction with a strong laser field are accessible, revealing detailed
+information about the dynamics. For example, time-of-flight (TOF) mass
+spectrometry can reveal the ions charge state spectrum which reveals the amount
+of energy absorbed from the laser pulse. This kind of data is not accessible
+in the case of laser-bulk interaction since the majority of matter stays on the
+solid.
+
+The most important characteristic of laser-cluster interaction for the present
+work is the fact that clusters can be studied numerically. Full quantum resolution
+is not possible even for clusters consisting of a couple of atoms, while on the
+other range of the methods spectrum rates equations and (nano)plasma models are
+too macroscopic to reflect the large fields gradient present during cluster
+dynamics\cite{Fennel2010}. The tool of choice for this problem is Molecular Dynamics
+(MD) where dynamics are treated classically; Newton's equations of motion are
+solved at each time steps and quantum effects are included using specific rates.
+
+For these reasons, clusters are invaluable tools to study light and matter
+interaction.
+
+Lately, laser light sources have been moving to shorter wavelengths; Vacuum
+Ultra-Violet (VUV), Extreme Ultra-Violet (XUV), soft X-Rays and even hard X-rays.
+In Free Electron Lasers (FEL), relativistic electrons are sent through an
+ondulator in which they emit a coherent pulse, tunable in wavelength from
+microwaves to X-rays\cite{Brabec2009,Ackermann2007a} at high intensities.
+
+At shorter wavelengths, the ponderomotive force of the laser field on electrons
+decreases as it is inversely proportional to the laser frequency (squared).
+Electrons will thus not have a large quiver motion as opposed to the IR regime
+and the proportion of the different energy transfer mechanisms from the laser
+to the cluster changes. For example, tunnel ionization disappear while single
+photons can now directly ionize atoms or even ions.
+
+Major FEL facilities are in used today. DESY's FLASH
+(\textbf{F}ree-electron-\textbf{Las}er in \textbf{H}amburg) and
+SLAC's Linac Coherent Light Source (LCLS) in Stanford ...
+\textbf{FIXME: Finish FLASH and LCLS experiments}
 
 
-As the Roman saw, the size of clusters is a key properties.
+% Types of bounding:
+% \begin{itemize}
+% \item Ionic
+% \item Covalent
+% \item Metal
+% \item van der Waals
+% \end{itemize}
+% More important to the present work is the strong absorption of laser energy
+% by rare-gas clusters.
 
 
 
-\subsubsection{Clusters}
-\label{section:intro:clusters:clusters}
-
-Clusters of atoms are an extremely useful tool to study laser-matter
-interaction. They are experimentally easy to produce since many
-years\cite{Haberland1994}. Their size and constitution can be varied almost at
-will \cite{Martin1996}. Because of their scalability\cite{Reinhard2004}, they
-are the perfect test-bed for the study of nanoscale objects. New coherent light
-sources, in this case FEL, now gives us the needed tools to probe these. While
-the infrared (IR) regime has been thoroughly studied\cite{Fennel2010}, shorter
-wavelengths -- Vacuum Ultra-Violet (VUV), Extreme Ultra-Violet (XUV), soft
-X-Rays, etc. -- are still relatively unexplored fields.
+are still relatively unexplored fields.
 
 
-\subsubsection{Energy Absorption Mechanisms}
+
+
+
+
+
+
+
+
+
+\subsection{Energy Absorption Mechanisms}
 \label{section:intro:clusters:heating}
 
 Notes:
@@ -77,7 +112,7 @@ laser wavelength combination), I will concentrate on the VUV and XUV
 regime mostly.
 
 
-\subsubsubsection{Single Photon Ionization}
+\subsubsection{Single Photon Ionization}
 Notes:
 \begin{itemize}
 \item Cite: Wabnitz2002, Young2010, Bosted2010, Murphy2008
@@ -136,7 +171,7 @@ pulses.
 
 
 
-\subsubsubsection{Impact Ionization}
+\subsubsection{Impact Ionization}
 Impact ionization is also be described in terms of cross-sections. These
 cross-sections are normally obtained from the semi-empirical Lotz
 formula\cite{Lotz1967}:
@@ -200,7 +235,7 @@ current work has $\gamma \gg 1$ and as such, tunnel ionization is not
 considered.
 
 
-\subsubsubsection{Inverse Bremsstrahlung}
+\subsubsection{Inverse Bremsstrahlung}
 Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
 where an electron emits a photon when deflected, either by a heavier ion in the
 case of plasma or by magnetic fields in the case of synchrotrons. IBH plays an
@@ -212,7 +247,7 @@ strong as in the IR regime, IBH is still important in the VUV\cite{Krainov2000}.
 
 
 
-\subsubsubsection{Other mechanisms}
+\subsubsection{Other mechanisms}
 Other mechanisms were proposed in lights of results from recent experiments at
 FEL installations\cite{Wabnitz2002}. Because the previous mechanisms cannot
 explain by themselves
@@ -255,7 +290,7 @@ $\ten{1.5}{13}$ and $\ten{7}{13}$ W/cm$^2$ respectively when simulating
 Xe$_{1,000}$ clusters.
 
 
-\subsubsubsubsection{Augmented Collisional Ionization}
+\subsubsubsection{Augmented Collisional Ionization}
 The previous models are without doubt interesting, but they were developed with
 the goal of describing Wabnitz's 2002 experiments at FLASH-DESY. In 2010, Bosted
 re-calibrated the intensity used during the 2002 experiments.
