@@ -7,38 +7,41 @@ support some generic features shared between the two. These libraries are:
 \item timing.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/timing}}:
     Timing routines used to measure running time, estimated time of arrival
-    (ETA), code profiling, etc.
+    (ETA), code profiling, etc. 1,300 lines of C++ code.
 \item stdcout.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/stdcout}}:
     Logging features allowing saving the output of any simulations to a
-    (compressed) log file.
+    (compressed) log file. 500 lines of C++ code.
 \item prng.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/prng}}:
     Pseudo-random number generator (PRNG) library. Wrapper around
     dSFMT\cite{prng2009}, a SIMD-oriented Fast Mersenne Twister implementation.
     Defines easy to use PRNG functions, distributions, seed, etc. Keeps track of
     the seed and how many times pseudo-random numbers were generated, allowing
-    to replay the series in case of simulation reloading.
+    to replay the series in case of simulation reloading. 500 lines of C++ code
+    (not counting dSFMT).
 \item memory.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/memory}}:
     Wrappers around malloc() and calloc() that will automatically check that
     the allocation succeeded. Will also keep track of the amount of
     memory allocated and allow setting a maximum value, preventing
     over-allocation due to bugs or user errors. Can also return the binary
-    representation of a number as a string for easier debugging.
+    representation of a number as a string for easier debugging. 1,200 lines of
+    C++ code.
 \item io.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/io}}:
     Input and Output library. Includes wrappers around TinyXML library\cite{tinyxml} for
     reading input file, wrappers around NetCDF\cite{netcdf} for self-contained
     output files, used for both post-processing and simulation snapshots.
+    2,950 lines of C++ code (not counting TinyXML).
 \item libpotentials.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/libpotentials}}:
     Functions implementing and abstracting different potential shapes as
-    described in section \ref{section:intro:md:potentials}.
+    described in section \ref{section:intro:md:potentials}. 4,300 lines of C++ code.
 \item ionization.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/ionization}}:
     All ionization routines described in section
-    \ref{section:intro:clusters:heating}
+    \ref{section:intro:clusters:heating}. 18,000 lines of C++ code.
 \item oclutils.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/oclutils}}:
     Library to ease the use of OpenCL devices. Allows listing and selecting the
@@ -46,12 +49,12 @@ support some generic features shared between the two. These libraries are:
     other simulations from using it. Contains an array abstraction to ease the
     transfer of data from the host (main memory) to device (GPU memory) and
     vice-versa. Also includes a SHA512 checksum check to validate memory
-    and detect any issue during transfers.
+    and detect any issue during transfers. 3,300 lines of C++ code.
 \item get\_libraries.git\footnote{ \url{
     https://gitlab.cphoton.science.uottawa.ca/nbigaouette/get_libraries}}:
     Simple script that will download all the previous required libraries or
     update to the lasted version from git, compile them and install them in the
-    user's directory.
+    user's directory. 240 lines of bash code.
 \end{itemize}
 A detailed guide on the compilation and usage of the simulation package can be
 read in appendix \ref{appendix:code}.
