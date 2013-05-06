@@ -7,29 +7,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% http://en.wikibooks.org/wiki/LaTeX/Creating_Packages#Creating_your_own_class
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uottawa}[2013/05/05 Nicolas Bigaouette]
-
-% ******************************************************************************
-% ******************************************************************************
-% http://ctan.mirror.rafal.ca/macros/latex/contrib/oberdiek/kvoptions.pdf
-\RequirePackage{kvoptions}
-\RequirePackage{kvoptions-patch}
-
-% Package's options
-\DeclareStringOption[Thesis' title]{title}      % Thesis' title
-\DeclareStringOption[Thesis' author]{author}    % Thesis' author
-\ProcessKeyvalOptions*
-\relax
-
-% Load the ``article'' class with the right options
-% \LoadClass[12pt,letterpaper\extraoptions]{article}
-\LoadClass[12pt,letterpaper]{article}
-% ******************************************************************************
-% ******************************************************************************
-
-
 % Useful guides/links:
 %   More Info
 %       Most detailed information of formatting
@@ -47,19 +24,58 @@
 %       http://www.grad.uottawa.ca/Default.aspx?tabid=1807&msId=21
 
 
+% http://en.wikibooks.org/wiki/LaTeX/Creating_Packages#Creating_your_own_class
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{uottawa}[2013/05/05 Nicolas Bigaouette]
+
+% ******************************************************************************
+% ******************************************************************************
+% http://ctan.mirror.rafal.ca/macros/latex/contrib/oberdiek/kvoptions.pdf
+% Package's options
+\RequirePackage{kvoptions}
+\RequirePackage{kvoptions-patch}
+\DeclareStringOption[Thesis' title]{title}      % Thesis' title
+\DeclareStringOption[Thesis' author]{author}    % Thesis' author
+\DeclareBoolOption{draft}
+\DeclareComplementaryOption{final}{draft}
+\ProcessKeyvalOptions*
+\relax
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define booleans flags draft/final
+\RequirePackage{ifthen}
+\newboolean{isdraft}
+\newboolean{isfinal}
+\ifuottawa@draft
+\setboolean{isdraft}{true}
+\setboolean{isfinal}{false}
+\else
+\setboolean{isdraft}{false}
+\setboolean{isfinal}{true}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ``Inherit'' from the article class
+\LoadClass[12pt,letterpaper,draft=\boolean{isdraft}]{article}
+
 % ******************************************************************************
 % ******************************************************************************
 %        Start of packages inclusion
 % ******************************************************************************
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Use UTF-8
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography's style
 \bibliographystyle{uottawa}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Define the margins
 \RequirePackage[left=3.25cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
 
@@ -67,7 +83,6 @@
 \linespread{1.3}    % ``One and a half''
 %\linespread{1.6}    % ``Double''
 
-\RequirePackage{ifthen}
 \RequirePackage{ifpdf}
 \ifpdf
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,8 +117,12 @@
     \newcommand{\url}[1]{{\color{blue}#1}}
 \fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Include an appendix and put it in the Table of Content
 \RequirePackage[toc,page]{appendix}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Change headers and footers, page number location, etc.
 \RequirePackage{fancyhdr}
 \renewcommand{\headrule}{}  % Disable the header ruler
 \newcommand{\pagenumberstyle}{
@@ -116,12 +135,20 @@
 }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Allow to include PDF files directly
 % See http://mirror.its.dal.ca/ctan/macros/latex/contrib/pdfpages/pdfpages.pdf
 % (Need to be _after_ hyperref)
+\ifuottawa@draft
+\RequirePackage[draft]{pdfpages}
+\else
 \RequirePackage{pdfpages}
 \includepdfset{pagecommand=\pagenumberstyle}   % Include page number too
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Different kind of section titles
 \RequirePackage{titlesec}
 
 % ******************************************************************************
@@ -140,10 +167,16 @@
 \setcounter{secnumdepth}{3} % Depth of section numbering
 \setcounter{tocdepth}{4}    % Depth of sections to include in Table of Content
 
+ %Define deeper levels of sections
 \newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
 \newcommand{\subsubsubsubsection}[1]{\subparagraph{#1}\mbox{}\\}
 
+
 % ******************************************************************************
+% ******************************************************************************
+%       Define new commands for the different sections
+% ******************************************************************************
+
 % Generic sections
 \newcommand{\SectionStyleContent}{
     \titleformat
