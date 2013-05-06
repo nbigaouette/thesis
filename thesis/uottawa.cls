@@ -9,7 +9,26 @@
 
 % http://en.wikibooks.org/wiki/LaTeX/Creating_Packages#Creating_your_own_class
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{uottawa}[2012/10/10 Nicolas Bigaouette]
+\ProvidesClass{uottawa}[2013/05/05 Nicolas Bigaouette]
+
+% ******************************************************************************
+% ******************************************************************************
+% http://ctan.mirror.rafal.ca/macros/latex/contrib/oberdiek/kvoptions.pdf
+\RequirePackage{kvoptions}
+\RequirePackage{kvoptions-patch}
+
+% Package's options
+\DeclareStringOption[Thesis' title]{title}      % Thesis' title
+\DeclareStringOption[Thesis' author]{author}    % Thesis' author
+\ProcessKeyvalOptions*
+\relax
+
+% Load the ``article'' class with the right options
+% \LoadClass[12pt,letterpaper\extraoptions]{article}
+\LoadClass[12pt,letterpaper]{article}
+% ******************************************************************************
+% ******************************************************************************
+
 
 % Useful guides/links:
 %   More Info
@@ -27,45 +46,22 @@
 %   General Regulations
 %       http://www.grad.uottawa.ca/Default.aspx?tabid=1807&msId=21
 
-\NeedsTeXFormat{LaTeX2e}
 
-\ProvidesClass{uottawa}[2012/10/10 Nicolas Bigaouette]
+% ******************************************************************************
+% ******************************************************************************
+%        Start of packages inclusion
+% ******************************************************************************
+
+% Use UTF-8
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
 
 % Bibliography's style
 \bibliographystyle{uottawa}
 
-% ************************************************************************************
-% ************************************************************************************
-%   Options to pass to the class
-% ************************************************************************************
-
-\RequirePackage[utf8]{inputenc}
-
-% \RequirePackage{kvoptions-patch}
-\RequirePackage{kvoptions}
-
-% % Enable the ``draft'' option to uottawa's class
-% \newcommand{\extraoptions}{}
-% \DeclareOption{draft}{\renewcommand{\extraoptions}{,draft}}
-% \DeclareStringOption{draft}{\renewcommand{\extraoptions}{,draft}}
-% \DeclareBoolOption{draft}
-\DeclareBoolOption{draft}
-\DeclareComplementaryOption{final}{draft}
-
-\DeclareStringOption{title}
-\DeclareStringOption{author}
-
-\ProcessKeyvalOptions*
-% ************************************************************************************
-% ************************************************************************************
-
-% Load the ``article'' class with the right options
-% \LoadClass[12pt,letterpaper\extraoptions]{article}
-\LoadClass[12pt,letterpaper]{article}
 
 % Define the margins
 \RequirePackage[left=3.25cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
-
 
 % Line spacing
 \linespread{1.3}    % ``One and a half''
@@ -127,6 +123,28 @@
 \includepdfset{pagecommand=\pagenumberstyle}   % Include page number too
 
 \RequirePackage{titlesec}
+
+% ******************************************************************************
+% ******************************************************************************
+%        End of packages inclusion
+% ******************************************************************************
+
+
+% Set title and author from arguments to class
+\title{\uottawa@title}
+\author{\uottawa@author}
+
+% Disable showing the date
+\date{}
+
+\setcounter{secnumdepth}{3} % Depth of section numbering
+\setcounter{tocdepth}{4}    % Depth of sections to include in Table of Content
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand{\subsubsubsubsection}[1]{\subparagraph{#1}\mbox{}\\}
+
+% ******************************************************************************
+% Generic sections
 \newcommand{\SectionStyleContent}{
     \titleformat
         {\section}
@@ -137,6 +155,7 @@
         {}
         [\vspace*{3cm}]
 }
+% ******************************************************************************
 \newcommand{\SectionStylePre}{
     \titleformat
         {\section}
@@ -147,21 +166,6 @@
         {}
         [\vspace*{1cm}]
 }
-
-
-% Set title and author from arguments to class
-\title{\uottawa@title}
-\author{\uottawa@author}
-
-% Disable showing the date
-\date{}
-
-
-\setcounter{secnumdepth}{3} % Depth of section numbering
-\setcounter{tocdepth}{4}    % Depth of sections to include in Table of Content
-
-\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
-\newcommand{\subsubsubsubsection}[1]{\subparagraph{#1}\mbox{}\\}
 
 % ******************************************************************************
 % Title page
