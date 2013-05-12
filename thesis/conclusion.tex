@@ -108,13 +108,67 @@ integer-referenced memory location through a cumulative sum of a source function
 enforcing the monotonicity required. Due to the way the mapping function is
 obtained, any source function can be used, giving great flexibility to the
 mapping process. It is thus possible to concentrate grid points around centres
-of interest, in this case ions' location.
+of interest, in this case ions' location. Additionally to the nonlinear mapping,
+both real-time and imaginary-time methods were implemented, allowing to compare
+the two through the same package. In the case of the imaginary method, a new
+way to obtain the eigenstates was described and successively used on the
+hydrogen atom and the simplest molecule: hydrogen cation molecule (H$_{2}^{+}$).
+Using the real-time method, it was possible to see ten excited states. This
+publication allowed to validate the whole technique, including the nonlinear
+mapping, and compare with known values from experiments. Going forward, it will
+be possible to validate and study some approximations used in the MD package,
+for example, what is the influence of the shape of $V_b$ used as the cluster
+environment? How much is affected an electron wavefunction by a neighbouring
+ion?
 
+The ACI model, based on electron impact cross-sections, is independent of the
+regime and does not depend on the laser parameters (pulse duration, wavelength,
+intensity, etc.) Transition cross-sections though are unique to each elements
+and must be calculated and added to the simulation package before use. Argon
+and Xenon cross-sections where generated and are accessible. It is thus
+interesting to apply the model to different regimes. Other models were applied
+to explain Wabnitz \textit{et al.}'s 2002 VUV-Xenon experiment at FLASH but when the
+Bostedt \textit{et al.} published in 2010 a revised intensity (to lower values) it was
+though that these models might not be able to reproduce the experimental results
+in light of the new, lower intensity. We decided to revisit the 2002 100 nm
+experiment in light of our ACI model at the revised, lower intensity.
 
+Thanks to the OpenCL implementation (and its 80 times speedup), it was possible
+to acquire significant statistics over a wide range of intensities, effectively
+reproducing the clusters distribution in the laser focus spacial profile. This
+is an important aspect to reproduce the charge state spectrum seen in experiment
+as the clusters normally do not all fall exactly at the laser focus' peak
+intensity.
 
+Interestingly, even at the 2.5 times lower intensity ($\ten{8}{12}$~W/cm$^{2}$
+vs. $\ten{2}{13}$~W/cm$^{2}$), the experiment's high charge states spectrum
+could be reproduced with ACI, something other models couldn't do. ACI had to
+be enabled to match the spectrum of the smallest clusters (Xe$_{90}$), both
+for the dominant charge state (Xe$^{1+}$) as the maximum charge state (Xe$^{4+}$).
+The change from dominant Xe$^{1+}$ to Xe$^{2+}$ was seen to take place at
+Xe$_{1415}$ clusters in the simulations, something that couldn't be compared
+directly to the experiment. Nevertheless, this transition required ACI to be
+enabled, another indication that it plays a major role in cluster dynamics.
+Furthermore, the largest clusters in the 2002 experiment was Xe$_{90,000}$, a
+cluster size not possible with traditional MD simulations. A parallelized
+version of the MD algorithm could be implemented at a later time to explore such
+large clusters, or the tree algorithm could be used but would require more
+rigorous testing and validation. In any case, a lot of work still need to be
+invested to reach these cluster sizes. Another approach could even be taken,
+mainly switching from a direct particle-to-particle (PP) algorithm to a more
+scalable particle-mesh (PM) or even particle-particle, particle-mesh (P3M)
+technique. In these techniques, particles interact through a grid on which their
+(static or dynamic) field is propagated, resulting in an algorithm that scales
+at $O\pa{N_c^3}$ for the grid cells and $O\pa{N_p}$ for the number of particles,
+a lot better than the $O\pa{N_p^2}$ scaling of MD simulations.
 
+An interesting aspect of MD simulations is the effect of the potential depth
+used. While many authors set this depth as the first ionization potential, it
+is not clear what exact values should be used. As was shown in the last article,
+this depth can have a strong influence on the cluster dynamics. In addition, a
+different potential shape for the ions (other than Coulombic) could be used to
+match the more realistic atomic potential of a mean field approximation. These
+kind of potentials were used in rate equations calculations, but could also be
+included in MD simulations.
 
-
-
-100 nm paper
 
