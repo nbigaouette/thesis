@@ -144,6 +144,18 @@
 \else
 \RequirePackage{pdfpages}
 \includepdfset{pagecommand=\pagenumberstyle}   % Include page number too
+% Try to use package ``pax'' if available. This package allows extracting
+% the links from the original PDF and include them in the new PDF.
+\IfFileExists{pax.sty}{%
+    \RequirePackage{pax}%
+  }{%
+    \GenericWarning{uottawa}{%
+      LaTeX Warning: Package pax not available, therefore links from included PDFs
+      will not be clickable.\MessageBreak
+      Install pax-tds from http://www.ctan.org/tex-archive/macros/latex/contrib/pax/
+    }%
+  }%
+
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
