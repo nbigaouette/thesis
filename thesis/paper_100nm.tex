@@ -1,5 +1,5 @@
 
-\newcommand{\PaperTitleHundrednm}{Revisiting the 100nm experiment}
+\newcommand{\PaperTitleHundrednm}{Augmented Collisional Ionization in the VUV regime; a theoretical study}
 
 \section{\PaperTitleHundrednm}
 \label{section:papers:100nm}
@@ -9,7 +9,23 @@ Nicolas Bigaouette, Edward Ackad, Lora Ramunno
 \end{flushright}
 
 
-% \includepdf[pages=-,
-%             addtotoc={
-%                 1,subsection,2,Introduction,paper_size_intro,
-%             }]{papers/Bigaouette2013.pdf}
+\includepdf[pages=-,
+            addtotoc={
+                % Original PDF page, TOC Section hierarchy, # matching TOC level, TOC label, \label{}
+                % http://cs.brown.edu/system/software/latex/doc/pdfpages.pdf
+                1,subsection,2,Abstract,paper_100nm_abstract,
+                1,subsection,2,Introduction,paper_100nm_intro,
+                1,subsection,2,Model,paper_100nm_model,
+                2,subsubsection,3,Heating Mechanisms,paper_100nm_heating,
+                2,paragraph,4,Single photon ionization,paper_100nm_single,
+                2,paragraph,4,Impact ionization,paper_100nm_impact,
+                3,paragraph,4,Excited States (ACI),paper_100nm_aci,
+                3,subsubsection,3,Recombination,paper_100nm_recomb,
+                3,subsubsection,3,Many Body Recombination,paper_100nm_mbr,
+                4,subsection,2,Results,paper_100nm_results,
+                4,subsubsection,3,Model validation,paper_100nm_results_val,
+                4,subsubsection,3,Revisiting the 100nm experiment,paper_100nm_results_100nm,
+                6,subsubsection,3,Deeper potential,paper_100nm_results_deeper,
+                7,subsection,2,Conclusion,paper_100nm_results_conc,
+                8,subsection,2,References,paper_100nm_results_refs
+            }]{papers/Bigaouette2013_100nm.pdf}
