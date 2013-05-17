@@ -51,7 +51,17 @@ solved at each time steps and quantum effects are included using specific rates.
 
 For these reasons, clusters are invaluable tools to study light and matter
 interaction. This can be seen by the vast amount of work on the subject, mainly
-in the IR regime\cite{Fennel2010}. However, in recent years, laser light sources
+in the IR regime\cite{Fennel2010}. Varin \textit{et al.}\cite{Varin2012} recently
+developed a particle-in-cell (PIC) code with microscopic corrections that takes
+into consideration the electromagnetic field propagation throughout the cluster.
+Going from electrostatic to electrodynamic allows simulating clusters of
+significant size where fields propagation must be correctly resolved. The
+microscopic corrections allows the close range interactions between
+charged particles to be of high precision compared to traditional PIC
+codes\cite{Peltz2012}. Since the grid must resolve the electromagnetic wave,
+PIC simulations can thus be a challenge when the wavelength is small.
+
+Moreover, in recent years, laser light sources
 have been moving to shorter wavelengths due to new Free Electron Lasers (FEL)
 facilities; Vacuum Ultra-Violet (VUV), Extreme Ultra-Violet (XUV), soft X-Rays
 and even hard X-rays are now accessible. In FELs, relativistic electrons are sent
