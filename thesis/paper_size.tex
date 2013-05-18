@@ -9,10 +9,13 @@
 Edward Ackad, Nicolas Bigaouette, Lora Ramunno
 \end{flushright}
 
+% Include PDF's abstract in the Table-of-Content as ``subsection 0'' but hide the number
+\HidePDFAbstractNumber
 
 \includepdf[pages=-,
             addtotoc={
                 %1,section,1,{\PaperTitleSize},paper_size,
+                1,subsection,2,Abstract,paper_size_abstract,
                 1,subsection,2,Introduction,paper_size_intro,
                 2,subsection,2,Theory,paper_size_theory,
                 3,subsection,2,Results,paper_size_results,
