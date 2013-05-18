@@ -177,6 +177,15 @@ Indentation Mode=none
 Mode=LaTeX
 ReadWrite=true
 
+[document-settings,item:paper_recomb.tex]
+Bookmarks=
+Encoding=UTF-8
+FoldedColumns=
+FoldedLines=
+Highlighting=LaTeX
+Indentation Mode=normal
+Mode=LaTeX
+
 [document-settings,item:paper_size.tex]
 Bookmarks=
 Encoding=UTF-8
