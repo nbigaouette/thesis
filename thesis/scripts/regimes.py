@@ -11,16 +11,22 @@ import plot_params
 
 import constants as cst
 
-
-def eV_to_mum(energy_eV):
-    energy = energy_eV * cst.eV_to_J
-    omega       = energy / cst.hbar
+def energy_to_wavelength(energy_J):
+    omega       = energy_J / cst.hbar
     f           = omega / (2.0 * cst.pi)
     k           = omega / cst.c
-    wavelength  = 2.0 * cst.pi / k
-    return wavelength * cst.m_to_mum
+    wavelength_m = 2.0 * cst.pi / k
+    return wavelength_m
+
+def eV_to_mum(energy_eV):
+    return energy_to_wavelength(energy_eV * cst.eV_to_J) * cst.m_to_mum
 def eV_to_nm(energy_eV):
-    return cst.mum_to_m * cst.m_to_nm * eV_to_mum(energy_eV)
+    return energy_to_wavelength(energy_eV * cst.eV_to_J) * cst.m_to_nm
+
+def photon_energy(Ip, I):
+    E2 = (2.0 * I) / (cst.c * cst.eps0)
+    return cst.hbar * np.sqrt( (cst.e0**2 * E2) / (4.0 * cst.me * Ip) )
+
 
 def curve_from_loglog_pts(x0, x1, F0, F1, x):
     F = F0 * (x / x0)**( np.log(F1/F0) / np.log(x1/x0) )
@@ -79,42 +85,50 @@ Up_1eV  = curve_from_loglog_pts(1e11, 6e18, 0.12, 1000, I)
 Up_1meV = curve_from_loglog_pts(1e11,  7e15, 3.7, 1000, I)
 Up_1keV = curve_from_loglog_pts(7e13,  1e20, 0.1, 120, I)
 
+Up_12eV = cst.J_to_eV * photon_energy(12.265625*cst.eV_to_J, I / ((cst.cm_to_m)**2))
+Up_16eV = cst.J_to_eV * photon_energy(16.0*cst.eV_to_J, I / ((cst.cm_to_m)**2))
 
 ax_eV.set_xlim((I_min, I_max))
 ax_eV.set_ylim((eV_min, eV_max))
 ax_wl.set_ylim((eV_to_nm(eV_min), eV_to_nm(eV_max)))
 
 
+ax_eV.plot(I, Up_1eV,  '--k', alpha = 0.5, label = '$U_p = 1 eV$')
+ax_eV.plot(I, Up_1meV, '--k', alpha = 0.5, label = '$U_p = 1 meV$')
+ax_eV.plot(I, Up_1keV, '--k', alpha = 0.5, label = '$U_p = 1 keV$')
 
+ax_eV.plot(I, Up_12eV, '-k', alpha = 0.5, label = '$U_p = 12 eV$')
+#ax_eV.plot(I, Up_16eV, '-r', alpha = 0.5, label = '$U_p = 16 eV$')
 
-ax_eV.plot(I, Up_1eV,  '-k',  alpha = 0.5, label = '$U_p = 1 eV$')
-ax_eV.plot(I, Up_1meV, '--r', alpha = 0.5, label = '$U_p = 1 meV$')
-ax_eV.plot(I, Up_1keV, '--b', alpha = 0.5, label = '$U_p = 1 keV$')
-
-
-ax_eV.annotate('$U_p = 1 meV$',
+ax_eV.annotate('$U_p$ = 1 meV',
                fontsize = 16,
                xy=(4.8611e11, 8.44),
                xycoords='data',
                bbox=dict(boxstyle="round", fc="0.8"),
                rotation = angle, horizontalalignment = 'center', verticalalignment = 'center')
-ax_eV.annotate('$U_p = 1 eV$',
+ax_eV.annotate('$U_p$ = 1 eV',
                fontsize = 16,
                xy=(4.5e14, 8.2),
                xycoords='data',
                bbox=dict(boxstyle="round", fc="0.8"),
                rotation = angle, horizontalalignment = 'center', verticalalignment = 'center')
-ax_eV.annotate('$U_p = 1 keV$',
+ax_eV.annotate('$U_p$ = 1 keV',
                fontsize = 16,
                xy=(4.6e17, 8.11),
                xycoords='data',
                bbox=dict(boxstyle="round", fc="0.8"),
                rotation = angle, horizontalalignment = 'center', verticalalignment = 'center')
+ax_eV.annotate(r'Ip$_{\textrm{Xe}}$ = 12.3 eV',
+               fontsize = 16,
+               xy=(6.71e15, 8.77),
+               xycoords='data',
+               bbox=dict(boxstyle="round", fc="0.8"),
+               rotation = angle, horizontalalignment = 'center', verticalalignment = 'center')
 
-ax_eV.text(2.28e16, 124.52, 'Photon dominated regimes', rotation = angle,
-           horizontalalignment = 'center', verticalalignment = 'center')
-ax_eV.text(5.27e16, 40.7,   'Field dominated regimes',  rotation = angle,
-           horizontalalignment = 'center', verticalalignment = 'center')
+ax_eV.text(7.64e17, 148.4, 'Photon dominated regimes', rotation = angle,
+           horizontalalignment = 'center', verticalalignment = 'center', color = 'blue')
+ax_eV.text(1.26e18, 76.86, 'Field dominated regimes',  rotation = angle,
+           horizontalalignment = 'center', verticalalignment = 'center', color = 'blue')
 
 
 
@@ -123,7 +137,8 @@ draw_text_box(ax_eV, "Relativistic regime",
               facecolor  = (1., 1., 1.),
               edgecolor  = (1., 1., 1.))
 
-draw_text_box(ax_eV, "Optical femtosecond lasers (IR)",
+#draw_text_box(ax_eV, "Optical femtosecond lasers (IR)",
+draw_text_box(ax_eV, "Infrared (IR) femtosecond lasers",
               1.0e11, 1.0e20, 1.5, 3.5,
               facecolor  = 'red',
               edgecolor  = 'red',

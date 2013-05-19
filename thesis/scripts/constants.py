@@ -26,6 +26,8 @@ angstrom_to_m   = 1.0e-10
 m_to_angstrom   = 1.0 / angstrom_to_m
 mum_to_m        = 1.0e-6
 m_to_mum        = 1.0 / mum_to_m
+cm_to_m         = 1.0e-2
+m_to_cm         = 1.0 / cm_to_m
 
 Eh_to_eV        = Eh / e0               # eV . Eh^-1
 eV_to_Eh        = 1.0 / Eh_to_eV        # Eh . eV^-1
