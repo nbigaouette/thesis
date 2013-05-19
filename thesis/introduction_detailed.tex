@@ -143,8 +143,113 @@ XUV\cite{Murphy2008a,Murphy2008b,Krikunova2012} and X-rays\cite{Ziaja2009b}.
 
 
 
-\subsection{Microscopic mechanisms underlying the dynamics}
+\subsection{Motivation: Microscopic mechanisms underlying the dynamics}
 \label{section:intro:mechanisms}
+Interaction of light with single rare gas atoms is a well studied problem but
+the collective effects of the high density of atoms in a cluster gives rise to
+many different mechanisms of energy absorption and redistribution throughout the
+cluster. The following will go over the different mechanisms by going over the
+different wavelength regimes, from the long wavelength (IR) to the shorter XUV.
+
+The different mechanisms described in this section can be sorted into two main
+families. First, the direct mechanisms are the simplest as they are the result
+of the interaction between atoms with the laser field. They can normally be
+described using isolated atoms. For example, single-photon ionization where one
+photon is absorbed by a bound electron and gets promoted to the continuum is
+a direct interaction between the laser and the atom.
+
+The second family consist of indirect mechanisms where the cluster environment
+is vital for the process to take place. These indirect mechanisms don't
+necessarily transfer energy from the laser to the cluster but are still an
+important aspect of cluster dynamics. For example, impact ionization where
+an electron hits an atom and promotes a bound electron to the continuum by
+sharing some of its kinetic energy is independent on the presence of a laser
+(but obviously still requires free electrons). As will be describe later,
+indirect mechanisms are still important for the cluster dynamics and can also
+help energy transfer from the laser to the cluster.
+
+The different mechanisms will be brought from the different wavelength regimes
+they appear or are dominant, by going from infrared (IR) down to X-rays. Figure
+\ref{fig:regimes} shows the different regimes in terms of wavelengths and also
+intensities. Most studies on clusters are performed on femtosecond IR laser
+pulses which span a large range of intensity. These kind of lasers are
+widespread and dominated by Ti:sapphire pumped with another laser. The pump
+laser (Nd:YAG) lases at 1064 nm and is frequency-doubled to 534 nm in a
+nonlinear crystal. The Ti:sapphire then emits 800 nm light with a wide range of
+intensity.
+
+The advance of Free-Electron Lasers (FEL) allowed high intensity of VUV, XUV and
+even X-rays laser source. As described previously, FEL require large facilities,
+mainly due to the linear particle accelerator required to seed the ondulator
+with relativistic electrons and as such are scarce and their intensity is limited
+compared to Ti:sapphire lasers. Nevertheless, as will be shown later on, their
+tunable wavelength allows them to access different interesting regimes.
+
+The Keldysh adiabatic parameter $\gamma$ separates regimes where processes are
+dominated by either photons or field and reads
+\begin{align}
+% http://www.iuac.res.in/atmol/~safvan/safvan_thesis/node32.html
+\gamma & = \sqrt{ \frac{\textrm{Ip}}{2 U_p} },
+\end{align}
+where Ip is the atom's ionization potential, $U_p$ is the ponderomotive energy
+\begin{align}
+% https://en.wikipedia.org/wiki/Ponderomotive_energy
+U_p & = \frac{e^2 E^2}{4 m \omega^2},
+\end{align}
+$e$ and $m$ the electron's charge and mass, $E$ the laser's electric field
+strength and $\omega$ its angular frequency.
+
+When $\gamma~\ll~1$, the laser field strength is large compared to the ionization
+potential. In that case, a bound electron will feel a significant bending of the
+atomic potential. For this to happen, the ionization potential Ip must be
+smaller than the ponderomotive energy $U_p$. Figure \ref{fig:regimes} shows,
+as dashed lines, constant values of the ponderomotive force. In plain line,
+the (first) ionization potential of Xenon is plotted. The field dominated regime
+lies under this line.
+
+Otherwise, when $\gamma~\gg~1$, the laser field strength is weak compared to
+the ionization potential and the later is not as important as before in the
+subsequent dynamics. Photon interactions with the cluster is thus dominant and
+the quiver motion of electrons in the oscillating laser field is minimum.
+
+Note that the two regimes are not clearly segregated; Keldysh parameter states
+which kind of processes dominates but does not prevent them from happening.
+Photon processes could happen in the field-dominated regime and the laser field
+can still move electrons around in the photon-dominated regime.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\columnwidth]{figures/regimes}
+\caption{Wavelength and intensity regimes. Lower right half is dominated
+         by field processes while upper left half by photon processes. Diagonal
+         lines represent constant ponderomotive potential $U_p$. The
+         demarcation between the two halves happens when the ponderomotive
+         potential equals the ionization potential ($U_p = Ip$).
+         Note that the present work concentrate on the VUV and XUV regimes
+         where photon processes dominates (at the studied intensities).}
+\label{fig:regimes}
+\end{figure}
+
+
+\subsubsection{Long wavelength: The IR regime}
+\label{section:intro:mechanisms:ir}
+
+
+\subsubsection{Short wavelength: Into the VUV and XUV}
+\label{section:intro:mechanisms:vuv}
+
+
+\subsubsection{Ultra-short wavelength: X-rays}
+\label{section:intro:mechanisms:xrays}
+
+
+
+
+
+
+
+
+\subsection{Motivation: Microscopic mechanisms underlying the dynamics - OLD}
 Interaction of light with single rare gas atoms is a well studied problem but the
 collective effects of the high density of atoms in a cluster gives rise to many
 different mechanisms of energy absorption and redistribution throughout the
@@ -168,20 +273,6 @@ mechanism.
 Due to the failed attempt at describing the experiments using direct mechanisms,
 indirect ones were considered instead.
 
-
-
-\begin{figure}
- \centering
- \includegraphics[width=0.95\columnwidth]{figures/regimes}
- \caption{Wavelength and intensity regimes. Lower right half is dominated
-          by field processes while upper left half by photon processes. Diagonal
-          lines represent constant ponderomotive potential $U_p$. The
-          demarcation between the two halves happens when the ponderomotive
-          potential equals the ionization potential ($U_p = Ip$).
-          Note that the present work concentrate on the VUV and XUV regimes
-          where photon processes dominates (at the studied intensities).}
- \label{fig:regimes}
-\end{figure}
 
 
 
