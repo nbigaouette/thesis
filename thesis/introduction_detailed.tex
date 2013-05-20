@@ -230,75 +230,13 @@ can still move electrons around in the photon-dominated regime.
 \label{fig:regimes}
 \end{figure}
 
-
-\subsubsection{Long wavelength: The IR regime}
-\label{section:intro:mechanisms:ir}
-
-
-\subsubsection{Short wavelength: Into the VUV and XUV}
-\label{section:intro:mechanisms:vuv}
-
-
-\subsubsection{Ultra-short wavelength: X-rays}
-\label{section:intro:mechanisms:xrays}
-
-
-
-
-
-
-
-
-\subsection{Motivation: Microscopic mechanisms underlying the dynamics - OLD}
-Interaction of light with single rare gas atoms is a well studied problem but the
-collective effects of the high density of atoms in a cluster gives rise to many
-different mechanisms of energy absorption and redistribution throughout the
-cluster. The following will go over the different mechanisms. While the
-mechanisms are highly dependent on the regime (cluster material and
-laser wavelength combination), I will concentrate on the VUV and XUV
-regime mostly.
-
-The different mechanisms described in this section can be sorted into two main
-families. First, the direct mechanisms are interactions with the laser field.
-In this family, particles interact directly with the laser pulse;
-tunnel ionization and photon absorption are direct interactions. The second
-family consist of indirect mechanisms where the cluster environment is vital.
-These indirect mechanisms don't necessarily transfer energy from the laser to
-the cluster. For example, impact ionization (describe later on) is independent
-of the laser. On the other hand, Inverse Bremsstrahlung (IBH) is the interaction
-of an electron, the laser field \textit{and} the laser field. Because it
-requires the cluster environment to take place it is considered an indirect
-mechanism.
-
-Due to the failed attempt at describing the experiments using direct mechanisms,
-indirect ones were considered instead.
-
-
-
-
-\subsubsection{Single Photon Ionization}
-Notes:
-\begin{itemize}
-\item Cite: Wabnitz2002, Young2010, Bosted2010, Murphy2008
-\end{itemize}
-
-The first energy absorption mechanisms is single photon ionization. Initially
-described by Einstein as the photoelectric effect, a bound electron
-absorbs a photon from the laser and is promoted to the continuum where it is
-free to leave its parent ion. Figure~\ref{fig:ionization:single} describes
-shows the a schematic of the mechanism. For the process to be present, the
-photon energy needs to be at least the binding energy of the electron. In the
-case of atomic Xenon, the first energy level is at -12.3 eV (see table
-\ref{tab:ips}) which requires a photon of a wavelength equal or shorter than
-100.8 nm. These wavelengths are normally called \textit{vacuum ultra-violet}
-(VUV) or \textit{extreme ultra-violet} (XUV).
-
-\begin{figure}
- \centering
- \includegraphics[width=0.38\columnwidth]{figures/mockups/ionization_single}
- \caption{Single photon ionization}
- \label{fig:ionization:single}
-\end{figure}
+In table \ref{tab:ips} the first five ionization potential for the different
+rare gas elements used in this thesis (Argon and Xenon) are shown. The values
+for Xenon were obtained from a Dirac LDA calculation from Thomas Fennel that
+pre-dates the current work and that were used in previous studies as well. For
+Argon, Edward
+Ackad\footnote{\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/cowan}}
+used the code published\cite{CowanCode} by Cowan\cite{Cowan1981}.
 
 
 \begin{table}
@@ -320,41 +258,132 @@ case of atomic Xenon, the first energy level is at -12.3 eV (see table
 \end{table}
 
 
-The photon's extra energy will be transferred as kinetic energy in the
+\subsubsection{Long wavelength: The IR regime}
+\label{section:intro:mechanisms:ir}
+Most femtosecond lasers are Ti:sapphire that have a wavelength of around 800 nm.
+This type of lasers sparked the research on clusters. They cover a wide range of
+intensity and as such can touch different regimes, from the photon-dominated
+one at low intensities to the field-dominated one at larger intensities and
+even going up to where relativistic effects cannot be neglected.
+
+\subsubsubsection{Tunnel ionization}
+The most striking effect in the IR regime is tunnel
+ionization\cite[Chapter~3]{Brabec2009} when intensity reaches 10$^{14}$ W/cm$^2$.
+The Coulomb potential of an atom can be bent enough by the (oscillating) laser
+field and the probability of a bound electron tunnelling out becomes significant,
+as shown on figure \ref{fig:ionization:tunnel}. Tunnel ionization is also
+sometimes called optical field ionization (OFI), or more simply field
+ionization, since the laser field is the source of the potential bending and
+ionization.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.76\columnwidth]{figures/mockups/ionization_tunnel}
+ \caption{Tunnel ionization}
+ \label{fig:ionization:tunnel}
+\end{figure}
+
+Tunnel ionization is at the hart of High Harmonic Generation (HHG) and
+attosecond science\cite{Fennel2010}. A laser pulse, normally in the IR regime,
+bends the atomic potential bounds electrons are feeling, allowing them to tunnel
+out. They are then accelerated in the laser field where they gain energy. When
+the laser polarization changes, electrons are forced back onto their parent ion
+where they recombine with by emitting high energy photons. The emission spectra,
+containing only odd harmonics, shows an intensity decrease as a function of
+harmonic number, followed by a plateau and a cutoff. Since the description
+of the phenomena in 1993\cite{Corkum1993}, HHG studies expended into its own
+sub-field. For example, Murphy \textit{et al.} used the 21st harmonic of a
+800 nm Ti:sapphire to ionize xenon clusters\cite{Murphy2008a,Murphy2008b}
+with these new 32.6 eV (38 nm) photons.
+
+
+
+\subsubsubsection{Inverse Bremsstrahlung Heating}
+Once electrons are created in the IR regime they can continue to absorb energy
+from the laser.
+Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
+where an electron emits a photon when deflected, either by a heavier ion in the
+case of plasma or by magnetic fields in the case of synchrotrons. IBH is thus
+the absorption of a photon which accelerates the electron.
+IBH plays an important role in the IR regime where the laser field easily
+drives the electrons through the cluster\cite{Fennel2010}. This linear momentum
+is redistributed as thermal energy by collisions and scattering on heavier ions.
+While not as strong as in the IR regime, IBH is still important in the
+VUV\cite{Krainov2000} up to 62 nm\cite{Georgescu2007}.
+
+
+\subsubsection{Shorter wavelengths: Into the VUV and XUV regime}
+\label{section:intro:mechanisms:vuv}
+
+With the help of new FEL facilities, high laser intensities can be reached at
+lower wavelength (and thus larger photon energy) than with traditional
+femtosecond lasers.
+
+At relatively low intensity (less than 10$^{14}$ W/cm$^2$
+\cite{Ramunno2008}), in the photon-dominated regime, atoms and ions
+can be ionized by photon absorption. If the photon energy is more than the
+electron's biding energy (see table \ref{tab:ips} for numerical values) single
+photon ionization will be the dominant energy transfer mechanism.
+
+\subsubsubsection{Photon absorption}
+Initially described by Einstein as the photoelectric effect, a bound electron
+absorbs a photon from the laser and is promoted to the continuum where it is
+free to leave its parent ion. Figure~\ref{fig:ionization:single} shows a
+schematic of the mechanism. For example, the first energy level of atomic
+Xenon is at -12.27 eV requiring a photon wavelength equal or shorter than
+101.1 nm for ionization. These wavelengths are normally called
+\textit{vacuum ultra-violet} (VUV) or \textit{extreme ultra-violet} (XUV).
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.38\columnwidth]{figures/mockups/ionization_single}
+ \caption{Single photon ionization}
+ \label{fig:ionization:single}
+\end{figure}
+
+If the photon energy exceed the electron's binding energy, the extra energy
+will be transferred as kinetic energy in the
 resulting photoelectron. This can thus be used to sample the states in the
 target by measuring the photoelectron energy spectrum\cite{Fennel2010}.
 
-Implementing single photon ionization in the model is done through a
-transition rate which is itself obtained from a cross-section. Because
-cross-sections can be obtained from experiments for any kind of target, it is
-easily integrated into the model.
-
-The rate of single photon ionization $\Gamma$ is obtained using the laser
-pulse intensity profile $I\pa{t}$ and cross-section $\sigma$:
+However, if the photon energy is less than the binding energy, than a single
+photon cannot ionize an atom. If the intensity is large enough though, the
+photon density will be sufficient that many photons can be absorbed during a
+small time laps. This effect is called multiple-photon ionization (MPI, not to
+be confused with the Message Passing Interface used in parallel programming) and
+is a non-linear process. The ionization rate of $\nu$-photons MPI is given
+by\cite{Fennel2010}:
 \begin{align}
-\Gamma & = I\pa{t} \sigma\pa{\omega}
+\Gamma_{\nu} = \sigma_{\nu} I^{\nu}.
+\label{eqn:ionization:rate:mpi}
 \end{align}
-For the present work, Xenon experimental cross-sections $\sigma\pa{\omega}$
-were obtained from reference \cite{West1978} and from reference
-\cite{Marr1976} for Argon.
-
-Once the rate $\Gamma$ is calculated, it is weighted\cite{Lax2006} by the time
-step size and compared to a random number $r$:
-\begin{align}
-1 - \e{-\Gamma \Delta t} > r
-\end{align}
-When the previous test succeeds, ionization takes place and a new electron is
-created in the code with its kinetic energy set as the difference between the
-ionization potential and the photon energy. Then, the intensity profile of the
-laser $I\pa{t}$ is decreased by one photon for better description of low fluence
-pulses.
+Being a nonlinear process, multi photon ionization is present at larger
+intensities than single photon ionization. But being photon processes, both are
+superseded by tunnel ionization at even large intensities (or when
+$\gamma~\gg~1$).
 
 
 
 
 
-\subsubsection{Impact Ionization}
-Impact ionization is also be described in terms of cross-sections. These
+% ******************************************************************************
+\subsubsection{Regime independent processes}
+\label{section:intro:mechanisms:noregime}
+Once electrons are created in the cluster, other mechanisms appears. During
+impact ionization a first electron collides with an atom and, if it has enough
+kinetic energy, will transfer a portion of it to a bound electron, promoting it
+to the continuum. Figure \ref{fig:ionization:impact} shoes the energy diagram
+of the process.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.76\columnwidth]{figures/mockups/ionization_impact}
+ \caption{Impact ionization}
+ \label{fig:ionization:impact}
+\end{figure}
+
+Similarly to other ionization events, impact ionization is also be described in
+terms of cross-sections. These
 cross-sections are normally obtained from the semi-empirical Lotz
 formula\cite{Lotz1967}:
 \begin{align}
@@ -372,85 +401,32 @@ and reference \cite{Heidenreich2005} for charged states.
 % the 4+ and 5+ do not give satisfactory results. They were
 % obtained by fitting the data directly from the figures
 
-Special care needs to be taken with equation \eqref{eqn:impact:ionization:lotz}
-as it was obtained for electrons coming ``from infinity''. In the case of
-clusters, electrons are not coming from an infinite distance. We thus need to
-extrapolate the kinetic energy of the electron as if it was coming from
-infinity. For this, when impact ionization is tested on an electron, its
-potential energy with respect to the impacted ion is removed from the kinetic
-energy. This effectively gets an energy far from the ion. The cluster
-environment is taken into account by considering the potential from the cluster
-at the impacted ion as the threshold under which the bound electron lies.
-Figure \ref{fig:ionization:impact} shows the energy diagram used during the
-process.
-
-FIXME: Talk about Vb
-
-% \emptyfig{Impact ionization}{fig:ionization:impact}
-\begin{figure}
- \centering
- \includegraphics[width=0.76\columnwidth]{figures/mockups/ionization_impact}
- \caption{Impact ionization}
- \label{fig:ionization:impact}
-\end{figure}
-
-
-\subsubsection{Tunnel Ionization}
-Laser mater interaction cannot be studied without at least mentioning
-\textit{tunnel} or \textit{field ionization}. For sufficiently strong laser
-fields and long wavelengths, the Coulomb potential of an atom can be bent enough
-that the probability of a bound electron tunnelling out becomes significant, as
-shown on figure \ref{fig:ionization:tunnel}.
-
-% \emptyfig{Tunnel ionization}{fig:ionization:tunnel}
-\begin{figure}
- \centering
- \includegraphics[width=0.76\columnwidth]{figures/mockups/ionization_tunnel}
- \caption{Tunnel ionization}
- \label{fig:ionization:tunnel}
-\end{figure}
-
-Tunnel ionization is at the hart of High Harmonic Generation (HHG) and
-attosecond science\cite{Fennel2010}. A laser pulse, normally in the IR regime,
-bends the atomic potential bounds electrons are feeling, allowing them to tunnel
-out. They are then accelerated in the laser field where they gain energy. When
-the laser polarization changes, electrons are forced back onto their parent ion
-where they recombine with by emitting high energy photons. The emission spectra,
-containing only odd harmonics, shows an intensity decrease as a function of
-harmonic number, followed by a plateau and a cutoff. Since the description
-of the phenomena in 1993\cite{Corkum1993}, HHG studies expended into its own
-subfield.
-
-The Keldysh adiabatic parameter $\gamma$ separates the tunnel and single or
-multiphoton regimes\cite{Fennel2010}.
-On one side tunnel ionization is dominant, the wavelength is large and
-$\gamma \ll 1$, while single
-photon ionization dominates when $\gamma~\gg~1$. The regime of interest in the
-current work has $\gamma \gg 1$ and as such, tunnel ionization is not
-considered.
-
-
-
-\subsubsection{Inverse Bremsstrahlung}
-Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
-where an electron emits a photon when deflected, either by a heavier ion in the
-case of plasma or by magnetic fields in the case of synchrotrons. IBH plays an
-important role in the IR regime\cite{Fennel2010} where the laser field easily
-drives the electrons through the cluster. This linear momentum is redistributed
-as thermal energy by collisions and scattering on heavier ions. While not as
-strong as in the IR regime, IBH is still important in the VUV\cite{Krainov2000}
-up to 62 nm\cite{Georgescu2007}.
 
 
 
 
-\subsubsection{Other mechanisms}
-Other mechanisms were proposed in lights of results from recent experiments at
-FEL installations\cite{Wabnitz2002}. Because the previous mechanisms cannot
-explain by themselves
-the results, many different groups proposed extra mechanisms.
+\subsubsection{New regime, new processes}
+
+By going to shorter wavelength, FEL installations allowed experiments at high
+intensities in the VUV and XUV regime. But these experiments saw surprisingly
+high charge states as the results of the cluster
+explosion\cite{Wabnitz2002,Bostedt2010}. For example, Wabnitz \textit{et al.}
+saw, at FEL-DESY, Xe$^{4+}$ when Xe$_{80}$ clusters were irradiated with 98 nm,
+100 fs FEL pulses of, what was though at the time, $\ten{2}{13}$~W/cm$^2$
+intensity. For larger clusters (Xe$_{30,000}$), xenon fragments up to
+Xe$^{8+}$ were observed. This was a big surprise considering that the 98~nm
+photons (12.7 eV) could only ionize neutral xenon to Xe$^{1+}$ by itself.
+Experiments showed that up to 30 photons were absorbed per atom for the largest
+clusters. Using a different source of photons and at a different wavelength
+(21st harmonic of an 800 nm Ti:sapphire, XUV: 32.6 eV, 38 nm),
+Murphy \textit{et al.} observed the same pattern of high charge states in xenon
+clusters\cite{Murphy2008a,Murphy2008b}.
+
+Such high charge states could be explained by the previous processes. New
+mechanisms were thus proposed to explain these surprising results.
 
 
+\subsubsubsection{Atomic potentials}
 First, Santra \& Greene proposed using \textit{atomic potentials} instead of
 the Coulomb potential in a rate equation model (with infinite spacial
 extension and
@@ -467,22 +443,24 @@ Xe$^{5+}$ and Xe$^{7+}$ for intensities of $\ten{1.4}{12}$, $\ten{1.4}{13}$ and
 $\ten{7.3}{13}$ W/cm$^2$ respectively for Xe$_{1,500}$ clusters, similarly to
 what was seen in at FEL-DESY.
 
+\subsubsubsection{Barrier suppression}
 Another model proposed by Siedschlag and Rost\cite{Siedschlag2004} in 2004 was
 the barrier suppression in single photon absorption which is shown on figure
 \ref{fig:heating:barrier}. Due to the close proximity
 of neighbours, the potential barrier between them is lowered and
 a photo-transition to the continuum becomes possible, even with a single photon.
 
-\textit{Many-Body Recombination} (MBR) was proposed in 2005
-as a simple mechanism to explain the high charge states seen in VUV
-experiments at FEL-DESY\cite{Jungreuthmayer2005}. In a strongly coupled plasma
-generated by a VUV pulse, electrons can recombine easily to a high excited
+\subsubsubsection{Many-Body Recombination}
+\textit{Many-Body Recombination} (MBR) was proposed in 2005\cite{Jungreuthmayer2005}
+as a simple mechanism to explain the high charge states seen in the
+experiments at FEL-DESY. In a strongly coupled plasma, electrons can recombine
+easily to a high excited
 state after collisions with many bodies. Later, these newly bound electrons can
 absorb a new photon from the laser field for another transition to the
 continuum -- see figure \ref{fig:heating:mbr}.
 Because MBR is much more efficient than three-body
 recombination (due to the large density of charged particles), much more
-photons are absorbs this way. The simplicity of the
+photons are absorbed this way. The simplicity of the
 method lies in the fact that in a classical MD simulation, MBR is automatically
 included without extra implementation. Jungreuthmayer \textit{et al.} were able
 to see Xe$^{3+}$, Xe$^{5+}$ and Xe$^{7+}$ for intensities of $\ten{1.5}{12}$,
@@ -562,19 +540,10 @@ size influence when ACI is used in the XUV regime. In section
 \ref{section:papers:100nm} ACI is applied to the VUV regime and the
 2002 experiments at FLASH-DESY.
 
-\subsubsection{Recombination}
-In a classical simulation electrons could cool down into ions' infinite Coulomb
-potential where they would have a total energy less then what is allowed
-according to quantum mechanics. Recombination is thus used to prevent such
-unphysical events.
 
-Additionally, recombination plays an important role in the dynamics of the
-exploding cluster. Experiments at FLASH in 2009 on Xenon clusters in the XUV
-regime\cite{Thomas2009} could be reproduced by our models when recombination
-was enable; we found that the lower charge states detected would come from the
-cluster core where recombination is important. This study is to be published in
-May 2013's edition of New Journal of
-Physics\footnote{\url{http://iopscience.iop.org/1367-2630/page/Forthcoming\%20articles}}.
+
+
+
 
 
 \subsection{Goals}

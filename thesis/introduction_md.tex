@@ -438,3 +438,96 @@ Nvidia GPUs released its first version (v0.6.0) in February 2008.
 Additionally, the knowledge and experience gained by writing from scratch such
 a package is invaluable.
 
+
+
+
+
+
+\subsubsection{Potential threshold $V_b$}
+\label{section:intro:Vb}
+
+\subsubsection{Notes on ionization definition}
+\label{section:intro:mechanisms:notes}
+Special care needs to be taken when calculating particle energies during
+ionization processes. In this work, an ionization event is defined as one
+electron that leaves its parent ion, reaching infinity with a final kinetic
+energy of zero.
+
+In the case of single photon ionization of an isolated atom, when the electron
+reaches infinity it will have, as its kinetic energy, the difference of energy
+between the absorbed photon and the ionization potential of the ion.
+
+For impact ionization, the impacting electron's kinetic energy used in equation
+\eqref{eqn:impact:ionization:lotz} is the kinetic energy the electron has
+\textit{at infinity}, meaning that the impacting electron and the atom (or ion)
+are isolated from each other. We change that definition to \textit{above
+threshold}: in the case of an isolated atom, the threshold is at zero, but in the
+case of a cluster environment, the threshold is taken as $V_b$, as described in
+section \ref{section:intro:Vb}. If the impacting electron has more kinetic
+energy, it can either keep the extra, give all the extra, or give a fraction of
+the extra to the new electron. We split the extra kinetic energy between the two
+electrons to assure that they do not fall back unto the ion.
+
+Additionally, momentum is conserved by giving the two leaving electrons an angle
+of divergence. Since the impacting electron can cause ionization before being
+exactly on top of the atom or ion, the angle of divergence is given by:
+
+\fxfatal{Add the divergence calculation here. See hand notes.}
+
+
+
+\subsubsection{Implementations}
+\label{section:intro:md:implementation}
+
+\fxnote[margin,noinline]{Find a better name for section \ref{section:intro:md:implementation}}
+
+Implementing any kind of ionization in the model is done through a
+transition rate which is itself obtained from a cross-section. Because
+cross-sections can be obtained from experiments for any kind of target, it is
+easily integrated into the model. Rates are obtained using
+\begin{align}
+\Gamma\pa{\omega} = \sigma\pa{\omega} I\pa{t}.
+\label{eqn:ionization:rate}
+\end{align}
+for all processes, including single photon ionization (equivalent to equation
+\eqref{eqn:ionization:rate:mpi} with $\nu = 1$).
+
+
+For the present work, Xenon single-photon ionization experimental cross-sections
+$\sigma\pa{\omega}$ were obtained from reference \cite{West1978} and from
+reference \cite{Marr1976} for Argon. \fxfatal{Add source of impact ionization cross
+sections}
+
+Once the rate $\Gamma$ is calculated, it is weighted\cite{Lax2006} by the time
+step size and compared to a random number $r$:
+\begin{align}
+1 - \e{-\Gamma \Delta t} > r
+\end{align}
+When the previous test succeeds, ionization takes place and a new electron is
+created in the code with its kinetic energy set as the difference between the
+ionization potential and the photon energy. Then, the intensity profile of the
+laser $I\pa{t}$ is decreased by one photon for better description of low fluence
+pulses.
+
+
+
+
+
+\subsubsection{Recombination}
+In a classical simulation electrons could cool down into ions' infinite Coulomb
+potential where they would have a total energy less then what is allowed
+according to quantum mechanics. Recombination is thus used to prevent such
+unphysical events.
+
+Additionally, recombination plays an important role in the dynamics of the
+exploding cluster. Experiments at FLASH in 2009 on Xenon clusters in the XUV
+regime\cite{Thomas2009} could be reproduced by our models when recombination
+was enable; we found that the lower charge states detected would come from the
+cluster core where recombination is important. This study is to be published in
+May 2013's edition of New Journal of
+Physics\footnote{\url{http://iopscience.iop.org/1367-2630/page/Forthcoming\%20articles}}.
+
+
+
+
+
