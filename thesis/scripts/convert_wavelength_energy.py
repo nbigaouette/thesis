@@ -32,7 +32,7 @@ if (options.wavelength != None):
 
     k       = 2.0 * cst.pi / wavelength
     omega   = k * cst.c
-    f       = omega / (2.0 * pi)
+    f       = omega / (2.0 * cst.pi)
     gamma   = cst.hbar * omega
 
     print "Wavelength to energy:"
