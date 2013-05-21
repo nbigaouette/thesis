@@ -10,9 +10,10 @@ import math
 import copy
 import sys
 
-import on_key
+import plot
+import plot_params
+
 import colors_and_symbols
-import savefigure
 import constants as cst
 
 plt.rc('lines', linewidth = 3)
@@ -421,18 +422,18 @@ arrow_DeltaU.Print()
 if (options.twofigures):
     figs = []
     if (plot_V):
-        fig1 = on_key.figure()
+        fig1 = plot.figure()
         figs.append(fig1)
         plt.subplots_adjust(hspace = 0.0)
     if (plot_U):
-        fig2 = on_key.figure()
+        fig2 = plot.figure()
         figs.append(fig2)
         plt.subplots_adjust(hspace = 0.0)
     figs_N = 1
     fig1_y = 1
     fig2_y = 1
 else:
-    fig1 = on_key.figure()
+    fig1 = plot.figure()
     fig2 = fig1
     figs = [fig1]
     figs_N = 2
@@ -455,7 +456,7 @@ if (plot_V):
 
     plt.setp(ax_V_Volt.get_xticklabels(), visible=False)
 
-    ax_V_Eh.set_title(r"Potential")
+    #ax_V_Eh.set_title(r"Potential")
 
 if (plot_U):
     ax_U_Eh = SubplotHost(fig2, figs_N,1,fig2_y, **axprops)
@@ -468,7 +469,7 @@ if (plot_U):
     ax_U_Eh.set_ylabel("Potential energy of an electron (Hartree)")
     ax_U_eV.set_ylabel("Potential energy of an electron (eV)")
 
-    ax_U_Eh.set_title(r"Potential Energy")
+    #ax_U_Eh.set_title(r"Potential Energy")
 
     plt.setp(ax_U_eV.get_xticklabels(), visible=False)
 
@@ -500,9 +501,9 @@ for i in xrange(nb_particles):
         ax_V_Eh.plot(all_particles[i].pos, all_particles[i].V, symbol)
         ax_V_Eh.text(all_particles[i].pos, all_particles[i].V, r' $' + str_elem + '_{' + str(i) + '}\ (' + str(all_particles[i].cs) + str_cs + ')$', horizontalalignment = "left")
     # Energy
-    if (plot_U):
-        ax_U_Eh.plot(all_particles[i].pos, all_particles[i].U(), symbol)
-        ax_U_Eh.text(all_particles[i].pos, all_particles[i].U(), r' $' + str_elem + '_{' + str(i) + '}\ (' + str(all_particles[i].cs) + str_cs + ')$', horizontalalignment = "center")
+    #if (plot_U):
+    #    ax_U_Eh.plot(all_particles[i].pos, all_particles[i].U(), symbol)
+    #    ax_U_Eh.text(all_particles[i].pos, all_particles[i].U(), r' $' + str_elem + '_{' + str(i) + '}\ (' + str(all_particles[i].cs) + str_cs + ')$', horizontalalignment = "center")
 
 
 # ******************************************************************************
@@ -537,14 +538,15 @@ if (plot_U):
 
     # Potential energy landscape of an electron in the different potentials
     # All
-    ax_U_Eh.plot(r, impacting_electron.cs * Vtot, '-k', label=r'$U_{e,tot}$')
+    #ax_U_Eh.plot(r, impacting_electron.cs * Vtot, '-k', label=r'$U_{e,tot}$')
     # Without nearby electrons
     ax_U_Eh.plot(r, impacting_electron.cs * Vtot_NoE, '--k', label=r'$U_{e,tot} - \sum_{\rm nearby\ el} U_{e,i}$')
 
 
     # Potential energy of an electron due to each particle
     for i in xrange(nb_particles):
-        ax_U_Eh.plot(r, -all_particles[i].Get_V(r), '--' + colors_and_symbols.color(i),  label=r'$U_{e,' + str(i) + '}$')
+        if (all_particles[i].cs != -1):
+            ax_U_Eh.plot(r, -all_particles[i].Get_V(r), '--' + colors_and_symbols.color(i),  label=r'$U_{e,' + str(i) + '}$')
         if (i == impacting_electron.nearest):
             ax_U_Eh.plot(r, -all_particles[i].Get_V(r) + Ub, ':' + colors_and_symbols.color(i),  label=r'$U_{e,' + str(i) + '} + U_b$')
 
@@ -642,7 +644,7 @@ if (plot_U):
 # ******************************************************************************
 # Create a third plot to compare K_threshold and Ip
 if (plot_Ip):
-    fig3 = on_key.figure()
+    fig3 = plot.figure()
     figs.append(fig3)
 
     ax3_Eh = SubplotHost(fig3, 1,1,1)
@@ -749,8 +751,10 @@ if (options.umin != None or options.umax != None):
 if (plot_V):
     leg = ax_V_Eh.legend(loc="best")
     leg.get_frame().set_alpha(0.4)
-if (plot_U):
-    leg = ax_U_Eh.legend(loc="best")
-    leg.get_frame().set_alpha(0.4)
+#if (plot_U):
+    #leg = ax_U_Eh.legend(loc="best")
+    #leg.get_frame().set_alpha(0.4)
 
-savefigure.show(figs, figure_name = "potential_landscape")
+plot.savefig('potential_landscape.svg')
+plot.savefig('potential_landscape.pdf')
+plot.show()
