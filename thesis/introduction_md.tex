@@ -696,30 +696,82 @@ which is what was expected.
 Implementing any kind of ionization in the model is done through a
 transition rate which is itself obtained from a cross-section. Because
 cross-sections can be obtained from experiments for any kind of target, it is
-easily integrated into the model. Rates are obtained using
-\begin{align}
-\Gamma\pa{\omega} = \sigma\pa{\omega} I\pa{t}.
-\label{eqn:ionization:rate}
-\end{align}
-for all processes, including single photon ionization (equivalent to equation
-\eqref{eqn:ionization:rate:mpi} with $\nu = 1$).
+easily integrated into the model.
 
-
-For the present work, Xenon single-photon ionization experimental cross-sections
-$\sigma\pa{\omega}$ were obtained from reference \cite{West1978} and from
-reference \cite{Marr1976} for Argon. \fxfatal{Add source of impact ionization cross
-sections}
-
-Once the rate $\Gamma$ is calculated, it is weighted\cite{Lax2006} by the time
-step size and compared to a random number $r$:
+From the different cross-sections, rates of event $\Gamma$ are calculated.
+Then, this rate is weighted\cite{Lax2006} by the time step size and compared to
+a random number $r$ between 0 and 1:
 \begin{align}
 1 - \e{-\Gamma \Delta t} > r
+\label{eqn:ionization:prob}
 \end{align}
 When the previous test succeeds, ionization takes place and a new electron is
-created in the code with its kinetic energy set as the difference between the
-ionization potential and the photon energy. Then, the intensity profile of the
-laser $I\pa{t}$ is decreased by one photon for better description of low fluence
-pulses.
+created in the code.
+
+% with its kinetic energy set as the difference between the
+% ionization potential and the photon energy. Then, the intensity profile of the
+% laser $I\pa{t}$ is decreased by one photon for better description of low fluence
+% pulses.
+
+\subsubsubsection{Single photon ionization}
+For single-photon ionization, experimental cross-sections $\sigma\pa{\omega}$
+for Xenon were obtained from reference \cite{West1978} and from
+reference \cite{Marr1976} for Argon.
+
+Once cross-sections are obtained, they are converted to a rate of ionization
+using
+\begin{align}
+\Gamma\pa{\omega} = \sigma\pa{\omega} I\pa{t}.
+\label{eqn:ionization:rate:single}
+\end{align}
+which is equivalent to equation \eqref{eqn:ionization:rate:mpi} with $\nu = 1$.
+
+Using equation \eqref{eqn:ionization:prob}, a choice is made. If ionization is
+to take place, the new electron is created right on top of the ion with a
+kinetic energy set as the difference between the ionization potential and the
+photon energy. Then, the intensity profile of the laser $I\pa{t}$ is decreased
+by one photon for better description of low fluence pulses.
+
+\subsubsubsection{Collisional processes}
+For impact ionization cross-sections, Lotz formula of equation
+\eqref{eqn:impact:ionization:lotz} is used with experimental parameters obtained
+from reference \cite{Tawara1987} (for neutral xenon) and \cite{Heidenreich2005}
+(for higher charge states). For argon, data from \cite{Lotz1967} and
+\cite{Lotz1970} is used.
+
+\fxfatal[margin]{Impact cross sections from Cowan code or experimental data??}
+As for ACI, numerical cross-sections were obtained from the output of a
+Hartree-Fock code from \cite{CowanCode}. These cross-sections describe the
+transition between the ground states and the first eight excited states (with
+$l<4$) for charge states up to 17+.
+
+The impact parameter of the impacting electron is calculated:
+\begin{align}
+b & = \frac{\abs{\vv \times \vr}}{\abs{\vv}}
+\label{eqn:ionization:impact:parameter}
+\end{align}
+where $\vv$ is the impacting electron's velocity vector and $\vr$ the vector
+from the impacting electron to the target. If the impacting parameter lies
+inside the calculated cross section, excitation or ionization takes place. In
+the case of excitation, the total cross-section of all excited states are used
+and a final state randomly selected between all accessible, weighted by their
+cross-sections relative to the total one.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
