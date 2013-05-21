@@ -698,15 +698,6 @@ transition rate which is itself obtained from a cross-section. Because
 cross-sections can be obtained from experiments for any kind of target, it is
 easily integrated into the model.
 
-From the different cross-sections, rates of event $\Gamma$ are calculated.
-Then, this rate is weighted\cite{Lax2006} by the time step size and compared to
-a random number $r$ between 0 and 1:
-\begin{align}
-1 - \e{-\Gamma \Delta t} > r
-\label{eqn:ionization:prob}
-\end{align}
-When the previous test succeeds, ionization takes place and a new electron is
-created in the code.
 
 % with its kinetic energy set as the difference between the
 % ionization potential and the photon energy. Then, the intensity profile of the
@@ -725,6 +716,15 @@ using
 \label{eqn:ionization:rate:single}
 \end{align}
 which is equivalent to equation \eqref{eqn:ionization:rate:mpi} with $\nu = 1$.
+
+Then, this rate is weighted\cite{Lax2006} by the time step size and compared to
+a random number $r$ between 0 and 1:
+\begin{align}
+1 - \e{-\Gamma \Delta t} > r
+\label{eqn:ionization:prob}
+\end{align}
+When the previous test succeeds, ionization takes place and a new electron is
+created in the code.
 
 Using equation \eqref{eqn:ionization:prob}, a choice is made. If ionization is
 to take place, the new electron is created right on top of the ion with a
