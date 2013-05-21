@@ -489,11 +489,116 @@ energy, it can either keep the extra, give all the extra, or give a fraction of
 the extra to the new electron. We split the extra kinetic energy between the two
 electrons to assure that they do not fall back unto the ion.
 
-Additionally, momentum is conserved by giving the two leaving electrons an angle
-of divergence. Since the impacting electron can cause ionization before being
-exactly on top of the atom or ion, the angle of divergence is given by:
 
-\fxfatal{Add the divergence calculation here. See hand notes.}
+Figure \ref{fig:impact:before:Z} shows the process of impact ionization when an
+electron (particle 1) of charge state -1 impacts an ion (particle 0) of charge
+state Z and creates a new electron (particle 2) right on top.
+
+\begin{figure}
+ \centering
+    \begin{subfigure}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/impact_ionization_t00}
+        \caption{Before impact ionization (Z)}
+        \label{fig:impact:before:Z}
+    \end{subfigure}
+\\
+    \begin{subfigure}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/impact_ionization_t0}
+        \caption{During impact ionization (Z+1)}
+        \label{fig:impact:before:Zp1}
+    \end{subfigure}
+%
+    \begin{subfigure}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/impact_ionization_t1}
+        \caption{After impact ionization}
+        \label{fig:impact:after}
+    \end{subfigure}
+\caption{Impact ionization: before and after}
+\label{fig:impact:steps}
+\end{figure}
+
+
+First, let's assume the impacting electron came from infinity where it's kinetic
+energy was exactly the Ip. In that case, impact ionization will occur (considering
+its impact parameter lies inside the cross-section). By definition, we must have two
+electrons leaving to infinity: an unbound system. Such an unbound system has a total
+energy of 0.
+
+The total energy before (a) is thus:
+\begin{align}
+E^{a} & = K_{1}^{a} + U_{01}^{a} = Ip
+\label{eqn:Ea}
+\end{align}
+and after (c) ionization is:
+\begin{align}
+E^{c} & = K_{1}^{c} + K_{2}^{c} + U_{01}^{c} + U_{02}^{c} + U_{12}^{c} = 0
+\label{eqn:Ec}
+\end{align}
+
+The change in energy is thus:
+\begin{align}
+E^{a} - E^{c} & = Ip = K_{1}^{a} + U_{01}^{a} - \pa{
+    K_{1}^{c} + K_{2}^{c} + U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
+}
+\end{align}
+
+The only unknown values here are $K_{1}^{c}$ and $K_{2}^{c}$ since the new electron is
+created right on top of the ion. Let's isolate the final kinetic energies:
+\begin{align}
+K_{1}^{c} + K_{2}^{c} = K_{1}^{a} + U_{01}^{a} - \pa{
+    U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
+} - Ip
+\label{eqn:K1cPlusK2c}
+\end{align}
+
+We have a single constraint from equation \eqref{eqn:K1cPlusK2c} but two unknown. We thus
+give an arbitrary value to one of the two. We want the new electron to leave the ion.
+Since it is right on top of it, we can guess the required kinetic energy to be very close
+to (minus) the potential energy the electron has with respect to the ion. But this electron
+will be ``pushed'' be the impacting electron too and will thus be accelerated. To compensate
+for this push, we remove the potential energy between the two electrons from the new electron's
+kinetic energy. So the educated guess for the final kinetic energy of the new electron is:
+\begin{align}
+K_{2}^{c} & = -U_{02}^{c} - U_{12}^{c}
+\label{eqn:K2c:pushed}
+\end{align}
+
+Using equation \eqref{eqn:K2c:pushed} in equation \eqref{eqn:K1cPlusK2c} gives:
+\begin{align}
+K_{1}^{c}
+ & = K_{1}^{a} + U_{01}^{a} - \pa{
+    U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
+} - Ip - K_{2}^{c} \\
+ & = K_{1}^{a} + U_{01}^{a} - \pa{
+    U_{01}^{c} + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} }
+} - Ip + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} } \\
+K_{1}^{c}
+ & = K_{1}^{a} + U_{01}^{a} - U_{01}^{c} - Ip
+\label{eqn:K1c:pushed}
+\end{align}
+
+The final total energy is then:
+\begin{align}
+E^{c}
+ & = \pa{
+    K_{1}^{a} + U_{01}^{a} - \cancel{ U_{01}^{c} } - Ip
+ } - \pa{
+                 \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} }
+} + \cancel{ U_{01}^{c} } + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} } \\
+ & = K_{1}^{a} + U_{01}^{a} - Ip \\
+ & = Ip - Ip \\
+E^{c} & = 0
+\end{align}
+which is what was expected.
+
+
+
+
+
+
 
 
 
