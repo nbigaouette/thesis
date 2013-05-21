@@ -599,6 +599,92 @@ which is what was expected.
 
 
 
+% Additionally, momentum is conserved by giving the two leaving electrons an angle
+% of divergence. Since the impacting electron can cause ionization before being
+% exactly on top of the atom or ion, the angle of divergence is given by:
+%
+% Figure \ref{fig:impact:direction} shows the convention of the two angles $\theta$ and $\phi$.
+%
+% \begin{figure}
+% \begin{center}
+% \includegraphics[width=0.8\textwidth]{figures/impact_ionization_directions}
+% \end{center}
+% \caption{Impact ionization: Direction for electrons}
+% \label{fig:impact:direction}
+% \end{figure}
+%
+%
+% Momentum is conserved in each dimension. In this case, it's a 2-D plane.
+% \begin{align}
+% \vp^{a} & = \vp^{c} \\
+% \vp^{a} & = m_e v_{1x}^{a} \hat{x} \\
+% \vp^{c} & = m_e \pa{v_{1x}^{c} + v_{2x}^{c}} \hat{x} + m_e \pa{v_{1y}^{c} + v_{2y}^{c}} \hat{y}
+% \end{align}
+% with:
+% \begin{subequations}
+% \begin{align}
+% v_{1x}^{a} & =  v_{1}^{a} \\
+% v_{1x}^{c} & =  v_{1}^{c} \cosine{\theta} \\
+% v_{2x}^{c} & =  v_{2}^{c} \cosine{\phi} \\
+% v_{1y}^{c} & =  v_{1}^{c} \sine{\theta} \\
+% v_{2y}^{c} & = -v_{2}^{c} \sine{\phi}
+% \end{align}
+% \end{subequations}
+%
+% Conservation in $x$:
+% \begin{align}
+% v_{1x}^{a}      & = v_{1x}^{c} + v_{2x}^{c} \\
+% v_{1}^{a}       & = v_{1}^{c} \cosine{\theta} + v_{2}^{c} \cosine{\phi} \\
+% \cosine{\phi}   & = \frac{v_{1}^{a} - v_{1}^{c} \cosine{\theta}}{v_{2}^{c}}
+% \label{eqn:cos_phi}
+% \end{align}
+% and in $y$:
+% \begin{align}
+% 0           & = v_{1y}^{c} + v_{2y}^{c} \\
+% 0           & = v_{1}^{c} \sine{\theta} - v_{2}^{c} \sine{\phi} \\
+% \sine{\phi} & = \frac{v_{1}^{c}}{v_{2}^{c}} \sine{\theta}
+% \label{eqn:sin_phi}
+%  % \\
+% % \phi        & = \asin{ \frac{v_{1}^{c}}{v_{2}^{c}} \sine{\theta} }
+% \end{align}
+%
+% Squaring and summing \eqref{eqn:cos_phi} and \eqref{eqn:sin_phi} gives 1:
+% \begin{align}
+% 1
+% & = \cossquared{\phi} + \sinsquared{\phi} \\
+% & = \pa{ \frac{v_{1}^{a} - v_{1}^{c} \cosine{\theta}}{v_{2}^{c}} }^2
+%   + \pa{ \frac{v_{1}^{c}}{v_{2}^{c}} \sine{\theta} }^{2} \\
+% \pa{ v_{2}^{c} }^2
+% & = \pa{ v_{1}^{a} - v_{1}^{c} \cosine{\theta} }^2
+%   + \pa{ v_{1}^{c} \sine{\theta} }^{2} \\
+% & = \pa{ v_{1}^{a} }^{2} + \pa{ v_{1}^{c} }^{2} \cossquared{\theta}
+%     - 2 v_{1}^{a} v_{1}^{c} \cosine{\theta}
+%     + \pa{ v_{1}^{c} }^{2} \sinsquared{\theta} \\
+% & =   \pa{ v_{1}^{c} }^{2} \underbrace{\pa{ \cossquared{\theta} + \sinsquared{\theta} }}_{=1}
+%     + \pa{ v_{1}^{a} }^{2}
+%     - 2 v_{1}^{a} v_{1}^{c} \cosine{\theta} \\
+% \pa{ v_{2}^{c} }^2
+% & =   \pa{ v_{1}^{c} }^{2}
+%     + \pa{ v_{1}^{a} }^{2}
+%     - 2 v_{1}^{a} v_{1}^{c} \cosine{\theta} \\
+% 2 v_{1}^{a} v_{1}^{c} \cosine{\theta}
+% & =   \pa{ v_{1}^{c} }^{2}
+%     + \pa{ v_{1}^{a} }^{2}
+%     - \pa{ v_{2}^{c} }^2 \\
+% \cosine{\theta}
+% & = \frac{
+%       \pa{ v_{1}^{a} }^{2}
+%     + \pa{ v_{1}^{c} }^{2}
+%     - \pa{ v_{2}^{c} }^2
+%     }{ 2 v_{1}^{a} v_{1}^{c} }
+% \label{eqn:cos_theta}
+% \end{align}
+%
+% Equation \eqref{eqn:cos_theta} is used to get $\theta$ from $v_{1}^{a}$ (initial velocity of
+% the impacting electron), $v_{1}^{c}$ (final velocity of the impacting electron) and
+% $v_{2}^{c}$ (final velocity of new electron). Once the angle $\theta$ is found, $\phi$ can
+% be found using \eqref{eqn:cos_phi}.
+%
 
 
 
