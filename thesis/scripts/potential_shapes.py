@@ -5,7 +5,7 @@ import numpy as np
 import scipy.special
 import plot
 
-
+import plot_params
 plot.matplotlib.rcParams['figure.subplot.hspace'] = 0.0
 
 class Shape():
@@ -87,19 +87,24 @@ sg_three.Plot(  axes, '-c', 'Super-Gaussian (m=3)')
 cs.Plot(        axes, '-m', 'Charge distribution')
 
 
-ax1.legend(loc='best')
 ax1.grid()
-ax1.set_ylabel('Electrostatic potential [Hartree]')
+ax1.set_ylabel('Potential [Eh]')
 ax2.grid()
-ax2.set_ylabel('Electrostatic field [a.u.]')
+ax2.set_ylabel('Field [a.u.]')
 ax2.set_xlabel('r [Bohr]')
 
 ax1.set_ylim((0.0, 1.25*phi0))
 ax2.set_ylim((-2.0, 0.05))
 plot.setp(ax1.get_xticklabels(), visible=False)
 
-#plot.show()
+
+leg = ax1.legend(loc = "best")
+leg.get_frame().set_alpha(0.6)
+#leg.set_zorder(100)
+ax2.set_zorder(-100)
+
 plot.savefig('potential_shapes.pdf')
 plot.savefig('potential_shapes.svg')
+plot.show()
 
 
