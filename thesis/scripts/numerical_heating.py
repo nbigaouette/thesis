@@ -120,7 +120,6 @@ for ax in [ax1_Eh, ax2_Eh]:
     ax.set_yscale('log')
     ax.set_ylabel("Energy change [Hartree]")
 
-#savefigure.show(figs, figure_name = "")
-#plot.savefig('numerical_heating.svg')
-#plot.savefig('numerical_heating.pdf')
+plot.savefig('numerical_heating.svg')
+plot.savefig('numerical_heating.pdf')
 plot.show()
