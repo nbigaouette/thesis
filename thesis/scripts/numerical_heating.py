@@ -15,7 +15,7 @@ import colors_and_symbols
 
 import plot_params
 
-max_plot = 10
+max_plot = 7
 saved_file    = "numerical_heating.npz"
 
 def find_nearest(array, value):
