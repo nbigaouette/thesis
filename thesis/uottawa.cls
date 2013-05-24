@@ -187,6 +187,9 @@
 % Multicolumns inside tables
 \newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
 
+% Harmonies the figures' width
+\newcommand{\figurewidth}{0.95\columnwidth}
+
 % ******************************************************************************
 % ******************************************************************************
 %       Define new commands for the different sections
