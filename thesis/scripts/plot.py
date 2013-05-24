@@ -6,6 +6,7 @@ import matplotlib.pyplot
 import math
 import sys
 import signal
+import os
 
 from mpl_toolkits.axes_grid1.parasite_axes import SubplotHost
 import matplotlib.transforms as mtransforms
@@ -192,8 +193,13 @@ def figure(**kwargs):
 def setp(*args, **kwargs):
     matplotlib.pyplot.setp(*args, **kwargs)
 def savefig(filename):
-    print "Saving to", filename
-    matplotlib.pyplot.savefig(filename, transparent=True, bbox_inches='tight')
+    figures=[manager.canvas.figure
+             for manager in matplotlib._pylab_helpers.Gcf.get_all_fig_managers()]
+    filename_base, filename_ext = os.path.splitext(filename)
+    for i, figure in enumerate(figures):
+        filename = '{0}_{1}{2}'.format(filename_base, i, filename_ext)
+        print "Saving to", filename
+        figure.savefig(filename, transparent=True, bbox_inches='tight')
 
 
 def show():
