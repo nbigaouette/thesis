@@ -445,24 +445,101 @@ a package is invaluable.
 \subsubsection{Potential threshold $V_b$}
 \label{section:intro:Vb}
 \fxnote[noinline,margin]{Finish $V_b$ section}
-\fxnote[noinline,margin]{Create real $V_b$ figure}
 
 Many ionization processes described previously consider an isolated atom but
 clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$) and
 so the environment cannot be ignored.
 
 The cluster environment can be approximated by a constant value that shifts the
-potential\cite{Fennel2007}. This can be justified by the fact that bound states
-of rare gas atoms are localized close to the atoms and the cluster potential
-spatial variation around atoms is small.
+potential\cite{Fennel2007}. This shift $U_b = -e_0 V_b$ where $V_b$ is the
+potential due to the cluster at the ion's location (ignoring nearby electrons)
+and $U_b$ is the potential energy a test particle of charge state -1 (an electron)
+would have if it was placed right on top of the ion. This can be justified by
+the fact that bound states of rare gas atoms are localized close to the atoms
+and the cluster potential spatial variation around atoms is small.
 
-Figure \ref{fig:md:vb} shows the potential landscape of a ``cluster'' of two
-ions. The second ion is creating a potential that is not constant around the
-first ion. This cluster potential $V_b$ is then treated at the atom's threshold
-to continuum. By using $V_b$ as the threshold, atomic properties such as
+To illustrate this shifting, figure \ref{fig:md:Vb} shows the potential energy
+landscape of an example ``cluster'' of two ions. Plotted on this figure is the
+potential energy of a test particle of charge state -1 (an electron) in the
+cluster environment. Note the distinction between potential and potential
+energy. A positive charge (an ion) creates a positive potential but the
+potential \textit{energy} of the test particle (of charge state -1) in that
+positive potential is negative, hence the negative curves on figure
+\ref{fig:md:Vb}. The contribution from the ion is the blue dashed line on the
+figure.
+
+
+
+\begin{figure}
+    % ./potential_landscape.py --two --ion="0,1" --ion="-15,5" --impe_r=4 \
+    %     --depth=1.5 --ion_impe=0 --impe_K=0.75 --ionization --umin=-1.2 \
+    %     --umax=0.3 --plot=all --rmin=-7 --rmax=7.5 --plot=U
+    \begin{center}
+    \includegraphics[width=0.98\columnwidth]{figures/potential_landscape}
+    \end{center}
+    \caption{\label{fig:md:Vb}Cluster environment potential energy landscape
+             and the $V_b$ approximation. A 1+ ion in the centre creates a potential}
+\end{figure}
+
+
+Continuing in the example case of figure \ref{fig:md:Vb}, we introduce a
+second ion that will simulate the cluster environment. This second ion, of
+charge state 5+ and located at $r$ = -15 Bohr, is creating a
+potential that is not constant around the first ion. The potential energy of
+the test particle in this potential is plotted as the red dashed line. The total
+potential energy of the test particle due to the two ions is plotted as a black
+dashed line.
+
+The first ion's threshold is thus influenced by the second ion. The continuum,
+instead of being at zero, is shifted by $U_b = -e_0 V_b$. This approximates the
+influence of the second ion as being constant in the first ion's vicinity. This
+threshold shift is shown on figure \ref{fig:md:Vb} as the red arrow $U_b$.
+
+The effect of $U_b$ is to shift the ion's states to lower energies. This is
+shown on the figure as $Ip_{ion}$, the energy required for a bound electron
+to be promoted to the isolated ion's continuum, being shifted downward to
+$Ip_{ion}'$. The effective ion's potential energy curve, also shifted by $U_b$,
+is shown as the dotted blue line.
+
+When an electron enters the picture, for example during collisional ionization
+or ACI, atomic properties of isolated ions are used. These properties require
+impacting electrons to come from infinity where the electron does not feel the
+ion at all. At infinity, the electron's total energy only contains kinetic
+energy. We call this kinetic energy $K_{\textrm{thresh}}$ for ``kinetic energy
+above the threshold''. This $K_{\textrm{thresh}}$ can simply be calculated, in
+an isolated system, as $K_{\textrm{thresh}} = K_e + U_e$ where $K_e$ is the
+electron's kinetic energy and $U_e$ its potential energy; $K_{\textrm{thresh}}$
+is, in this case, basically the electron's total energy. $K_{\textrm{thresh}}$
+is the kinetic energy that must be used in Lotz formula
+\eqref{eqn:impact:ionization:lotz}. Note that, contrary to a real kinetic
+energy, $K_{\textrm{thresh}}$ can be negative. In that case, a null value is
+used instead.
+
+When a cluster environment is present, a similar approach is taken to obtain
+$K_{\textrm{thresh}}$. Instead of taking the extra energy above zero for
+$K_{\textrm{thresh}}$, the extra energy above the new threshold $U_b$ is used.
+This value can easily be obtained from the actual electron's kinetic energy
+$K_e$, it's \textit{total} potential energy in the cluster environment and the
+threshold $U_b$ by:
+\begin{align}
+K_{\textrm{thresh}} & = K_e - \pa{U_b - U_e}.
+\label{eqn:md:kthresh}
+\end{align}
+Again, $K_{\textrm{thresh}}$ could end up negative. In that case, zero is used
+instead. $K_{\textrm{thresh}}$ is shown on figure \ref{fig:md:Vb} as a red arrow
+with its base at $U_b$.
+
+
+
+
+
+
+
+This cluster potential $U_b$ is then treated at the atom's threshold
+to continuum. By using $U_b$ as the threshold, atomic properties such as
 ionization potential can be used, even in the cluster environment.
 
-\emptyfig{Cluster potential and the $V_b$ approximation}{fig:md:vb}
+
 
 
 \subsubsection{Notes on ionization definition}
@@ -769,15 +846,9 @@ May 2013's edition of New Journal of
 Physics\footnote{\url{http://iopscience.iop.org/1367-2630/page/Forthcoming\%20articles}}.
 
 Recombination is tested by calculating the total energy of an electron and
-comparing it to the threshold $V_b$ -- see figure \ref{fig:recombination}. If
+comparing it to the threshold $V_b$ -- see figure \ref{fig:md:Vb}. If
 the energy is less then $V_b$, the electron is recombined; the ion charge is
 decremented and the electron is removed from the ion. The electron's momentum
 is transferred to the ion.\fxnote[margin,noinline]{Is the momentum really
 transferred to the ion during recomb.?}
 
-\begin{figure}
-    \begin{center}
-    \includegraphics[width=0.98\columnwidth]{figures/potential_landscape}
-    \end{center}
-    \caption{\label{fig:recombination}Recombination energy diagram\fxfatal{Move to Vb section?}}
-\end{figure}
