@@ -625,7 +625,7 @@ if (plot_U):
 
     # ************************************
     # Ub(r)
-    ax_U_Eh.plot(r, Ubr, "-.m", label=Ubr_label)
+    #ax_U_Eh.plot(r, Ubr, "-.m", label=Ubr_label)
 
     # ************************************
     # Ip
