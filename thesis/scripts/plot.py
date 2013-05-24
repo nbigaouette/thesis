@@ -197,7 +197,10 @@ def savefig(filename):
              for manager in matplotlib._pylab_helpers.Gcf.get_all_fig_managers()]
     filename_base, filename_ext = os.path.splitext(filename)
     for i, figure in enumerate(figures):
-        filename = '{0}_{1}{2}'.format(filename_base, i, filename_ext)
+        if (len(figures) > 1):
+            filename = '{0}_{1}{2}'.format(filename_base, i, filename_ext)
+        else:
+            filename = '{0}{1}'.format(filename_base, filename_ext)
         print "Saving to", filename
         figure.savefig(filename, transparent=True, bbox_inches='tight')
 
