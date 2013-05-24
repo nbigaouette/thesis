@@ -1,10 +1,6 @@
 \subsection{Quantum FDTD (QFDTD)}
 \label{section:tools:qfdtd}
 
-\begin{itemize}
-\item \fxerror{Add a paragraph or two on mapping as it is NEW.}
-\end{itemize}
-
 
 One model proposed to explain the high charge states seen in some experiments
 is the lowering of the ionization barrier, used in conjunction with classical
@@ -310,5 +306,29 @@ dependency problem is to store two grids; one for $\psi^{n}$ and another for
 $\psi^{n+1}$, alternating between them when calculating equations
 \eqref{eqn:schrodinger:real:imag:discretized} and
 \eqref{eqn:schrodinger:real:real:discretized}.
+
+
+\subsubsection{Nonlinear mapping}
+\label{section:tools:qfdtd:mapping}
+While being simple and powerful, the QFDTD method (both real-time and
+imaginary-time) suffer from a major flaw; its memory usage. Since a three
+dimensional grid scales as $O\pa{N_x \cdot N_y \cdot N_z}$ where $N_i$ is the
+number of grid cells in one dimension, many gigabytes of memory are often
+required. Specifically in the case of QFDTD is the fact that the electronic
+wavefunction must span an infinite space, or at least be truncated where
+the wavefunction can be safely assumed always close to zero. Additionally,
+the Coulomb potential vary drastically close to the nucleus which requires
+a small grid cell size to efficiently sample, increasing uselessly the precision
+far from it and multiplying the memory requirement.
+
+A novel method was developed to concentrate three dimensional grid cells close
+to centres of interest and thus reduces significantly the amount of memory
+required for a given precision. Dubbed \textit{nonlinear mapping}, it maps the
+discrete, integer based, space of a computer memory to the continuous regular
+space. Many interesting features of this mapping make it applicable to other
+type of solvers in the most generic way.
+
+The reader will find the full details of this work in the article published
+in 2011 and included in section \ref{section:papers:qfdtd}.
 
 
