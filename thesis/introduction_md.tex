@@ -811,13 +811,12 @@ from reference \cite{Tawara1987} (for neutral xenon) and \cite{Heidenreich2005}
 (for higher charge states). For argon, data from \cite{Lotz1967} and
 \cite{Lotz1970} is used.
 
-\fxfatal[margin]{Impact cross sections from Cowan code or experimental data??}
-As for ACI, numerical cross-sections were obtained from the output of a
-Hartree-Fock code from \cite{CowanCode}. These cross-sections describe the
-transition between the ground states and the first eight excited states (with
-$l<4$) for charge states up to 17+.
+As for ACI, numerical cross-sections from ground state to excited state and from
+excited state to continuum were calculated by Edward Ackad using a
+Hartree-Fock code from \cite{CowanCode}. Only the first eight excited states
+were considered (with $l<4$) for charge states up to 17+ for both xenon and argon.
 
-The impact parameter of the impacting electron is calculated:
+The impact parameter of the impacting electron is calculated by:
 \begin{align}
 b & = \frac{\abs{\vv \times \vr}}{\abs{\vv}}
 \label{eqn:ionization:impact:parameter}
