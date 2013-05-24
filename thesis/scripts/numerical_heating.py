@@ -72,7 +72,8 @@ for j in xrange(len(potential_shapes)):
         #nothing, index2 = find_nearest(dts,              dts[i])
         ax1_eV.plot(dts, NumericalHeating[index0, index1, :],
                     colors_and_symbols.symb_col(c),
-                    label = r"Potential depth: " + str(base_potentials[index0]) + " Eh (" + potential_shapes[j] + " )")
+                    label = r"" + str(base_potentials[index0]) + " Eh")
+                    #label = r"Potential depth: " + str(base_potentials[index0]) + " Eh (" + potential_shapes[j] + " )")
         # When the NumericalHeating is negative, we have cooling, which would not appear on the log scale plot.
         cooling_indices = np.where(NumericalHeating[index0, index1, :] <= 0.0)
         if (len(cooling_indices[0]) >= 1):
@@ -89,7 +90,8 @@ for j in xrange(len(potential_shapes)):
         nothing, index2 = find_nearest(dts,              dt_close)
         ax2_eV.plot(base_potentials, NumericalHeating[:, index1, index2],
                     colors_and_symbols.symb_col(c),
-                    label = r"$\Delta t$ = " + str(dts[index2]) + " as (" + potential_shapes[j] + ")")
+                    label = r"" + str(dts[index2]) + " as")
+                    #label = r"$\Delta t$ = " + str(dts[index2]) + " as (" + potential_shapes[j] + ")")
         # When the NumericalHeating is negative, we have cooling, which would not appear on the log scale plot.
         cooling_indices = np.where(NumericalHeating[:, index1, index2] <= 0.0)
         if (len(cooling_indices[0]) >= 1):
