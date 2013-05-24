@@ -43,11 +43,11 @@ $i$. We thus have:
 %    /------>i
 %       r_i
 
-% \emptyfig{Vectors definition}{fig:md:vectors}
 \begin{figure}
  \centering
  \includegraphics[width=0.38\columnwidth]{figures/mockups/vectors}
  \caption{Vectors definition}
+ \fxwarning[noinline,margin]{Create real figure: Vectors definition}
  \label{fig:md:vectors}
 \end{figure}
 
@@ -134,12 +134,12 @@ r_{j,\beta} - r_{j}^2} \delta_{\alpha,\beta}
 and $R$ is the distance between the cell's centre-of-charge and the
 particle of interest $i$.
 
-% \emptyfig{QUAD TREE}{fig:tree:quadtree}
 \begin{figure}
  \centering
  \includegraphics[width=0.38\columnwidth]{figures/mockups/quadtree}
  \caption{Quadtree: 2D's equivalent of the 3D octree}
  \label{fig:tree:quadtree}
+ \fxwarning[noinline,margin]{Create real figure: Quadtree}
 \end{figure}
 
 The tree algorithm first split the computational domain into an octree (in
@@ -206,6 +206,7 @@ The different MAC can be seen on figure \ref{fig:tree:mac}.
  \includegraphics[width=0.8\columnwidth]{figures/mockups/mac}
  \caption{Different Multipole Acceptance Criteria (MAC)}
  \label{fig:tree:mac}
+ \fxwarning[noinline,margin]{Create real figure: Tree MAC}
 \end{figure}
 
 Because not all interaction pairs are considered in the calculation of the
@@ -214,6 +215,7 @@ traversal algorithm, the scaling passes\cite{Barnes1986,Gibbon2002,Pfalzner1996}
 from $O\pa{N^2}$ to $O\pa{N \ln{N}}$; see figure \ref{fig:tree:scaling}.
 
 \emptyfig{TREECODE SCALING}{fig:tree:scaling}
+ \fxwarning[noinline,margin]{Create real figure: Tree scaling}
 
 A variation to the hierarchical treecode is obtained when a sufficiently large
 $\theta$ is used. In this case, the root cell (the largest one) is never
@@ -369,6 +371,7 @@ respective electrostatic field.
     \caption{\label{fig:potential:shapes}Potential shapes and their respective
     electric field. Note the use of atomic units and $\phi_0$ = 1.5 Hartree =
     40.8 eV.}
+ \fxwarning[noinline,margin]{Harmonise figure with others \& Use same latex code}
 \end{figure}
 
 It was found that the potential given by the charge distribution of equation
@@ -390,6 +393,7 @@ of potential depth and time step.
 
 
 \emptyfig{NUMERICAL HEATING}{fig:potential:heating}
+\fxwarning[noinline,margin]{Create real figure: Numerical heating}
 
 
 \subsection{Implementation details}
