@@ -80,6 +80,25 @@ interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
+An example cluster can be seen on figure \ref{fig:md:cluster}. A cluster
+made of 147 xenon atoms (large blue spheres) absorbs some photons (red
+wave-packets) from the laser field. Atoms are ionized; electron are created
+(small grey spheres) which moves through the cluster. Ions are represented with
+colours going from blue for neutral to red for Xe$^{5+}$. The figure was
+generated using
+PyMOL\footnote{\textit{The PyMOL Molecular Graphics System}, Version 1.5.0.4, Schrödinger, LLC. \url{http://pymol.org/}}
+
+
+\begin{figure}
+ \centering
+ \includegraphics[width=\figurewidth]{figures/cluster}
+ \caption{\label{fig:md:cluster}Example ionized Xe$_{147}$ cluster; xenon as
+          large spheres with colours going from blue for neutral to full red for
+          Xe$^{5+}$, electrons in small grey spheres. Photons from the laser
+          field are displayed as red wave-packets.}
+\end{figure}
+
+
 \subsection{Long range potential: Hierarchical Tree algorithms}
 The $O\pa{N^2}$ scaling of MD algorithm can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
