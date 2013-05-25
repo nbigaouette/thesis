@@ -202,14 +202,40 @@ center-of-charge. If the previous equation holds ($d$ is large enough) then the
 multipole expansion is used; the cell is added to the interaction list.
 The different MAC can be seen on figure \ref{fig:tree:mac}.
 
-% \emptyfig{MAC DIAGRAM}{fig:tree:mac}
 \begin{figure}
  \centering
- \includegraphics[width=0.8\columnwidth]{figures/mockups/mac}
- \caption{Different Multipole Acceptance Criteria (MAC)}
- \label{fig:tree:mac}
- \fxwarning[noinline,margin]{Create real figure: Tree MAC}
+    \begin{subfigure}{0.15\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/mac_1}
+        \caption{}
+        \label{fig:tree:mac:1}
+    \end{subfigure}
+    \hspace{0.75cm}
+    \begin{subfigure}{0.15\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/mac_2}
+        \caption{}
+        \label{fig:tree:mac:2}
+    \end{subfigure}
+    \hspace{0.75cm}
+    \begin{subfigure}{0.15\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/mac_3}
+        \caption{}
+        \label{fig:tree:mac:3}
+    \end{subfigure}
+    \hspace{0.75cm}
+    \begin{subfigure}{0.15\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/mac_4}
+        \caption{}
+        \label{fig:tree:mac:4}
+    \end{subfigure}
+\caption{Different Multipole Acceptance Criteria (MAC)}
+\label{fig:tree:mac}
+ \fxwarning[noinline,margin]{Tree MAC: Real captions}
 \end{figure}
+
 
 Because not all interaction pairs are considered in the calculation of the
 force and potential, a significant speedup is obtained. Due to the tree
