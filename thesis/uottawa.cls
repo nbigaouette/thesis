@@ -228,7 +228,7 @@
         \vspace*{1.85cm}
         \begin{LARGE}\textbf{{\uottawa@title}}\end{LARGE}
 
-        \vspace*{2.1cm}
+        \vspace*{1.5cm}
         \begin{large}{\uottawa@author}\end{large}
 
         \vspace*{2.55cm}
@@ -242,7 +242,7 @@
         Faculty of Science \\
         University of Ottawa \\
 
-        \vspace*{5.42cm}
+        \vspace*{5cm}
         \textcopyright~\uottawa@author, Ottawa, Canada, \the\year
     \end{center}
     \end{titlepage}
