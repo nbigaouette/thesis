@@ -134,11 +134,15 @@ particle of interest $i$.
 
 \begin{figure}
  \centering
- \includegraphics[width=0.38\columnwidth]{figures/mockups/quadtree}
- \caption{Quadtree: 2D's equivalent of the 3D octree}
- \label{fig:tree:quadtree}
- \fxwarning[noinline,margin]{Create real figure: Quadtree}
+ \includegraphics[width=\figurewidth]{figures/quadtree}
+ \caption{\label{fig:tree:quadtree}Quadtree: 2D's equivalent of the 3D octree.
+          300 particles (half ions in blue, half electrons in magenta) represent
+          an exploding cluster. Cells' moments are propagated up the tree to the
+          root cell. Particles far from a cell can interact directly with it
+          instead of resolving all particles contained in it, thus reducing the
+          computational burden.}
 \end{figure}
+
 
 The tree algorithm first split the computational domain into an octree (in
 three dimension) or quadtree (in two dimensions) until
