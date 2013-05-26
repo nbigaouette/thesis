@@ -2,60 +2,89 @@
 \label{section:tools:libraries}
 
 Additionally to the MD and QFDTD packages, eight libraries were developed to
-support some generic features shared between the two. These libraries are:
-\begin{itemize}
-\item timing.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/timing}}:
-    Timing routines used to measure running time, estimated time of arrival
-    (ETA), code profiling, etc. 1,300 lines of C++ code.
-\item stdcout.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/stdcout}}:
-    Logging features allowing saving the output of any simulations to a
-    (compressed) log file. 500 lines of C++ code.
-\item prng.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/prng}}:
-    Pseudo-random number generator (PRNG) library. Wrapper around
-    dSFMT\cite{prng2009}, a SIMD-oriented Fast Mersenne Twister implementation.
-    Defines easy to use PRNG functions, distributions, seed, etc. Keeps track of
-    the seed and how many times pseudo-random numbers were generated, allowing
-    to replay the series in case of simulation reloading. 500 lines of C++ code
-    (not counting dSFMT).
-\item memory.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/memory}}:
-    Wrappers around malloc() and calloc() that will automatically check that
-    the allocation succeeded. Will also keep track of the amount of
-    memory allocated and allow setting a maximum value, preventing
-    over-allocation due to bugs or user errors. Can also return the binary
-    representation of a number as a string for easier debugging. 1,200 lines of
-    C++ code.
-\item io.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/io}}:
-    Input and Output library. Includes wrappers around TinyXML library\cite{tinyxml} for
-    reading input file, wrappers around NetCDF\cite{netcdf} for self-contained
-    output files, used for both post-processing and simulation snapshots.
-    2,950 lines of C++ code (not counting TinyXML).
-\item libpotentials.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/libpotentials}}:
-    Functions implementing and abstracting different potential shapes as
-    described in section \ref{section:intro:md:potentials}. 4,300 lines of C++ code.
-\item ionization.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/ionization}}:
-    All ionization routines described in section
-    \ref{section:intro:mechanisms}. 18,000 lines of C++ code.
-\item oclutils.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/oclutils}}:
-    Library to ease the use of OpenCL devices. Allows listing and selecting the
-    best GPU available on a workstation and locking it to prevent
-    other simulations from using it. Contains an array abstraction to ease the
-    transfer of data from the host (main memory) to device (GPU memory) and
-    vice-versa. Also includes a SHA512 checksum check to validate memory
-    and detect any issue during transfers. 3,300 lines of C++ code.
-\item get\_libraries.git\footnote{ \url{
-    https://gitlab.cphoton.science.uottawa.ca/nbigaouette/get_libraries}}:
-    Simple script that will download all the previous required libraries or
-    update to the lasted version from git, compile them and install them in the
-    user's directory. 240 lines of bash code.
-\end{itemize}
-% A detailed guide on the compilation and usage of the simulation package can be
-% read in appendix \ref{appendix:code}.
+support some generic features shared between the two.
+
+\subsubsection{timing.git} \label{section:tools:libraries:timing}
+This library includes timing routines used to measure running time, estimated
+time of arrival (ETA), code profiling, etc. It consists of 1,300 lines of C++
+code and can be found here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/timing}.
+
+\subsubsection{stdcout.git} \label{section:tools:libraries:stdcout}
+Add logging features allowing saving the output of any code execution to a
+(compressed or not) log file consisting of 500 lines of C++ code.
+Can be found here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/stdcout}.
+
+\subsubsection{prng.git} \label{section:tools:libraries:prng}
+A pseudo-random number generator (PRNG) library. Wrapper around
+dSFMT\cite{prng2009}, a SIMD-oriented Fast Mersenne Twister implementation.
+Defines easy to use PRNG functions, distributions, seed, etc. Keeps track of
+the seed and how many times pseudo-random numbers were generated, allowing
+to replay the series in case of simulation reloading. 500 lines of C++ code
+(not counting dSFMT) and found here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/prng}
+
+\subsubsection{memory.git} \label{section:tools:libraries:memory}
+Some wrappers around malloc() and calloc() that will automatically check that
+memory allocation succeeded. Will also keep track of the amount of
+memory allocated and allow setting a maximum value, preventing
+over-allocation due to bugs or user errors. Can also return the binary
+representation of a number as a string for easier debugging. 1,200 lines of
+C++ code. Available here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/memory}
+
+\subsubsection{io.git} \label{section:tools:libraries:io}
+Input and Output library. Includes wrappers around TinyXML library\cite{tinyxml}
+for reading input XML file, wrappers around NetCDF\cite{netcdf} for self-contained
+output files, used for both post-processing and simulation snapshots.
+2,950 lines of C++ code (not counting TinyXML). Available here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/io}
+
+\subsubsection{libpotentials.git} \label{section:tools:libraries:libpotentials}
+Functions implementing and abstracting different potential shapes as
+described in section \ref{section:intro:md:potentials}. 4,300 lines of C++ code.
+Available here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/libpotentials}
+
+\subsubsection{oclutils.git} \label{section:tools:libraries:oclutils}
+Library to ease the use of OpenCL devices. Allows listing and selecting the
+best GPU available on a workstation and locking it to prevent
+other simulations from using it. Contains an array abstraction to ease the
+transfer of data from the host (main memory) to device (GPU memory) and
+vice-versa. Also includes a SHA512 checksum check to validate memory
+and detect any issue during transfers. 3,300 lines of C++ code.
+Available here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/oclutils}
+
+\subsubsection{get\_libraries.git} \label{section:tools:libraries:getlibraries}
+Simple script that will download all the required libraries or
+update them to the lasted version from git, compile them and install them in the
+user's directory. 240 lines of bash code.
+Available here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/get_libraries}
+
+
+
+\subsubsection{Ionization library}
+\label{section:tools:libraries:ionization}
+
+All ionization processes described in section
+\ref{section:intro:mechanisms} and consisting of 18,000 lines of C++ code.
+The library is available here:
+\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/ionization}
+
+The ionization library is a large part of the work as can be seen by the amount
+of line of code. Each ionization processes of section
+\ref{section:intro:mechanisms} have a function that, when called, will iterate
+over the list of ions and calculate if the ionization takes place or not. In the
+case of collisional processes (impact ionization and ACI), the iteration is over
+electrons instead. The MD stores each electrons' nearest neighbour in a flag,
+allowing the ionization library to calculate the required values for ionization.
+
+To keep the library generic (so it can be used with other simulation packages,
+not just the MD developed here), the library does not explicitly creates
+electrons (or recombine them). It instead calls functions that \textit{must}
+be defined in the simulation package for the exact values to set.
+
 
