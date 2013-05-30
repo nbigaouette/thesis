@@ -178,7 +178,7 @@
 \date{}
 
 \setcounter{secnumdepth}{3} % Depth of section numbering
-\setcounter{tocdepth}{3}    % Depth of sections to include in Table of Content
+\setcounter{tocdepth}{4}    % Depth of sections to include in Table of Content
 
 % Define deeper levels of sections
 \newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\\}
