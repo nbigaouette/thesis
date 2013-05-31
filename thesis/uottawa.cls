@@ -55,7 +55,6 @@
 \setboolean{isfinal}{true}
 \fi
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ``Inherit'' from the article class
 \LoadClass[12pt,letterpaper,draft=\boolean{isdraft}]{article}
@@ -156,7 +155,6 @@
       Install pax-tds from http://www.ctan.org/tex-archive/macros/latex/contrib/pax/
     }%
   }%
-
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
