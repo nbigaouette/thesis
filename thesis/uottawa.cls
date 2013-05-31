@@ -73,6 +73,9 @@
 \linespread{1.3}    % ``One and a half''
 %\linespread{1.6}    % ``Double''
 
+% AMS math package
+\RequirePackage{amsmath}    % Needed for \begin{subequations}...\end{subequations}
+
 \RequirePackage{ifthen}
 \RequirePackage{ifpdf}
 \ifpdf
