@@ -43,7 +43,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Define booleans flags draft/final
+% Define boolean flags draft/final
 \RequirePackage{ifthen}
 \newboolean{isdraft}
 \newboolean{isfinal}
