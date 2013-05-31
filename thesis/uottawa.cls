@@ -189,7 +189,6 @@
 % See http://www.latex-community.org/viewtopic.php?f=4&t=163
 % and http://phaseportrait.blogspot.ca/2007/08/lineno-and-amsmath-compatibility.html
 \ifuottawa@linenumbers
-% \usepackage{lineno}
 \RequirePackage{lineno}
 \newcommand*\patchAmsMathEnvironmentForLineno[1]{%
     \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
