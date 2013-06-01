@@ -1,4 +1,4 @@
-\subsection{Acceleration through OpenCL and GP-GPUs}
+\subsection{Acceleration through video cards and OpenCL}
 A new trend lately in High Performance Computing (HPC) is code acceleration
 through graphics cards. Similar to the ubiquitous Moore's Law in the CPU world,
 video cards power evolved exponentially during the last twenty years, pushed
@@ -9,6 +9,8 @@ the first half of 2000. The term \textit{Graphical Processing Unit} (GPU) was
 coined in 1999 by Nvidia, the biggest vendor of video cards, as a selling point
 to their product and to emphasize the fact that their chips were becoming more
 and more alike CPUs.
+
+\subsubsection{General-Programming GPU (GP-GPU)}
 
 Due to this increase in power, people tried to use these video cards as
 accelerators for other things than real video operations. Because GPUs have
@@ -60,9 +62,24 @@ exploiting all cores available on the CPUs transparently.
 It was thus decided to port the two codes (MD and QFDTD) to OpenCL to take
 advantage of the GPU power while retaining portability.
 
+\subsubsection{GPU programming challenges}
+Unfortunately, porting a code to run on GPUs is not as simple as recompiling
+for the new architecture. While being portable, OpenCL does requires rewriting
+many parts of the code.
+
+
+\subsubsubsection{Refactoring}
 Some things are important to consider when porting codes to GPU frameworks.
 First, because a core on a GPU is quite slower than a core on a CPU,
-parallelisms must be extracted from algorithms. Second, the main drawback of
+parallelisms must be extracted from algorithms. The code must thus be
+completely refactored to exploit the parallelism. For example, a CPU
+implementation of the MD algorithm can be implemented by looping over particles
+and calculating all properties at once, for every particles. On the contrary,
+due to the high vectorized nature of GPUs, it makes more sense to calculate
+only one particle property but for all particles before switching to the next
+property.
+
+Second, the main drawback of
 GP-GPU programming is the fact that GPUs have their own memory, independent of
 the system's memory; kernels will only have access to the device's memory. Data
 required for kernel calculation must thus be first transferred to the device's
@@ -91,6 +108,98 @@ kernels since the imaginary time method did not require long simulation times.
 As in the case of the MD, the real time algorithm is left running on the GPU
 until data needs to be saved to a snapshot or post-processed to reduce
 transfers.
+
+
+\subsubsubsection{Debugging}
+One of the most problematic part is the lack of debugging tools. Many different
+tools and techniques exist to detect and fix problems in codes.
+
+\subsubsubsubsection{Printing}
+The simplest
+case is printing the variables' values to the screen and their inspection for
+erroneous values. While not really efficient, it is sometimes useful, quick
+and simple ``hack'' to get an insight of how the code is working. Unfortunately,
+such printing function (such as C or C++'s \textit{printf()}) cannot be used at
+all on a GPU! The reason is that the main processor must be able to
+\textit{read} the variable from memory to be able to print it to screen and yet
+the variable's content is \textit{not} in main memory, only the video card's
+memory! It must be noted though that some OpenCL drivers (for example AMD's
+APP SDK\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-accelerated-parallel-processing-app-sdk/}}
+or Intel's SDK for OpenCL Applications
+2013\footnote{\url{http://software.intel.com/en-us/vcsource/tools/opencl-sdk}})
+have specific extensions that allows using \textit{printf()}-like functions
+inside OpenCL kernels. These extensions must explicitly be enabled using
+\begin{verbatim}
+    #pragma OPENCL EXTENSION cl_amd_printf : enable
+\end{verbatim}
+for the Intel SDK, or
+\begin{verbatim}
+    #pragma OPENCL EXTENSION cl_intel_printf : enable
+\end{verbatim}
+for the AMD SDK. These extensions are possible since these drivers support
+running the kernels directly on the CPU.
+
+\subsubsubsubsection{Valgrind}
+Another useful bug squashing weapon used in debugging on Linux is called
+\textit{valgrind}\footnote{\url{http://www.valgrind.org/}}. This extremely
+useful tool verifies memory access and can thus report on out-of-bound accesses
+(accessing memory locations which are out of range of an array), a major
+type of error in programming that one \textit{has} to expect to happen.
+Since valgrind was specifically designed to intercept main memory access it
+cannot be used when the program is running of a GPU. Alternatively, when the
+program is running on the CPU through the use of the Intel or AMD SDKs, valgrind
+detects a huge amount of errors, probably due to errors \textit{inside} these
+SDKs, rendering the analysis useless.
+
+\subsubsubsubsection{Debuggers}
+The last tool used in debugging is an actual debugger. A normal debugger will
+take control of the program, allowing the developer to pause the execution
+at any time, inspect variables' values or even change them. A popular debugger
+on Linux is the free and open-source \textit{gdb}, the GNU Project
+debugger\footnote{\url{https://www.gnu.org/software/gdb/}}. Many more
+proprietary exists, some of them free and others expensive. Traditional
+debuggers, like valgrind, work by taking control of the program and accessing
+directly their memory content. It is not possible for them to access GPU memory
+or control functions inside the different SDKs. Some debuggers, like
+the pricey but powerful DDT\footnote{\url{http://www.allinea.com/products/ddt/}}
+allow some form of debugging capabilities on video cards. A free one
+called gDEBugger\footnote{\url{http://www.gremedy.com/}} supported
+debugging OpenCL kernels. It was acquired by AMD which released an updated
+version\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-gdebugger/}}
+in April 2012 but discontinued it. It was superseded by
+CodeXL\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/codexl/}}
+released in February 2013. As can be seen, at the time of the code was developed
+the different debuggers available were scarce, limited or expensive.
+
+
+\subsubsubsection{HPC Facilities}
+While high performance computing (HPC) are relatively widespread and accessible,
+GPU clusters are harder to find.
+SHARCNET\footnote{\url{https://www.sharcnet.ca/}}, a large HPC
+consortium, has two clusters containing GPUs (Angel and Monk) but they are
+obviously submerged by user demand.
+
+\fxnote[noinline,margin]{Is the wording ok?}
+Fortunately, a grant was awarded to Professor Paul Corkum of the University of
+Ottawa by the Canada Foundation for Innovation's (CFI) Leading Edge Fund and
+New Initiatives Fund, of which a percentage was given to both Thomas Brabec
+and my supervisor Lora Ramunno for the purchase of a GPU cluster.
+
+Due to my experience with GPUs, I was placed in charge of the purchase process
+which consisted in building a solution that would maximize the performance
+while staying under-budget, communication with multiple vendors to validate
+the solution, writing a Request for Proposals (RFP) and transparently evaluating
+vendors offering. Additionally, I (remotely) installed and configured the
+operating system (Gentoo Linux\footnote{\url{http://www.gentoo.org/}}) before
+the equipment was shipped in August 2012 and also configured the queuing system
+(Slurm\footnote{\url{http://www.schedmd.com}}) to maximize the cluster's
+resources and even submitting new
+features\footnote{\url{http://slurm.schedmd.com/team.html}}.
+
+This HPC cluster, containing 20 Nvidia Tesla M2075 video cards, is an important
+lab component that will be allow the research group to continue the high profile
+research.
+
 
 
 \subsubsection{Close-range: Look-up tables}
