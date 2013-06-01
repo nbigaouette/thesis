@@ -41,6 +41,15 @@ of energy absorbed from the laser pulse. This kind of data is not accessible
 in the case of laser-bulk interaction since the majority of matter stays on the
 solid.
 
+Clusters of atoms can be composed of different elements. Rare gas atoms have
+closed outer electronic shells which makes them less prone to chemical
+reactions and so don't interact much with each other. Rare-gas clusters are
+thus weakly bound by Van der Waals forces. The electronic wavefunctions are
+more localized around the nucleus than in metal clusters which simplifies the
+treatment of the cluster environment.
+\fxnote[noinline,margin]{Is that the only reason for rare-gas studies? Reference?}
+
+
 The most important characteristic of laser-cluster interaction for the present
 work is the fact that clusters can be studied numerically. Full quantum resolution
 is not possible even for clusters consisting of a couple of atoms, while on the
@@ -249,13 +258,16 @@ rare gas elements used in this thesis (Argon and Xenon) are shown. As can be
 seen from the table and figure \ref{fig:regimes}, Xenon and Argon can be
 single-photon ionized in the VUV regime where photons of 15.76 (for Argon)
 and 12.13 eV (for Xenon) are possible. While Xenon's 5p states have the smallest
-Ip's, a giant resonance of the 4d shell at 13 nm makes multi-photon ionization
-of these states possible.
+Ip's, a giant resonance of the 4d shell at 13 nm (95.4 eV) makes multi-photon
+ionization of these inner-shells possible.
 \fxfatal[margin,noinline]{38 nm or 32 nm?? Bosted says 38, but Eddie says 32!
                           See HHG section where 38 is used.}
 % http://photon-science.desy.de/news__events/research_highlights/archive/flash_excites_giant_atomic_resonance/index_eng.html
 \fxfatal[margin,noinline]{Describe Auger processes as it is the basis of the
                           recombination paper!}
+\fxnote[margin,noinline]{I want to show how deep we can reach with photons in
+                         XUV and VUV. Which shells? Resonance?}
+\fxnote[margin,noinline]{4d ionization: single or two photons?}
 
 \begin{table}
 \begin{center}
@@ -294,7 +306,7 @@ Configuration
  &  &   & 4d$^{2}$  & 374.1     & 3.3142 \\
  &  &   & 4d$^{1}$  & 403.9     & 3.06968 \\ \hline
 \end{tabular}
-\caption{Some ionization potentials for (atomic) rare gas elements.
+\caption{First few ionization potentials for (atomic) rare gas elements.
          Source: NIST\cite{NIST}}
 \label{tab:ips}
 \end{center}
@@ -302,6 +314,9 @@ Configuration
 \fxnote[margin,noinline]{Even though the 4d's Ip is large, the resonance makes
                          it accessible. See recombination paper and talk about
                          it here.}
+
+Let's now look at the different mechanisms present in the different regimes.
+Note that some regime-independent processes are presented afterwards.
 
 
 
@@ -312,6 +327,15 @@ This type of lasers sparked the research on clusters. They cover a wide range of
 intensity and as such can touch different regimes, from the photon-dominated
 one at low intensities to the field-dominated one at larger intensities and
 even going up to where relativistic effects cannot be neglected.
+
+One can see how much work was done in the field-dominated (IR) regime over the
+years by looking at the wide literature on the subject, see for example ref.
+\cite{Fennel2010} or \cite{Ramunno2008}. On the opposite, the VUV and XUV regime
+-- the photon-dominated one -- is much more unexplored and is thus the main
+aspect of the present work. Some effects in the IR are still presented here
+for clarity. These processes are dominant in the field-dominated regime (see
+figure \ref{fig:regimes}).
+
 
 \subsubsubsection{Tunnel ionization}
 The most striking effect in the IR regime is tunnel
@@ -326,7 +350,8 @@ ionization.
 \begin{figure}
  \centering
  \includegraphics[width=0.76\columnwidth]{figures/mockups/ionization_tunnel}
- \caption{\label{fig:ionization:tunnel}Tunnel ionization}
+ \caption{\label{fig:ionization:tunnel}Tunnel ionization
+ \fxnote{Create real tunnel ionization figure}}
 \end{figure}
 
 Tunnel ionization is at the hart of High Harmonic Generation (HHG) and
@@ -341,7 +366,7 @@ of the phenomena in 1993\cite{Corkum1993}, HHG studies expended into its own
 sub-field. For example, Murphy \textit{et al.} used the 21st harmonic of a
 800 nm Ti:sapphire to ionize xenon clusters\cite{Murphy2008a,Murphy2008b}
 with these new 32.6 eV (38 nm) photons.
-
+\fxnote[margin,noinline]{Cite an HHG review reference}
 
 
 \subsubsubsection{Inverse Bremsstrahlung Heating}
@@ -355,7 +380,8 @@ IBH plays an important role in the IR regime where the laser field easily
 drives the electrons through the cluster\cite{Fennel2010}. This linear momentum
 is redistributed as thermal energy by collisions and scattering on heavier ions.
 
-
+\fxfatal{Add how IBH scales with frequency. Landau \& Lifshitz? Couldn't find it...}
+\fxfatal{Cite Schlessinger1979\cite{Schlessinger1979} for IBH parameters at different regimes}
 
 \subsubsection{Shorter wavelengths: Into the VUV and XUV regime}
 \label{section:intro:mechanisms:vuv}
@@ -390,7 +416,8 @@ Xenon is at -12.27 eV requiring a photon wavelength equal or shorter than
           the continuum. The remaining energy $\Delta E$ between the photon's
           and the Ip results in electron's kinetic energy $K_e$.
           Chapter \ref{section:tools} describes the cluster environment
-          influence.}
+          influence.
+          \fxnote{Create real single-photon ionization figure}}
  \label{fig:ionization:single}
 \end{figure}
 
@@ -431,7 +458,7 @@ of the process.
 \begin{figure}
  \centering
  \includegraphics[width=0.76\columnwidth]{figures/mockups/ionization_impact}
- \caption{Impact ionization}
+ \caption{Impact ionization\fxnote{Create real impact ionization figure}}
  \label{fig:ionization:impact}
 \end{figure}
 
@@ -549,57 +576,16 @@ Xe$_{1,000}$ clusters.
                  the laser (red).}
         \label{fig:heating:mbr}
     \end{subfigure}
- \caption{More heating mechanisms}
+ \caption{More heating mechanisms\fxnote{Create real heating figures}}
  \label{fig:heating}
 \end{figure}
 
 
-\subsubsection{Augmented Collisional Ionization}
-The previous models are without doubt interesting, but they were developed with
-the goal of describing Wabnitz's 2002 experiments at FLASH-DESY. In 2010, Bosted
-re-calibrated the intensity used during the 2002 experiments.
-Instead of the previously though $\ten{2}{13}$ W/cm$^2$, the power density was
-re-calibrated to $\ten{8}{12}$ W/cm$^2$, less than half of the initial value.
-Could the different models still produce the same amount of high charge states
-seen at the lower intensities?
-
-Our group proposed another mechanism for energy transfer from the laser field
-to the cluster. With this two-steps model, an electron might not have enough
-kinetic energy to ionize an atom (or ion), but it could still transfer some of
-its energy to promote a bound electron to an excited state. Once an atom is
-excited, it becomes easier to ionize, due to the large cross-sections of excited
-atoms and ions, by subsequent impact from a low energy electron. This gives the
-opportunity for low energy electrons to still participate in the cluster
-ionization, giving the name \textit{augmented collisional ionization} (ACI) to
-the process.
-
-Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
-different transitions possible.
-
-% \emptyfig{ACI}{fig:ionization:aci}
-\begin{figure}
- \centering
- \includegraphics[width=0.38\columnwidth]{figures/mockups/ionization_aci}
- \caption{ACI. First electron (in blue) gives $K_1$ energy for the transition
-          to an excited state. Second electron (in green) gives the remaining
-          $K_2$ necessary for the transition to continuum.}
- \label{fig:ionization:aci}
-\end{figure}
-
-More details on ACI are given in section \ref{section:papers:aci}, as it is an
-important part of this thesis, along with
-results on Argon clusters. Section \ref{section:papers:size} studies the cluster
-size influence when ACI is used in the XUV regime. In section
-\ref{section:papers:100nm} ACI is applied to the VUV regime and the
-2002 experiments at FLASH-DESY.
 
 
 
 
-
-
-
-\subsection{Goals}
+\subsection{Contributions of thesis}
 
 In view of the previous section, the goal of the current thesis is to increase
 to global knowledge of laser-matter interaction. More specifically, the
@@ -611,16 +597,13 @@ and duration, both making up the interaction regime. A specific regime will
 thus be targeted; mainly short wavelengths, from VUV to XUV, as many questions
 raising from recent experiments are still debated.
 
-\fxwarning[margin,noinline]{Really include the following?}
+\fxwarning[margin,noinline]{Really include this paragraph?}
 While many tools exist to study laser-mater interaction, it was decided to use
 a classical approach since it allows for relatively large systems to be
 simulated. Large field fluctuations are also best described with
 classical approaches\cite{Fennel2010}.
 
 
-\subsection{Thesis Outline}
-\label{section:intro:outline}
-This thesis is presented as a series of published or draft articles.
 First, section \ref{section:tools} describes the different tools and models
 that were developed and implemented for the current work. While section
 \ref{section:tools:md} concentrate on the classical aspect of the problem,
@@ -640,18 +623,98 @@ contributions from Stan Hatko during his summer 2012 internship. All other
 libraries described in section \ref{section:tools:libraries} were fully
 written and developed by me.
 
+% The rest of the thesis is presented as a series of published or draft articles.
+% The first article in section \ref{section:papers:aci} presents the article
+% ``Augmented collisional ionization via excited states in XUV cluster
+% interactions'' published in 2011 in \textit{Journal of Physics B: Atomic,
+% Molecular and Optical Physics}.
 
-Section \ref{section:papers:aci} presents the article ``Augmented collisional
-ionization via excited states in XUV cluster interactions'' published in 2011
-in \textit{Journal of Physics B: Atomic, Molecular and Optical Physics}. This
-was the first article on the topic and looked at the influence of ACI with Argon
-clusters.
+The models described previously are without doubt interesting, but they were
+developed with the goal of describing Wabnitz's 2002 experiments at FLASH-DESY.
+In 2010, Bosted re-calibrated the intensity used during the 2002 experiments.
+Instead of the previously though $\ten{2}{13}$ W/cm$^2$, the power density was
+re-calibrated to $\ten{8}{12}$ W/cm$^2$, less than half of the initial value.
+Could the different models still produce the same amount of high charge states
+seen at the lower intensities?
+
+Additionally, in 2008 experiments \cite{Bostedt2008,Murphy2008b} were performed
+in the XUV regime near 30 nm (41 eV). At this wavelength, the photon energy is
+too small for inner shell ionization of rare gas atoms , yet too large
+(at reported intensities) for any appreciable laser-field-driven processes, such
+as collisional heating, that dominate intense laser-cluster interactions at
+longer wavelengths. This presents the opportunity to isolate the influence of
+the internal electronic structure from the laser-cluster interaction.
+
+
+Our group proposed another mechanism for energy transfer from the laser field
+to the cluster. With this two-steps model, an electron might not have enough
+kinetic energy to ionize an atom (or ion), but it could still transfer some of
+its energy to promote a bound electron to an excited state. Once an atom is
+excited, it becomes easier to ionize, due to the large cross-sections of excited
+atoms and ions, by subsequent impact from a low energy electron. This gives the
+opportunity for low energy electrons to still participate in the cluster
+ionization, giving the name \textit{augmented collisional ionization} (ACI) to
+the process.
+
+Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
+different transitions possible.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=0.38\columnwidth]{figures/mockups/ionization_aci}
+ \caption{ACI. First electron (in blue) gives $K_1$ energy for the transition
+          to an excited state. Second electron (in green) gives the remaining
+          $K_2$ necessary for the transition to continuum.
+\fxnote{Create real ACI figure}}
+ \label{fig:ionization:aci}
+\end{figure}
+
+This work on excited states in clusters was published in the article
+``Augmented collisional ionization via excited states in XUV cluster
+interactions'' published in 2011 in \textit{Journal of Physics B: Atomic,
+Molecular and Optical Physics} and can be found in section
+\ref{section:papers:aci} (page \pageref{section:papers:aci}). Argon clusters
+(Ar$_{80}$ and Ar$_{147}$) were simulated using experimental parameters
+(32.8 nm -- 37.8 eV, 25 fs and intensities from $\ten{5}{13}$ to
+$10^{14}$~W/cm$^{-2}$). It was found that not only ACI could explain the
+Ar$^{4+}$ seen at FLASH in 2008 by Bosted \textit{et al.} but also that it
+was a dominant process, happening more often than traditional impact ionization.
+Due to the efficiency of ACI, high charge states can be reached in shorter time
+than previously though which can have a significant impact on biomolecules
+imaging.
+
+
 
 Second, section \ref{section:papers:size} presents the article ``Clusters in
 intense XUV pulses: Effects of cluster size on expansion dynamics and
 ionization''. Also published in 2011 (\textit{Physical Review A)}, Argon
-clusters were simulated in the XUV regime and many cluster parameters were
-studied.
+clusters were simulated in the XUV regime with size from Ar$_{55}$ to
+Ar$_{2057}$. 
+
+
+
+
+
+
+
+
+
+
+Section \ref{section:papers:size} studies the cluster
+size influence when ACI is used in the XUV regime. In section
+\ref{section:papers:100nm} ACI is applied to the VUV regime and the
+2002 experiments at FLASH-DESY.
+
+% ******************************************************************************
+
+
+
+
+
+
+
+
+
 
 Later in section \ref{section:papers:qfdtd} the article ``Nonlinear grid mapping
 applied to an FDTD-based, multi-center 3D Schr\"odinger equation solver'' is
