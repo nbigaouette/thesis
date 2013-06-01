@@ -197,7 +197,7 @@ The Keldysh adiabatic parameter $\gamma$ separates regimes where processes are
 dominated by either photons or field\cite{Schlessinger1979,Long2010} and reads
 \begin{align}
 % http://www.iuac.res.in/atmol/~safvan/safvan_thesis/node32.html
-\gamma & = \sqrt{ \frac{\textrm{Ip}}{2 U_p} },
+\gamma & = \sqrt{ \frac{\textrm{Ip}}{2 U_p} } = \frac{\omega}{\omega_t},
 \end{align}
 where Ip is the atom's ionization potential, $U_p$ is the ponderomotive energy
 \begin{align}
@@ -205,7 +205,12 @@ where Ip is the atom's ionization potential, $U_p$ is the ponderomotive energy
 U_p & = \frac{e^2 E^2}{4 m \omega^2},
 \end{align}
 $e$ and $m$ the electron's charge and mass, $E$ the laser's electric field
-strength and $\omega$ its angular frequency.
+strength, $\omega$ its angular frequency and $\omega_t$ the tunnelling
+frequency:
+\begin{align}
+\omega_t & = \frac{e E}{\sqrt{2 m \textrm{Ip}}}
+\end{align}
+
 
 When $\gamma~\ll~1$, the laser field strength is large compared to the ionization
 potential. In that case, a bound electron will feel a significant bending of the
@@ -214,6 +219,7 @@ smaller than the ponderomotive energy $U_p$. Figure \ref{fig:regimes} shows,
 as dashed lines, constant values of the ponderomotive force. In plain line,
 the (first) ionization potential of Xenon is plotted. The field dominated regime
 lies under this line.
+\fxnote[noinline,margin]{See Long2010\cite{Long2010} for what happens when $\gamma \approx 1$}
 
 Otherwise, when $\gamma~\gg~1$, the laser field strength is weak compared to
 the ionization potential and the later is not as important as before in the
