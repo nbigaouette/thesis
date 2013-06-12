@@ -625,9 +625,16 @@ written and developed by me.
 % interactions'' published in 2011 in \textit{Journal of Physics B: Atomic,
 % Molecular and Optical Physics}.
 
-The models described previously are without doubt interesting, but they were
-developed with the goal of describing Wabnitz's 2002 experiments at FLASH-DESY.
-In 2010, Bosted re-calibrated the intensity used during the 2002 experiments.
+Second, a series of articles is presented where the tools described in section
+\ref{section:tools} are used in the study of short wavelength, high intensity
+laser pulse interaction with rare gas atoms. Models of section
+\ref{section:intro:mechanisms} were used with the addition of a new one
+described next.
+
+Wabnitz's \textit{et al.} experiments at FLASH-DESY in 2002 revealed the
+interestingly high charge states in xenon clusters. Since then, different groups
+proposed models to explain these results. Then, in 2010, Bosted \textit{et al.}
+re-calibrated the intensity used during the 2002 experiments.
 Instead of the previously though $\ten{2}{13}$ W/cm$^2$, the power density was
 re-calibrated to $\ten{8}{12}$ W/cm$^2$, less than half of the initial value.
 Could the different models still produce the same amount of high charge states
@@ -641,8 +648,7 @@ as collisional heating, that dominate intense laser-cluster interactions at
 longer wavelengths. This presents the opportunity to isolate the influence of
 the internal electronic structure from the laser-cluster interaction.
 
-
-Our group proposed another mechanism for energy transfer from the laser field
+Our group thus proposed another mechanism for energy transfer from the laser field
 to the cluster. With this two-steps model, an electron might not have enough
 kinetic energy to ionize an atom (or ion), but it could still transfer some of
 its energy to promote a bound electron to an excited state. Once an atom is
@@ -651,21 +657,66 @@ atoms and ions, by subsequent impact from a low energy electron. This gives the
 opportunity for low energy electrons to still participate in the cluster
 ionization, giving the name \textit{augmented collisional ionization} (ACI) to
 the process.
-
 Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
-different transitions possible.
+different transitions possible. This two-steps model is implemented using
+cross-sections for the transition (ground state to excited state and excited
+state to continuum) due to collisions, similarly to traditional impact
+ionization. See section \ref{section:intro:md:cross-sections} for more
+details on cross-sections.
 
 \begin{figure}
  \centering
- \includegraphics[width=0.38\columnwidth]{figures/mockups/ionization_aci}
- \caption{ACI. First electron (in blue) gives $K_1$ energy for the transition
-          to an excited state. Second electron (in green) gives the remaining
-          $K_2$ necessary for the transition to continuum.
-\fxnote{Create real ACI figure}}
+ \includegraphics[width=\figurewidth]{figures/ionization_aci}
+ \caption{ACI. First electron (in blue) collides with ion in a) and gives
+          $K_1$ energy for the transition of a bound electron (in green) to an
+          excited state in b).
+          A third electron (in red) collides with the ion in c) and
+          gives the remaining $K_2$ necessary for the transition to continuum
+          in d). The first step is a) to b) and the second step is from c) to d).}
  \label{fig:ionization:aci}
 \end{figure}
 
-This work on excited states in clusters was published in the article
+% \begin{figure}
+%  \centering
+%     \begin{subfigure}{0.48\columnwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{figures/aci_0}
+%         \caption{Before}
+%         \label{fig:ionization:aci:0}
+%     \end{subfigure}
+%     \begin{subfigure}{0.48\columnwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{figures/aci_1}
+%         \caption{1. }
+%         \label{fig:ionization:aci:1}
+%     \end{subfigure}
+% \\
+%     \begin{subfigure}{0.48\columnwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{figures/aci_2}
+%         \caption{2. }
+%         \label{fig:ionization:aci:2}
+%     \end{subfigure}
+%     \begin{subfigure}{0.48\columnwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{figures/aci_3}
+%         \caption{3. }
+%         \label{fig:ionization:aci:3}
+%     \end{subfigure}
+% \caption{ACI. First electron (in blue) gives $K_1$ energy for the transition
+%           to an excited state. Second electron (in green) gives the remaining
+%           $K_2$ necessary for the transition to continuum.}
+% \label{fig:ionization:aci}
+% \end{figure}
+
+
+
+
+
+
+
+
+This work on excited states in clusters was first published in the article
 ``Augmented collisional ionization via excited states in XUV cluster
 interactions'' published in 2011 in \textit{Journal of Physics B: Atomic,
 Molecular and Optical Physics} and can be found in section
