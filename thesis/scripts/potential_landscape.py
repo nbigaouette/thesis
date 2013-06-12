@@ -16,7 +16,6 @@ import plot_params
 import colors_and_symbols
 import constants as cst
 
-plt.rc('lines', linewidth = 3)
 
 # ****************************************************************************************************************************************************
 # http://docs.python.org/library/optparse.html
