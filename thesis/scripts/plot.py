@@ -16,9 +16,11 @@ matplotlib.rcParams['figure.subplot.hspace'] = 0.6
 def my_quit(signum, frame):
     sys.exit(0)
 
+fig_list     = []
 on_key_lines = []
+on_key_text  = []
 
-def get_axis_two_scales(fig, scale_x, scale_y, \
+def get_axis_two_scales(fig, scale_x = 1.0, scale_y = 1.0, \
                         ax2_xlabel = None, ax2_ylabel = None, \
                         subplot = 111,
                         sharex = None,
@@ -45,7 +47,10 @@ def get_axis_two_scales(fig, scale_x, scale_y, \
 
 ###################################################################
 def on_key(event):
-    global on_key_lines
+    global on_key_lines, on_key_text
+
+    ax = event.inaxes
+
     #print 'you pressed', event.key, event.xdata, event.ydata
     if   (event.key == 'q'):
         my_quit(0,0)
@@ -103,17 +108,29 @@ def on_key(event):
         point  = matplotlib.pyplot.ginput(n=1, show_clicks=False, timeout=0)
         print "    Point clicked:", point[0]
         on_key_lines.append(event.inaxes.plot(point[0][0], point[0][1],  '+r', lw=1.0))
+        props = dict(boxstyle='round', facecolor='white', alpha=0.5)
+        text = " (" + str("%g" % point[0][0]) + ", " + str("%g" % point[0][1]) + ")"
+        on_key_text.append(ax.text(point[0][0], point[0][1], text, verticalalignment='center', horizontalalignment = 'left', bbox=props))
         matplotlib.pyplot.draw()
     elif (event.key == 'x'):
-        # Clear all annotations
+        print "##############################################################"
+        print "Clearing all annotations"
+        # Symbol "+"
         for line in on_key_lines:
            l = line.pop(0)
            l.remove()
            del line
         del on_key_lines
         on_key_lines = []
+        # Boxes with numerical value
+        for line in on_key_text:
+           line.remove()
+        del on_key_text
+        on_key_text = []
         matplotlib.pyplot.draw()
     elif (event.key == 'c'):
+        print "##############################################################"
+        print "Changing active axis"
         # Switch current axis by changing their Z-order
         fig         = matplotlib.pyplot.gcf()
         current_ax  = matplotlib.pyplot.gca()
@@ -183,43 +200,53 @@ def on_pick(event):
 ###################################################################
 
 def figure(**kwargs):
+    global fig_list
     fig = matplotlib.pyplot.figure(**kwargs)
     fig.canvas.mpl_connect('key_press_event', on_key)
     fig.canvas.mpl_connect('pick_event',      on_pick)
     # Stupid Qt4Agg can't quit when ctrl+c (SIGINT) is send. Force it to quit.
     signal.signal(signal.SIGINT, my_quit)
+    fig_list.append(fig)
     return fig
 
 def setp(*args, **kwargs):
     matplotlib.pyplot.setp(*args, **kwargs)
 def savefig(filenames):
-    figures=[manager.canvas.figure
-             for manager in matplotlib._pylab_helpers.Gcf.get_all_fig_managers()]
+    try:
+        figures = [manager.canvas.figure for manager in matplotlib._pylab_helpers.Gcf.get_all_fig_managers()]
+    except:
+        figures = fig_list
     if (type(filenames) == str):
         filenames = [filenames]
+    assert(len(filenames) == len(figures))
     for i, figure in enumerate(figures):
-        if (len(filenames) > 1):
-            assert(len(filenames) == len(figures))
+        if (len(filenames) == 1):
             filename = filenames[i]
         else:
             filename_base, filename_ext = os.path.splitext(filenames[0])
             filename = '{0}_{1}{2}'.format(filename_base, i, filename_ext)
         print "Saving to", filename
         figure.savefig(filename, transparent=True, bbox_inches='tight')
+def draw():
+    matplotlib.pyplot.draw()
 
 
 def show():
-    fig         = matplotlib.pyplot.gcf()
-    axes        = [x for x in fig.canvas.figure.get_axes()]
-    # Set legends to be draggable
-    for ax in axes:
-        legend = ax.get_legend()
-        if (ax.get_legend() != None):
-            legend.draggable()
-    # For every axes, get all lines plotted and set its picker value to 5 points
-    for ax in axes:
-        lines = ax.get_lines()
-        for line in lines:
-            line.set_picker(5)
+    try:
+        figures = [manager.canvas.figure for manager in matplotlib._pylab_helpers.Gcf.get_all_fig_managers()]
+    except:
+        figures = fig_list
+    for fi, fig in enumerate(figures):
+        axes        = [x for x in fig.canvas.figure.get_axes()]
+        # Set legends to be draggable
+        for ax in axes:
+            legend = ax.get_legend()
+            if (ax.get_legend() != None):
+                legend.draggable(True)
+        # For every axes, get all lines plotted and set its picker value to 5 points
+        for ax in axes:
+            lines = ax.get_lines()
+            for line in lines:
+                line.set_picker(5)
     matplotlib.pyplot.show()
 
