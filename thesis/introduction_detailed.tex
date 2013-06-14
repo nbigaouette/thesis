@@ -603,15 +603,15 @@ classical approaches\cite{Fennel2010}.
 First, section \ref{section:tools} describes the different tools and models
 that were developed and implemented for the current work. While section
 \ref{section:tools:md} concentrate on the classical aspect of the problem,
-section \ref{section:tools:qfdtd} deals with a quantum approach that was
-used. Note that all implementations used are original work; all code packages
-were developed under my supervision. The MD package described in section
-\ref{section:tools:md} (~16k lines of code) contains 86~\% of code written by
-me, 12~\% by Edward Ackad (post-doc) and smaller contributions from Julien Roy
-during his summer 2012 internship.
-
-The QFDTD package (~16k lines of code) contains 3~\% of code written by Stan
-Hatko while the rest is my original work.
+section \ref{section:tools:qfdtd} describes in detail a quantum approach that
+was used named QFDTD for Quantum Finite-Difference Time-Domain.
+Note that all implementations used are original work; all code packages
+were developed from scratch under my supervision. The MD package described in
+section \ref{section:tools:md} (~16k lines of code) contains 86~\% of code
+written by me, 12~\% by Edward Ackad (post-doc) and smaller contributions from
+Julien Roy during his summer 2012 internship. Furthermore, the QFDTD package
+(~16k lines of code) contains 3~\% of code written by Stan Hatko while the rest
+is my original work.
 
 For libraries described in section \ref{section:tools:libraries}, 79~\% of the
 ionization library was written by me, 20~\% by Edward Ackad and smaller
@@ -767,34 +767,30 @@ clusters keep the anisotropy coming from photoionization.
 \fxfatal{Add description of recombination paper}
 
 
+Going further, interesting questions came up. For example, how is a bound
+electron's wavefunction affected by a neighbouring ion or the cluster potential?
+Due to my background in electromagnetic simulations, I was surprised to read
+an article using the FDTD method, normally used in electrodynamic simulation,
+for quantum calculations. I was curious how far could the FDTD method be
+applied to quantum problems and if it could answer some of our questions.
+Section \ref{section:tools:qfdtd} thus describes in details the QFDTD method
+with its two time evolution; real and imaginary.
 
-
-
-
-
-
-
-Section \ref{section:papers:size} studies the cluster
-size influence when ACI is used in the XUV regime. In section
-\ref{section:papers:100nm} ACI is applied to the VUV regime and the
-2002 experiments at FLASH-DESY.
-
-% ******************************************************************************
-
-
-
-
-
-
-
-
-
-
-Later in section \ref{section:papers:qfdtd} the article ``Nonlinear grid mapping
-applied to an FDTD-based, multi-center 3D Schr\"odinger equation solver'' is
-presented. Published in 2012 in \textit{Computer Physics Communications}, it
+The work developed in \ref{section:tools:qfdtd} was published in the article
+``Nonlinear grid mapping applied to an FDTD-based, multi-center 3D
+Schr\"odinger equation solver'' presented in section \ref{section:papers:qfdtd}.
+Published in 2012 in \textit{Computer Physics Communications}, it
 explains the QFDTD method and its implementation, with emphasis on the new
 nonlinear mapping introduced for faster calculation.
+The method was first validated by comparing with the analytic solutions of
+the hydrogen atom and then applied to solve the simplest molecule H$_{2}^{+}$.
+Comparison with experimental data was in good agreement for the eigenvalues
+while the eigenstates could be visualize easily. The publication also
+describes in detail the nonlinear mapping that allows reducing both the memory
+usage required to store the grid and the time required to calculate the time
+evolution. The method is a generic way to obtain a nonuniform grid with cells
+concentrated around multi-centres of interest for used in any (finite difference
+based) partial differential equation solvers.
 
 Finally, section \ref{section:papers:100nm} contains the draft of the article
 \fxfatal[margin,noinline]{Finish the 100nm paper}
