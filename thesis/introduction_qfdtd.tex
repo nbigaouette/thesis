@@ -77,24 +77,6 @@ later shown that the interaction with a magnetic field could also be added to
 the imaginary-time method\cite{Sudiarta2008} and that FDTD could be used to
 construct the thermal density matrix of single particle\cite{Sudiarta2009}.
 
-Due to the explicit nature of the FDTD algorithm (values can be obtained at the
-next time step from values at the current time step only) the method is
-conditionally stable; an upper bound on the time step size must be taken. The
-Courant-Friedrichs-Lewy (CFL) condition gives the upper bound. Dai \textit{et
-al.} derive\cite{Dai2005} the stability condition for a constant in time
-potential:
-\begin{align}
-\Delta t < \frac{2}{
-    \frac{2 \hbar}{m} \pa{
-         \frac{1}{\Delta x}
-        +\frac{1}{\Delta y}
-        +\frac{1}{\Delta z}
-        }
-        + \textrm{max}\abs{V\pa{\vr}} / \hbar
-    }
-\end{align}
-
-
 Both real-time and imaginary-time methods were implemented. Let's describe the
 two algorithms.
 
@@ -320,6 +302,23 @@ $\psi^{n+1}$, alternating between them when calculating equations
 \eqref{eqn:schrodinger:real:imag:discretized} and
 \eqref{eqn:schrodinger:real:real:discretized}.
 
+
+Due to the explicit nature of the FDTD algorithm (values can be obtained at the
+next time step from values at the current time step only) the method is
+conditionally stable; an upper bound on the time step size must be taken. The
+Courant-Friedrichs-Lewy (CFL) condition gives the upper bound. Dai \textit{et
+al.} derive\cite{Dai2005} the stability condition for a constant in time
+potential:
+\begin{align}
+\Delta t < \frac{2}{
+    \frac{2 \hbar}{m} \pa{
+         \frac{1}{\Delta x}
+        +\frac{1}{\Delta y}
+        +\frac{1}{\Delta z}
+        }
+        + \textrm{max}\abs{V\pa{\vr}} / \hbar
+    }
+\end{align}
 
 \subsubsection{Nonlinear mapping}
 \label{section:tools:qfdtd:mapping}
