@@ -628,22 +628,27 @@ raising from recent experiments are still debated.
 \fxwarning[margin,noinline]{Really include this paragraph?}
 While many tools exist to study laser-mater interaction, it was decided to use
 a classical approach since it allows for relatively large systems to be
-simulated. Large field fluctuations are also best described with
-classical approaches\cite{Fennel2010}.
+simulated. Large field fluctuations in clusters are also best described with
+classical approaches\cite{Fennel2010} allowing simulating larger systems than
+using a pure quantum mechanic approach.
 
+
+\subsubsection{Tools}
 
 First, section \ref{section:tools} describes the different tools and models
-that were developed and implemented for the current work. While section
+that were developed and implemented to answer our questions. While section
 \ref{section:tools:md} concentrate on the classical aspect of the problem,
 section \ref{section:tools:qfdtd} describes in detail a quantum approach that
 was used named QFDTD for Quantum Finite-Difference Time-Domain.
 Note that all implementations used are original work; all code packages
-were developed from scratch under my supervision. The MD package described in
-section \ref{section:tools:md} (~16k lines of code) contains 86~\% of code
+were developed from scratch under my supervision and no external packages
+were used. The MD package described in
+section \ref{section:tools:md} ($\sim$16k lines of code) contains 86~\% of code
 written by me, 12~\% by Edward Ackad (post-doc) and smaller contributions from
 Julien Roy during his summer 2012 internship. Furthermore, the QFDTD package
-(~16k lines of code) contains 3~\% of code written by Stan Hatko while the rest
-is my original work.
+($\sim$16k lines of code) contains 3~\% of code written by Stan Hatko while the
+rest is my original work. Most tools were written in C++ with Python being used
+for analysis and plotting.
 
 For libraries described in section \ref{section:tools:libraries}, 79~\% of the
 ionization library was written by me, 20~\% by Edward Ackad and smaller
@@ -651,17 +656,21 @@ contributions from Stan Hatko during his summer 2012 internship. All other
 libraries described in section \ref{section:tools:libraries} were fully
 written and developed by me.
 
-% The rest of the thesis is presented as a series of published or draft articles.
-% The first article in section \ref{section:papers:aci} presents the article
-% ``Augmented collisional ionization via excited states in XUV cluster
-% interactions'' published in 2011 in \textit{Journal of Physics B: Atomic,
-% Molecular and Optical Physics}.
+All these powerful tools are were extremely useful for my studies and will allow
+the group to continue its investigation of laser-clusters interaction even
+after my departure.
 
 Second, a series of articles is presented where the tools described in section
 \ref{section:tools} are used in the study of short wavelength, high intensity
 laser pulse interaction with rare gas atoms. Models of section
-\ref{section:intro:mechanisms} were used with the addition of a new one
-described next.
+\ref{section:intro:mechanisms} and their implementation described in section
+\ref{section:tools:libraries} were used. Additionally to the models described in
+section \ref{section:intro:mechanisms}, a notable model was
+developed that revealed be of great importance in the description of
+laser-clusters interaction. This new model is discussed next.
+
+
+\subsubsection{Augmented Collisional Ionization (ACI)}
 
 Wabnitz's \textit{et al.} experiments at FLASH-DESY in 2002 revealed the
 interestingly high charge states in xenon clusters. Since then, different groups
@@ -689,12 +698,6 @@ atoms and ions, by subsequent impact from a low energy electron. This gives the
 opportunity for low energy electrons to still participate in the cluster
 ionization, giving the name \textit{augmented collisional ionization} (ACI) to
 the process.
-Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
-different transitions possible. This two-steps model is implemented using
-cross-sections for the transition (ground state to excited state and excited
-state to continuum) due to collisions, similarly to traditional impact
-ionization. See section \ref{section:intro:md:cross-sections} for more
-details on cross-sections.
 
 \begin{figure}
  \centering
@@ -742,16 +745,25 @@ details on cross-sections.
 % \end{figure}
 
 
+Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
+different transitions possible. This two-steps model is implemented using
+cross-sections for collisional transition (ground state to excited state and
+excited state to continuum), similarly to traditional impact
+ionization. See section \ref{section:intro:md:cross-sections} for more
+details on cross-sections.
+
+The ACI model revealed to be an important contribution to the field. As will be
+seen from the publications, experimental results can be reproduced with this
+simple model.
 
 
 
+\subsubsection{Publications}
 
-
-
-This work on excited states in clusters was first published in the article
+The work on excited states and ACI in clusters was first published in the article
 ``Augmented collisional ionization via excited states in XUV cluster
 interactions'' published in 2011 in \textit{Journal of Physics B: Atomic,
-Molecular and Optical Physics} and can be found in section
+Molecular and Optical Physics}\cite{Ackad2011a} and can be found in section
 \ref{section:papers:aci} (page \pageref{section:papers:aci}). Argon clusters
 (Ar$_{80}$ and Ar$_{147}$) were simulated using experimental parameters
 (32.8 nm -- 37.8 eV, 25 fs and intensities from $\ten{5}{13}$ to
@@ -760,14 +772,15 @@ Ar$^{4+}$ seen at FLASH in 2008 by Bosted \textit{et al.} but also that it
 was a dominant process, happening more often than traditional impact ionization.
 Due to the efficiency of ACI, high charge states can be reached in shorter time
 than previously though which can have a significant impact on biomolecules
-imaging.
+imaging. This first ACI article was a stepping stone in the current work as it
+showed the validity of the model, as simple as it could be.
 
 
 
 Next, section \ref{section:papers:size} presents the article ``Clusters in
 intense XUV pulses: Effects of cluster size on expansion dynamics and
-ionization''. Also published in 2011 (\textit{Physical Review A)}, argon
-clusters were simulated in the XUV regime (32.8 nm,
+ionization''. Also published in 2011 (\textit{Physical Review~A}\cite{Ackad2011b}),
+argon clusters were simulated in the XUV regime (32.8 nm,
 I~=~$\ten{5}{13}$~W/cm$^{2}$, 25 fs) with cluster sizes from Ar$_{55}$ to
 Ar$_{2057}$. It was found that that the dynamics is highly collisional and
 larger clusters even more so. By rapidly ionizing the lower charge states,
@@ -802,20 +815,24 @@ clusters keep the anisotropy coming from photoionization.
 Going further, interesting questions came up. For example, how is a bound
 electron's wavefunction affected by a neighbouring ion or the cluster potential?
 Due to my background in electromagnetic simulations, I was surprised to read
-an article using the FDTD method, normally used in electrodynamic simulation,
+an article using the FDTD method -- normally used in electrodynamic simulation --
 for quantum calculations. I was curious how far could the FDTD method be
 applied to quantum problems and if it could answer some of our questions.
-Section \ref{section:tools:qfdtd} thus describes in details the QFDTD method
-with its two time evolution; real and imaginary.
+A QFDTD simulation package was thus developed, again from scratch,  implementing
+two time evolution; real and imaginary. The model and its implementation details
+are discussed in section \ref{section:tools:qfdtd}.
 
-The work developed in \ref{section:tools:qfdtd} was published in the article
+The work developed in section \ref{section:tools:qfdtd} was published in the article
 ``Nonlinear grid mapping applied to an FDTD-based, multi-center 3D
 Schr\"odinger equation solver'' presented in section \ref{section:papers:qfdtd}.
 Published in 2012 in \textit{Computer Physics Communications}, it
 explains the QFDTD method and its implementation, with emphasis on the new
-nonlinear mapping introduced for faster calculation.
+nonlinear mapping introduced for faster calculation. The QFDTD package is the
+first to use both the real and imaginary time evolution, opening the door to
+easily get eigenvalues, eigenstates and their time evolution in a time-dependent
+and arbitrary spacial shape potential.
 The method was first validated by comparing with the analytic solutions of
-the hydrogen atom and then applied to solve the simplest molecule H$_{2}^{+}$.
+the hydrogen atom and then applied to solve the H$_{2}^{+}$ molecule.
 Comparison with experimental data was in good agreement for the eigenvalues
 while the eigenstates could be visualize easily. A new method to calculate
 eigenstates is also presented. The publication also
@@ -825,21 +842,19 @@ evolution. The method is a generic way to obtain a nonuniform grid with cells
 concentrated around multi-centres of interest for used in any (finite difference
 based) partial differential equation solvers.
 
-\fxfatal[noinline,margin]{Synchronize the 100nm paper with its description}
+\fxfatal[noinline,margin]{Synchronize and finish the 100nm paper with its description}
 
 Finally, section \ref{section:papers:100nm} contains the draft of the article
-\fxfatal[margin,noinline]{Finish the 100nm paper}
 ``Revisiting the 100nm experiment with ACI''. After Wabnitz \textit{et al.}'s
-2002 DESY-FEL experiment intensity was re-calibrated in 2010 from
-$\ten{2}{13}$~W/cm$^2$ to $\ten{8}{12}$~W/cm$^2$, we hypothesized that our model
-ACI could still explain the high charge states seen in xenon clusters, even
-with the lower intensities. We included single photon ionization, impact
-ionization, ACI and recombination in simulations of Xe$_{90}$ to Xe$_{5083}$
+2002 DESY-FEL experiment's intensity was re-calibrated in 2010, we hypothesized
+that our ACI model could still explain the high charge states seen in xenon
+clusters, even with the lower intensities. We included single photon ionization,
+impact ionization, ACI and recombination in simulations of Xe$_{90}$ to Xe$_{5083}$
 interacting with a 100 fs, 98 nm (12.65 eV) laser pulse. We compared our model
-with previous work with ACI disabled and found good agreement. Since photons
-cannot ionize a Xe$^{1+}$ to Xe$^{2+}$ (see table \ref{tab:ips} for xenon
+with previous work with ACI disabled and found good agreement. Since these VUV
+photons cannot ionize a Xe$^{1+}$ to Xe$^{2+}$ (see table \ref{tab:ips} for xenon
 ionization potentials), all charge states higher than Xe$^{1+}$ must be created
-with other processes, in agreement with experiments. The high performance of the
+with other processes, in agreement with experiments. The high performance of my
 code implementation (see section \ref{section:tools:opencl} on GP-GPU) allowed
 running thousands of MD simulations in contrast with other groups where only
 a handful of simulations were performed. The chaotic nature of the many-body
@@ -855,13 +870,17 @@ simulation data when comparing with experiments. Additionally, our spectrum
 was more complete than experiments as they included the neutral xenon,
 inaccessible to the time-of-flight (TOF) apparatus used to collect (real) ions.
 Our data was in good agreement with the 2002 experiment. Both the dominant
-charge states and the highest charge states matched.
+charge states and the highest charge states matched the experiment data.
 
 The last part of the article discuss the influence of the potential depth
-of equation \eqref{eqn:md:sigma}. Santra and Greene suggested\cite{Greene2003}
-using atomic potentials instead of a pure Coulombic one to explain the high
-charge states seen in experiments. By allowing deeper potentials in our
+of equation~\eqref{eqn:md:sigma}.
+% Santra and Greene suggested\cite{Greene2003}
+% using atomic potentials instead of a pure Coulombic one to explain the high
+% charge states seen in experiments.
+By allowing deeper potentials in our
 simulations, it was hypothesized that larger charge states could be obtained.
+The influence of the potential depth used in simulations is often neglected in
+the literature. That article section sheds some light on the topic.
 Since electrons are now allowed to go deeper in the ions potential well,
 recombination must be used to prevent them from having a total energy less than
 the ion's eigenvalues which would not be allowed quantum mechanically.
@@ -875,7 +894,7 @@ the ion's eigenvalues which would not be allowed quantum mechanically.
 
 Before listing the different publication of the current thesis, the different
 methodology and tools used and developed throughout the years will be presented
-and discusses.
+and discussed.
 
 
 \input{introduction_tools.tex}
