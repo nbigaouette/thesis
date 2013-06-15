@@ -68,7 +68,7 @@ fig2.add_subplot(ax2_eV)
 dbase_potentials = (base_potentials[-1] - base_potentials[0]) / float(max_plot-1) # -1 since we want the number of intervals
 c = 0
 for j in xrange(len(potential_shapes)):
-    for base_potentials_close in np.arange(base_potentials[0], base_potentials[-1]+dbase_potentials/2.0, dbase_potentials):
+    for base_potentials_close in np.arange(base_potentials[-1]+dbase_potentials/2.0, base_potentials[0], -dbase_potentials):
         nothing, index0 = find_nearest(base_potentials,  base_potentials_close)
         nothing, index1 = find_nearest(potential_shapes, potential_shapes[j])
         #nothing, index2 = find_nearest(dts,              dts[i])
@@ -88,7 +88,7 @@ ddt = (dts[-1] - dts[0]) / float(max_plot-1+1) # -1 since we want the number of 
                                                # +1 so the skipped dt = 0.005 as does not reduce the number of curves
 c = 0
 for j in xrange(len(potential_shapes)):
-    for dt_close in np.arange(dts[0], dts[-1]+ddt/2.0, ddt):
+    for dt_close in np.arange(dts[-1]+ddt/2.0, dts[0], -ddt):
         nothing, index1 = find_nearest(potential_shapes, potential_shapes[j])
         nothing, index2 = find_nearest(dts,              dt_close)
         if (dts[index2] <= 0.005):
