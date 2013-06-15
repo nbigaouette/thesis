@@ -16,7 +16,9 @@ import colors_and_symbols
 import plot_params
 
 max_plot = 7
-saved_file    = "numerical_heating.npz"
+
+script_path = os.path.dirname(os.path.realpath(__file__))
+saved_file = script_path + "/numerical_heating.npz"
 
 def find_nearest(array, value):
     if (type(value) == str or type(value) == np.string_):
