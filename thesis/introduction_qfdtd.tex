@@ -80,7 +80,9 @@ construct the thermal density matrix of single particle\cite{Sudiarta2009}.
 Both real-time and imaginary-time methods were implemented. Let's describe the
 two algorithms.
 
+
 \subsubsection{Real time}
+
 First, let's define the time dependent \schrodinger equation describing a
 wavefunction $\psi$ inside a potential $V$:
 \begin{align}
@@ -243,6 +245,7 @@ eigenvalues of all eigenstates present in the simulated wavefunction $\psi$.
 
 
 \subsubsection{Imaginary time}
+
 The second QFDTD method, called the \textit{imaginary-time} method, differs in
 that it first requires that the potential be constant in time ($V\pa{\vr, t}
 \rightarrow V\pa{\vr}$). Further, a Wick rotation is performed in time ($\im t
@@ -306,6 +309,7 @@ $\psi^{n+1}$, alternating between them when calculating equations
 
 
 \subsubsection{Stability criteria}
+
 Due to the explicit nature of the FDTD algorithm (values can be obtained at the
 next time step from values at the current time step only) the method is
 conditionally stable; an upper bound on the time step size must be taken. The
@@ -323,8 +327,11 @@ potential:
     }
 \end{align}
 
+
+
 \subsubsection{Nonlinear mapping}
 \label{section:tools:qfdtd:mapping}
+
 While being simple and powerful, the QFDTD method (both real-time and
 imaginary-time) suffer from a major flaw; its memory usage. Since a three
 dimensional grid scales as $O\pa{N_x \cdot N_y \cdot N_z}$ where $N_i$ is the

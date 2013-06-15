@@ -132,7 +132,9 @@ $\phi_{cr}$ fits with the Coulomb potential $\phi_C$.
 These locations $R$ are the cutoff radius of these shapes and mark the switch
 between the long range Coulomb potential and the short range potential.
 
+
 \subsubsection{Harmonic}
+
 For the harmonic potential, we have:
 \begin{align}
 \phi_{j,H} & = -A r^2 + \phi_0
@@ -151,6 +153,7 @@ R & = \frac{3 k q_j}{2 \phi_0} \\
 
 
 \subsubsection{Super-Gaussian}
+
 The super-gaussian potential is given by:
 \begin{align}
 \phi_{j,SG}\pa{\vr_i} & = \phi_0 \ex{
@@ -178,6 +181,7 @@ R       & = \frac{k q_j}{\phi_0} \ex{\frac{1}{2m}} \\
 
 
 \subsubsection{Gaussian distribution}
+
 An efficient way to correct the close range problem is to treat electrons as
 charge distributions instead of point particles. There is thus no
 discontinuity when the two charged distribution (particles) overlap. As such,
@@ -294,6 +298,7 @@ studies in later sections.
 
 
 \subsection{Long range potential: Hierarchical Tree algorithms}
+
 The $O\pa{N^2}$ scaling of MD algorithm can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
@@ -469,6 +474,7 @@ While conceptually similar, its implementation details are quite different and
 has not been implemented in the current work.
 
 
+
 \subsection{Implementation details}
 
 Our group previously used Barnes and Hut treecode implementation,
@@ -614,12 +620,16 @@ ionization processes. In this work, an ionization event is defined as one
 electron that leaves its parent ion, reaching infinity with a final kinetic
 energy of zero.
 
+
 \subsubsubsection{Single photon ionization}
+
 In the case of single photon ionization of an isolated atom, when the electron
 reaches infinity it will have, as its kinetic energy, the difference of energy
 between the absorbed photon and the ionization potential of the ion.
 
+
 \subsubsubsection{Impact ionization}
+
 For impact ionization, the impacting electron's kinetic energy used in equation
 \eqref{eqn:impact:ionization:lotz} is the kinetic energy the electron has
 \textit{at infinity}, meaning that the impacting electron and the atom (or ion)
@@ -839,6 +849,7 @@ it is easily integrated into the model.
 
 
 \subsubsubsection{Single photon ionization}
+
 For single-photon ionization, experimental cross-sections $\sigma\pa{\omega}$
 for Xenon were obtained from reference \cite{West1978} and from
 reference \cite{Marr1976} for Argon.
@@ -870,7 +881,9 @@ the difference between the Ip and the photon energy.
 Then, the intensity profile of the laser $I\pa{t}$ is decreased
 by one photon for better description of low fluence pulses.
 
+
 \subsubsubsection{Collisional processes}
+
 For impact ionization cross-sections, Lotz formula of equation
 \eqref{eqn:impact:ionization:lotz} is used with experimental parameters obtained
 from reference \cite{Tawara1987} (for neutral xenon) and \cite{Heidenreich2005}
@@ -898,6 +911,7 @@ cross-sections relative to the total one.
 % http://en.wikipedia.org/wiki/Neutron_cross_section#Link_to_reaction_rate_and_interpretation
 
 \subsubsection{Recombination}
+
 In a classical simulation electrons could cool down into ions' infinite Coulomb
 potential where they would have a total energy less then what is allowed
 according to quantum mechanics. Recombination is thus used to prevent such

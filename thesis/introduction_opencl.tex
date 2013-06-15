@@ -12,6 +12,7 @@ coined in 1999 by Nvidia, the biggest vendor of video cards, as a selling point
 to their product and to emphasize the fact that their chips were becoming more
 and more alike CPUs.
 
+
 \subsubsection{General-Programming GPU (GP-GPU)}
 
 Due to this increase in power, people tried to use these video cards as
@@ -64,13 +65,16 @@ exploiting all cores available on the CPUs transparently.
 It was thus decided to port the two codes (MD and QFDTD) to OpenCL to take
 advantage of the GPU power while retaining portability.
 
+
 \subsubsection{GPU programming challenges}
+
 Unfortunately, porting a code to run on GPUs is not as simple as recompiling
 for the new architecture. While being portable, OpenCL does requires rewriting
 many parts of the code.
 
 
 \subsubsubsection{Refactoring}
+
 Some things are important to consider when porting codes to GPU frameworks.
 First, because a core on a GPU is quite slower than a core on a CPU,
 parallelisms must be extracted from algorithms. The code must thus be
@@ -112,11 +116,15 @@ until data needs to be saved to a snapshot or post-processed to reduce
 transfers.
 
 
+
 \subsubsubsection{Debugging}
+
 One of the most problematic part is the lack of debugging tools. Many different
 tools and techniques exist to detect and fix problems in codes.
 
+
 \subsubsubsubsection{Printing}
+
 The simplest
 case is printing the variables' values to the screen and their inspection for
 erroneous values. While not really efficient, it is sometimes useful, quick
@@ -141,7 +149,9 @@ for the Intel SDK, or
 for the AMD SDK. These extensions are possible since these drivers support
 running the kernels directly on the CPU.
 
+
 \subsubsubsubsection{Valgrind}
+
 Another useful bug squashing weapon used in debugging on Linux is called
 \textit{valgrind}\footnote{\url{http://www.valgrind.org/}}. This extremely
 useful tool verifies memory access and can thus report on out-of-bound accesses
@@ -153,7 +163,9 @@ program is running on the CPU through the use of the Intel or AMD SDKs, valgrind
 detects a huge amount of errors, probably due to errors \textit{inside} these
 SDKs, rendering the analysis useless.
 
+
 \subsubsubsubsection{Debuggers}
+
 The last tool used in debugging is an actual debugger. A normal debugger will
 take control of the program, allowing the developer to pause the execution
 at any time, inspect variables' values or even change them. A popular debugger
@@ -175,6 +187,7 @@ the different debuggers available were scarce, limited or expensive.
 
 
 \subsubsubsection{HPC Facilities}
+
 While high performance computing (HPC) are relatively widespread and accessible,
 GPU clusters are harder to find.
 SHARCNET\footnote{\url{https://www.sharcnet.ca/}}, a large HPC
@@ -206,6 +219,7 @@ research.
 
 \subsubsection{Close-range: Look-up tables}
 \label{section:intro:lut}
+
 The preferred potential shape, the gaussian distribution described in section
 \ref{section:intro:md:potentials}, uses the error function which has a major
 issue; it is slow, or at least too slow to be called at each interaction pair
