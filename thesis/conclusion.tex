@@ -1,8 +1,8 @@
 \section{Discussion}
 
 Clusters of atoms are without a doubt an extremely useful tool to study
-laser and matter interaction. They were in used even before atoms were discovered
-for their optical properties. With the advancement of both clusters creation
+laser and matter interaction. They were in used for their optical properties
+even before atoms were discovered. With the advancement of both clusters creation
 and laser technologies, it became possible to gain a significant understanding
 on how light interacts with matter. Clusters studies thus became an important
 physics research area.
@@ -43,7 +43,6 @@ to move forward with it.
 
 The $O(N^2)$ scaling of the MD algorithm prevents simulations of more than tens
 of thousands of particles but interesting results are still accessible.
-
 For bigger systems, some algorithm changes can be done to speed the force
 calculation on particles. Using a hierarchical tree can change the algorithm
 scaling from $O(N^2)$ to $O(N \textrm{log}\pa{N})$ and thus push the limit on
@@ -54,33 +53,31 @@ technology matured during the last decade; by running codes directly on GP-GPUs,
 the same algorithms could perform up to one hundred times faster than on
 conventional CPUs. The MD package was thus ported to the framework OpenCL where
 the MD algorithm shown a speedup of close to 80. This implementation was used
-mainly in our publications since the cluster sizes we were interested in were
+in our publications since the cluster sizes we were interested in were
 in the range accessible through MD (and not requiring the tree). The
 hierarchical tree-based algorithm is still accessible through an input parameter
-(not as an OpenCL implementation though), making the MD package interesting for
+(not as an OpenCL implementation though), making my MD package interesting for
 future studies where larger clusters will be investigated.
 
 % ******************************************************************************
-In our first publication in 2011, Edward Ackad, Lora Ramunno and I introduced
-the new concept of excited states as a multi-step process of energy transfer
-from a laser pulse to rare gas clusters. Because energy is transferred through
-collisions, we dubbed this process Augmented Collisional Ionization, or ACI.
-With ACI, many more electrons can participate in collisional ionization since
-two electrons, successively, participate in the ionization process. Once
-electrons loose energy to excited states by collisions, they are slowed down
-and
+In our first publication in 2011, the new model using excited states as a
+multi-step of energy transfer process from a laser pulse to rare gas clusters
+was introduced. This model is based on electron collisions and increases the
+amount of ionization in clusters. We thus dubbed this model Augmented
+Collisional Ionization, or ACI. With ACI, many more electrons can participate in
+collisional ionization.
 
 The first study concentrated on Argon clusters in the 32.8 nm regime (37.8 eV).
 At this wavelength, only the first two ionization states of (atomic) Argon are
 accessible but experiments in 2008 saw up to Ar$^{4+}$. The small cluster sizes
-used in the experiment (~100 atoms per cluster) allowed to quickly test and
+used in the experiment ($\sim$100 atoms per cluster) allowed to quickly test and
 validate our model. It was found that ACI plays a crucial role in the cluster
 dynamics and can explains the high charge states seen in the experiment, with
 intensities from $\ten{5}{13}$ to $\ten{10}{13}$~W/cm$^{2}$. When ACI was
 enabled in the simulations, the Ar$^{4+}$ population closely matched what was
 seen at FLASH. Additionally, the MD simulations allowed tracking the dynamics
 of each charge states. It was found that all Ar$^{3+}$ and Ar$^{4+}$ were
-created by ACI, making it an vital process in cluster dynamics where traditional
+created by ACI, making it a vital process in cluster dynamics where traditional
 ionization mechanisms cannot explain alone what is seen in laboratories.
 
 % ******************************************************************************
@@ -93,8 +90,6 @@ This process was baptized collisionally reduced photoabsorption. Once clusters
 are ionized, the bigger ones will thermalize faster and the electron velocity
 distribution will become isotropic in contrast with smaller clusters which
 keep their photo-ionization-created anisotropy.
-
-During this study, 
 
 
 % ******************************************************************************
@@ -135,8 +130,28 @@ for example, what is the influence of the shape of the cluster environment,
 approximated as a constant $U_b$, over the cluster dynamics? How much is
 affected an electron wavefunction by a neighbouring ion?
 
+Another possibility given by the QFDTD is to use a potential different then
+Coulombic. An atomic potential, similar to the one used in
+reference~\cite{Walters2006}, could be used to simulate an electron in a
+mean-field created by other electrons, effectively changing the one electron
+picture of the code to mean-field, Hartree-Fock, formulation of many electrons.
+Sullivan did developed a two-electrons formulation of QFDTD using the
+Hartree-Fock formulation but his systems were mostly 2D, considerably reducing
+the computational burden required. My package could be used to simulate one
+electron in an effective potential, using the nonlinear mapping to the
+calculation possible.
+
+Additionally, the potential used in the (real time) QFDTD does not have to be
+time independent. Using a time dependent potential could simulate the effect of
+a (classical) laser field (through the vector potential). It is hypothesized
+that transition rates could be obtained from the output of the real time QFDTD.
+If rates and cross-sections could be obtained for an isolated atom, the
+influence of the neighbouring ions and the cluster environment could be
+calculated.
+
+
 % ******************************************************************************
-The ACI model, based on electron impact cross-sections, is independent of the
+The ACI model, based on electron impact excitation cross-sections, is independent of the
 regime and does not depend on the laser parameters (pulse duration, wavelength,
 intensity, etc.) Transition cross-sections though are unique to each elements
 and must be calculated and added to the simulation package before use. Argon
@@ -144,25 +159,26 @@ and Xenon cross-sections where generated and are accessible. It is thus
 interesting to apply the model to different regimes. Other models were applied
 to explain Wabnitz \textit{et al.}'s 2002 VUV-Xenon experiment at FLASH but when the
 Bostedt \textit{et al.} published in 2010 a revised intensity (to lower values) it was
-though that these models might not be able to reproduce the experimental results
+not clear if they could be able to reproduce the experimental results
 in light of the new, lower intensity. We decided to revisit the 2002 100 nm
 experiment in light of our ACI model at the revised, lower intensity.
 
-Thanks to the OpenCL implementation (and its 80 times speedup), it was possible
+Thanks to my OpenCL implementation (and its 80 times speedup), it was possible
 to acquire significant statistics over a wide range of intensities, effectively
 reproducing the clusters distribution in the laser focus spacial profile. This
 is an important aspect to reproduce the charge state spectrum seen in experiment
 as the clusters normally do not all fall exactly at the laser focus' peak
-intensity.
+intensity. It also allowed acquiring significant data for valid statistics.
 
 Interestingly, even at the 2.5 times lower intensity ($\ten{8}{12}$~W/cm$^{2}$
 vs. $\ten{2}{13}$~W/cm$^{2}$), the experiment's high charge states spectrum
-could be reproduced with ACI, something other models couldn't do. ACI had to
+could be reproduced with ACI. ACI had to
 be enabled to match the spectrum of the smallest clusters (Xe$_{90}$), both
-for the dominant charge state (Xe$^{1+}$) as the maximum charge state (Xe$^{4+}$).
+for the dominant charge state (Xe$^{1+}$) and the maximum charge state (Xe$^{4+}$).
 The change from dominant Xe$^{1+}$ to Xe$^{2+}$ was seen to take place at
 Xe$_{1415}$ clusters in the simulations, something that couldn't be compared
-directly to the experiment. Nevertheless, this transition required ACI to be
+directly to the experiment due to lack of data. Nevertheless, this transition
+required ACI to be
 enabled, another indication that it plays a major role in cluster dynamics.
 Furthermore, the largest clusters in the 2002 experiment was Xe$_{90,000}$, a
 cluster size not possible with traditional MD simulations. A parallelized
@@ -199,12 +215,12 @@ after Newton. Computers must be used to calculate these simple trajectories
 using many different algorithms, bringing computer science into the picture
 with all its quirks, problems, bugs, crashes and high expectation algorithms or
 new technologies. Lasers are the tool of choice to study the small objects
-clusters are. Electrodynamics, classical or quantum, describe light, the purest
+clusters are. Electrodynamics, classical or quantum, describes light, the purest
 form of energy, and its interaction with matter. After clusters get ionized,
 the plasma generated can be described with the language of statistical mechanics.
 But clusters can be used as a first-order model for biomolecules or can be used
-in biological systems. As if physics wasn't complex enough, life itself brings
-so many more questions to the picture.
+in biological systems. As if physics wasn't complex enough, life and biology
+brings so many more questions to the picture.
 
 It is easy to be impressed and even overwhelmed by the wide range of fields
 touched by clusters studies, but how satisfying can it be to reach so many
