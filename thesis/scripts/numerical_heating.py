@@ -82,12 +82,15 @@ for j in xrange(len(potential_shapes)):
         c += 1
 
 # Plot NumericalHeating as a function of potential depth for every dt
-ddt = (dts[-1] - dts[0]) / float(max_plot-1) # -1 since we want the number of intervals
+ddt = (dts[-1] - dts[0]) / float(max_plot-1+1) # -1 since we want the number of intervals
+                                               # +1 so the skipped dt = 0.005 as does not reduce the number of curves
 c = 0
 for j in xrange(len(potential_shapes)):
     for dt_close in np.arange(dts[0], dts[-1]+ddt/2.0, ddt):
         nothing, index1 = find_nearest(potential_shapes, potential_shapes[j])
         nothing, index2 = find_nearest(dts,              dt_close)
+        if (dts[index2] <= 0.005):
+           continue
         ax2_eV.plot(base_potentials, NumericalHeating[:, index1, index2],
                     colors_and_symbols.symb_col(c),
                     label = r"" + str(dts[index2]) + " as")
