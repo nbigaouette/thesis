@@ -13,6 +13,9 @@ import matplotlib.transforms as mtransforms
 
 matplotlib.rcParams['figure.subplot.hspace'] = 0.6
 
+script_path = os.path.dirname(os.path.realpath(__file__))
+figures_path = os.path.join(os.path.abspath(os.path.join(script_path, os.pardir)), 'figures')
+
 def my_quit(signum, frame):
     sys.exit(0)
 
@@ -220,11 +223,11 @@ def savefig(filenames):
         filenames = [filenames]
     assert(len(filenames) == len(figures))
     for i, figure in enumerate(figures):
-        if (len(filenames) == 1):
-            filename = filenames[i]
-        else:
-            filename_base, filename_ext = os.path.splitext(filenames[0])
-            filename = '{0}_{1}{2}'.format(filename_base, i, filename_ext)
+        filename = filenames[i]
+        nothing, ext = os.path.splitext(filename)
+        if (ext == '.svg'):
+            filename = os.path.join('svg', filename)
+        filename = os.path.join(figures_path, filename)
         print "Saving to", filename
         figure.savefig(filename, transparent=True, bbox_inches='tight')
 def draw():
