@@ -114,7 +114,7 @@ ax2_eV.set_xlim((base_potentials[0], base_potentials[-1]))
 
 for ax in [ax1_eV, ax2_eV]:
     leg = ax.legend(loc = "best")
-    leg.get_frame().set_alpha(0.4)
+    leg.get_frame().set_alpha(0.75)
     ax.grid(True)
     ax.set_ylabel("Energy change [eV]")
     ax.set_xscale('log')
