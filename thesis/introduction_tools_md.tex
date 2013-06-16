@@ -453,10 +453,7 @@ The different MAC can be seen on figure \ref{fig:tree:mac}.
 Because not all interaction pairs are considered in the calculation of the
 force and potential, a significant speedup is obtained. Due to the tree
 traversal algorithm, the scaling passes\cite{Barnes1986,Gibbon2002,Pfalzner1996}
-from $O\pa{N^2}$ to $O\pa{N \ln{N}}$; see figure \ref{fig:tree:scaling}.
-
-\emptyfig{TREECODE SCALING}{fig:tree:scaling}
- \fxwarning[noinline,margin]{Create real figure: Tree scaling}
+from $O\pa{N^2}$ to $O\pa{N \ln{N}}$.
 
 A variation to the hierarchical treecode is obtained when a sufficiently large
 $\theta$ is used. In this case, the root cell (the largest one) is never
