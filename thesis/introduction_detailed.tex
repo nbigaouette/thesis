@@ -4,6 +4,8 @@
 
 \section{Laser-Cluster interaction}
 
+\fxfatal[noinline,margin]{Cite all papers sent by LR's (Krainov2007)}
+
 \subsection{Clusters of atoms and strong laser fields}
 
 Clusters of atoms have been in use for a longer time than we might normally
@@ -204,7 +206,7 @@ compared to Ti:sapphire lasers. Nevertheless, as will be shown later on, their
 tunable wavelength allows them to access different interesting regimes.
 
 The Keldysh adiabatic parameter $\gamma$ separates regimes where processes are
-dominated by either photons or field\cite{Schlessinger1979,Long2010} and reads
+dominated by either photons or field\cite{Long2010} and reads
 \begin{align}
 % http://www.iuac.res.in/atmol/~safvan/safvan_thesis/node32.html
 \gamma & = \sqrt{ \frac{\textrm{Ip}}{2 U_p} } = \frac{\omega}{\omega_t},
@@ -262,7 +264,7 @@ and 12.13 eV (for Xenon) are possible. While Xenon's 5p states have the smallest
 Ip's, the cross-section for photoionization of the 4d shell is approximately ten
 times larger at 13 nm (95.4 eV) -- the so called xenon giant 4d
 resonance\cite{Becker1986} -- making ionization of these inner-shells
-possible\cite{Thomas2009}.
+possible\cite{Thomas2009,Ackad2013}.
 % http://photon-science.desy.de/news__events/research_highlights/archive/flash_excites_giant_atomic_resonance/index_eng.html
 
 \begin{table}
@@ -307,9 +309,6 @@ Configuration
 \label{tab:ips}
 \end{center}
 \end{table}
-\fxnote[margin,noinline]{Even though the 4d's Ip is large, the resonance makes
-                         it accessible. See recombination paper and talk about
-                         it here.}
 
 Let's now look at the different mechanisms present in the different regimes.
 Note that some regime-independent processes are presented afterwards.
@@ -364,8 +363,8 @@ of the phenomena in 1993\cite{Corkum1993}, HHG studies expended into its own
 sub-field. For example, Murphy \textit{et al.} used the 21st harmonic of a
 800 nm Ti:sapphire to ionize xenon clusters\cite{Murphy2008a,Murphy2008b}
 with these new 32.6 eV (38 nm) photons.
-\fxnote[margin,noinline]{Cite an HHG review reference}
-
+For more details on HHG see references \cite{Levesque2006} and
+\cite{Lewenstein2008}.
 
 \subsubsubsection{Inverse Bremsstrahlung Heating}
 
@@ -374,13 +373,19 @@ from the laser.
 Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
 where an electron emits a photon when deflected, either by a heavier ion in the
 case of plasma or by magnetic fields in the case of synchrotrons. IBH is thus
-the absorption of a photon which accelerates the electron.
+the absorption of photons accelerating the electrons\cite{Schlessinger1979}.
 IBH plays an important role in the IR regime where the laser field easily
 drives the electrons through the cluster\cite{Fennel2010}. This linear momentum
 is redistributed as thermal energy by collisions and scattering on heavier ions.
+The IBH rate is given\cite{Fennel2010} by:
+\begin{align}
+\left< \dt{E} \right> & = 2 U_p \frac{\tau \omega^2}{\tau^2 \omega^2 + 1}
+\end{align}
+where $\tau$ is the inverse of the collision frequency.
+\fxnote[noinline,margin]{Maybe check with Charles' paper for Mie freq. in Fennel2010's eq. (8)?}
 
-\fxfatal{Add how IBH scales with frequency. Landau \& Lifshitz? Couldn't find it...}
-\fxfatal{Cite Schlessinger1979\cite{Schlessinger1979} for IBH parameters at different regimes}
+\fxfatal{Add how IBH scales with frequency. Landau \& Lifshitz?
+Couldn't find it... Cite Krainov2000\cite{Krainov2000} for a different IBH rate}
 
 \subsubsection{Shorter wavelengths: Into the VUV and XUV regime}
 \label{section:intro:mechanisms:vuv}
@@ -621,7 +626,6 @@ and duration, both making up the interaction regime. A specific regime will
 thus be targeted; mainly short wavelengths, from VUV to XUV, as many questions
 raising from recent experiments are still debated.
 
-\fxwarning[margin,noinline]{Really include this paragraph?}
 While many tools exist to study laser-mater interaction, it was decided to use
 a classical approach since it allows for relatively large systems to be
 simulated. Large field fluctuations in clusters are also best described with
