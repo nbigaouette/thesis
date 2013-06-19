@@ -193,8 +193,6 @@ ax2.text(0.9*r[0], 0.9*Umin, 'b)')
 ax3.text(0.9*r[0], 0.9*Umin, 'c)')
 ax4.text(0.9*r[0], 0.9*Umin, 'd)')
 
-#for ext in ['pdf', 'svg']:
-   #plot.savefig(['aci_0.' + ext, 'aci_1.' +  ext, 'aci_2.' +  ext, 'aci_3.' +  ext])
 for ext in ['pdf', 'svg']:
    plot.savefig('ionization_aci.' + ext)
 plot.show()
