@@ -583,35 +583,34 @@ to see Xe$^{3+}$, Xe$^{5+}$ and Xe$^{7+}$ for intensities of $\ten{1.5}{12}$,
 $\ten{1.5}{13}$ and $\ten{7}{13}$~W/cm$^2$ respectively when simulating
 Xe$_{1,000}$ clusters.
 
-\fxnote[noinline,margin]{Create real heating figures}
 
 \begin{figure}
  \centering
     \begin{subfigure}{0.48\columnwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/mockups/heating_atomic_potential}
-        \caption{Atomic potential (red) drops faster than Coulomb one (blue),
-                 allowing more energy absorption through IBH.}
+        \includegraphics[width=\textwidth]{figures/heating_atomic_potential}
+        \caption{Atomic potential (blue line) drops faster than Coulomb one
+                (black dashed line), allowing more energy absorption through
+                IBH.\\}
         \label{fig:heating:atomic_pot}
     \end{subfigure}
 %
     \begin{subfigure}{0.48\columnwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/mockups/heating_barrier_sup}
-        \caption{Barrier suppression between ions in a cluster environment allow
-                 a single photon to ionize deeper levels (left), not accessible
-                 with a single atom (left).}
-        \label{fig:heating:barrier}
+        \includegraphics[width=\textwidth]{figures/heating_mbr}
+        \caption{MBR: energy exchange between free electrons during collisions
+                 makes one recombine to highly excited state where it can
+                 reabsorb a new photon from the laser field.}
+        \label{fig:heating:mbr}
     \end{subfigure}
 \\
-    \begin{subfigure}{0.48\columnwidth}
+    \begin{subfigure}{\figurewidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/mockups/heating_mbr}
-        \caption{In MBR, energy transfer during collisions between many
-                 electrons transfer allow one of them to recombine to a highly
-                 excited state (green) where it can re-absorb a new photon from
-                 the laser (red).}
-        \label{fig:heating:mbr}
+        \includegraphics[width=\textwidth]{figures/heating_barrier_sup}
+        \caption{Barrier suppression between ions in a cluster environment allows
+                 a single photon to ionize deeper levels (right), not accessible
+                 with a single atom (left).}
+        \label{fig:heating:barrier}
     \end{subfigure}
  \caption{More heating mechanisms}
  \label{fig:heating}
