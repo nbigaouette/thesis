@@ -18,7 +18,7 @@ import plot_params
 max_plot = 7
 
 script_path = os.path.dirname(os.path.realpath(__file__))
-saved_file = script_path + "/numerical_heating.npz"
+saved_file = os.path.join(script_path, "/numerical_heating.npz")
 
 def find_nearest(array, value):
     if (type(value) == str or type(value) == np.string_):
