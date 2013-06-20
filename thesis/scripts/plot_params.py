@@ -8,6 +8,5 @@ matplotlib.rcParams['text.usetex']              = True
 matplotlib.rcParams['font.size']                = 24
 matplotlib.rcParams['font.family']              = 'serif'
 matplotlib.rcParams['font.serif']               = 'computer modern roman'
-matplotlib.rcParams['lines.linewidth']          = 6
 matplotlib.rcParams['figure.subplot.bottom']    = 0.15
 matplotlib.rcParams['lines.linewidth']          = 3
