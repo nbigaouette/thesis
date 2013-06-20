@@ -30,7 +30,9 @@ r0 = abs(cs/Xe_Z0_Ip)
 
 fig = plot.figure()
 
-ax1 = fig.add_subplot(1,1,1)
+ax1, ax1b = plot.get_axis_two_scales(fig,
+                                     scale_y = cst.Eh_to_eV,
+                                     ax2_ylabel = 'Energy [eV]')
 
 # Ip
 ax1.plot([-r0, r0], [-Xe_Z0_Ip, -Xe_Z0_Ip], '-m')
