@@ -200,6 +200,10 @@ ax2.text(0.9*r[0], 0.9*Umin, 'b)')
 ax3.text(0.9*r[0], 0.9*Umin, 'c)')
 ax4.text(0.9*r[0], 0.9*Umin, 'd)')
 
+# Remove overlapping labels
+ax3.get_xticklabels()[-1].set_visible(False)
+ax4.get_xticklabels()[0].set_visible(False)
+
 for ext in ['pdf', 'svg']:
    plot.savefig('ionization_aci.' + ext)
 plot.show()
