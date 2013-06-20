@@ -30,7 +30,8 @@ class arrow:
             return False
     def Plot(self, ax, color = 'k', label = None,
              horizontalalignment = 'center', verticalalignment = 'center',
-             bidirectional = False):
+             bidirectional = False,
+             alpha = 1.0):
         if (self.Is_Null()):
             label_equal_zero = r" = 0"
         else:
@@ -42,7 +43,7 @@ class arrow:
             ann = ax.annotate('', xy     = self.stop_xy,  xycoords='data',
                                   xytext = self.start_xy, textcoords='data',
                                   arrowprops=dict(arrowstyle = arrowstyle, color = color),
-                                  annotation_clip=False )
+                                  annotation_clip=False, alpha = alpha)
             ann.arrow_patch.set_clip_box(ax.bbox)
             #ax.plot([self.start_xy[0]], [self.start_xy[1]], 'o' + color)
         if (label != None):
