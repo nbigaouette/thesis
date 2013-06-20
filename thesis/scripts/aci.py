@@ -1,11 +1,7 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-#import matplotlib.pyplot as plt
-#import matplotlib.transforms as mtransforms
-#from mpl_toolkits.axes_grid1.parasite_axes import SubplotHost
 import numpy as np
-
 
 import plot
 import plot_params
