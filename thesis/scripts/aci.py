@@ -38,6 +38,7 @@ r = np.linspace(-20.0, 20.0, 1000)
 cs = 1.0
 U = -cs / abs(r)
 U[U<Umin] = np.NaN
+r0 = abs(cs/Xe_Z0_Ip)
 
 #fig1 = plot.figure()
 #fig2 = plot.figure()
@@ -86,11 +87,13 @@ for ax in [ax1, ax1b, ax2, ax2b]:
 
 # ********************** Before ************************
 ax1.plot(r, U)
-ax1.axhline(-Xe_Z0_Ip, linestyle = '-', color = 'm', label = '5p')
+ax1.plot([-r0, r0], [-Xe_Z0_Ip, -Xe_Z0_Ip], '-m', label = '5p')
 for ei in xrange(len(Xe_Z0_es_E)):
-    ax1.axhline(Xe_Z0_es_E[ei], linestyle = colors_and_symbols.symbol(ei+5),
-                                color = colors_and_symbols.color(ei),
-                                label = Xe_Z0_es_n[ei])
+    r0e = min(abs(cs/Xe_Z0_es_E[ei]), r[-1])
+    ax1.plot([-r0e, r0e], [Xe_Z0_es_E[ei], Xe_Z0_es_E[ei]],
+                linestyle = colors_and_symbols.symbol(ei+5),
+                color = colors_and_symbols.color(ei),
+                label = Xe_Z0_es_n[ei])
 
 # Impacting electron
 ar1Ke = fleches.arrow('K_e', [0.75*r[0], 0.0], [0.75*r[0], Ke])    # Vertical (Ke)
@@ -105,11 +108,14 @@ ax1.plot([0.0], [-Xe_Z0_Ip], 'og', ms = 14)
 
 # ********************** During ************************
 ax2.plot(r, U)
-ax2.axhline(-Xe_Z0_Ip, linestyle = '-', color = 'm', label = '5p')
+ax2.plot([-r0, r0], [-Xe_Z0_Ip, -Xe_Z0_Ip], '-m', label = '5p')
 for ei in xrange(len(Xe_Z0_es_E)):
-    ax2.axhline(Xe_Z0_es_E[ei], linestyle = colors_and_symbols.symbol(ei+5),
-                                color = colors_and_symbols.color(ei),
-                                label = Xe_Z0_es_n[ei])
+    r0e = min(abs(cs/Xe_Z0_es_E[ei]), r[-1])
+    ax2.plot([-r0e, r0e], [Xe_Z0_es_E[ei], Xe_Z0_es_E[ei]],
+                linestyle = colors_and_symbols.symbol(ei+5),
+                color = colors_and_symbols.color(ei),
+                label = Xe_Z0_es_n[ei])
+
 # Impacting electron
 Kep = Ke - Xe_Z0_gses[0]
 ar1Ke = fleches.arrow("K_e'", [0.0, 0.0], [0.0, Kep]) # Vertical (Ke)
@@ -127,11 +133,14 @@ arBe.Plot(ax2, color = 'g')
 
 # ********************** During 2 ************************
 ax3.plot(r, U)
-ax3.axhline(-Xe_Z0_Ip, linestyle = '-', color = 'm', label = '5p')
+ax3.plot([-r0, r0], [-Xe_Z0_Ip, -Xe_Z0_Ip], '-m', label = '5p')
 for ei in xrange(len(Xe_Z0_es_E)):
-    ax3.axhline(Xe_Z0_es_E[ei], linestyle = colors_and_symbols.symbol(ei+5),
-                                color = colors_and_symbols.color(ei),
-                                label = Xe_Z0_es_n[ei])
+    r0e = min(abs(cs/Xe_Z0_es_E[ei]), r[-1])
+    ax3.plot([-r0e, r0e], [Xe_Z0_es_E[ei], Xe_Z0_es_E[ei]],
+                linestyle = colors_and_symbols.symbol(ei+5),
+                color = colors_and_symbols.color(ei),
+                label = Xe_Z0_es_n[ei])
+
 # Impacting electron
 Kep = Ke - Xe_Z0_gses[0]
 ar1Ke = fleches.arrow("K_e'", [0.75*r[-1], 0.0], [0.75*r[-1], Kep]) # Vertical (Ke)
@@ -153,11 +162,13 @@ ax3.plot([0.0], [Xe_Z0_es_E[0]], 'og', ms = 14)
 
 # ********************** End/After ************************
 ax4.plot(r, U)
-ax4.axhline(-Xe_Z0_Ip, linestyle = '-', color = 'm', label = '5p')
+ax4.plot([-r0, r0], [-Xe_Z0_Ip, -Xe_Z0_Ip], '-m', label = '5p')
 for ei in xrange(len(Xe_Z0_es_E)):
-    ax4.axhline(Xe_Z0_es_E[ei], linestyle = colors_and_symbols.symbol(ei+5),
-                                color = colors_and_symbols.color(ei),
-                                label = Xe_Z0_es_n[ei])
+    r0e = min(abs(cs/Xe_Z0_es_E[ei]), r[-1])
+    ax4.plot([-r0e, r0e], [Xe_Z0_es_E[ei], Xe_Z0_es_E[ei]],
+                linestyle = colors_and_symbols.symbol(ei+5),
+                color = colors_and_symbols.color(ei),
+                label = Xe_Z0_es_n[ei])
 
 # New Impacting electron
 #ar1Ke = fleches.arrow('K_{e,2}', [0.0, 0.0], [0.0, Ke2])    # Vertical (Ke)
