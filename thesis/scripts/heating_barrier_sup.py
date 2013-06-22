@@ -14,7 +14,6 @@ import constants as cst
 
 plot.matplotlib.rcParams['figure.subplot.hspace'] = 0.0
 plot.matplotlib.rcParams['figure.subplot.wspace'] = 0.0
-plot.matplotlib.rcParams['patch.linewidth'] = 3.0
 
 
 Xe_Z0_Ip = 12.265625 * cst.eV_to_Eh

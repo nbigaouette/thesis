@@ -10,3 +10,4 @@ matplotlib.rcParams['font.family']              = 'serif'
 matplotlib.rcParams['font.serif']               = 'computer modern roman'
 matplotlib.rcParams['figure.subplot.bottom']    = 0.15
 matplotlib.rcParams['lines.linewidth']          = 3
+matplotlib.rcParams['patch.linewidth']          = 2
