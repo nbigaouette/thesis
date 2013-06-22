@@ -461,23 +461,47 @@ $\gamma~\gg~1$).
 \subsubsubsection{Auger effect}
 
 At even shorter wavelength, the photon energy might be large enough not only
-to ionize the highest energy electron but also some inner-shell electrons. When
-this kind of ionization occurs, it leaves a hole in that shell that gets filled
-by a higher energy electron. The energy difference is then transferred to
-another electron that is ejected from the ion (the Auger electron). Figure
-\ref{fig:auger} shows a diagram of the process.
+to ionize the highest energy electron but also some inner-shell electrons.
+When such an inner shell electron gets ionized, it leaves a hole; the atom is
+thus in an excited state. An outer shell electron will then transition by
+\textit{Auger decay} to the hole. The transition energy is used by a third
+electron (the Auger electron) to leave the ion, leaving the latter
+doubly-ionized. Figure \ref{fig:auger} shows a diagram of the process.
 
-\emptyfig{Auger effect}{fig:auger}
-\fxfatal[margin,noinline]{Create Auger figure}
+\begin{figure}
+ \centering
+    \begin{subfigure}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/auger_step_1}
+        \caption{Step 1: An xenon inner shell electron (4d) absorb a high
+                 energetic photon and leaves the atom. \\}
+        \label{fig:auger:1}
+    \end{subfigure}
+    \begin{subfigure}{0.48\columnwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/auger_step_2}
+        \caption{Step 2: An outer shell electron decays into the created hole,
+                 transferring the energy difference between the two states to a
+                 third electron which is ejected (the Auger electron).}
+        \label{fig:auger:2}
+    \end{subfigure}
+        \caption{\label{fig:auger}Auger ionization of a xenon 4d electron by a
+                 high energetic X-ray photon.}
+\end{figure}
 
-To access core electrons, photons must normally be X-rays which is not covered
-in the present work. An interesting aspect though is that Xenon atoms have a
-giant resonance of the 4d state; the cross-section of single photon ionization
-of the (inner-shell) 4d electron is larger than the one of valence electrons at
-13 nm wavelength (95.4 eV). This was studied in a recent work entitled
-``Recombination effects in soft-x-ray cluster interactions at the xenon giant
-resonance'', published in May 2013 in \textit{New Journal of
-Physics}\cite{Ackad2013} but is not included in the present work for brevity.
+To access core electrons, photons must be highly energetic, normally in X-rays.
+While not the focus of the present work, an interesting aspect is that Xenon
+atoms have a giant resonance of the 4d state; the cross-section of
+photoionization of the (inner-shell) 4d electron is ten times larger than the
+one of valence  electrons at 13.7 nm wavelength~(90.5~eV)\cite{Becker1986}.
+This process was included in the model for a comparison with a 2009 experiment
+by Thomas \textit{et al.}\cite{Thomas2009} on xenon clusters at FLASH-DESY.
+The German group saw clusters becoming nanoplasmas from which the outer shells
+ions undergo Coulomb explosion while the relatively neutral core expands
+hydrodynamically. These results could be reproduced by our models in a recently
+published article entitled ``Recombination effects in soft-x-ray cluster
+interactions at the xenon giant resonance'', published in May 2013 in
+\textit{New Journal of Physics}\cite{Ackad2013}.
 
 
 % ******************************************************************************
