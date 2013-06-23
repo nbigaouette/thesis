@@ -5,7 +5,7 @@ import numpy as np
 import plot
 from mpl_toolkits.axes_grid1.parasite_axes import SubplotHost
 import matplotlib.transforms as mtransforms
-from matplotlib.patches import FancyBboxPatch
+import matplotlib.patches as mpatches
 
 import plot_params
 
@@ -38,18 +38,33 @@ def log_center(dmin, dmax):
 def bbox_log_center(bb):
     return [log_center(bb.xmin, bb.xmax), log_center(bb.ymin, bb.ymax)]
 
-def draw_text_box(ax, text, xmin, xmax, ymin, ymax, **kwargs):
+def draw_text_box(ax, text, xmin, xmax, ymin, ymax, color, **kwargs):
     bb = mtransforms.Bbox([[xmin, ymin], [xmax, ymax]])
-    ax.add_patch(FancyBboxPatch(xy          = (bb.xmin, bb.ymin),
-                                width       = abs(bb.width),
-                                height      = abs(bb.height),
-                                boxstyle    = 'round',
-                                **kwargs))
+
+    # Add a text entry in all white (including text) for a white background
+    # to hide the lines of the plot behind the text.
+    # Z-order must be negative to be behind the rectangles and text
     ax.text(x = log_center(bb.xmin, bb.xmax),
             y = log_center(bb.ymin, bb.ymax),
             s = text,
             horizontalalignment = 'center',
-            verticalalignment   = 'center')
+            verticalalignment   = 'center',
+            backgroundcolor     = 'w',
+            color               = 'w',
+            alpha               = 1.0,
+            zorder              = -1)
+
+    # Create the rectangle
+    ax.add_patch(mpatches.Rectangle((xmin, ymin), width = abs(bb.width), height = abs(bb.height),
+                                    color = color, alpha = 0.6, ec = "none"))
+
+    # Add the real text on top of all
+    ax.text(x = log_center(bb.xmin, bb.xmax),
+            y = log_center(bb.ymin, bb.ymax),
+            s = text,
+            horizontalalignment = 'center',
+            verticalalignment   = 'center',
+            zorder = 2)
 
 
 
@@ -67,14 +82,12 @@ fig = plot.figure()
 
 ax_eV = fig.add_subplot(1,1,1)
 ax_wl = ax_eV.twinx()
-#ax_wl = ax_eV.twinx().twiny()
 
 ax_eV.set_xlabel('Intensity [W/cm$^2$]')
 ax_eV.set_ylabel('Photon energy [eV]')
-#ax_wl.set_xlabel('Field strength [V/$\AA$]')
+ax_wl.set_xlabel('Field strength [V/$\AA$]')
 ax_wl.set_ylabel('Wavelength [nm]')
 
-#for ax in [ax_eV]:
 for ax in [ax_eV, ax_wl]:
     ax.set_yscale('log')
     ax.set_xscale('log')
@@ -93,11 +106,12 @@ ax_eV.set_ylim((eV_min, eV_max))
 ax_wl.set_ylim((eV_to_nm(eV_min), eV_to_nm(eV_max)))
 
 
-ax_eV.plot(I, Up_1eV,  '--k', alpha = 0.5, label = '$U_p = 1 eV$')
-ax_eV.plot(I, Up_1meV, '--k', alpha = 0.5, label = '$U_p = 1 meV$')
-ax_eV.plot(I, Up_1keV, '--k', alpha = 0.5, label = '$U_p = 1 keV$')
+# Make sure to set a Z-order less than the white background text in draw_text_box()
+ax_eV.plot(I, Up_1eV,  '--k', alpha = 0.5, label = '$U_p = 1 eV$', zorder = -10)
+ax_eV.plot(I, Up_1meV, '--k', alpha = 0.5, label = '$U_p = 1 meV$', zorder = -10)
+ax_eV.plot(I, Up_1keV, '--k', alpha = 0.5, label = '$U_p = 1 keV$', zorder = -10)
 
-ax_eV.plot(I, Up_12eV, '-k', alpha = 0.5, label = '$U_p = 12 eV$')
+ax_eV.plot(I, Up_12eV, '-k', alpha = 0.5, label = '$U_p = 12 eV$', zorder = -10)
 #ax_eV.plot(I, Up_16eV, '-r', alpha = 0.5, label = '$U_p = 16 eV$')
 
 ax_eV.annotate('$U_p$ = 1 meV',
@@ -134,38 +148,36 @@ ax_eV.text(1.26e18, 76.86, 'Field dominated regimes',  rotation = angle,
 
 draw_text_box(ax_eV, "Relativistic regime",
               7.0e17, 4.0e19, 0.1, 1.5,
-              facecolor  = (1., 1., 1.),
-              edgecolor  = (1., 1., 1.))
+              color = (1., 1., 1.))
 
 #draw_text_box(ax_eV, "Optical femtosecond lasers (IR)",
 draw_text_box(ax_eV, "Infrared (IR) femtosecond lasers",
               1.0e11, 1.0e20, 1.5, 3.5,
-              facecolor  = 'red',
-              edgecolor  = 'red',
-              alpha = 0.6)
+              color = 'red')
 
 draw_text_box(ax_eV, "Infrared FEL",
               1.0e11, 6.0e13, 0.1, 0.7,
-              facecolor  = (1., .8, 1.),
-              edgecolor  = (1., 0.5, 1.))
+              color = (255.0/255.0, 153.0/255.0, 255.0/255.0))
+              #color = 'cyan')
 
-#draw_text_box(ax_eV, "VUV-FEL\nFLASH",
-draw_text_box(ax_eV, "XUV\n \n \nVUV",
-              1.0e11, 1.0e15, 11, 200,
-              facecolor  = 'magenta',
-              edgecolor  = 'magenta',
-              alpha = 0.6)
+draw_text_box(ax_eV, "XUV",
+              1.0e11, 1.0e15, 11, 33,
+              color = 'magenta')
+draw_text_box(ax_eV, "",
+              1.0e11, 1.0e15, 33, 75,
+              color = 'magenta')
+draw_text_box(ax_eV, "VUV",
+              1.0e11, 1.0e15, 75, 200,
+              color = 'magenta')
 
 draw_text_box(ax_eV, "XFEL",
               1.0e11, 1.0e17, 250, 1000,
-              facecolor  = 'blue',
-              edgecolor  = 'blue',
-              alpha = 0.6)
+              color = 'blue')
 
 
 
 
-plot.savefig('regimes.svg')
-plot.savefig('regimes.pdf')
+for ext in ['pdf', 'svg']:
+  plot.savefig('regimes.' + ext)
 plot.show()
 
