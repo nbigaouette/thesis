@@ -91,6 +91,7 @@
     % See http://barrault.free.fr/ressources/rapports/pdflatex/
     \RequirePackage[pdftex,
         draft=false,
+        backref=page,
         bookmarks = true,
         bookmarksnumbered = true,
         bookmarksopen = true,
@@ -105,6 +106,15 @@
     ]{hyperref}
     % Figure hyperlink to top of figure, not caption
     \RequirePackage[all]{hypcap}
+
+% http://tex.stackexchange.com/questions/15971/bibliography-with-page-numbers
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+    \ifcase #1 (Not cited.)%
+    \or        (Cited on page~#2.)%
+    \else      (Cited on pages~#2.)%
+    \fi}
+
 \else
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % DVI compilation with "latex"
