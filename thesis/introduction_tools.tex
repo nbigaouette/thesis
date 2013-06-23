@@ -2,14 +2,14 @@
 \section{Methodology and Tools}
 \label{section:tools}
 
-A large selection of tools exist to study laser-cluster interaction,
+A large selection of methods exist to study laser-cluster interaction,
 differentiating themselves through the amount of approximation taken.
 
 Exact solution of the quantum mechanical system is, most of the time,
 intractable. Theoretical investigations thus require some degree of
 approximation, a compromise between feasibility and exactitude. On one end of
-the spectrum, the most general methods is solving the
-Time-Dependent \schrodinger Equation (TDSE) directly or the Quantum Monte-Carlo
+the spectrum, the most general methods are solving the
+Time-Dependent \schrodinger Equation (TDSE) directly and the Quantum Monte-Carlo
 (QMC) method. Unfortunately, these methods can only be applied to the simplest
 systems of small numbers of electrons; clusters cannot be studied using these
 methods.
@@ -26,7 +26,7 @@ initio} methods are the \textit{Post Hartree-Fock} methods where electron
 correlation is added. An example is the \textit{Configuration Interaction} (CI)
 method. Because of their great accuracy, these methods are restricted to
 relatively small systems, generally less then 10 atoms. Full \textit{ab initio}
-treatment of clusters is not possible.
+treatment of clusters is also not possible.
 
 Larger systems requires more approximations. \textit{Density Functional Theory}
 is an often used method for cluster studies requiring quantum aspects, with
@@ -41,26 +41,34 @@ might not be included, for example shell effects or tunnelling are neglected.
 Because DFT methods are mean field in nature, they cannot account for the large
 field fluctuations seen in strong field cluster dynamics.
 
-Continuing on the spectrum of methods, Molecular Dynamics (MD) solves Newton
+Continuing on the spectrum of methods, classical methods likes Molecular
+Dynamics (MD) solves Newton
 equations of motion with any kind of forces between particles. When used in
 laser-cluster simulations, MD generally uses the instantaneous electrostatic
 (Coulomb) force between charged particles. MD codes have the advantage of being
 simple to implement and use, give macroscopic properties easily and allow a
 relatively large amount of particles to be simulated, while still allowing
 specific quantum treatment when necessary (for ionization events for example). For
-these reasons it is the method of choice for use in the present work.
+these reasons it is the method of choice for use in the present work. PIC
+methods, where particles interact with a grid which propagates the
+electromagnetic field (through Maxwell's equations) that other particles see,
+can also be successively used to model clusters\cite{Varin2012}, but they tend
+to be more complex and lack the simplicity of MD. Even though they can scale to
+larger number of particles, for smaller systems the grid add an extra overhead
+not present in MD.
 
 On the end of the methods spectrum lies rate equations methods where a time
 dependence for parameters is written down and solved. Too many approximations
 are made by rate equations for use in the current work. For example, they often
-assume an infinite bulk.
+assume an infinite bulk. They also cannot describe the large variation in field
+and charge present in the clusters.
 
 For a detailed review of the different methods, see Ref. \cite{Fennel2010}.
 
 In the following section, the tools and their implementation used in the present
-work will be presented. Unless stated otherwise, everything is original.
-All implementations were performed from scratch, except the Cowan
-code\cite{CowanCode} used to calculated some cross-sections.
+work will be presented. Unless stated otherwise, all implementations are original
+and were done from scratch, except the Cowan code\cite{CowanCode} used to
+calculated some cross-sections.
 
 
 \input{introduction_tools_md.tex}
