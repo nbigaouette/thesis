@@ -63,14 +63,17 @@ solved at each time steps and quantum effects are included using specific rates.
 
 For these reasons, clusters are invaluable tools to study light and matter
 interaction. This can be seen by the vast amount of work on the subject, mainly
-in the IR regime\cite{Fennel2010}. Varin \textit{et al.}\cite{Varin2012} recently
-developed a particle-in-cell (PIC) code with microscopic corrections that takes
-into consideration the electromagnetic field propagation throughout a pre-ionized
-cluster. Going from electrostatic to electrodynamic allows simulating clusters
-of significant size where fields propagation must be correctly resolved. The
-microscopic corrections allows the close range interactions between
-charged particles to be of high precision compared to traditional PIC
-codes\cite{Peltz2012}. Since the grid must resolve the electromagnetic wave,
+in the IR regime\cite{Fennel2010}.  Varin \textit{et al.}\cite{Varin2012}
+recently developed an electrodynamic
+particle-in-cell (PIC) code for IR studies on pre-ionized clusters. PIC methods
+have a better scaling than MD in terms of particles number and since they treat
+the electromagnetic field dynamically (through Maxwell's equations) field
+retardation effects are taken into account, which can be important for large
+clusters. On the down side PIC methods don't have the precision of MD for close
+range interactions and collisions. A novel addition by Varin \textit{et al.}
+is to add microscopic corrections to PIC for more realistic close range
+interactions\cite{Peltz2012}.
+Since the grid must resolve the electromagnetic wave,
 PIC simulations can thus be a challenge when the wavelength is small but this
 opens the door to a new frontier of modelling.
 
