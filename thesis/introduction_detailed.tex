@@ -341,7 +341,7 @@ even going up to where relativistic effects cannot be neglected.
 One can see how much work was done in the field-dominated (IR) regime over the
 years by looking at the wide literature on the subject, see for example ref.
 \cite{Fennel2010} or \cite{Ramunno2008}. On the opposite, the VUV and XUV regime
--- the photon-dominated one -- is much more unexplored and is thus the main
+-- the photon-dominated one -- is much less explored and is thus the main
 aspect of the present work. Some effects in the IR are still presented here
 for clarity. These processes are dominant in the field-dominated regime (see
 figure \ref{fig:regimes}).
@@ -369,23 +369,23 @@ ionization.
           (grey dashed). The electron (blue dot) sitting at the unperturbed
           eigenvalue (magenta) now has a probability to tunnel through the total
           potential barrier (black line). The laser frequency must be small
-          enough for the probability to non-negligible (large wavelength)
+          enough for the probability to be non-negligible (large wavelength)
           and intensity large enough ($\gamma \ll 1$).}
 \end{figure}
 
-Tunnel ionization is at the hart of High Harmonic Generation (HHG) and
+Tunnel ionization is at the heart of High Harmonic Generation (HHG) and
 attosecond science\cite{Fennel2010}. A laser pulse, normally in the IR regime,
 bends the atomic potential bounds electrons are feeling, allowing them to tunnel
 out. They are then accelerated in the laser field where they gain energy. When
 the laser polarization changes, electrons are forced back onto their parent ion
-where they recombine with by emitting high energy photons. The emission spectra,
+where they recombine and emit high energy photons. The emission spectra,
 containing only odd harmonics, shows an intensity decrease as a function of
 harmonic number, followed by a plateau and a cutoff. Since the description
 of the phenomena in 1993\cite{Corkum1993}, HHG studies expended into its own
 sub-field. For example, Murphy \textit{et al.} used the 21st harmonic of a
 800 nm Ti:sapphire to ionize xenon clusters\cite{Murphy2008a,Murphy2008b}
 with these new 32.6 eV (38 nm) photons.
-For more details on HHG see references \cite{Levesque2006} and
+For more details on HHG see references~\cite{Levesque2006} and
 \cite{Lewenstein2008}.
 
 \subsubsubsection{Inverse Bremsstrahlung Heating}
@@ -452,12 +452,15 @@ Xenon is at -12.27 eV requiring a photon wavelength equal or shorter than
  \label{fig:ionization:single}
 \end{figure}
 
-If the photon energy exceed the electron's binding energy, the extra energy
-will be transferred as kinetic energy in the
+\fxnote[noinline,margin]{State, maybe in section 2, that if photon energy == Ip,
+then electron will have K = 0 at infinity}
+
+If the photon energy exceed the electron's binding energy, the difference in energy
+will be transferred as extra kinetic energy in the
 resulting photoelectron. This can thus be used to sample the states in the
 target by measuring the photoelectron energy spectrum\cite{Fennel2010}.
 
-However, if the photon energy is less than the binding energy, than a single
+However, if the photon energy is less then the binding energy, than a single
 photon cannot ionize an atom. If the intensity is large enough though, the
 photon density will be sufficient that many photons can be absorbed during a
 small time laps. This effect is called multiple-photon ionization (MPI, not to
@@ -470,12 +473,12 @@ by\cite{Fennel2010}:
 \end{align}
 Being a nonlinear process, multi photon ionization is present at larger
 intensities than single photon ionization. But being photon processes, both are
-superseded by tunnel ionization at even large intensities (or when
+superseded by tunnel ionization at even larger intensities (or when
 $\gamma~\gg~1$).
 
 
 
-\clearpage
+% \clearpage
 \subsubsubsection{Auger effect}
 
 At even shorter wavelength, the photon energy might be large enough not only
@@ -491,7 +494,7 @@ doubly-ionized. Figure \ref{fig:auger} shows a diagram of the process.
     \begin{subfigure}{0.48\columnwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/auger_step_1}
-        \caption{Step 1: An xenon inner shell electron (4d) absorb a high
+        \caption{Step 1: An xenon 4d inner shell electron absorbs a high
                  energetic photon and leaves the atom. \\}
         \label{fig:auger:1}
     \end{subfigure}
@@ -504,19 +507,21 @@ doubly-ionized. Figure \ref{fig:auger} shows a diagram of the process.
         \label{fig:auger:2}
     \end{subfigure}
         \caption{\label{fig:auger}Auger ionization of a xenon 4d electron by a
-                 high energetic X-ray photon.}
+                 high energetic X-ray photon. Xenon's 54 electrons are shown
+                 as blue dots with the distance to the core representing their
+                 principal quantum numbers $n$.}
 \end{figure}
 
 To access core electrons, photons must be highly energetic, normally in X-rays.
 While not the focus of the present work, an interesting aspect is that Xenon
-atoms have a giant resonance of the 4d state; the cross-section of
-photoionization of the (inner-shell) 4d electron is ten times larger than the
+atoms have a giant resonance of the (inner-shell) 4d state; the cross-section of
+photoionization of the 4d electron is ten times larger than the
 one of valence  electrons at 13.7 nm wavelength~(90.5~eV)\cite{Becker1986}.
 This process was included in the model for a comparison with a 2009 experiment
-by Thomas \textit{et al.}\cite{Thomas2009} on xenon clusters at FLASH-DESY.
+by Thomas \textit{et al.}\cite{Thomas2009} on Xenon clusters at FLASH-DESY.
 The German group saw clusters becoming nanoplasmas from which the outer shells
 ions undergo Coulomb explosion while the relatively neutral core expands
-hydrodynamically. These results could be reproduced by our models in a recently
+hydrodynamically. These results could be reproduced by our model in a recently
 published article entitled ``Recombination effects in soft-x-ray cluster
 interactions at the xenon giant resonance'', published in May 2013 in
 \textit{New Journal of Physics}\cite{Ackad2013}.
@@ -526,29 +531,29 @@ interactions at the xenon giant resonance'', published in May 2013 in
 \subsubsection{Regime independent processes}
 \label{section:intro:mechanisms:noregime}
 
-Once electrons are created in the cluster, other mechanisms appears. During
+Once electrons are created in the cluster, other mechanisms appear. During
 impact ionization a first electron collides with an atom and, if it has enough
 kinetic energy, will transfer a portion of it to a bound electron, promoting it
-to the continuum. Figure \ref{fig:ionization:impact} shoes the energy diagram
+to the continuum. Figure \ref{fig:ionization:impact} shows the energy diagram
 of the process.
 
 \begin{figure}
  \centering
  \includegraphics[width=\figurewidth]{figures/ionization_impact}
- \caption{Impact ionization}
+ \caption{Impact ionization. The colliding electron (blue dot) gives a portion
+          of its energy to a bound electron (green dot), promoting it to the
+          continuum.}
  \label{fig:ionization:impact}
 \end{figure}
 
-Impact ionization is described in terms of cross-sections. These
+Impact ionization can be modelled through cross-sections. These
 cross-sections are normally obtained from the semi-empirical Lotz
 formula\cite{Lotz1967}:
 \begin{align}
-\sigma & = \sum_{i}^{N} a_i q_i \frac{\ln{\pa{E/P_i}}}{E P_i} \pa{1 - b_i
-\ex{-c_i \pa{E/P_i - 1}}}
+\sigma & = \sum_{i}^{N} a_i q_i \frac{\ln{\pa{E/\textrm{Ip}_i}}}{E \textrm{Ip}_i} \pa{1 - b_i
+\ex{-c_i \pa{E/\textrm{Ip}_i - 1}}}
 \label{eqn:impact:ionization:lotz}
 \end{align}
-where $P_i$ is the ionization potential of the $i^{\textrm{th}}$ shell and $E$
-the impacting electron's kinetic energy \textit{at infinity}.
 Data for Xenon was obtained from reference \cite{Tawara1987} for neutrals
 % Figure 254, page 317
 and reference \cite{Heidenreich2005} for charged states.
@@ -556,29 +561,30 @@ and reference \cite{Heidenreich2005} for charged states.
 % Note that parameters from figure 1 (a) and (b) for
 % the 4+ and 5+ do not give satisfactory results. They were
 % obtained by fitting the data directly from the figures
-
-\fxfatal[noinline,margin]{WARNING: Make sure to use the proper wavelength/energy:
-32.8 nm = 37.8 eV and 13.7 nm = 90.5 eV}
+where Ip$_i$ is the ionization potential of the $i^{\textrm{th}}$ shell and $E$
+the impacting electron's kinetic energy \textit{at infinity} (or above threshold).
 
 \subsubsection{New regime, new processes}
+\label{section:intro:mechanisms:new},
 
-By going to shorter wavelength, FEL installations allowed experiments at high
-intensities in the VUV and XUV regime. But these experiments saw surprisingly
-high charge states as the results of the cluster
+By going to shorter wavelengths, FEL installations allowed experiments at high
+intensities in the VUV and XUV regime. These experiments saw surprisingly
+high charge states as the results of the clusters
 explosion\cite{Wabnitz2002,Bostedt2010}. For example, Wabnitz \textit{et al.}
 saw, at FEL-DESY, Xe$^{4+}$ when Xe$_{80}$ clusters were irradiated with 98 nm,
 100 fs FEL pulses of, what was though at the time, $\ten{2}{13}$~W/cm$^2$
-intensity. For larger clusters (Xe$_{30,000}$), xenon fragments up to
+intensity. For larger clusters (Xe$_{30,000}$), Xenon fragments up to
 Xe$^{8+}$ were observed. This was a big surprise considering that the 98~nm
-photons (12.7 eV) could only ionize neutral xenon to Xe$^{1+}$ by itself.
-Experiments showed that up to 30 photons were absorbed per atom for the largest
+photons (12.7 eV) could only ionize neutral xenon to Xe$^{1+}$ by itself;
+data showed that up to 30 photons were absorbed per atom for the largest
 clusters. Using a different source of photons and at a different wavelength
 (21st harmonic of an 800 nm Ti:sapphire, XUV: 32.6 eV, 38 nm),
 Murphy \textit{et al.} observed the same pattern of high charge states in xenon
 clusters\cite{Murphy2008a,Murphy2008b}.
 
-Such high charge states could be explained by the previous processes. New
-mechanisms were thus proposed to explain these surprising results.
+Such high charge states could not be explained by the previous processes only.
+New mechanisms were thus proposed to explain these surprising results.
+The four main models proposed throughout the yeas are covered next.
 
 
 \subsubsubsection{Atomic potentials}
@@ -587,11 +593,13 @@ First, Santra \& Greene proposed using \textit{atomic potentials} instead of
 the Coulomb potential in a rate equation model (with infinite spacial
 extension and
 constant density) as seen on figure \ref{fig:heating:atomic_pot}.
-This potential shape represents a shielding potential: when
-entering the ion vicinity, an electron begins to see an unshielded ionic core.
-In reference \cite{Greene2003}, they used an analytic form, fitting one
-parameter
-with the first ionization potential. Later\cite{Walters2006}, they used a
+The atomic nucleus is normally shielded by bound electrons but inside the
+electronic cloud the shielding disappear and the nucleus potential is more
+important. If an impacting electron can get close enough to the core, it will
+feel the unshielded potential.
+In reference \cite{Greene2003}, Santra \& Greene used an approximated form for
+the atomic potential, fitting one parameter with the first ionization potential.
+A later\cite{Walters2006} publication used a
 potential shape generated by the code written by Herman and
 Skillman\cite{HS1963} (HS) to describe a more valid potential, based on a
 Hartree-Fock formulation. Using these atomic potentials, they saw Xe$^{3+}$,
@@ -620,9 +628,13 @@ absorb a new photon from the laser field for another transition to the
 continuum -- see figure \ref{fig:heating:mbr}.
 Because MBR is much more efficient than three-body
 recombination (due to the large density of charged particles), much more
-photons are absorbed this way. The simplicity of the
+photons are absorbed this way. It was also shown that MBR deposited more energy
+in the clusters than traditional IBH.
+The simplicity of the
 method lies in the fact that in a classical MD simulation, MBR is automatically
-included without extra implementation. Jungreuthmayer \textit{et al.} were able
+included without extra implementation as the high excited states have energies
+which are close to each other and can thus be treated classically.
+Jungreuthmayer \textit{et al.} were able
 to see Xe$^{3+}$, Xe$^{5+}$ and Xe$^{7+}$ for intensities of $\ten{1.5}{12}$,
 $\ten{1.5}{13}$ and $\ten{7}{13}$~W/cm$^2$ respectively when simulating
 Xe$_{1,000}$ clusters.
@@ -644,7 +656,7 @@ Xe$_{1,000}$ clusters.
         \centering
         \includegraphics[width=\textwidth]{figures/heating_mbr}
         \caption{MBR: energy exchange between free electrons during collisions
-                 makes one recombine to highly excited state where it can
+                 makes one recombine to a highly excited state where it can
                  reabsorb a new photon from the laser field.}
         \label{fig:heating:mbr}
     \end{subfigure}
@@ -676,11 +688,12 @@ and duration, both making up the interaction regime. A specific regime will
 thus be targeted; mainly short wavelengths, from VUV to XUV, as many questions
 raising from recent experiments are still debated.
 
-While many tools exist to study laser-mater interaction, it was decided to use
-a classical approach since it allows for relatively large systems to be
-simulated. Large field fluctuations in clusters are also best described with
-classical approaches\cite{Fennel2010} allowing simulating larger systems than
-using a pure quantum mechanic approach.
+While many tools exist to study laser-mater interaction, it was decided to
+mainly use a classical approach rather than a pure quantum mechanic approach
+since it allows for relatively large systems to be simulated. Clusters become
+nanoplasmas quite rapidly and have large charge and field fluctuations inside
+them. This and their finite nature makes it hard to use tools such as rate
+equations to model them.
 
 
 \subsubsection{Tools}
@@ -694,7 +707,7 @@ Note that all implementations used are original work; all code packages
 were developed from scratch under my supervision and no external packages
 were used. The MD package described in
 section \ref{section:tools:md} ($\sim$16k lines of code) contains 86~\% of code
-written by me, 12~\% by Edward Ackad (post-doc) and smaller contributions from
+written by me, 12~\% by Edward Ackad (postdoctoral fellow) and smaller contributions from
 Julien Roy during his summer 2012 internship. Furthermore, the QFDTD package
 ($\sim$16k lines of code) contains 3~\% of code written by Stan Hatko while the
 rest is my original work. Most tools were written in C++ with Python being used
@@ -706,16 +719,12 @@ contributions from Stan Hatko during his summer 2012 internship. All other
 libraries described in section \ref{section:tools:libraries} were fully
 written and developed by me.
 
-All these powerful tools are were extremely useful for my studies and will allow
+All these powerful tools were extremely useful for my studies and will also allow
 the group to continue its investigation of laser-clusters interaction even
 after my departure.
 
-Second, a series of articles is presented where the tools described in section
-\ref{section:tools} are used in the study of short wavelength, high intensity
-laser pulse interaction with rare gas atoms. Models of section
-\ref{section:intro:mechanisms} and their implementation described in section
-\ref{section:tools:libraries} were used. Additionally to the models described in
-section \ref{section:intro:mechanisms}, a notable model was
+Additionally to the models described in
+section \ref{section:intro:mechanisms}, a notable new one was
 developed that revealed be of great importance in the description of
 laser-clusters interaction. This new model is discussed next.
 
@@ -724,7 +733,9 @@ laser-clusters interaction. This new model is discussed next.
 
 Wabnitz's \textit{et al.} experiments at FLASH-DESY in 2002 revealed the
 interestingly high charge states in xenon clusters. Since then, different groups
-proposed models to explain these results. Then, in 2010, Bosted \textit{et al.}
+proposed models to explain these results as described in section
+\ref{section:intro:mechanisms:new}.
+Then, in 2010, Bosted \textit{et al.}
 re-calibrated the intensity used during the 2002 experiments.
 Instead of the previously though $\ten{2}{13}$~W/cm$^2$, the power density was
 re-calibrated to $\ten{8}{12}$~W/cm$^2$, less than half of the initial value.
@@ -732,8 +743,8 @@ Could the different models still produce the same amount of high charge states
 seen at the lower intensities?
 
 Additionally, in 2008 experiments \cite{Bostedt2008,Murphy2008b} were performed
-in the XUV regime near 30 nm (41 eV). At this wavelength, the photon energy is
-too small for inner shell ionization of rare gas atoms , yet too large
+in the XUV regime near 30~nm~(41~eV). At this wavelength, the photon energy is
+too small for inner shell ionization of rare gas atoms, yet too large
 (at reported intensities) for any appreciable laser-field-driven processes, such
 as collisional heating, that dominate intense laser-cluster interactions at
 longer wavelengths. This presents the opportunity to isolate the influence of
@@ -810,15 +821,23 @@ simple model.
 
 \subsubsection{Publications}
 
-The work on excited states and ACI in clusters was first published in the article
+After the tools are presented in section \ref{section:tools}, the present thesis
+consists of a series of published and almost published articles where the models
+and tools are tested and used.
+
+
+\subsubsubsection{ACI introduction paper}
+
+First, the work on excited states and ACI in clusters was published in the article
 ``Augmented collisional ionization via excited states in XUV cluster
 interactions'' published in 2011 in \textit{Journal of Physics B: Atomic,
 Molecular and Optical Physics}\cite{Ackad2011a} and can be found in section
 \ref{section:papers:aci} (page \pageref{section:papers:aci}). Argon clusters
-(Ar$_{80}$ and Ar$_{147}$) were simulated using experimental parameters
+(Ar$_{80}$ and Ar$_{147}$) were simulated with parameters used in experiments
+at FLASH-DESY in 2008 by Bosted \textit{et al.}\cite{Bostedt2008}.
 (32.8 nm -- 37.8 eV, 25 fs and intensities from $\ten{5}{13}$ to
 $10^{14}$~W/cm$^{-2}$). It was found that not only ACI could explain the
-Ar$^{4+}$ seen at FLASH in 2008 by Bosted \textit{et al.} but also that it
+Ar$^{4+}$ seen at FLASH but also that it
 was a dominant process, happening more often than traditional impact ionization.
 Due to the efficiency of ACI, high charge states can be reached in shorter time
 than previously though which can have a significant impact on biomolecules
@@ -827,15 +846,17 @@ showed the validity of the model, as simple as it could be.
 
 
 
+\subsubsubsection{Cluster size influence}
+
 Next, section \ref{section:papers:size} presents the article ``Clusters in
 intense XUV pulses: Effects of cluster size on expansion dynamics and
 ionization''. Also published in 2011 (\textit{Physical Review~A}\cite{Ackad2011b}),
 argon clusters were simulated in the XUV regime (32.8 nm,
 I~=~$\ten{5}{13}$~W/cm$^{2}$, 25 fs) with cluster sizes from Ar$_{55}$ to
-Ar$_{2057}$. It was found that that the dynamics is highly collisional and
+Ar$_{2057}$. It was found that the dynamics is highly collisional and
 larger clusters even more so. By rapidly ionizing the lower charge states,
 collisional processes will prevent photo-ionization even before the laser pulse
-is finished. This mechanism was called collisionally reduced photoabsorption.
+is finished. This mechanism was called \textit{collisionally reduced photoabsorption}.
 The amount of energy absorbed through photo-ionization by Ar$_{55}$ clusters was
 reduced by 30~\% and 45~\% by Ar$_{2057}$ clusters when collisional processes
 are included.
@@ -862,20 +883,22 @@ clusters keep the anisotropy coming from photoionization.
 % \fxfatal{Add description of recombination paper}
 
 
+\subsubsubsection{A quantum approach}
+
 Going further, interesting questions came up. For example, how is a bound
 electron's wavefunction affected by a neighbouring ion or the cluster potential?
 Due to my background in electromagnetic simulations, I was surprised to read
-an article using the FDTD method -- normally used in electrodynamic simulation --
+an article using the FDTD method -- normally used in electrodynamic simulations --
 for quantum calculations. I was curious how far could the FDTD method be
 applied to quantum problems and if it could answer some of our questions.
 A QFDTD simulation package was thus developed, again from scratch,  implementing
-two time evolution; real and imaginary. The model and its implementation details
+two kind of time evolution; real and imaginary. The model and its implementation details
 are discussed in section \ref{section:tools:qfdtd}.
 
 The work developed in section \ref{section:tools:qfdtd} was published in the article
 ``Nonlinear grid mapping applied to an FDTD-based, multi-center 3D
 Schr\"odinger equation solver'' presented in section \ref{section:papers:qfdtd}.
-Published in 2012 in \textit{Computer Physics Communications}, it
+Published in 2012 in \textit{Computer Physics Communications}\cite{Bigaouette2011}, it
 explains the QFDTD method and its implementation, with emphasis on the new
 nonlinear mapping introduced for faster calculation. The QFDTD package is the
 first to use both the real and imaginary time evolution, opening the door to
@@ -885,7 +908,7 @@ The method was first validated by comparing with the analytic solutions of
 the hydrogen atom and then applied to solve the H$_{2}^{+}$ molecule.
 Comparison with experimental data was in good agreement for the eigenvalues
 while the eigenstates could be visualize easily. A new method to calculate
-eigenstates is also presented. The publication also
+eigenstates is also presented in the article. The publication also
 describes in detail the nonlinear mapping that allows reducing both the memory
 usage required to store the grid and the time required to calculate the time
 evolution. The method is a generic way to obtain a nonuniform grid with cells
@@ -894,15 +917,20 @@ based) partial differential equation solvers.
 
 \fxfatal[noinline,margin]{Synchronize and finish the 100nm paper with its description}
 
+
+\subsubsubsection{Revisiting the 100 nm experiment}
+
 Finally, section \ref{section:papers:100nm} contains the draft of the article
-``Revisiting the 100nm experiment with ACI''. After Wabnitz \textit{et al.}'s
+``Augmented Collisional Ionization in the VUV regime; a theoretical study''.
+After Wabnitz \textit{et al.}'s
 2002 DESY-FEL experiment's intensity was re-calibrated in 2010, we hypothesized
-that our ACI model could still explain the high charge states seen in xenon
+that our ACI model could still explain the high charge states seen in Xenon
 clusters, even with the lower intensities. We included single photon ionization,
 impact ionization, ACI and recombination in simulations of Xe$_{90}$ to Xe$_{5083}$
-interacting with a 100 fs, 98 nm (12.65 eV) laser pulse. We compared our model
+interacting with a 100 fs, 98 nm (12.65 eV) laser pulse at different intensities.
+We compared our model
 with previous work with ACI disabled and found good agreement. Since these VUV
-photons cannot ionize a Xe$^{1+}$ to Xe$^{2+}$ (see table \ref{tab:ips} for xenon
+photons cannot ionize a Xe$^{1+}$ to Xe$^{2+}$ (see table \ref{tab:ips} for Xenon
 ionization potentials), all charge states higher than Xe$^{1+}$ must be created
 with other processes, in agreement with experiments. The high performance of my
 code implementation (see section \ref{section:tools:opencl} on GP-GPU) allowed
@@ -919,10 +947,11 @@ Due to the spacial intensity profile of the laser pulse, simulations were run
 at different intensities to simulate the effect of experimental data acquired
 from clusters dispersed in the spacial profile. This improves the validity of
 simulation data when comparing with experiments. Additionally, our spectrum
-was more complete than experiments as they included the neutral xenon,
+was more complete than experiments as they included the neutral Xenon,
 inaccessible to the time-of-flight (TOF) apparatus used to collect (real) ions.
 Our data was in good agreement with the 2002 experiment. Both the dominant
-charge states and the highest charge states matched the experiment data.
+charge states and the highest charge states matched the experiment data. This
+was note the case of other models which used the old intensity.
 
 The last part of the article discuss the influence of the potential depth
 of equation~\eqref{eqn:md:sigma}.
