@@ -25,8 +25,11 @@ General-Programming GPU (GP-GPU) framework existed so Taflove (and anyone
 interested in using GPUs at that time) had to ``translate'' the FDTD algorithm
 into one that could be understood by a video card. This process was extremely
 hard as it required using low level graphic primitives; in his case, OpenGL
-calls. Normally OpenGL is used to draw animated scenes on the user's screen.
-Notable examples of OpenGL usage is video games where the user is immersed in a
+calls.
+Normally OpenGL, the Open Graphics Library,
+is used to draw animated scenes on the user's screen; it must not be confused
+with OpenCL described later.
+A notable example of OpenGL usage is video games where the user is immersed in a
 virtual three dimensional space. The process of re-writing an algorithm into
 OpenGL calls is one that only a few highly skilled and knowledgeable people can
 tackle.
@@ -119,14 +122,16 @@ transfers.
 
 \subsubsubsection{Debugging}
 
-One of the most problematic part is the lack of debugging tools. Many different
-tools and techniques exist to detect and fix problems in codes.
+One of the most problematic part of GPU programming is the lack of debugging
+tools. Many different tools and techniques exist to detect and fix problems in
+normal codes. The following describes them and their counterpart, when present,
+on GPUs.
 
 
 \subsubsubsubsection{Printing}
 
-The simplest
-case is printing the variables' values to the screen and their inspection for
+The simplest case of debugging is printing the variables' values to the screen
+and inspecting them for
 erroneous values. While not really efficient, it is sometimes useful, quick
 and simple ``hack'' to get an insight of how the code is working. Unfortunately,
 such printing function (such as C or C++'s \textit{printf()}) cannot be used at
@@ -138,7 +143,8 @@ APP SDK\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-comp
 or Intel's SDK for OpenCL Applications
 2013\footnote{\url{http://software.intel.com/en-us/vcsource/tools/opencl-sdk}})
 have specific extensions that allows using \textit{printf()}-like functions
-inside OpenCL kernels. These extensions must explicitly be enabled using
+inside OpenCL kernels. These extensions must explicitly be enabled in kernel
+files using
 \begin{verbatim}
     #pragma OPENCL EXTENSION cl_amd_printf : enable
 \end{verbatim}
@@ -147,7 +153,10 @@ for the Intel SDK, or
     #pragma OPENCL EXTENSION cl_intel_printf : enable
 \end{verbatim}
 for the AMD SDK. These extensions are possible since these drivers support
-running the kernels directly on the CPU.
+running the kernels directly on the CPU. In the case of AMD, the extension only
+works when the kernel are executed on the CPU (not on an AMD video card). Nvidia
+does not have a similar extension for their OpenCL driver. Debugging using
+printf() is thus easier when running on a CPU with either Intel's or AMD SDK.
 
 
 \subsubsubsubsection{Valgrind}
@@ -157,11 +166,17 @@ Another useful bug squashing weapon used in debugging on Linux is called
 useful tool verifies memory access and can thus report on out-of-bound accesses
 (accessing memory locations which are out of range of an array), a major
 type of error in programming that one \textit{has} to expect to happen.
+Valgrind can also detect uses of uninitialized variables, a dangerous type of
+error that can be hard to detect otherwise.
+
 Since valgrind was specifically designed to intercept main memory access it
 cannot be used when the program is running of a GPU. Alternatively, when the
 program is running on the CPU through the use of the Intel or AMD SDKs, valgrind
 detects a huge amount of errors, probably due to errors \textit{inside} these
 SDKs, rendering the analysis useless.
+
+One of the best tool in debugging code cannot, unfortunately, be used to debug
+codes running on GPUs.
 
 
 \subsubsubsubsection{Debuggers}
@@ -172,7 +187,7 @@ at any time, inspect variables' values or even change them. A popular debugger
 on Linux is the free and open-source \textit{gdb}, the GNU Project
 debugger\footnote{\url{https://www.gnu.org/software/gdb/}}. Many more
 proprietary exists, some of them free and others expensive. Traditional
-debuggers, like valgrind, work by taking control of the program and accessing
+debuggers work by taking control of the program and accessing
 directly their memory content. It is not possible for them to access GPU memory
 or control functions inside the different SDKs. Some debuggers, like
 the pricey but powerful DDT\footnote{\url{http://www.allinea.com/products/ddt/}}
@@ -183,7 +198,8 @@ version\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-comp
 in April 2012 but discontinued it. It was superseded by
 CodeXL\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/codexl/}}
 released in February 2013. As can be seen, at the time of the code was developed
-the different debuggers available were scarce, limited or expensive.
+the different debuggers available were scarce, limited or expensive but are now
+maturing.
 
 
 \subsubsubsection{HPC Facilities}
@@ -202,7 +218,7 @@ and my supervisor Lora Ramunno for the purchase of a GPU cluster.
 
 Due to my experience with GPUs, I was placed in charge of the purchase process
 which consisted in building a solution that would maximize the performance
-while staying under-budget, communication with multiple vendors to validate
+while staying under-budget, communicating with multiple vendors to validate
 the solution, writing a Request for Proposals (RFP) and transparently evaluating
 vendors offering. Additionally, I (remotely) installed and configured the
 operating system (Gentoo Linux\footnote{\url{http://www.gentoo.org/}}) before
@@ -211,8 +227,8 @@ the equipment was shipped in August 2012 and also configured the queuing system
 resources and even submitting new
 features\footnote{\url{http://slurm.schedmd.com/team.html}}.
 
-This HPC cluster, containing 20 Nvidia Tesla M2075 video cards, is an important
-lab component that will be allow the research group to continue the high profile
+This HPC cluster (Primus), containing 20 Nvidia Tesla M2075 video cards, is an important
+lab component that will be allow the research group to continue its high profile
 research.
 
 
@@ -223,7 +239,8 @@ research.
 The preferred potential shape, the gaussian distribution described in section
 \ref{section:intro:md:potentials}, uses the error function which has a major
 issue; it is slow, or at least too slow to be called at each interaction pair
-calculation. It was decided to move to a look-up table implementation instead.
+calculation. It was decided to move to a look-up table implementation instead,
+for both the CPU and GPU implementations.
 The potential and field functions are pre-calculated for a charge state of 1+.
 Since both potential and field are linear in charge, their value for any
 particle is simply scaled by its charge state.
