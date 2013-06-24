@@ -4,13 +4,12 @@
 
 One model proposed to explain the high charge states seen in some experiments
 is the lowering of the ionization barrier, used in conjunction with classical
-MD simulations. This model assumes that an electron can be inner ionized when
+MD simulations. This model assumes that an electron can be ionized when
 the potential of a neighbouring ion lowers the potential of the electron's
-parent ion. If this barrier is lowered enough so that it drops below the
-electron's energy level, the electron becomes free to leave the ion and evolve
-in the cluster environment. An open question is how close this model, used
+parent ion. An open question is how close this model, used
 with a classical MD, is to reality. Special care needs to be taken when a
-particle, evolving in a quantum world, is to be treated classically. How does
+particle, evolving in a quantum world, is to be treated classically.
+How does
 the bound electron's wavefunction reacts to the presence of a second ion
 perturbing the potential? How can the $U_b$ approximation to the cluster
 environment, described in section \ref{section:intro:Vb}, can be tested?
@@ -19,9 +18,10 @@ where we can say the electron is shared by the two ions? If the electron is
 really shared by the two ions, can we classically let it evolve inside the
 cluster environment?
 
-These questioned pushed us to look at the quantum aspects in more details. Many
+These questions pushed us to look at the quantum aspects in more details. Many
 different tools exist to calculate the ground state of a system, even with
-multiple electrons, as describe previously. Additionally, excited states are
+multiple electrons (with different levels of approximations),
+as describe previously. Additionally, excited states are
 capital in ACI and as such we wanted a tool that could give us information not
 only on the ground state but also on excited states.
 
@@ -32,9 +32,12 @@ it was decided to explore this idea since not much work could be found on this
 implementing electrodynamics FDTD.
 
 FDTD is an (old) algorithm developed in 1966 by Yee\cite{Yee1966} to solve
-Maxwell's equation on a grid using a leap-frog integration. The number of
+Maxwell's equation on a grid using a leap-frog integration.
+It is actually the method used in PIC simulations to propagate the electromagnetic
+field through the grid.
+The number of
 scientific articles using FDTD has exponentially increased since the '80s
-largely due to the increase in computation resources. Indeed, a three
+largely due to the increase in computational resources. Indeed, a three
 dimensional grid with the three vector components of both the electric and
 magnetic fields requires huge amount of memory that were definitely not present
 in the late '60s. The reader is invited to read the excellent book on FDTD by
@@ -50,7 +53,8 @@ easily parallelizable on distributed memory systems.
 
 Sullivan was the first to apply the FDTD method to solve the \schrodinger
 equation in his 2000 book\cite{Sullivan2000} where he obtains the wavefunction
-of an electron hitting a potential barrier. Latter in 2001 he used the FDTD
+of an electron hitting a potential barrier in one dimension.
+Latter in 2001 he used the FDTD
 method to simulate one and two electrons in a quantum dot\cite{Sullivan2001}.
 The Hartree-Fock approximation was used to describe the two electrons problem
 and thus required the use of Fourier transforms to calculate the Coulomb
@@ -137,10 +141,11 @@ Let's separate the real and imaginary components of equation
 \begin{align}
 \im \delt{  } \pa{ \psi_R + \im \psi_I}
     & = \pa{-\frac{1}{2} \laplacian{} + V }
-        \pa{ \psi_R + \im \psi_I} \\
-\im \delt{  } \psi_R - \delt{  } \psi_I
-    & = \pa{-\frac{1}{2} \laplacian{} + V } \psi_R
-      + \im \pa{-\frac{1}{2} \laplacian{} + V } \psi_I
+        \pa{ \psi_R + \im \psi_I}
+% \\
+% \im \delt{  } \psi_R - \delt{  } \psi_I
+%     & = \pa{-\frac{1}{2} \laplacian{} + V } \psi_R
+%       + \im \pa{-\frac{1}{2} \laplacian{} + V } \psi_I
 \end{align}
 giving two equations describing the time evolution of two effective fields:
 \begin{subequations}
@@ -230,7 +235,7 @@ Equations \eqref{eqn:schrodinger:real:imag:discretized} and
 time evolution of a wavefunction inside a potential; it does not give a direct
 way to obtain the eigenstates of an Hamiltonian. Different approaches exist to
 obtain these; Sullivan describes some of them. Eigenvalues though are
-relatively easy to obtain though.
+relatively easy to obtain.
 
 By numerically propagating in time a wavefunction $\psi$ using equations
 \eqref{eqn:schrodinger:real:imag:discretized} and
@@ -278,7 +283,7 @@ the different eigenstates from each other. A novel method to isolate these
 states is described in the published article of section
 \ref{section:papers:qfdtd} (page \pageref{section:papers:qfdtd}).
 
-Because equation \eqref{eqn:schrodinger:imaginary} is real, a single scalar
+Because equation \eqref{eqn:schrodinger:imaginary} is real, only a single scalar
 field needs to be discretized on the grid. The discretization is similar to the
 real-time method: equation \eqref{eqn:schrodinger:imaginary} is evaluated at
 time step $n$ and the time derivative is discretized, in this case using (first
@@ -305,8 +310,7 @@ the required values are now $\psi^{n}_{i,j,k}$ and $\psi^{n}_{i+2,j,k}$, the
 former being already updated. The easiest and simplest way to solve this
 dependency problem is to store two grids; one for $\psi^{n}$ and another for
 $\psi^{n+1}$, alternating between them when calculating equations
-\eqref{eqn:schrodinger:real:imag:discretized} and
-\eqref{eqn:schrodinger:real:real:discretized}.
+\eqref{eqn:schrodinger:imaginary:discretized}.
 
 
 \subsubsection{Stability criteria}
