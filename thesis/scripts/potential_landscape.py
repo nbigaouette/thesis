@@ -754,6 +754,6 @@ if (plot_V):
     #leg = ax_U_Eh.legend(loc="best")
     #leg.get_frame().set_alpha(0.4)
 
-#plot.savefig('potential_landscape.svg')
-#plot.savefig('potential_landscape.pdf')
+for ext in ['pdf', 'svg']:
+    plot.savefig('potential_landscape.' + ext)
 plot.show()
