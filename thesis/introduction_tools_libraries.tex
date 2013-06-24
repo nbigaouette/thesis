@@ -4,6 +4,8 @@
 Additionally to the MD and QFDTD packages, eight libraries were developed to
 support some generic features shared between the two.
 
+\fxnote[noinline,margin]{Lora: Can I release these libraries on the internet?
+Reviewers could then see them (or use them!)}
 
 \subsubsection{timing.git} \label{section:tools:libraries:timing}
 
@@ -17,7 +19,7 @@ code and can be found here:
 
 Add logging features allowing saving the output of any code execution to a
 (compressed or not) log file consisting of 500 lines of C++ code.
-Can be found here:
+Can be found here:\\
 \url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/stdcout}.
 
 
@@ -28,7 +30,7 @@ dSFMT\cite{prng2009}, a SIMD-oriented Fast Mersenne Twister implementation.
 Defines easy to use PRNG functions, distributions, seed, etc. Keeps track of
 the seed and how many times pseudo-random numbers were generated, allowing
 to replay the series in case of simulation reloading. 500 lines of C++ code
-(not counting dSFMT) and found here:
+(not counting dSFMT) and found here:\\
 \url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/prng}
 
 
@@ -39,16 +41,17 @@ memory allocation succeeded. Will also keep track of the amount of
 memory allocated and allow setting a maximum value, preventing
 over-allocation due to bugs or user errors. Can also return the binary
 representation of a number as a string for easier debugging. 1,200 lines of
-C++ code. Available here:
+C++ code. Available here:\\
 \url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/memory}
 
 
 \subsubsection{io.git} \label{section:tools:libraries:io}
 
 Input and Output library. Includes wrappers around TinyXML library\cite{tinyxml}
-for reading input XML file, wrappers around NetCDF\cite{netcdf} for self-contained
+for reading simulation input files in XML format,
+wrappers around NetCDF\cite{netcdf} for self-contained
 output files, used for both post-processing and simulation snapshots.
-2,950 lines of C++ code (not counting TinyXML). Available here:
+2,950 lines of C++ code (not counting TinyXML). Available here:\\
 \url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/io}
 
 
@@ -56,7 +59,7 @@ output files, used for both post-processing and simulation snapshots.
 
 Functions implementing and abstracting different potential shapes as
 described in section \ref{section:intro:md:potentials}. 4,300 lines of C++ code.
-Available here:
+Available here:\\
 \url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/libpotentials}
 
 
@@ -77,7 +80,7 @@ Available here:
 Simple script that will download all the required libraries or
 update them to the lasted version from git, compile them and install them in the
 user's directory. 240 lines of bash code.
-Available here:
+Available here:\\
 \url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/get_libraries}
 
 
@@ -87,7 +90,7 @@ Available here:
 
 All ionization processes described in section
 \ref{section:intro:mechanisms} and consisting of 18,000 lines of C++ code.
-The library is available here:
+The library is available here:\\
 \url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette/ionization}
 
 The ionization library is a large part of the work as can be seen by the amount
