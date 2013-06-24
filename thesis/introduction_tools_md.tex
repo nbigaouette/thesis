@@ -3,7 +3,7 @@
 \subsection{Molecular Dynamics (MD)}
 \label{section:tools:md}
 
-Due to the high charge states seen in experiment with clusters the only
+Due to the high charge states seen in experiments with clusters the most
 practical method to microscopically study the ionization dynamics is
 \textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
 classically.
@@ -34,7 +34,8 @@ is generating the field or potential that is measured at location of particle
 $i$. We thus have:
 \begin{align}
 \vr_{j} + \vr_{j,i} & = \vr_{i} \\
-\vr_{j,i} & = \vr_{i} - \vr_{j}
+\vr_{j,i} & = \vr_{i} - \vr_{j} \\
+\hvr_{j,i} & = \frac{\vr_{j,i}}{\abs{\vr_{j,i}}}
 \end{align}
 %       _j
 %       /|\
@@ -42,17 +43,18 @@ $i$. We thus have:
 %     /    _\/
 %    /------>i
 %       r_i
-
+%
 \begin{figure}
  \centering
  \includegraphics[width=0.5\columnwidth]{figures/vectors}
  \caption{\label{fig:md:vectors}Vectors definition between particles $i$ and $j$}
 \end{figure}
-
-
+%
+%
 Equation \eqref{eqn:md:newton} can be time integrated for every particles
 $i$ using the Velocity-Verlet~(VV) scheme:
 \begin{subequations}
+\label{eqn:md:vv}
 \begin{align}
 \vx_{i}^{\pa{n+1}} & = \vx_{i}^{\pa{n}} + \vv_{i}^{\pa{n}} \Delta t +
 \frac{\va_{i}^{\pa{n}}}{2} \Delta t^2, \\
@@ -60,7 +62,6 @@ $i$ using the Velocity-Verlet~(VV) scheme:
 \vv_{i}^{\pa{n+1}} & = \vv_{i}^{\pa{n}} + \frac{\va_{i}^{\pa{n}} +
 \va_{i}^{\pa{n+1}}}{2} \Delta t,
 \end{align}
-\label{eqn:md:vv}
 \end{subequations}
 where $\Delta t$ is the integration time step, $\vx_{i}$ the position vector,
 $\vv_{i}$ the velocity vector and $\va_{i}$ the acceleration vector, all evaluated
@@ -87,7 +88,7 @@ wave-packets) from the laser field. Atoms are ionized; electron are created
 colours going from blue for neutral to red for Xe$^{5+}$. The figure was
 generated using
 PyMOL\footnote{\textit{The PyMOL Molecular Graphics System}, Version 1.5.0.4,
-Schrödinger, LLC. \url{http://pymol.org/}}
+Schrödinger, LLC. \url{http://pymol.org/}} on actual simulation-created data.
 
 
 \begin{figure}
@@ -102,7 +103,7 @@ Schrödinger, LLC. \url{http://pymol.org/}}
 
 
 
-\subsection{Short range potential: shapes}
+\subsection{Short range potential shapes}
 \label{section:intro:md:potentials}
 
 An important problem to consider is the close range behaviour of equation
@@ -161,8 +162,8 @@ The super-gaussian potential is given by:
                         }
 \label{eqn:potential:shapes:sg:pot}
 \end{align}
-In the case where $m = 1$, equation \ref{eqn:potential:shapes:sg:pot} is simply
-a gaussian shape. Matching equations \eqref{eqn:potential:to_match} at $R$ gives
+In the case where $m = 1$, equation \eqref{eqn:potential:shapes:sg:pot} is simply
+a gaussian shape. Matching equations~\eqref{eqn:potential:to_match} at $R$ gives
 values for $\sigma$ and $R$:
 \begin{subequations}
 \begin{align}
@@ -186,24 +187,23 @@ An efficient way to correct the close range problem is to treat electrons as
 charge distributions instead of point particles. There is thus no
 discontinuity when the two charged distribution (particles) overlap. As such,
 the electrostatic potential due to a charged particle $j$
-(of gaussian shape of width $\sigma$) at location $\vr = r \hvr$ is:
+(of gaussian shape of width $\sigma$) at location $\vr = r \hvr$ is
 \begin{align}
 \phi_{j}\pa{\vr} & = \frac{k q_j}{r} \erf{\frac{r}{\sigma \sqrt{2}}}
 \label{eqn:md:smoothed:phi}
 \end{align}
-The associated electrostatic field is thus:
+where $\erf{}$ is the error function. The associated electrostatic field is thus
 \begin{align}
 \vE_{j}\pa{\vr} & = -\grad{\phi_j\pa{\vr}} = k q_j \pa{
     \frac{ \erf{\frac{r}{\sigma\sqrt{2}}} }{r^2}
     - \sqrt{\frac{2}{\pi}} \frac{ \ex{-\frac{r^2}{2 \sigma^2}} }{\sigma r}
-} \hvr
+} \hvr.
 \label{eqn:md:smoothed:E}
 \end{align}
 When the distance $r$ is large compared to $\sigma$, the error function
-is close to 1 and the potential becomes Coulombic. Also, the exponential
-term in the electric field will tend towards 0 (since it's a gaussian shape).
-The error function will tend towards 1, so the electric field will
-be the field of a discrete point charge.
+is tends towards 1 and the exponential tends towards 0 (since it's a gaussian
+shape). The potential \eqref{eqn:md:smoothed:phi} and electric field
+\eqref{eqn:md:smoothed:E} thus tend towards Coulombic for large distances.
 
 The value of $\sigma$ is arbitrary: the smaller it is, the closer the potential
 will be from the pure Coulomb one. We can set a value for $\sigma$ from the
@@ -228,7 +228,7 @@ Another problem that the smoothing of equations \eqref{eqn:md:smoothed:phi} and
 \eqref{eqn:md:smoothed:E} solve is the one of \textit{numerical heating} which
 occurs when particles artificially gain (or loose) energy during the
 calculation of equations \eqref{eqn:md:vv}. This absence of conservation of
-energy is due to a time step $\Delta t$ which is too large. Indeed, the
+energy is due to a too large time step $\Delta t$. Indeed, the
 discretization of equations \eqref{eqn:md:vv}, and most importantly of
 subequation \eqref{eqn:md:vv:a}, assumes the force on each particle to have a
 linear variation between time steps. If the time step is too large and the
@@ -258,14 +258,16 @@ seen on figure \ref{fig:potential:shapes}, the charge distribution curve
 
 To validate the selection of the smoothing curve, photo-ionization was forced
 on a single atom and the total energy calculated. In this ionization case, the
-electron comes out of the ion with a maximum of kinetic energy. It is thus a
-good candidate to test if numerical heating is present or not. If the total
+electron comes out of the ion with a maximum of kinetic energy so that
+its total energy is the difference between the photon energy and the ionization
+potential. It is thus a
+good candidate to test quantitatively measure numerical heating. If the total
 energy is conserved, then the selected parameters (potential depth, smoothing
 curve and time step) can be used with good confidence. Figures
 \ref{fig:potential:heating:dt} and \ref{fig:potential:heating:depth} show the
 energy variation of the process as a function of time step (for different
 potential depth) and as a function of potential depth (for different time step).
-A time step of 0.5 as is often taken as, as can be seen on figure
+A time step of 0.5 attosecond is often taken as, as can be seen on figure
 \ref{fig:potential:heating:depth} it minimizes the energy variation for a large
 range of potential depth. Additionally, it is still above the limit where
 lowering the time step size does not reduce the error (around 0.05 as). This
@@ -294,11 +296,11 @@ studies in later sections.
 
 \subsection{Long range potential: Hierarchical Tree algorithms}
 
-The $O\pa{N^2}$ scaling of MD algorithm can be problematic when the number of
+The $O\pa{N^2}$ scaling of the MD algorithm can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
 exist to reduce the computational burden. These \textit{hierarchical tree}
-algorithms were introduced\cite{Barnes1986} by Barnes and Hut in 1986. To
+algorithms were introduced by Barnes and Hut in 1986\cite{Barnes1986}. To
 reduce the computational burden, particles are grouped in a hierarchical tree
 (quadtree in two dimensions, octree in three). While Barnes used his
 \textit{treecode} to solve the N-body problem in the context of gravitational
@@ -311,7 +313,8 @@ calculate it is the same as in the case of a nearby particle. Some MD
 calculation use an artificial cutoff; particles farther then this cutoff will
 be ignored in the calculation of the force on one particle. This is acceptable
 when the force acting on particles is short range, either due to screening or
-to the nature of the force. In the present work, the dominant force is the
+to the nature of the force (Lennard-Jones for example).
+In the present work, the dominant force is the
 Coulomb force and is a long range one by nature; it thus cannot be artificially
 cutoff as in the case of close range forces used in other fields.
 
@@ -359,8 +362,8 @@ particle of interest $i$.
 
 The tree algorithm first split the computational domain into an octree (in
 three dimension) or quadtree (in two dimensions) until
-only a maximum of one particle is present per cell; see figure
-\ref{fig:tree:quadtree}. The tips of the tree, containing only one particle,
+only a maximum of one particle is present per cell as can be seen figure
+\ref{fig:tree:quadtree}. The deepest cells of the tree, containing only one particle,
 are called leaves. Once every particles in the system are inserted in the tree,
 the electrostatic moments are propagated from the leaves up to the root cell,
 the top cell enclosing the whole domain.
@@ -368,7 +371,8 @@ the top cell enclosing the whole domain.
 Then, instead of iterating through all particles for the calculation of the
 force on the particle of interest $i$, the tree is traversed. If the cell is
 ``far enough'' (with a given definition of far enough, discussed next) it can
-be added to the a cell interaction list for later processing. In the case of
+be added to the a cell interaction list for later processing through the cell's
+moments. In the case of
 the cell being too close, it must be resolved into its  eight \textit{daughter}
 cells (or four in 2D). The daughter cells containing particles are visited, while the empty
 ones are ignored. The leaf cells can be reached using this process; in this
@@ -387,7 +391,8 @@ rules are called \textit{Multipole Acceptance Criteria} or
 MAC\cite{Pfalzner1996}. Barnes' original one simply referred as
 ``\textit{s/d}'' compares an input parameter $\theta$ with the cell's size $s$
 divided by the distance between the cell's center-of-charge and particle of
-interest $i$. If the ratio $s/d$ is smaller than the parameter $\theta$, the
+interest $i$ (see figure \ref{fig:tree:mac:1}).
+If the ratio $s/d$ is smaller than the parameter $\theta$, the
 group of particles contained inside the cell is approximated through the cell's
 moments and the cell is added to the cells interaction list. At the opposite, if
 the ratio is larger than $\theta$, the cell will be resolved into its daughters.
@@ -402,18 +407,20 @@ In this case, a cell could be added to the cell
 interaction list even though the error introduced by the multipole expansion is
 significant. Different MAC have thus been proposed to mitigate this problem.
 The \textit{minimum distance} MAC replaces the distance $d$ in the MAC with the
-minimum distance to one of the cell's edge. The \textit{B-max} MAC instead
+minimum distance to one of the cell's edge (figure \ref{fig:tree:mac:2}).
+The \textit{B-max} MAC instead
 replaces the size of the cell with the largest distance between one of the
-cell's corner to the center-of-charge. Another MAC was proposed by
+cell's corner to the center-of-charge (figure \ref{fig:tree:mac:3}).
+Another MAC was proposed by
 B\'edorf~\textit{et.~al.}~\cite{Bedorf2012} and is a mix of the two previous.
 The MAC reads:
 \begin{align}
 d > \frac{s}{\theta} + \delta
 \end{align}
 where $\delta$ is the distance between the cell's geometric center and its
-center-of-charge. If the previous equation holds ($d$ is large enough) then the
-multipole expansion is used; the cell is added to the interaction list.
-The different MAC can be seen on figure \ref{fig:tree:mac}.
+center-of-charge (figure \ref{fig:tree:mac:4}).
+If the previous equation holds ($d$ is large enough) then the
+multipole expansion is used and the cell is added to the interaction list.
 
 \begin{figure}
  \centering
@@ -450,9 +457,10 @@ The different MAC can be seen on figure \ref{fig:tree:mac}.
 
 
 Because not all interaction pairs are considered in the calculation of the
-force and potential, a significant speedup is obtained. Due to the tree
-traversal algorithm, the scaling passes\cite{Barnes1986,Gibbon2002,Pfalzner1996}
-from $O\pa{N^2}$ to $O\pa{N \ln{N}}$.
+force and potential in this tree algorithm,
+a significant speedup is obtained. Due to the tree
+traversal algorithm, the scaling passes
+from $O\pa{N^2}$ to $O\pa{N \log{N}}$\cite{Barnes1986,Gibbon2002,Pfalzner1996}.
 
 A variation to the hierarchical treecode is obtained when a sufficiently large
 $\theta$ is used. In this case, the root cell (the largest one) is never
@@ -462,14 +470,17 @@ contributions of nearby particles, the \textit{Fast Multipole Method} (FMM) is
 obtained\cite{Pfalzner1996}. FMM was developed by Greegard in
 1988\cite{Greengard1987} independently of Barnes' hierarchical tree method.
 While conceptually similar, its implementation details are quite different and
-has not been implemented in the current work.
+has not been implemented in the current work while the hierarchical tree
+algorithm was.
 
 
 
 \subsection{Implementation details}
 
-Our group previously used Barnes and Hut treecode implementation,
-freely available\cite{treecode} through the GPL version 2 license. The code was adapted
+\subsubsection{MD code}
+
+Our group previously used Barnes and Hut's treecode implementation,
+freely available\cite{treecode} (through the GPL version 2 license). The code was adapted
 to simulate charged particles (Coulomb force) instead of masses (gravitational
 force) with some ionization routines added (see for example reference
 \cite{Jungreuthmayer2005}). While reducing development time by re-using already
@@ -484,7 +495,8 @@ used. For example, all development was done through a revision control system
 (subversion\cite{svn} at first, then switched to git\cite{git}) in the C++
 language instead of C. The object oriented nature of C++ allowed encapsulation
 of different parts of the code which could then be tested and validated
-individually. This gave better flexibility to the code, a required asset to
+individually through unit testing. This gave much better flexibility to the
+code, a required asset to
 push further the development of features.
 
 A substantial number of MD packages are freely available and
@@ -517,22 +529,22 @@ clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$) and
 so the environment cannot be ignored.
 
 The cluster environment can be approximated by a constant value that shifts the
-potential\cite{Fennel2007}. This shift $U_b = -e_0 V_b$ where $V_b$ is the
+potential\cite{Fennel2007}. This shift is $U_b = -e_0 V_b$ where $V_b$ is the
 potential due to the cluster at the ion's location (ignoring nearby electrons)
 and $U_b$ is the potential energy a test particle of charge state -1 (an electron)
 would have if it was placed right on top of the ion. This can be justified by
-the fact that bound states of rare gas atoms are localized close to the atoms
+the fact that bound states of rare gas atoms are localized close to the nucleus
 and the cluster potential spatial variation around atoms is small.
 
 To illustrate this shifting, figure \ref{fig:md:Vb} shows the potential energy
 landscape of an example ``cluster'' of two ions. Plotted on this figure is the
 potential energy of a test particle of charge state -1 (an electron) in the
-cluster environment. Note the distinction between potential and potential
+cluster environment. The contribution from the ion is the blue dashed line on the
+figure. Note the distinction between potential and potential
 energy. A positive charge (an ion) creates a positive potential but the
 potential \textit{energy} of the test particle (of charge state -1) in that
 positive potential is negative, hence the negative curves on figure
-\ref{fig:md:Vb}. The contribution from the ion is the blue dashed line on the
-figure.
+\ref{fig:md:Vb}.
 
 
 
@@ -554,7 +566,7 @@ figure.
 Continuing in the example case of figure \ref{fig:md:Vb}, we introduce a
 second ion that will simulate the cluster environment. This second ion, of
 charge state 5+ and located at $r$~=~-15 Bohr, is creating a
-potential that is not constant around the first ion. The potential energy of
+potential that is not constant around the first ion (red-dashed line). The potential energy of
 the test particle in this potential is plotted as the red dashed line. The total
 potential energy of the test particle due to the two ions is plotted as a black
 dashed line.
@@ -565,40 +577,12 @@ influence of the second ion as being constant in the first ion's vicinity. This
 threshold shift is shown on figure \ref{fig:md:Vb} as the red arrow $U_b$.
 
 The effect of $U_b$ is to shift the ion's states to lower energies. This is
-shown on the figure as $Ip_{ion}$, the energy required for a bound electron
+shown on the figure as Ip$_{ion}$, the energy required for a bound electron
 to be promoted to the isolated ion's continuum, being shifted downward to
-$Ip_{ion}'$. The effective ion's potential energy curve, also shifted by $U_b$,
+Ip$_{ion}'$. The effective ion's potential energy curve, also shifted by $U_b$,
 is shown as the dotted blue line.
 
-When an electron enters the picture, for example during collisional ionization
-or ACI, atomic properties of isolated ions are used. These properties require
-impacting electrons to come from infinity where the electron does not feel the
-ion at all. At infinity, the electron's total energy only contains kinetic
-energy. We call this kinetic energy $K_{\textrm{thresh}}$ for ``kinetic energy
-above the threshold''. This $K_{\textrm{thresh}}$ can simply be calculated, in
-an isolated system, as $K_{\textrm{thresh}} = K_e + U_e$ where $K_e$ is the
-electron's kinetic energy and $U_e$ its potential energy; $K_{\textrm{thresh}}$
-is, in this case, basically the electron's total energy. $K_{\textrm{thresh}}$
-is the kinetic energy that must be used in Lotz formula
-\eqref{eqn:impact:ionization:lotz}. Note that, contrary to a real kinetic
-energy, $K_{\textrm{thresh}}$ can be negative. In that case, a null value is
-used instead.
-
-When a cluster environment is present, a similar approach is taken to obtain
-$K_{\textrm{thresh}}$. Instead of taking the extra energy above zero for
-$K_{\textrm{thresh}}$, the extra energy above the new threshold $U_b$ is used.
-This value can easily be obtained from the actual electron's kinetic energy
-$K_e$, it's \textit{total} potential energy in the cluster environment and the
-threshold $U_b$ by:
-\begin{align}
-K_{\textrm{thresh}} & = K_e - \pa{U_b - U_e}.
-\label{eqn:md:kthresh}
-\end{align}
-Again, $K_{\textrm{thresh}}$ could end up negative. In that case, zero is used
-instead. $K_{\textrm{thresh}}$ is shown on figure \ref{fig:md:Vb} as a red arrow
-with its base at $U_b$.
-
-This cluster potential $U_b$ is then treated at the atom's threshold
+This cluster potential $U_b$ is then treated as the atom's threshold
 to continuum. By using $U_b$ as the threshold, atomic properties such as
 impact ionization cross-sections can be used, even in the cluster environment.
 
@@ -615,137 +599,164 @@ energy of zero.
 
 \subsubsubsection{Single photon ionization}
 
-In the case of single photon ionization of an isolated atom, when the electron
-reaches infinity it will have, as its kinetic energy, the difference of energy
-between the absorbed photon and the ionization potential of the ion.
+In the case of single photon ionization, a new electron is created right on top
+of the ion with an updated charge state. At this point, all other particles in
+the cluster will not see the difference the potential created by this new
+particles pair $\frac{Z+1}{r} - \frac{1}{r}$ is the same as the previous ion's
+$Z/r$. For the new electron to reach infinity with a null kinetic energy, it
+must have, at its creation time, enough kinetic energy to leave the ion. This
+kinetic energy must thus match the potential energy between the ion (with an
+updated charge state) and the electron so the total energy of the electron with
+respect to the ion is zero.
 
+Additionally, the electron will contain in its kinetic energy the difference
+between the absorbed photon and the ionization potential of the ion.
 
 \subsubsubsection{Impact ionization}
 
 For impact ionization, the impacting electron's kinetic energy used in equation
 \eqref{eqn:impact:ionization:lotz} is the kinetic energy the electron has
 \textit{at infinity}, meaning that the impacting electron and the atom (or ion)
-are isolated from each other. We change that definition to \textit{above
-threshold}: in the case of an isolated atom, the threshold is at zero, but in the
-case of a cluster environment, the threshold is taken as $U_b$, as described in
-section \ref{section:intro:Vb}. If the impacting electron has more kinetic
+are isolated from each other.
+
+At infinity, the electron's total energy only contains kinetic
+energy. We call this kinetic energy $K_{\textrm{thresh}}$ for ``kinetic energy
+above the threshold''. This $K_{\textrm{thresh}}$ can simply be calculated
+as $K_{\textrm{thresh}} = \textrm{max}\pa{0, K_e + U_e}$
+where $K_e$ is the
+electron's kinetic energy and $U_e$ its potential energy with respect to the ion.
+$K_{\textrm{thresh}}$ is thus the electron's total energy \textit{with respect
+to the ion}.
+In the case of a classically bound electron, the total energy is less than zero:
+the max() enforces a positive kinetic energy.
+
+When a cluster environment is present, a similar approach is taken to obtain
+$K_{\textrm{thresh}}$. Instead of taking the extra energy above zero for
+$K_{\textrm{thresh}}$, the extra energy above the new threshold $U_b$ is used.
+This value can easily be obtained from the actual electron's kinetic energy
+$K_e$, it's \textit{total} potential energy in the cluster environment and the
+threshold $U_b$ by:
+\begin{align}
+K_{\textrm{thresh}} & = \textrm{max}\pa{0, K_e + U_e - U_b}
+\label{eqn:md:kthresh}
+\end{align}
+and is shown on figure \ref{fig:md:Vb} as a red arrow with its base at $U_b$.
+
+
+$K_{\textrm{thresh}}$ is the kinetic energy that must be used in Lotz formula
+\eqref{eqn:impact:ionization:lotz}. Cross-sections are discussed in the next
+section.
+
+
+When an impact ionization event occurs and if the impacting electron has more kinetic
 energy, it can either keep the extra, give all the extra, or give a fraction of
 the extra to the new electron. We split the extra kinetic energy between the two
 electrons to assure that they do not fall back unto the ion.
 
-Impact ionization cross-sections for Xenon were obtained from reference
-\cite{Tawara1987} for neutrals
-% Figure 254, page 317
-and reference \cite{Heidenreich2005} for charged states.
-% Parameters were taken from figure 1 (a), (b) and (c)
-% Note that parameters from figure 1 (a) and (b) for
-% the 4+ and 5+ do not give satisfactory results. They were
-% obtained by fitting the data directly from the figures
 
-
-Figure \ref{fig:impact:before:Z} shows the process of impact ionization when an
-electron (particle 1) of charge state -1 impacts an ion (particle 0) of charge
-state Z and creates a new electron (particle 2) right on top.
-
-\begin{figure}
- \centering
-    \begin{subfigure}{0.48\columnwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/impact_ionization_t00}
-        \caption{Before impact ionization (Z)}
-        \label{fig:impact:before:Z}
-    \end{subfigure}
-\\
-    \begin{subfigure}{0.48\columnwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/impact_ionization_t0}
-        \caption{During impact ionization (Z+1)}
-        \label{fig:impact:before:Zp1}
-    \end{subfigure}
+% Figure \ref{fig:impact:before:Z} shows the process of impact ionization when an
+% electron (particle 1) of charge state -1 impacts an ion (particle 0) of charge
+% state Z and creates a new electron (particle 2) right on top.
 %
-    \begin{subfigure}{0.48\columnwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/impact_ionization_t1}
-        \caption{After impact ionization}
-        \label{fig:impact:after}
-    \end{subfigure}
-\caption{Impact ionization: before and after}
-\label{fig:impact:steps}
-\end{figure}
+% \begin{figure}
+%  \centering
+%     \begin{subfigure}{0.48\columnwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{figures/impact_ionization_t00}
+%         \caption{Before impact ionization (Z)}
+%         \label{fig:impact:before:Z}
+%     \end{subfigure}
+% \\
+%     \begin{subfigure}{0.48\columnwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{figures/impact_ionization_t0}
+%         \caption{During impact ionization (Z+1)}
+%         \label{fig:impact:before:Zp1}
+%     \end{subfigure}
+% %
+%     \begin{subfigure}{0.48\columnwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{figures/impact_ionization_t1}
+%         \caption{After impact ionization}
+%         \label{fig:impact:after}
+%     \end{subfigure}
+% \caption{Impact ionization: before and after}
+% \label{fig:impact:steps}
+% \end{figure}
 
 
-First, let's assume the impacting electron came from infinity where it's kinetic
-energy was exactly the Ip. In that case, impact ionization will occur (considering
-its impact parameter lies inside the cross-section). By definition, we must have two
-electrons leaving to infinity: an unbound system. Such an unbound system has a total
-energy of 0.
-
-The total energy before (a) is thus:
-\begin{align}
-E^{a} & = K_{1}^{a} + U_{01}^{a} = Ip
-\label{eqn:Ea}
-\end{align}
-and after (c) ionization is:
-\begin{align}
-E^{c} & = K_{1}^{c} + K_{2}^{c} + U_{01}^{c} + U_{02}^{c} + U_{12}^{c} = 0
-\label{eqn:Ec}
-\end{align}
-
-The change in energy is thus:
-\begin{align}
-E^{a} - E^{c} & = Ip = K_{1}^{a} + U_{01}^{a} - \pa{
-    K_{1}^{c} + K_{2}^{c} + U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
-}
-\end{align}
-
-The only unknown values here are $K_{1}^{c}$ and $K_{2}^{c}$ since the new electron is
-created right on top of the ion. Let's isolate the final kinetic energies:
-\begin{align}
-K_{1}^{c} + K_{2}^{c} = K_{1}^{a} + U_{01}^{a} - \pa{
-    U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
-} - Ip
-\label{eqn:K1cPlusK2c}
-\end{align}
-
-We have a single constraint from equation \eqref{eqn:K1cPlusK2c} but two unknown. We thus
-give an arbitrary value to one of the two. We want the new electron to leave the ion.
-Since it is right on top of it, we can guess the required kinetic energy to be very close
-to (minus) the potential energy the electron has with respect to the ion. But this electron
-will be ``pushed'' be the impacting electron too and will thus be accelerated. To compensate
-for this push, we remove the potential energy between the two electrons from the new electron's
-kinetic energy. So the educated guess for the final kinetic energy of the new electron is:
-\begin{align}
-K_{2}^{c} & = -U_{02}^{c} - U_{12}^{c}
-\label{eqn:K2c:pushed}
-\end{align}
-
-Using equation \eqref{eqn:K2c:pushed} in equation \eqref{eqn:K1cPlusK2c} gives:
-\begin{align}
-K_{1}^{c}
- & = K_{1}^{a} + U_{01}^{a} - \pa{
-    U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
-} - Ip - K_{2}^{c} \\
- & = K_{1}^{a} + U_{01}^{a} - \pa{
-    U_{01}^{c} + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} }
-} - Ip + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} } \\
-K_{1}^{c}
- & = K_{1}^{a} + U_{01}^{a} - U_{01}^{c} - Ip
-\label{eqn:K1c:pushed}
-\end{align}
-
-The final total energy is then:
-\begin{align}
-E^{c}
- & = \pa{
-    K_{1}^{a} + U_{01}^{a} - \cancel{ U_{01}^{c} } - Ip
- } - \pa{
-                 \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} }
-} + \cancel{ U_{01}^{c} } + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} } \\
- & = K_{1}^{a} + U_{01}^{a} - Ip \\
- & = Ip - Ip \\
-E^{c} & = 0
-\end{align}
-which is what was expected.
+% First, let's assume the impacting electron came from infinity where it's kinetic
+% energy was exactly the Ip. In that case, impact ionization will occur (considering
+% its impact parameter lies inside the cross-section). By definition, we must have two
+% electrons leaving to infinity: an unbound system. Such an unbound system has a total
+% energy of 0.
+%
+% The total energy before (a) is thus:
+% \begin{align}
+% E^{a} & = K_{1}^{a} + U_{01}^{a} = Ip
+% \label{eqn:Ea}
+% \end{align}
+% and after (c) ionization is:
+% \begin{align}
+% E^{c} & = K_{1}^{c} + K_{2}^{c} + U_{01}^{c} + U_{02}^{c} + U_{12}^{c} = 0
+% \label{eqn:Ec}
+% \end{align}
+%
+% The change in energy is thus:
+% \begin{align}
+% E^{a} - E^{c} & = Ip = K_{1}^{a} + U_{01}^{a} - \pa{
+%     K_{1}^{c} + K_{2}^{c} + U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
+% }
+% \end{align}
+%
+% The only unknown values here are $K_{1}^{c}$ and $K_{2}^{c}$ since the new electron is
+% created right on top of the ion. Let's isolate the final kinetic energies:
+% \begin{align}
+% K_{1}^{c} + K_{2}^{c} = K_{1}^{a} + U_{01}^{a} - \pa{
+%     U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
+% } - Ip
+% \label{eqn:K1cPlusK2c}
+% \end{align}
+%
+% We have a single constraint from equation \eqref{eqn:K1cPlusK2c} but two unknown. We thus
+% give an arbitrary value to one of the two. We want the new electron to leave the ion.
+% Since it is right on top of it, we can guess the required kinetic energy to be very close
+% to (minus) the potential energy the electron has with respect to the ion. But this electron
+% will be ``pushed'' be the impacting electron too and will thus be accelerated. To compensate
+% for this push, we remove the potential energy between the two electrons from the new electron's
+% kinetic energy. So the educated guess for the final kinetic energy of the new electron is:
+% \begin{align}
+% K_{2}^{c} & = -U_{02}^{c} - U_{12}^{c}
+% \label{eqn:K2c:pushed}
+% \end{align}
+%
+% Using equation \eqref{eqn:K2c:pushed} in equation \eqref{eqn:K1cPlusK2c} gives:
+% \begin{align}
+% K_{1}^{c}
+%  & = K_{1}^{a} + U_{01}^{a} - \pa{
+%     U_{01}^{c} + U_{02}^{c} + U_{12}^{c}
+% } - Ip - K_{2}^{c} \\
+%  & = K_{1}^{a} + U_{01}^{a} - \pa{
+%     U_{01}^{c} + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} }
+% } - Ip + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} } \\
+% K_{1}^{c}
+%  & = K_{1}^{a} + U_{01}^{a} - U_{01}^{c} - Ip
+% \label{eqn:K1c:pushed}
+% \end{align}
+%
+% The final total energy is then:
+% \begin{align}
+% E^{c}
+%  & = \pa{
+%     K_{1}^{a} + U_{01}^{a} - \cancel{ U_{01}^{c} } - Ip
+%  } - \pa{
+%                  \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} }
+% } + \cancel{ U_{01}^{c} } + \cancel{ U_{02}^{c} } + \bcancel{ U_{12}^{c} } \\
+%  & = K_{1}^{a} + U_{01}^{a} - Ip \\
+%  & = Ip - Ip \\
+% E^{c} & = 0
+% \end{align}
+% which is what was expected.
 
 
 
@@ -871,14 +882,6 @@ a random number $r$ between 0 and 1:
 \end{align}
 When the previous test succeeds, ionization takes place and a new electron is
 created in the code.
-
-Using equation \eqref{eqn:ionization:prob}, a choice is made. If ionization is
-to take place, the new electron is created right on top of the ion with a
-kinetic energy set as the difference between the ionization potential and the
-photon energy \textit{plus} the absolute value of the potential energy of the
-electron with respect to its parent ion (with updated charge). This assure that
-the electron that leaves the ion will reach infinity with a kinetic energy being
-the difference between the Ip and the photon energy.
 Then, the intensity profile of the laser $I\pa{t}$ is decreased
 by one photon for better description of low fluence pulses.
 
@@ -887,9 +890,15 @@ by one photon for better description of low fluence pulses.
 
 For impact ionization cross-sections, Lotz formula of equation
 \eqref{eqn:impact:ionization:lotz} is used with experimental parameters obtained
-from reference \cite{Tawara1987} (for neutral xenon) and \cite{Heidenreich2005}
-(for higher charge states). For argon, data from \cite{Lotz1967} and
-\cite{Lotz1970} is used.
+from reference \cite{Tawara1987} (for neutral xenon)
+% Figure 254, page 317
+and \cite{Heidenreich2005} (for higher charge states).
+% Parameters were taken from figure 1 (a), (b) and (c)
+% Note that parameters from figure 1 (a) and (b) for
+% the 4+ and 5+ do not give satisfactory results. They were
+% obtained by fitting the data directly from the figures
+For argon, data from \cite{Lotz1967} and \cite{Lotz1970} is used.
+When $K_{\textrm{thresh}} \le 0$, a null cross-section is simply used.
 
 As for ACI, numerical cross-sections from ground state to excited state and from
 excited state to continuum were calculated by Edward Ackad using a
@@ -908,32 +917,35 @@ the case of excitation, the total cross-section of all excited states are used
 and a final state randomly selected between all accessible, weighted by their
 cross-sections relative to the total one.
 
-
 % http://en.wikipedia.org/wiki/Neutron_cross_section#Link_to_reaction_rate_and_interpretation
 
 \subsubsection{Recombination}
 
-In a classical simulation electrons could cool down into ions' infinite Coulomb
+In a classical simulation electrons could cool down into the ions' infinite Coulomb
 potential where they would have a total energy less then what is allowed
-according to quantum mechanics. Recombination is thus used to prevent such
-unphysical events.
+according to quantum mechanics. Using a smoothing potential as in equation
+\eqref{eqn:md:smoothed:phi} will prevent the singularity but if the potential
+depth used is deeper than the ionization potential, their can still be a problem.
+Recombination is thus used to prevent such unphysical events. When an electron's
+total energy (with respect to the ion) falls under the ionization potential,
+recombination happens: the electron disappear from the simulation and the ion
+charge state is updated.
 
 Additionally, recombination plays an important role in the dynamics of the
 exploding cluster. Experiments at FLASH in 2009 on Xenon clusters in the XUV
 regime\cite{Thomas2009} could be reproduced by our models when recombination
 was enable; we found that the lower charge states detected would come from the
-cluster core where recombination is important. This study is to be published in
-May 2013's edition of New Journal of
-Physics\footnote{\url{http://iopscience.iop.org/1367-2630/page/Forthcoming\%20articles}}.
+cluster core where recombination is important. This study was published in
+May 2013's edition of \textit{New Journal of Physics}\cite{Ackad2013}
 
 Recombination was also included in the fifth study, included in section
 \ref{section:papers:100nm}, as it allowed to lower the potential depth of the
 ions for more physical simulations.
 
-Recombination is tested by calculating the total energy of an electron and
-comparing it to the threshold $U_b$ -- see figure \ref{fig:md:Vb}. If
-the energy is less then $U_b$, the electron is recombined; the ion charge is
-decremented and the electron is removed from the ion. The electron's momentum
-is transferred to the ion.\fxnote[margin,noinline]{Is the momentum really
-transferred to the ion during recomb.?}
+% Recombination is tested by calculating the total energy of an electron and
+% comparing it to the threshold $U_b$ -- see figure \ref{fig:md:Vb}. If
+% the energy is less then $U_b$, the electron is recombined; the ion charge is
+% decremented and the electron is removed from the ion. The electron's momentum
+% is transferred to the ion.\fxnote[margin,noinline]{Is the momentum really
+% transferred to the ion during recomb.?}
 
