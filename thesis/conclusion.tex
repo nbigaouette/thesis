@@ -4,7 +4,7 @@ Clusters of atoms are without a doubt an extremely useful tool to study
 laser and matter interaction. They were in used for their optical properties
 even before atoms were discovered. With the advancement of both clusters creation
 and laser technologies, it became possible to gain a significant understanding
-on how light interacts with matter. Clusters studies thus became an important
+on how light interacts with matter. Clusters studies then became an important
 physics research area.
 
 At the simplest level, quantum mechanic describes the dynamics but exact solutions
@@ -16,7 +16,7 @@ using rare gas clusters with short duration (tens of femtoseconds), high intensi
 (10$^{12}$ -- 10$^{14}$ W/cm$^2$) and small wavelength (VUV, XUV) laser pulses.
 More than ten years later, our understanding of the different mechanisms of energy
 absorption and diffusion throughout the cluster is taking shape. Even though full
-quantum mechanical description of clusters is not possible, small approximations
+quantum mechanical description of clusters is not possible, some level of approximations
 can be taken, allowing theoretical and numerical studies to be performed.
 
 Our numerical tool of choice is Molecular Dynamics where we track, classically,
@@ -104,14 +104,14 @@ at least as a first step. A major problem with FDTD is the amount of memory
 required to resolve a three dimensional grid. Normally, FDTD is parallelized
 using a shared memory model so it can be distributed on many different
 computational nodes. After the work done on implementing the MD algorithm in
-OpenCL to run on a GP-GPU, I decided to try porting the QFDTD to OpenCL too
+OpenCL to run on a GP-GPU, I decided to port the QFDTD to OpenCL too
 which was actually relatively quick. The video cards could run the code faster,
 but video cards have their own discrete memory which is a lot smaller than main
 memory. A novel mapping method was thus developed to reduce the number of grid
 cell size in the QFDTD computational domain. This new method's innovation comes
 from the two space being mapped. Traditionally, one space is mapped to another
 one where some physical feature is either enhanced or reduced to ease the numerical
-burden. In the nonlinear mapping proposed, one of the space mapped is the actual
+burden. In my nonlinear mapping, one of the space mapped is the actual
 discrete memory of the computer; the physical space is mapped to the
 integer-referenced memory location through a cumulative sum of a source function,
 enforcing the monotonicity required. Due to the way the mapping function is
@@ -130,8 +130,8 @@ for example, what is the influence of the shape of the cluster environment,
 approximated as a constant $U_b$, over the cluster dynamics? How much is
 affected an electron wavefunction by a neighbouring ion?
 
-Another possibility given by the QFDTD is to use a potential different then
-Coulombic. An atomic potential, similar to the one used in
+Another possibility given by my QFDTD implementation is to use a potential
+different then Coulombic. An atomic potential, similar to the one used in
 reference~\cite{Walters2006}, could be used to simulate an electron in a
 mean-field created by other electrons, effectively changing the one electron
 picture of the code to mean-field, Hartree-Fock, formulation of many electrons.
@@ -156,11 +156,11 @@ regime and does not depend on the laser parameters (pulse duration, wavelength,
 intensity, etc.) Transition cross-sections though are unique to each elements
 and must be calculated and added to the simulation package before use. Argon
 and Xenon cross-sections where generated and are accessible. It is thus
-interesting to apply the model to different regimes. Other models were applied
-to explain Wabnitz \textit{et al.}'s 2002 VUV-Xenon experiment at FLASH but when the
+interesting to apply the model to different wavelength regimes. Other models were developed
+to explain Wabnitz \textit{et al.}'s 2002 VUV-Xenon experiment at FLASH but when
 Bostedt \textit{et al.} published in 2010 a revised intensity (to lower values) it was
-not clear if they could be able to reproduce the experimental results
-in light of the new, lower intensity. We decided to revisit the 2002 100 nm
+not clear if these models could still be able to reproduce the experimental results
+in light of the new, lower intensity. We decided to revisit the 2002 100~nm
 experiment in light of our ACI model at the revised, lower intensity.
 
 Thanks to my OpenCL implementation (and its 80 times speedup), it was possible
@@ -168,11 +168,12 @@ to acquire significant statistics over a wide range of intensities, effectively
 reproducing the clusters distribution in the laser focus spacial profile. This
 is an important aspect to reproduce the charge state spectrum seen in experiment
 as the clusters normally do not all fall exactly at the laser focus' peak
-intensity. It also allowed acquiring significant data for valid statistics.
+intensity. It also allowed acquiring significant data for valid statistics, an
+important requirement since MD simulations are chaotic.
 
 Interestingly, even at the 2.5 times lower intensity ($\ten{8}{12}$~W/cm$^{2}$
 vs. $\ten{2}{13}$~W/cm$^{2}$), the experiment's high charge states spectrum
-could be reproduced with ACI. ACI had to
+could still be reproduced with ACI. ACI had to
 be enabled to match the spectrum of the smallest clusters (Xe$_{90}$), both
 for the dominant charge state (Xe$^{1+}$) and the maximum charge state (Xe$^{4+}$).
 The change from dominant Xe$^{1+}$ to Xe$^{2+}$ was seen to take place at
@@ -188,10 +189,9 @@ rigorous testing and validation. In any case, a lot of work still need to be
 invested to reach these cluster sizes. Another approach could even be taken,
 mainly switching from a direct particle-to-particle (PP) algorithm to a more
 scalable particle-mesh (PM) or even particle-particle, particle-mesh (P3M)
-technique. In these techniques, particles interact through a grid on which their
-(static or dynamic) field is propagated, resulting in an algorithm that scales
-at $O\pa{N_c^3}$ for the grid cells and $O\pa{N_p}$ for the number of particles,
-a lot better than the $O\pa{N_p^2}$ scaling of MD simulations.
+technique. PIC for example scales as $O\pa{N_c^3}$ for the grid cells and
+$O\pa{N_p}$ for the number of particles, a lot better than the $O\pa{N_p^2}$
+scaling of MD simulations.
 
 An interesting aspect of MD simulations is the effect of the potential depth
 used. While many authors set this depth as the first ionization potential, it
@@ -208,24 +208,27 @@ included in MD simulations.
 
 Theoretical laser-clusters studies is an nice amalgam of many challenging
 fields of physics. Clusters, being nanoscopic objects, live in a quantum world
-where particles are described by wavefunctions. Then, classical, Newtonian
-mechanics can be used to describe some dynamics but the many-body problem that
-also arise in astronomy is not solvable analytically, even three hundred years
-after Newton. Computers must be used to calculate these simple trajectories
+where particles are described by wavefunctions. When free inside the cluster
+the particles dynamics can be treated classically through Newtonian mechanics.
+Unfortunately, even three hundred years after Newton, the many-body problem
+which also arise in astronomy is not solvable analytically.
+Computers must be used to calculate these simple trajectories
 using many different algorithms, bringing computer science into the picture
 with all its quirks, problems, bugs, crashes and high expectation algorithms or
 new technologies. Lasers are the tool of choice to study the small objects
 clusters are. Electrodynamics, classical or quantum, describes light, the purest
-form of energy, and its interaction with matter. After clusters get ionized,
+form of energy. After clusters get ionized,
 the plasma generated can be described with the language of statistical mechanics.
-But clusters can be used as a first-order model for biomolecules or can be used
-in biological systems. As if physics wasn't complex enough, life and biology
-brings so many more questions to the picture.
+Additionally to all these fields, clusters can be used as a first-order model
+for biomolecules or can be used in biological systems. As if physics wasn't
+complex enough, life and biology brings so many more questions to the picture.
+
+And then, what else should a scientist do
+after answering a question? If this answer doesn't bring more questions, the
+answer could be unsatisfactory.
 
 It is easy to be impressed and even overwhelmed by the wide range of fields
 touched by clusters studies, but how satisfying can it be to reach so many
-topics at once?
-
-What else should a scientist do
-after answering a question? If this answer doesn't bring more questions, the
-answer could be unsatisfactory.
+topics at once? Clusters are quite fascinating and I hope to have
+brought my little contributions, through this thesis, to the height of the giants'
+shoulders so next generation will be able to see even further.
