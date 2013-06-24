@@ -549,7 +549,7 @@ if (plot_U):
         if (i == impacting_electron.nearest):
             ax_U_Eh.plot(r, -all_particles[i].Get_V(r) + Ub, ':' + colors_and_symbols.color(i),  label=r'$U_{e,' + str(i) + '} + U_b$')
 
-    arrow_Ub.Plot(ax_U_Eh, x = all_particles[impacting_electron.nearest].pos, color = 'r', label = r'$U_b$', horizontalalignment = 'right')
+    arrow_Ub.Plot(ax_U_Eh, x = all_particles[impacting_electron.nearest].pos, color = 'r', label = r'$U_b$', horizontalalignment = 'left')
 
     # ************************************
     # Impacting electron's...
