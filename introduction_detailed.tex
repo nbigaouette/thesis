@@ -14,12 +14,41 @@ with (gold) spheres in 1908, explaining the light absorption dependence
 on cluster size. During the last part of the twentieth century, the discovery of
 C$_{60}$ fullerenes marked the real beginning of cluster studies.
 
+% any citations you can add to the above?
+
 As the Roman saw, the size of these nanoparticles is a key property. Techniques to fully
 control the size of produced clusters allowed a wide range of studies and
-applications. The advance of high-power and short duration lasers opened the
-door for further interesting ultra-fast studies. With femtosecond
+applications. 
+
+% romans used gold clusters as you mentioned, and the last sentence as it reads seems to refer to solid-state type nanoparticles.  so you need to introduce rare gas clusters - since this is the base of the ultrafast experiments. add a few sentences here on that topic, where you can describe their generation through pushing gas through nozzles etc.
+
+% again, adding citations to the above would help
+
+Along with the recent developments and advances in the nanosciences, 
+the advance of high-power and short duration lasers opened the
+door for 
+%further interesting 
+ground breaking
+%
+ultra-fast studies. With femtosecond
 (1 fs = 10$^{-15}$ s) lasers it became possible to study electron motion,
-similarly to a camera flash that captures a moving scene. Many femtosecond lasers
+similarly to a camera flash that captures a moving scene. 
+
+% make reference to attosecond science, rare gas atoms, and provide a reference to a book or review article - I moved the paragraph below to this spot. you'll have to clean it up a bit, with regards to the definition of "infrared"
+The IR regime sparked a new field of ultrafast physics. By stripping electrons
+from their parent ion through tunnel ionization and accelerating them in the
+laser's strong electric field, train of pulses of high harmonics can be generated (HHG).
+Taking place during a single femtosecond pulse, this train of smaller pulses
+can reach the attosecond \mbox{(1 as = 10$^{-18}$ s)} duration, an exciting developing field.
+
+
+
+
+
+The study of the interaction of rare gas clusters with femtosecond lasers represents a
+merging of nano and ultrafast science.
+%
+Many femtosecond lasers
 have a wavelength of 800 nm in the infrared (IR) and cluster have been studied
 thoroughly with this ``long'' wavelength. Investigation of energetic
 electrons (keV) or highly charged ions (MeV) emission, X-rays production or even
@@ -28,8 +57,9 @@ table-top neutron sources\cite{Krainov2007} were performed since the
 
 Clusters are invaluable tools because they bridge the gap between single atoms
 and solids. Their high density allows them to exhibit collective effects similarly
-to bulk materials while their small icosahedral\cite{Martin1996} size increases
-their surface to volume ratio.
+to bulk materials while their small 
+%icosahedral\cite{Martin1996} 
+size increases their surface to volume ratio.
 At the smallest range, clusters can be used as models for small molecules and
 at the opposite they still present interesting optical properties even at 10,000
 atoms\cite{Reinhard2004}.
@@ -37,10 +67,17 @@ atoms\cite{Reinhard2004}.
 Additionally to their great size scalability, clusters explosion by-products
 after interaction with a strong laser field are accessible, revealing detailed
 information about the dynamics. For example, time-of-flight (TOF) mass
-spectrometry can reveal the ions charge state spectrum which reveals the amount
+spectrometry can reveal the ions charge state spectrum which 
+%reveals 
+is a signature of
+%
+the amount
 of energy absorbed from the laser pulse. This kind of data is not accessible
-in the case of laser-bulk interaction since the majority of matter stays on the
-solid.
+in the case of laser-bulk interaction since the majority of matter stays 
+%
+in
+%on 
+the solid.
 
 Clusters of atoms can be composed of different elements. Rare gas atoms have
 closed outer electronic shells which makes them less prone to chemical
@@ -48,6 +85,8 @@ reactions and so don't interact much with each other. Rare-gas clusters are
 thus weakly bound by Van der Waals forces. The electronic wavefunctions are
 more localized around the nucleus than in metal clusters which simplifies the
 treatment of the cluster environment.
+
+% maybe add the icosohedral reference in the above paragraph instead?
 
 A critical characteristic of laser-cluster interaction for the present
 work is the fact that clusters can be studied numerically. Full quantum resolution
@@ -58,9 +97,14 @@ dynamics\cite{Fennel2010}. The tool of choice for this problem is Molecular Dyna
 (MD) where dynamics are treated classically; Newton's equations of motion are
 solved at each time steps and quantum effects are included using specific rates.
 
-For these reasons, clusters are invaluable tools to study light and matter
-interaction. This can be seen by the vast amount of work on the subject, mainly
-in the IR regime\cite{Fennel2010}.  Varin \textit{et al.}\cite{Varin2012}
+%For these reasons, clusters are invaluable tools to study light and matter interaction. 
+% .. the above sentence is almost found word for word in a previous paragraph
+
+The importance of laser-cluster interaction as an investigative tool
+%
+can be seen by the vast amount of work on the subject, mainly
+in the IR regime\cite{Fennel2010}. 
+Varin \textit{et al.}\cite{Varin2012}
 recently developed an electrodynamic
 particle-in-cell (PIC) code for IR studies on pre-ionized clusters. PIC methods
 have a better scaling than MD in terms of particles number and since they treat
@@ -71,24 +115,29 @@ range interactions and collisions. A novel addition by Varin \textit{et al.}
 is to add microscopic corrections to PIC for more realistic close range
 interactions\cite{Peltz2012}.
 Since the grid must resolve the electromagnetic wave,
-PIC simulations can thus be a challenge when the wavelength is small but this
-opens the door to a new frontier of modelling.
+PIC simulations can thus be a challenge when the wavelength is small
+but this opens the door to a new frontier of modelling.
 
-The IR regime sparked a new field of ultrafast physics. By stripping electrons
-from their parent ion through tunnel ionization and accelerating them in the
-laser's strong electric field, train of pulses of high harmonics can be generated (HHG).
-Taking place during a single femtosecond pulse, this train of smaller pulses
-can reach the attosecond \mbox{(1 as = 10$^{-18}$ s)} duration, an exciting developing field.
+% i took out the paragraph on atto here... thought it would be better above.
 
-Moreover, in recent years, laser light sources
-have been moving to shorter wavelengths due to new Free Electron Lasers (FEL)
+%Moreover, i
+
+The interest of this thesis is in modelling short wavelength interaction with clusters.
+In recent years, laser light sources
+have been moving to shorter wavelengths due to
+%
+groundbreaking 
+%
+new Free Electron Lasers (FEL)
 facilities; Vacuum Ultra-Violet (VUV), Extreme Ultra-Violet (XUV), soft X-Rays
 and even hard X-rays are now accessible. In FELs, relativistic electrons are sent
 through an ondulator in which they emit a coherent pulse, tunable in wavelength
 (by changing the electrons initial energy)
 from microwaves to X-rays\cite{Brabec2009,Ackermann2007a,Pellegrini2012} at
 unprecedented intensities. A single 10 to 100 fs FEL pulse can contain 10$^{13}$
-photons, the same amount produced by the bests synchrotrons during
+photons, the same amount produced by the 
+%bests 
+best synchrotrons during
 \textit{one second}\cite{Bostedt2009}. Even though FEL installations require
 large facilities, some researchers are working on a smaller version, as
 ``short'' as 55 meters\cite{Shintake2008}.
@@ -98,9 +147,17 @@ At shorter wavelengths, treating the laser as simply an electromagnetic field
 is not valid anymore and photons must be considered.
 The Keldysh parameter $\gamma$ dictates which regime must be considered. In
 cases where $\gamma \ll 1$ the electric field of the laser is strong enough that
-the ion's Coulomb potential is bent so much that electrons can tunnel out.
+the ion's Coulomb potential is 
+%bent so much 
+distorted to such an extent
+%
+that electrons can tunnel out.
 However, when $\gamma \gg 1$ the laser frequency is too large compared to the
-field's strength and photon processes dominates. Experiments in
+field's strength and photon processes dominates.
+%
+% I would clarify that ionization is dominated by single (and sometimes a few) photon absorption processes. this is because field process are still considered "multiphoton" and because even in the XFEL they are relying on significant Xray diffraction from single shots. so just clarify you're talking about ionization.
+%
+Experiments in
 2002\cite{Wabnitz2002,Bostedt2009} at
 DESY's FLASH (\textbf{F}ree-electron-\textbf{Las}er in \textbf{H}amburg)
 on Xenon clusters in the VUV regime (98~nm wavelength, 12.65~eV photon energy)
@@ -110,6 +167,8 @@ During these experiments, unexpected high charge states were seen that could not
 be explained by traditional energy transfer mechanisms. Theoretical work was
 then performed for explaining these high charge states; these models will be
 covered in section \ref{section:intro:mechanisms}.
+
+
 
 At shorter wavelength,
 Argon clusters were studied in the XUV regime\cite{Bostedt2008}. The 32.8~nm
@@ -124,8 +183,7 @@ Chapman \textit{et al.} were able to image a micrometer-wide stick-figure patter
 engraved on a 20 nm thin film. Imaging was possible even though the sample was
 eventually destroyed by the high intensity X-ray laser pulse.
 Similar studies on Xenon clusters were performed in 2010\cite{Bostedt2010} where
-diffraction patterns where obtained for clusters in single laser shots.
-
+diffraction patterns where obtained for clusters in single laser shots.%wavelength?
 
 More multiphoton
 ionization experiments on Nitrogen, Argon, Neon and Helium were performed at
@@ -164,8 +222,9 @@ wavelengths of 0.15 nm to 2.2 nm\cite{Pellegrini2011}.
 
 Cluster studies continue to this day in regimes such as VUV\cite{Arbeiter2011},
 XUV\cite{Murphy2008a,Murphy2008b,Krikunova2012} and X-rays\cite{Ziaja2009b}.
+%(any more recent references from flash or lcls?? there must be...
 
-
+%... and there is much theoretical work to be done.
 
 
 \subsection{Microscopic mechanisms underlying cluster dynamics}
