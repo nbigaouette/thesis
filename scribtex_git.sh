@@ -44,10 +44,10 @@ function setup_remote()
     git remote add ${scribtex_remote} git@git.scribtex.com:${scribtex_username}/${scribtex_project}.git \
                                                                 || die "Adding remote \"${scribtex_remote}\""
     # Create a local branch called "${scribtex_branch}"
-    #git branch ${scribtex_branch}                               || die "Creating ${scribtex_branch} branch"
-    git branch -u ${scribtex_remote}/${scribtex_branch}         || die "Creating ${scribtex_branch} branch"
+    git branch ${scribtex_branch}                               || die "Creating ${scribtex_branch} branch (1)"
     # Fetch data from scribtex' servers
-    #git fetch ${scribtex_remote}                                || die "Fetching updated data"
+    git fetch ${scribtex_remote}                                || die "Fetching updated data"
+    git branch -u ${scribtex_remote}/${scribtex_branch}         || die "Creating ${scribtex_branch} branch (2)"
     # Set up the local branch "${scribtex_branch}" to track "${scribtex_remote}" remote's "master" branch so a "git pull" will work.
     #git branch --set-upstream ${scribtex_branch} ${scribtex_remote}/master || die "Tracking upstream"
 }
