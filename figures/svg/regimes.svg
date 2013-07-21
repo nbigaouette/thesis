@@ -709,7 +709,7 @@ L205.146 169.308
 z
 " style="fill:#ffffff;stroke:#ffffff;stroke-width:2.0;"/>
     </g>
-    <!-- XUV -->
+    <!-- VUV -->
     <defs>
      <path d="
 M59 58.5156
@@ -758,6 +758,25 @@ L46 65
 C54 65 54 60.3281 54 57.8438
 z
 " id="CMR17-85"/>
+    </defs>
+    <g style="fill:#ffffff;" transform="translate(207.146143551 187.643606212)scale(0.24 -0.24)">
+     <use transform="scale(0.996264009963)" xlink:href="#CMR17-86"/>
+     <use transform="translate(69.0724298042 0.0)scale(0.996264009963)" xlink:href="#CMR17-85"/>
+     <use transform="translate(138.144859608 0.0)scale(0.996264009963)" xlink:href="#CMR17-86"/>
+    </g>
+   </g>
+   <g id="text_5">
+    <g id="patch_7">
+     <path d="
+M205.146 113.279
+L258.878 113.279
+L258.878 92.9435
+L205.146 92.9435
+z
+" style="fill:#ffffff;stroke:#ffffff;stroke-width:2.0;"/>
+    </g>
+    <!-- XUV -->
+    <defs>
      <path d="
 M36.5 37.4688
 L51.2969 58.6406
@@ -798,25 +817,8 @@ C61.5 2.39062 60.5 2.875 58.5 5.67188
 z
 " id="CMR17-88"/>
     </defs>
-    <g style="fill:#ffffff;" transform="translate(207.146143551 187.643606212)scale(0.24 -0.24)">
-     <use transform="scale(0.996264009963)" xlink:href="#CMR17-88"/>
-     <use transform="translate(69.0724298042 0.0)scale(0.996264009963)" xlink:href="#CMR17-85"/>
-     <use transform="translate(138.144859608 0.0)scale(0.996264009963)" xlink:href="#CMR17-86"/>
-    </g>
-   </g>
-   <g id="text_5">
-    <g id="patch_7">
-     <path d="
-M205.146 113.279
-L258.878 113.279
-L258.878 92.9435
-L205.146 92.9435
-z
-" style="fill:#ffffff;stroke:#ffffff;stroke-width:2.0;"/>
-    </g>
-    <!-- VUV -->
     <g style="fill:#ffffff;" transform="translate(207.146143551 111.278882254)scale(0.24 -0.24)">
-     <use transform="scale(0.996264009963)" xlink:href="#CMR17-86"/>
+     <use transform="scale(0.996264009963)" xlink:href="#CMR17-88"/>
      <use transform="translate(69.0724298042 0.0)scale(0.996264009963)" xlink:href="#CMR17-85"/>
      <use transform="translate(138.144859608 0.0)scale(0.996264009963)" xlink:href="#CMR17-86"/>
     </g>
@@ -976,17 +978,17 @@ z
     </g>
    </g>
    <g id="text_10">
-    <!-- XUV -->
+    <!-- VUV -->
     <g transform="translate(207.146143551 187.643606212)scale(0.24 -0.24)">
-     <use transform="scale(0.996264009963)" xlink:href="#CMR17-88"/>
+     <use transform="scale(0.996264009963)" xlink:href="#CMR17-86"/>
      <use transform="translate(69.0724298042 0.0)scale(0.996264009963)" xlink:href="#CMR17-85"/>
      <use transform="translate(138.144859608 0.0)scale(0.996264009963)" xlink:href="#CMR17-86"/>
     </g>
    </g>
    <g id="text_11">
-    <!-- VUV -->
+    <!-- XUV -->
     <g transform="translate(207.146143551 111.278882254)scale(0.24 -0.24)">
-     <use transform="scale(0.996264009963)" xlink:href="#CMR17-86"/>
+     <use transform="scale(0.996264009963)" xlink:href="#CMR17-88"/>
      <use transform="translate(69.0724298042 0.0)scale(0.996264009963)" xlink:href="#CMR17-85"/>
      <use transform="translate(138.144859608 0.0)scale(0.996264009963)" xlink:href="#CMR17-86"/>
     </g>

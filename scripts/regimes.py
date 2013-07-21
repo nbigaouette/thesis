@@ -160,13 +160,13 @@ draw_text_box(ax_eV, "Infrared FEL",
               color = (255.0/255.0, 153.0/255.0, 255.0/255.0))
               #color = 'cyan')
 
-draw_text_box(ax_eV, "XUV",
+draw_text_box(ax_eV, "VUV",
               1.0e11, 1.0e15, 11, 33,
               color = 'magenta')
 draw_text_box(ax_eV, "",
               1.0e11, 1.0e15, 33, 75,
               color = 'magenta')
-draw_text_box(ax_eV, "VUV",
+draw_text_box(ax_eV, "XUV",
               1.0e11, 1.0e15, 75, 200,
               color = 'magenta')
 
