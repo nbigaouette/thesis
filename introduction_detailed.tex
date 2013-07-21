@@ -931,47 +931,8 @@ clusters keep the anisotropy coming from photoionization.
 
 \lrfatal{your contributions to this paper}
 
-% \fxfatal{Add description of recombination paper}
-
-\lrfatal{put 100nm paper here}
-
-
-\subsubsubsection{A quantum approach}
-
-Going further, interesting questions came up. For example, how is a bound
-electron's wavefunction affected by a neighbouring ion or the cluster potential?
-Due to my background in electromagnetic simulations, I was surprised to read
-an article using the FDTD method -- normally used in electrodynamic simulations --
-for quantum calculations. I was curious how far could the FDTD method be
-applied to quantum problems and if it could answer some of our questions.
-A QFDTD simulation package was thus developed, again from scratch,  implementing
-two kind of time evolution; real and imaginary. The model and its implementation details
-are discussed in section \ref{section:tools:qfdtd}.
-
-The work developed in section \ref{section:tools:qfdtd} was published in the article
-``Nonlinear grid mapping applied to an FDTD-based, multi-center 3D
-Schr\"odinger equation solver'' presented in section \ref{section:papers:qfdtd}.
-Published in 2012 in \textit{Computer Physics Communications}\cite{Bigaouette2011}, it
-explains the QFDTD method and its implementation, with emphasis on the new
-nonlinear mapping introduced for faster calculation. The QFDTD package is the
-first to use both the real and imaginary time evolution, opening the door to
-easily get eigenvalues, eigenstates and their time evolution in a time-dependent
-and arbitrary spacial shape potential.
-The method was first validated by comparing with the analytic solutions of
-the hydrogen atom and then applied to solve the H$_{2}^{+}$ molecule.
-Comparison with experimental data was in good agreement for the eigenvalues
-while the eigenstates could be visualize easily. A new method to calculate
-eigenstates is also presented in the article. The publication also
-describes in detail the nonlinear mapping that allows reducing both the memory
-usage required to store the grid and the time required to calculate the time
-evolution. The method is a generic way to obtain a nonuniform grid with cells
-concentrated around multi-centres of interest for used in any (finite difference
-based) partial differential equation solvers.
-
-\fxfatal[noinline,margin]{Synchronize and finish the 100nm paper with its description}
-
-
 \subsubsubsection{Revisiting the 100 nm experiment}
+\fxfatal[noinline,margin]{Synchronize and finish the 100nm paper with its description}
 
 Finally, section \ref{section:papers:100nm} contains the draft of the article
 ``Augmented Collisional Ionization in the VUV regime; a theoretical study''.
@@ -1016,6 +977,41 @@ the literature. That article section sheds some light on the topic.
 Since electrons are now allowed to go deeper in the ions potential well,
 recombination must be used to prevent them from having a total energy less than
 the ion's eigenvalues which would not be allowed quantum mechanically.
+
+\fxfatal{Add description of recombination paper}
+
+\subsubsubsection{A quantum approach}
+
+Going further, interesting questions came up. For example, how is a bound
+electron's wavefunction affected by a neighbouring ion or the cluster potential?
+Due to my background in electromagnetic simulations, I was surprised to read
+an article using the FDTD method -- normally used in electrodynamic simulations --
+for quantum calculations. I was curious how far could the FDTD method be
+applied to quantum problems and if it could answer some of our questions.
+A QFDTD simulation package was thus developed, again from scratch,  implementing
+two kind of time evolution; real and imaginary. The model and its implementation details
+are discussed in section \ref{section:tools:qfdtd}.
+
+The work developed in section \ref{section:tools:qfdtd} was published in the article
+``Nonlinear grid mapping applied to an FDTD-based, multi-center 3D
+Schr\"odinger equation solver'' presented in section \ref{section:papers:qfdtd}.
+Published in 2012 in \textit{Computer Physics Communications}\cite{Bigaouette2011}, it
+explains the QFDTD method and its implementation, with emphasis on the new
+nonlinear mapping introduced for faster calculation. The QFDTD package is the
+first to use both the real and imaginary time evolution, opening the door to
+easily get eigenvalues, eigenstates and their time evolution in a time-dependent
+and arbitrary spacial shape potential.
+The method was first validated by comparing with the analytic solutions of
+the hydrogen atom and then applied to solve the H$_{2}^{+}$ molecule.
+Comparison with experimental data was in good agreement for the eigenvalues
+while the eigenstates could be visualize easily. A new method to calculate
+eigenstates is also presented in the article. The publication also
+describes in detail the nonlinear mapping that allows reducing both the memory
+usage required to store the grid and the time required to calculate the time
+evolution. The method is a generic way to obtain a nonuniform grid with cells
+concentrated around multi-centres of interest for used in any (finite difference
+based) partial differential equation solvers.
+
 
 % Additionally, section \ref{section:other} specifies other, non-published,
 % contributions that were made during the years. The reader will find, in appendix
