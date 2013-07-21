@@ -13,13 +13,37 @@ Gustav Mie was the first to theoretically describe the interaction of light
 with (gold) spheres in 1908, explaining the light absorption dependence
 on cluster size. During the last part of the twentieth century, the discovery of
 C$_{60}$ fullerenes marked the real beginning of cluster studies.
+\fxnote[noinline,margin,author=LR]{any citations you can add to the above?}
 
 As the Roman saw, the size of these nanoparticles is a key property. Techniques to fully
 control the size of produced clusters allowed a wide range of studies and
-applications. The advance of high-power and short duration lasers opened the
-door for further interesting ultra-fast studies. With femtosecond
+applications.
+
+\fxnote[author=LR]{romans used gold clusters as you mentioned, and the last sentence as it reads seems to refer to solid-state type nanoparticles.  so you need to introduce rare gas clusters - since this is the base of the ultrafast experiments. add a few sentences here on that topic, where you can describe their generation through pushing gas through nozzles etc.}
+
+\fxnote[noinline,margin,author=LR]{again, adding citations to the above would help}
+
+Along with the recent developments and advances in the nanosciences,
+the advance of high-power and short duration lasers opened the
+door for ground breaking ultra-fast studies. With femtosecond
 (1 fs = 10$^{-15}$ s) lasers it became possible to study electron motion,
-similarly to a camera flash that captures a moving scene. Many femtosecond lasers
+similarly to a camera flash that captures a moving scene.
+
+\fxnote[author=LR]{make reference to attosecond science, rare gas atoms, and provide a reference to a book or review article - I moved the paragraph below to this spot. you'll have to clean it up a bit, with regards to the definition of "infrared":}
+The IR regime sparked a new field of ultrafast physics. By stripping electrons
+from their parent ion through tunnel ionization and accelerating them in the
+laser's strong electric field, train of pulses of high harmonics can be generated (HHG).
+Taking place during a single femtosecond pulse, this train of smaller pulses
+can reach the attosecond \mbox{(1 as = 10$^{-18}$ s)} duration, an exciting developing field.
+
+
+
+
+
+The study of the interaction of rare gas clusters with femtosecond lasers represents a
+merging of nano and ultrafast science.
+%
+Many femtosecond lasers
 have a wavelength of 800 nm in the infrared (IR) and cluster have been studied
 thoroughly with this ``long'' wavelength. Investigation of energetic
 electrons (keV) or highly charged ions (MeV) emission, X-rays production or even
@@ -28,8 +52,8 @@ table-top neutron sources\cite{Krainov2007} were performed since the
 
 Clusters are invaluable tools because they bridge the gap between single atoms
 and solids. Their high density allows them to exhibit collective effects similarly
-to bulk materials while their small icosahedral\cite{Martin1996} size increases
-their surface to volume ratio.
+to bulk materials while their small
+size increases their surface to volume ratio.
 At the smallest range, clusters can be used as models for small molecules and
 at the opposite they still present interesting optical properties even at 10,000
 atoms\cite{Reinhard2004}.
@@ -37,15 +61,17 @@ atoms\cite{Reinhard2004}.
 Additionally to their great size scalability, clusters explosion by-products
 after interaction with a strong laser field are accessible, revealing detailed
 information about the dynamics. For example, time-of-flight (TOF) mass
-spectrometry can reveal the ions charge state spectrum which reveals the amount
+spectrometry can reveal the ions charge state spectrum which
+is a signature of the amount
 of energy absorbed from the laser pulse. This kind of data is not accessible
-in the case of laser-bulk interaction since the majority of matter stays on the
-solid.
+in the case of laser-bulk interaction since the majority of matter stays
+in the solid.
 
 Clusters of atoms can be composed of different elements. Rare gas atoms have
 closed outer electronic shells which makes them less prone to chemical
 reactions and so don't interact much with each other. Rare-gas clusters are
-thus weakly bound by Van der Waals forces. The electronic wavefunctions are
+thus weakly bound by Van der Waals forces and generally form
+an icosahedral structure\cite{Martin1996}. The electronic wavefunctions are
 more localized around the nucleus than in metal clusters which simplifies the
 treatment of the cluster environment.
 
@@ -58,9 +84,9 @@ dynamics\cite{Fennel2010}. The tool of choice for this problem is Molecular Dyna
 (MD) where dynamics are treated classically; Newton's equations of motion are
 solved at each time steps and quantum effects are included using specific rates.
 
-For these reasons, clusters are invaluable tools to study light and matter
-interaction. This can be seen by the vast amount of work on the subject, mainly
-in the IR regime\cite{Fennel2010}.  Varin \textit{et al.}\cite{Varin2012}
+The importance of laser-cluster interaction as an investigative tool
+can be seen by the vast amount of work on the subject, mainly
+in the IR regime\cite{Fennel2010}. Varin \textit{et al.}\cite{Varin2012}
 recently developed an electrodynamic
 particle-in-cell (PIC) code for IR studies on pre-ionized clusters. PIC methods
 have a better scaling than MD in terms of particles number and since they treat
@@ -71,24 +97,19 @@ range interactions and collisions. A novel addition by Varin \textit{et al.}
 is to add microscopic corrections to PIC for more realistic close range
 interactions\cite{Peltz2012}.
 Since the grid must resolve the electromagnetic wave,
-PIC simulations can thus be a challenge when the wavelength is small but this
-opens the door to a new frontier of modelling.
+PIC simulations can thus be a challenge when the wavelength is small
+but this opens the door to a new frontier of modelling.
 
-The IR regime sparked a new field of ultrafast physics. By stripping electrons
-from their parent ion through tunnel ionization and accelerating them in the
-laser's strong electric field, train of pulses of high harmonics can be generated (HHG).
-Taking place during a single femtosecond pulse, this train of smaller pulses
-can reach the attosecond \mbox{(1 as = 10$^{-18}$ s)} duration, an exciting developing field.
-
-Moreover, in recent years, laser light sources
-have been moving to shorter wavelengths due to new Free Electron Lasers (FEL)
+The interest of this thesis is in modelling short wavelength interaction with
+clusters. In recent years, laser light sources have been moving to shorter
+wavelengths due to groundbreaking new Free Electron Lasers (FEL)
 facilities; Vacuum Ultra-Violet (VUV), Extreme Ultra-Violet (XUV), soft X-Rays
 and even hard X-rays are now accessible. In FELs, relativistic electrons are sent
 through an ondulator in which they emit a coherent pulse, tunable in wavelength
 (by changing the electrons initial energy)
 from microwaves to X-rays\cite{Brabec2009,Ackermann2007a,Pellegrini2012} at
 unprecedented intensities. A single 10 to 100 fs FEL pulse can contain 10$^{13}$
-photons, the same amount produced by the bests synchrotrons during
+photons, the same amount produced by the best synchrotrons during
 \textit{one second}\cite{Bostedt2009}. Even though FEL installations require
 large facilities, some researchers are working on a smaller version, as
 ``short'' as 55 meters\cite{Shintake2008}.
@@ -98,9 +119,15 @@ At shorter wavelengths, treating the laser as simply an electromagnetic field
 is not valid anymore and photons must be considered.
 The Keldysh parameter $\gamma$ dictates which regime must be considered. In
 cases where $\gamma \ll 1$ the electric field of the laser is strong enough that
-the ion's Coulomb potential is bent so much that electrons can tunnel out.
+the ion's Coulomb potential is distorted to such an extent
+that electrons can tunnel out.
 However, when $\gamma \gg 1$ the laser frequency is too large compared to the
-field's strength and photon processes dominates. Experiments in
+field's strength. Ionization is then dominated by single (or a few) photon
+absorption.
+%
+\fxnote{LR would clarify that ionization is dominated by single (and sometimes a few) photon absorption processes. this is because field process are still considered "multiphoton" and because even in the XFEL they are relying on significant Xray diffraction from single shots. so just clarify you're talking about ionization.}
+%
+Experiments in
 2002\cite{Wabnitz2002,Bostedt2009} at
 DESY's FLASH (\textbf{F}ree-electron-\textbf{Las}er in \textbf{H}amburg)
 on Xenon clusters in the VUV regime (98~nm wavelength, 12.65~eV photon energy)
@@ -110,6 +137,8 @@ During these experiments, unexpected high charge states were seen that could not
 be explained by traditional energy transfer mechanisms. Theoretical work was
 then performed for explaining these high charge states; these models will be
 covered in section \ref{section:intro:mechanisms}.
+
+
 
 At shorter wavelength,
 Argon clusters were studied in the XUV regime\cite{Bostedt2008}. The 32.8~nm
@@ -124,8 +153,8 @@ Chapman \textit{et al.} were able to image a micrometer-wide stick-figure patter
 engraved on a 20 nm thin film. Imaging was possible even though the sample was
 eventually destroyed by the high intensity X-ray laser pulse.
 Similar studies on Xenon clusters were performed in 2010\cite{Bostedt2010} where
-diffraction patterns where obtained for clusters in single laser shots.
-
+diffraction patterns where obtained for clusters in single laser shots
+at 13 nm (95.37 eV).
 
 More multiphoton
 ionization experiments on Nitrogen, Argon, Neon and Helium were performed at
@@ -164,8 +193,9 @@ wavelengths of 0.15 nm to 2.2 nm\cite{Pellegrini2011}.
 
 Cluster studies continue to this day in regimes such as VUV\cite{Arbeiter2011},
 XUV\cite{Murphy2008a,Murphy2008b,Krikunova2012} and X-rays\cite{Ziaja2009b}.
+\fxnote[noinline,margin]{LR: any more recent references from flash or lcls?? there must be...}
 
-
+\fxnote{LR: ... and there is much theoretical work to be done.}
 
 
 \subsection{Microscopic mechanisms underlying cluster dynamics}
@@ -190,19 +220,25 @@ The second family consist of indirect mechanisms were particles-particles
 interaction are vital. These indirect mechanisms don't necessarily transfer
 energy from the laser to the cluster but are still an important aspect of
 cluster dynamics as their final effect is increased energy absorption from the
-laser. For example, impact ionization where
+laser.
+\fxnote[author=LR,margin,noinline]{This is not necessarily true. you can say they can affect energy absorption and/or charge state spectra}
+For example, impact ionization where
 an electron hits an atom and promotes a bound electron to the continuum by
 sharing some of its kinetic energy is independent on the presence of a laser
-(but obviously still requires free electrons). As will be describe later,
+(but obviously still requires free electrons). As will be described later,
 indirect mechanisms are still important for the cluster dynamics and can also
 help energy transfer from the laser to the cluster.
 
 The cluster environment, due to the large particle density, has an important
-influence on both the laser-driven and particles-particles interaction and is
-a substantial aspect of the current work.
+influence on both the laser-driven and particles-particles interaction and
+aspects of how to incorporate its effect on laser-cluster interaction
+is a substantial aspect of the current work.
 
-The different mechanisms will be brought from the different wavelength regimes
-they appear or are dominant, by going from infrared (IR) down to X-rays. Figure
+
+This thesis will go over the different wavelength regimes, from the longer
+infrared (IR) down to X-rays, and introduce the different mechanisms
+appearing or which are dominant.
+Figure
 \ref{fig:regimes} shows the different regimes in terms of both wavelengths and
 intensities. Most studies on clusters are performed on femtosecond IR laser
 pulses which span a large range of intensity. These kind of lasers are
@@ -218,8 +254,8 @@ with relativistic electrons and as such are scarce and their intensity is limite
 compared to Ti:sapphire lasers. Nevertheless, as will be shown later on, their
 tunable wavelength allows them to access different interesting regimes.
 
-The Keldysh adiabatic parameter $\gamma$ separates regimes where processes are
-dominated by either photons or field\cite{Long2010} and reads
+The Keldysh adiabatic parameter $\gamma$ separates regimes where ionization
+processes are dominated by either photons or field\cite{Long2010} and reads
 \begin{align}
 % http://www.iuac.res.in/atmol/~safvan/safvan_thesis/node32.html
 \gamma & = \sqrt{ \frac{\textrm{Ip}}{2 U_p} } = \frac{\omega}{\omega_t},
@@ -251,8 +287,11 @@ the ionization potential and the later is not as important as before in the
 subsequent dynamics. The quiver motion of electrons in the oscillating laser
 field is minimum and photon interactions with the cluster is thus dominant.
 
-Note that the two regimes are not clearly segregated; Keldysh parameter states
-which kind of processes dominates but does not prevent them from happening.
+% you should define what you mean by quivery energy
+
+Note that the two regimes are not clearly segregated; Keldysh parameter
+%states which kind of processes dominates but does not prevent them from happening.
+predicts which process will dominate, but both can occur.
 Photon processes could happen in the field-dominated regime and the laser field
 can still move electrons around in the photon-dominated regime.
 
@@ -323,8 +362,8 @@ Configuration
 \end{center}
 \end{table}
 
-Let's now look at the different mechanisms present in the different regimes.
-Note that some regime-independent processes are presented afterwards.
+Let us now turn to a more detailed examination of the different mechanisms
+present in the different regimes, as well as some regime-independent processes.
 
 
 
@@ -354,8 +393,13 @@ The Coulomb potential of an atom can be bent enough by the (oscillating) laser
 field and the probability of a bound electron tunnelling out becomes significant,
 as shown on figure \ref{fig:ionization:tunnel}. Tunnel ionization is also
 sometimes called optical field ionization (OFI), or more simply field
-ionization, since the laser field is the source of the potential bending and
-ionization.
+ionization, since one can describe the process as the laser field as the source
+of the potential bending and ionization.
+\fxfatal[author=LR]{I made the change to the last sentence, but
+am still not happy with it. it's b/c the laser field picture is really only a
+semiclassical quantum picture in the length gauge. i will clarify more when we
+talk and maybe we can edit it appropriately then.}
+
 
 % Above Threshold Ionization (ATI) https://en.wikipedia.org/wiki/Above_Threshold_Ionization_%28ATI%29
 % Strong Field Approximation (SFI)
@@ -375,9 +419,10 @@ ionization.
 Tunnel ionization is at the heart of High Harmonic Generation (HHG) and
 attosecond science\cite{Fennel2010}. A laser pulse, normally in the IR regime,
 bends the atomic potential bounds electrons are feeling, allowing them to tunnel
-out. They are then accelerated in the laser field where they gain energy. When
-the laser polarization changes, electrons are forced back onto their parent ion
-where they recombine and emit high energy photons. The emission spectra,
+out. They are then accelerated in the laser field where they gain energy.
+As the laser field changes direction within a laser cycle, electrons are forced
+back onto their parent ion where they can
+recombine and emit high energy photons. The emission spectra,
 containing only odd harmonics, shows an intensity decrease as a function of
 harmonic number, followed by a plateau and a cutoff. Since the description
 of the phenomena in 1993\cite{Corkum1993}, HHG studies expended into its own
@@ -386,6 +431,8 @@ sub-field. For example, Murphy \textit{et al.} used the 21st harmonic of a
 with these new 32.6 eV (38 nm) photons.
 For more details on HHG see references~\cite{Levesque2006} and
 \cite{Lewenstein2008}.
+\fxfatal[noinline,margin,author=LR]{you should be prepared to answer "why only odd harmonics?"}
+
 
 \subsubsubsection{Inverse Bremsstrahlung Heating}
 
@@ -393,20 +440,24 @@ Once electrons are created in the IR regime they can continue to absorb energy
 from the laser.
 Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
 where an electron emits a photon when deflected, either by a heavier ion in the
-case of plasma or by magnetic fields in the case of synchrotrons. IBH is thus
+case of plasma, or by magnetic fields in the case of synchrotrons. IBH is thus
 the absorption of photons accelerating the electrons\cite{Schlessinger1979}.
 IBH plays an important role in the IR regime where the laser field easily
-drives the electrons through the cluster\cite{Fennel2010}. This linear momentum
+drives the electrons through the cluster\cite{Fennel2010}.
+\fxnote[author=LR,noinline,margin]{relate this to the "excursion" length, which is related to quiver energy, and the cluster size to give an intuitive picture of why.}
+This linear momentum
 is redistributed as thermal energy by collisions and scattering on heavier ions.
 The IBH rate is given\cite{Fennel2010} by:
 \begin{align}
 \left< \dt{E} \right> & = 2 U_p \frac{\tau \omega^2}{\tau^2 \omega^2 + 1}
 \end{align}
 where $\tau$ is the inverse of the collision frequency.
+\fxfatal[noinline,margin,author=LR]{which collision frquency?}
 
 \fxfatal{According to Bostedt2010\cite[page 3]{Bostedt2010}, IBH scales as
 $\lambda^{8/3}$ and cites Krainov2000\cite{Krainov2000} and
 Krainov2002\cite{Krainov2002}}
+% ? can you explain the problem to me when we talk next?
 
 \subsubsection{Shorter wavelengths: Into the VUV and XUV regime}
 \label{section:intro:mechanisms:vuv}
@@ -435,6 +486,10 @@ Xenon is at -12.27 eV requiring a photon wavelength equal or shorter than
 101.1 nm for ionization. These wavelengths are normally called
 \textit{vacuum ultra-violet} (VUV) or \textit{extreme ultra-violet} (XUV).
 
+\fxfatal[author=LR,noinline,margin]{xuv is a different regime from vuv. to
+clarify, give the expected ranges for both regimes from a reliable source}
+
+
 \begin{figure}
  \centering
  \includegraphics[width=\figurewidth]{figures/ionization_single}
@@ -455,7 +510,8 @@ target by measuring the photoelectron energy spectrum\cite{Fennel2010}.
 However, if the photon energy is less then the binding energy, than a single
 photon cannot ionize an atom. If the intensity is large enough though, the
 photon density will be sufficient that many photons can be absorbed during a
-small time laps. This effect is called multiple-photon ionization (MPI, not to
+small time interval.
+This effect is called multiple-photon ionization (MPI, not to
 be confused with the Message Passing Interface used in parallel programming) and
 is a non-linear process. The ionization rate of $\nu$-photons MPI is given
 by\cite{Fennel2010}:
@@ -468,7 +524,9 @@ intensities than single photon ionization. But being photon processes, both are
 superseded by tunnel ionization at even larger intensities (or when
 $\gamma~\gg~1$).
 
-
+\fxfatal[author=LR,noinline,margin]{there is also the above-threshold ionization
+regime, which you might want to mention, and was one of the first discoveries in
+the atto field}
 
 % \clearpage
 \subsubsubsection{Auger effect}
@@ -518,6 +576,8 @@ published article entitled ``Recombination effects in soft-x-ray cluster
 interactions at the xenon giant resonance'', published in May 2013 in
 \textit{New Journal of Physics}\cite{Ackad2013}.
 
+\fxfatal[author=LR]{i think this description of auger is good enough to include
+the other paper. then just remove the citation to the paper from ehre.}
 
 % ******************************************************************************
 \subsubsection{Regime independent processes}
@@ -558,9 +618,9 @@ high charge states as the results of the clusters
 explosion\cite{Wabnitz2002,Bostedt2010}. For example, Wabnitz \textit{et al.}
 saw, at FEL-DESY, Xe$^{4+}$ when Xe$_{80}$ clusters were irradiated with 98 nm,
 100 fs FEL pulses of, what was though at the time, $\ten{2}{13}$~W/cm$^2$
-intensity. For larger clusters (Xe$_{30,000}$), Xenon fragments up to
+intensity. For larger clusters (Xe$_{30,000}$), Xenon ions up to
 Xe$^{8+}$ were observed. This was a big surprise considering that the 98~nm
-photons (12.7 eV) could only ionize neutral xenon to Xe$^{1+}$ by itself;
+photons (12.7 eV) could only ionize neutral Xenon to Xe$^{1+}$ by itself;
 data showed that up to 30 photons were absorbed per atom for the largest
 clusters. Using a different source of photons and at a different wavelength
 (21st harmonic of an 800 nm Ti:sapphire, XUV: 32.6 eV, 38 nm),
@@ -569,24 +629,25 @@ clusters\cite{Murphy2008a,Murphy2008b}.
 
 Such high charge states could not be explained by the previous processes only.
 New mechanisms were thus proposed to explain these surprising results.
-The four main models proposed throughout the yeas are covered next.
+The four main models proposed throughout the years are covered next.
 
 
 \subsubsubsection{Atomic potentials}
 
 First, Santra \& Greene proposed using \textit{atomic potentials} instead of
-the Coulomb potential in a rate equation model (with infinite spacial
+the Coulomb potential in a rate equation model (with infinite spatial
 extension and
 constant density) as seen on figure \ref{fig:heating:atomic_pot}.
 The atomic nucleus is normally shielded by bound electrons but inside the
-electronic cloud the shielding disappear and the nucleus potential is more
+electronic cloud the shielding disappears and the nucleus potential is more
 important. If an impacting electron can get close enough to the core, it will
 feel the unshielded potential.
 In reference \cite{Greene2003}, Santra \& Greene used an approximated form for
 the atomic potential, fitting one parameter with the first ionization potential.
 A later\cite{Walters2006} publication used a
 potential shape generated by the code written by Herman and
-Skillman\cite{HS1963} (HS) to describe a more valid potential, based on a
+Skillman\cite{HS1963} (HS) to describe a more realistic
+potential, based on a
 Hartree-Fock formulation. Using these atomic potentials, they saw Xe$^{3+}$,
 Xe$^{5+}$ and Xe$^{7+}$ for intensities of $\ten{1.4}{12}$, $\ten{1.4}{13}$ and
 $\ten{7.3}{13}$~W/cm$^2$ respectively for Xe$_{1,500}$ clusters, similarly to
@@ -601,6 +662,7 @@ the barrier suppression in single photon absorption which is shown on figure
 of neighbours, the potential barrier between them is lowered and
 a photo-transition to the continuum becomes possible, even with a single photon.
 
+\fxfatal[author=LR]{nic, did we ever talk about the downsides of the rost model?}
 
 \subsubsubsection{Many-Body Recombination}
 
@@ -661,13 +723,15 @@ Xe$_{1,000}$ clusters.
 \clearpage
 \subsection{Contributions of thesis}
 
-In view of the previous section, the goal of the current thesis is to increase
-to global knowledge of laser-matter interaction. More specifically, the
+In view of the previous section, the goal of the current thesis is
+to increase to global knowledge of laser-matter interaction.
+\fxfatal[author=LR]{akward, please reword...}
+More specifically, the
 question of \textit{how} the energy is deposited in a nanoscale object
 --a rare gas cluster-- by an
 ultra-short and ultra-intense laser pulse will be studied. This interaction
 largely depends on the specific target material and on the pulse's wavelength
-and duration, both making up the interaction regime. A specific regime will
+and duration, both defining the interaction regime. A specific regime will
 thus be targeted; mainly short wavelengths, from VUV to XUV, as many questions
 raising from recent experiments are still debated.
 
@@ -678,6 +742,10 @@ nanoplasmas quite rapidly and have large charge and field fluctuations inside
 them. This and their finite nature makes it hard to use tools such as rate
 equations to model them.
 
+\fxfatal[author=LR]{we didn't "decide" to not use a quantum picture, we "couldn't". please reword.}
+
+\fxfatal[author=LR]{also remind me to talk to you about justifications of classical
+regmies in plasma physics... we might add that discussion here.}
 
 \subsubsection{Tools}
 
@@ -687,12 +755,12 @@ that were developed and implemented to answer our questions. While section
 section \ref{section:tools:qfdtd} describes in detail a quantum approach that
 was used named QFDTD for Quantum Finite-Difference Time-Domain.
 Note that all implementations used are original work; all code packages
-were developed from scratch under my supervision and no external packages
+were developed from scratch by me or under my direction and no external packages
 were used. The MD package described in
 section \ref{section:tools:md} ($\sim$16k lines of code) contains 86~\% of code
 written by me, 12~\% by Edward Ackad (postdoctoral fellow) and smaller contributions from
-Julien Roy during his summer 2012 internship. Furthermore, the QFDTD package
-($\sim$16k lines of code) contains 3~\% of code written by Stan Hatko while the
+Julien Roy (undergraduate student) during his summer 2012 internship. Furthermore, the QFDTD package
+($\sim$16k lines of code) contains 3~\% of code written by Stan Hatko (undergraduate student) while the
 rest is my original work. Most tools were written in C++ with Python being used
 for analysis and plotting.
 
@@ -701,6 +769,8 @@ ionization library was written by me, 20~\% by Edward Ackad and smaller
 contributions from Stan Hatko during his summer 2012 internship. All other
 libraries described in section \ref{section:tools:libraries} were fully
 written and developed by me.
+
+\fxfatal[author=LR]{if we add the recomb paper, do we have to change or add to the above?}
 
 All these powerful tools were extremely useful for my studies and will also allow
 the group to continue its investigation of laser-clusters interaction even
@@ -720,10 +790,10 @@ proposed models to explain these results as described in section
 \ref{section:intro:mechanisms:new}.
 Then, in 2010, Bosted \textit{et al.}
 re-calibrated the intensity used during the 2002 experiments.
-Instead of the previously though $\ten{2}{13}$~W/cm$^2$, the power density was
+Instead of the previously thought $\ten{2}{13}$~W/cm$^2$, the intensity was
 re-calibrated to $\ten{8}{12}$~W/cm$^2$, less than half of the initial value.
 Could the different models still produce the same amount of high charge states
-seen at the lower intensities?
+at the lower intensities?
 
 Additionally, in 2008 experiments \cite{Bostedt2008,Murphy2008b} were performed
 in the XUV regime near 30~nm~(41~eV). At this wavelength, the photon energy is
@@ -733,9 +803,10 @@ as collisional heating, that dominate intense laser-cluster interactions at
 longer wavelengths. This presents the opportunity to isolate the influence of
 the internal electronic structure from the laser-cluster interaction.
 
-Our group thus proposed another mechanism for energy transfer from the laser field
-to the cluster. With this two-steps model, an electron might not have enough
-kinetic energy to ionize an atom (or ion), but it could still transfer some of
+Our group thus proposed a new mechanism for energy transfer from the laser field
+to the cluster via two-step collisional ionization. With this two-step model, an
+electron might not have enough kinetic energy to directly collisionally ionize
+an atom (or ion), but it could still transfer some of
 its energy to promote a bound electron to an excited state. Once an atom is
 excited, it becomes easier to ionize, due to the large cross-sections of excited
 atoms and ions, by subsequent impact from a low energy electron. This gives the
@@ -790,7 +861,7 @@ the process.
 
 
 Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
-different transitions possible. This two-steps model is implemented using
+different transitions possible. This two-step model is implemented using
 cross-sections for collisional transition (ground state to excited state and
 excited state to continuum), similarly to traditional impact
 ionization. See section \ref{section:intro:md:cross-sections} for more
@@ -798,15 +869,15 @@ details on cross-sections.
 
 The ACI model revealed to be an important contribution to the field. As will be
 seen from the publications, experimental results can be reproduced with this
-simple model.
+model.
 
 
 
 \subsubsection{Publications}
 
 After the tools are presented in section \ref{section:tools}, the present thesis
-consists of a series of published and almost published articles where the models
-and tools are tested and used.
+consists of a series of four published articles and one article in preparation
+where the models and tools are tested and used.
 
 
 \subsubsubsection{ACI introduction paper}
@@ -827,7 +898,7 @@ than previously though which can have a significant impact on biomolecules
 imaging. This first ACI article was a stepping stone in the current work as it
 showed the validity of the model, as simple as it could be.
 
-
+\fxfatal[author=LR]{your contributions to this paper.}
 
 \subsubsubsection{Cluster size influence}
 
@@ -863,7 +934,11 @@ distribution are isotropic due to the high collisional rates while smaller
 clusters keep the anisotropy coming from photoionization.
 
 
+\fxfatal[author=LR]{your contributions to this paper}
+
 % \fxfatal{Add description of recombination paper}
+
+\fxfatal[author=LR]{put 100nm paper here}
 
 
 \subsubsubsection{A quantum approach}
