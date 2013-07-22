@@ -81,19 +81,19 @@ advantage of the GPU power while retaining portability.
 
 \subsubsection{GPU programming challenges}
 
-Unfortunately, porting a code to run on GPUs is not as simple as recompiling
-for the new architecture. While being portable, OpenCL does requires rewriting
+Porting a code to run on GPUs is not as simple as recompiling
+for the new architecture. While being portable, OpenCL does require, unfortunately, rewriting
 many parts of the code.
 
 
 \subsubsubsection{Refactoring}
 
 Some things are important to consider when porting codes to GPU frameworks.
-First, because a core on a GPU is quite slower than a core on a CPU,
+First, because a core on a GPU is much slower than a core on a CPU,
 parallelisms must be extracted from algorithms. The code must thus be
 completely refactored to exploit the parallelism. For example, a CPU
 implementation of the MD algorithm can be implemented by looping over particles
-and calculating all properties at once, for every particles. On the contrary,
+and calculating all properties at once, for every particle. On the contrary,
 due to the high vectorized nature of GPUs, it makes more sense to calculate
 only one particle property but for all particles before switching to the next
 property.
