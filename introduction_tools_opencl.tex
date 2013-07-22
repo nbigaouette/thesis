@@ -122,6 +122,8 @@ This prevents the GPU from being interrupted too often and reduces the amount of
 data transfers. Using this OpenCL implementation, MD simulations could be run
 80 times faster than on conventional CPUs.
 
+% 80 times faster on the GPU, right? 
+
 As for the QFDTD, only the real time algorithm was implemented as OpenCL
 kernels since the imaginary time method did not require long simulation times.
 As in the case of the MD, the real time algorithm is left running on the GPU
@@ -134,7 +136,7 @@ transfers.
 
 One of the most problematic part of GPU programming is the lack of debugging
 tools. Many different tools and techniques exist to detect and fix problems in
-normal codes. The following describes them and their counterpart, when present,
+normal CPU codes. The following describes them and their counterpart, when present,
 on GPUs.
 
 
@@ -148,11 +150,11 @@ such printing function (such as C or C++'s \textit{printf()}) cannot be used at
 all on a GPU! The reason is that the main processor must be able to
 \textit{read} the variable from memory to be able to print it to screen and yet
 the variable's content is \textit{not} in main memory, only the video card's
-memory! It must be noted though that some OpenCL drivers (for example AMD's
+memory. It must be noted though that some OpenCL drivers (for example AMD's
 APP SDK\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-accelerated-parallel-processing-app-sdk/}}
 or Intel's SDK for OpenCL Applications
 2013\footnote{\url{http://software.intel.com/en-us/vcsource/tools/opencl-sdk}})
-have specific extensions that allows using \textit{printf()}-like functions
+have specific extensions that allow using \textit{printf()}-like functions
 inside OpenCL kernels. These extensions must explicitly be enabled in kernel
 files using
 \begin{verbatim}
