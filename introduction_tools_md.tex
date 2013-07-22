@@ -5,6 +5,8 @@
 
 % somewhere you should mention that the order (N^2) scaling is only for long range potentials. for short range potentials, the scaling is order (N), so we should be clear here that in this thesis, we're interested in long range (ie, coulomb)
 
+% you may also want to mention somewhere that we are treating ions and electrons, and that ions have different charge states possible. and that we choose our ion potentials so that they scale - so that a +3 ion + electron on top looks like a +2, for example.
+
 Due to the high charge states seen in experiments with clusters the most
 practical method to microscopically study the ionization dynamics is
 \textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
@@ -582,10 +584,15 @@ Additionally, the knowledge and experience gained by writing from scratch such
 a package is invaluable.
 
 
+
+% need to have much better flow to the next section. an introductory paragraph of something. It's really jarring. perhaps move the MD implementation into the previous section somehow, and make the below on the implementation details of the quantum rates??
+
+
 \subsubsection{Potential threshold $V_b$}
 \label{section:intro:Vb}
 
-Many ionization processes described previously consider an isolated atom but
+Many ionization processes described in the introduction %previously 
+consider an isolated atom but
 clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$) and
 so the environment cannot be ignored.
 
@@ -625,8 +632,11 @@ positive potential is negative, hence the negative curves on figure
 
 
 Continuing in the example case of figure \ref{fig:md:Vb}, we introduce a
-second ion that will simulate the cluster environment. This second ion, of
-charge state 5+ and located at $r$~=~-15 Bohr, is creating a
+second ion 
+as an example of the simplest 
+%that will simulate the 
+cluster environment. This second ion, of
+charge state 5+ in this example and located at $r$~=~-15 Bohr, is creating a
 potential that is not constant around the first ion (red-dashed line). The potential energy of
 the test particle in this potential is plotted as the red dashed line. The total
 potential energy of the test particle due to the two ions is plotted as a black
@@ -657,6 +667,7 @@ ionization processes. In this work, an ionization event is defined as one
 electron that leaves its parent ion, reaching infinity with a final kinetic
 energy of zero.
 
+% this is *not true* within the cluster environment, but only in the isolated atom picture. in the cluster environment, don't we use Vb?
 
 \subsubsubsection{Single photon ionization}
 
@@ -664,7 +675,10 @@ In the case of single photon ionization, a new electron is created right on top
 of the ion with an updated charge state. At this point, all other particles in
 the cluster will not see the difference the potential created by this new
 particles pair $\frac{Z+1}{r} - \frac{1}{r}$ is the same as the previous ion's
-$Z/r$. For the new electron to reach infinity with a null kinetic energy, it
+$Z/r$. 
+% refer to what it really is, with the softened potentials!
+%
+For the new electron to reach infinity with a null kinetic energy, it
 must have, at its creation time, enough kinetic energy to leave the ion. This
 kinetic energy must thus match the potential energy between the ion (with an
 updated charge state) and the electron so the total energy of the electron with
@@ -673,12 +687,16 @@ respect to the ion is zero.
 Additionally, the electron will contain in its kinetic energy the difference
 between the absorbed photon and the ionization potential of the ion.
 
+% stress that this zero at infinity is only for the isolated atom case, and that in the cluster environment it's influenced by Vb. because except for the very first ionization (where all are neutral, so there is no Vb), this will NOT be true for a cluster. 
+
 \subsubsubsection{Impact ionization}
 
 For impact ionization, the impacting electron's kinetic energy used in equation
 \eqref{eqn:impact:ionization:lotz} is the kinetic energy the electron has
 \textit{at infinity}, meaning that the impacting electron and the atom (or ion)
 are isolated from each other.
+
+% please clarify that the above and below paragraphs are only for the isolated atom case 
 
 At infinity, the electron's total energy only contains kinetic
 energy. We call this kinetic energy $K_{\textrm{thresh}}$ for ``kinetic energy
@@ -712,7 +730,9 @@ section.
 When an impact ionization event occurs and if the impacting electron has more kinetic
 energy, it can either keep the extra, give all the extra, or give a fraction of
 the extra to the new electron. We split the extra kinetic energy between the two
-electrons to assure that they do not fall back unto the ion.
+electrons to assure that they do not fall back 
+%unto 
+into the ion.
 
 
 % Figure \ref{fig:impact:before:Z} shows the process of impact ionization when an
@@ -920,6 +940,8 @@ Implementing any kind of ionization in the model is done through cross-sections.
 Because cross-sections can be obtained from experiments for any kind of target,
 it is easily integrated into the model.
 
+% you might also want to mention that we use some calculated and some experimental cross sections.
+
 
 \subsubsubsection{Single photon ionization}
 
@@ -944,7 +966,10 @@ a random number $r$ between 0 and 1:
 When the previous test succeeds, ionization takes place and a new electron is
 created in the code.
 Then, the intensity profile of the laser $I\pa{t}$ is decreased
-by one photon for better description of low fluence pulses.
+by one photon 
+%
+to incorporate laser depletion. This is especially important
+for a more accurate description of cluster interaction with low fluence pulses.
 
 
 \subsubsubsection{Collisional processes}
@@ -982,14 +1007,17 @@ cross-sections relative to the total one.
 
 \subsubsection{Recombination}
 
+%some changes in the below, not indictated directly...
 In a classical simulation electrons could cool down into the ions' infinite Coulomb
 potential where they would have a total energy less then what is allowed
-according to quantum mechanics. Using a smoothing potential as in equation
+according to quantum mechanics. This would lead to artifical cluster heating, as this electron gives up its energy to the cluster as it cools.
+%
+Using a smoothing potential as in equation
 \eqref{eqn:md:smoothed:phi} will prevent the singularity but if the potential
-depth used is deeper than the ionization potential, their can still be a problem.
-Recombination is thus used to prevent such unphysical events. When an electron's
-total energy (with respect to the ion) falls under the ionization potential,
-recombination happens: the electron disappear from the simulation and the ion
+depth used is deeper than the ionization potential, there can still be a problem.
+Recombination to the ground state is thus used to prevent such unphysical events. When an electron's
+total energy (with respect to the ion) falls under the highest unoccupied orbital energy,
+recombination is forced: the electron disappears from the simulation and the ion
 charge state is updated.
 
 Additionally, recombination plays an important role in the dynamics of the
