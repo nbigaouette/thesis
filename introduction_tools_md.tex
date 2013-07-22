@@ -1016,19 +1016,23 @@ Using a smoothing potential as in equation
 \eqref{eqn:md:smoothed:phi} will prevent the singularity but if the potential
 depth used is deeper than the ionization potential, there can still be a problem.
 Recombination to the ground state is thus used to prevent such unphysical events. When an electron's
-total energy (with respect to the ion) falls under the highest unoccupied orbital energy,
+total energy (with respect to the ion) falls below the energy of the lowest unoccupied state,
+% Nic: verify this is true - I think 'ionization potential' is very unclear here.
 recombination is forced: the electron disappears from the simulation and the ion
-charge state is updated.
+charge state is increased by one.
 
+%Revise the below to include the recomb paper:
 Additionally, recombination plays an important role in the dynamics of the
 exploding cluster. Experiments at FLASH in 2009 on Xenon clusters in the XUV
 regime\cite{Thomas2009} could be reproduced by our models when recombination
-was enable; we found that the lower charge states detected would come from the
+was enabled; we found that the lower charge states detected would come from the
 cluster core where recombination is important. This study was published in
 May 2013's edition of \textit{New Journal of Physics}\cite{Ackad2013}
 
-Recombination was also included in the fifth study, included in section
-\ref{section:papers:100nm}, as it allowed to lower the potential depth of the
+
+% i reworded below:
+Recombination was also required for the work in section
+\ref{section:papers:100nm}, as it allowed us to lower the potential depth of the
 ions for more physical simulations.
 
 % Recombination is tested by calculating the total energy of an electron and
