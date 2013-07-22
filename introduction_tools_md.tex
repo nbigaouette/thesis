@@ -344,7 +344,11 @@ studies in later sections.
 
 \subsection{Long range potential: Hierarchical Tree algorithms}
 
-The $O\pa{N^2}$ scaling of the MD algorithm can be problematic when the number of
+The $O\pa{N^2}$ scaling of the MD algorithm 
+%
+for long-range forces
+%
+can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
 exist to reduce the computational burden. 
@@ -361,7 +365,7 @@ The main issue with the direct calculation of forces in MD is the lack of
 distinction between the close particles and distant ones. While the resulting
 potential of a distant particle is small, the computational cost required to
 calculate it is the same as in the case of a nearby particle. Some MD
-calculation use an artificial cutoff; particles farther then this cutoff will
+calculations use an artificial cutoff: particles farther then this cutoff will
 be ignored in the calculation of the force on one particle. This is acceptable
 when the force acting on particles is short range, either due to screening or
 to the nature of the force (Lennard-Jones for example).
@@ -415,7 +419,7 @@ The tree algorithm first split the computational domain into an octree (in
 three dimension) or quadtree (in two dimensions) until
 only a maximum of one particle is present per cell as can be seen figure
 \ref{fig:tree:quadtree}. The deepest cells of the tree, containing only one particle,
-are called leaves. Once every particles in the system are inserted in the tree,
+are called leaves. Once every particle in the system is inserted in the tree,
 the electrostatic moments are propagated from the leaves up to the root cell,
 the top cell enclosing the whole domain.
 
