@@ -6,17 +6,25 @@ through graphics cards. Similar to the ubiquitous Moore's Law in the CPU world,
 video cards power evolved exponentially during the last twenty years, pushed
 by the never ending need of more realistic video games. From ``dumb'' devices
 drawing primitive shapes on a display, they evolved to extremely powerful
-devices and started to act more like CPU by being programmable (shaders) during
-the first half of 2000. The term \textit{Graphical Processing Unit} (GPU) was
+devices and started to act more like CPUs by being programmable (shaders) during
+the first half 
+%
+decade 
+% is that what you meant?
+%
+of 2000. The term \textit{Graphical Processing Unit} (GPU) was
 coined in 1999 by Nvidia, the biggest vendor of video cards, as a selling point
 to their product and to emphasize the fact that their chips were becoming more
-and more alike CPUs.
+and more %alike
+like CPUs.
 
 
 \subsubsection{General-Programming GPU (GP-GPU)}
 
 Due to this increase in power, people tried to use these video cards as
-accelerators for other things than real video operations. Because GPUs have
+accelerators for 
+%other things
+compuations other than real video operations. Because GPUs have
 intrinsically high parallelism (for example the same operation is performed on
 all pixels of an image in parallel) HPC users and developers got interested.
 In his 2005 book, Taflove described a way to use a video card's GPU to
@@ -37,7 +45,7 @@ tackle.
 In 2007, Nvidia saw an opportunity for market expansion. Why not let
 non-videogames programmer use the powerful GPUs for something else then video
 operations? For this to happen, a programming framework had to be released; the
-amount of programmers and scientists able to exploit OpenGL to their advantage
+mount of programmers and scientists able to exploit OpenGL to their advantage
 was limited. They thus released their \textit{Compute Unified Device
 Architecture} (CUDA), later just renamed CUDA. CUDA allows writing normal C or
 C++ programs with some extensions, called \textit{kernels}, that can be run on
