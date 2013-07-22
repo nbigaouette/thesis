@@ -230,13 +230,7 @@ influence on both the laser-driven and particles-particles interaction and
 aspects of how to incorporate its effect on laser-cluster interaction
 is a substantial aspect of the current work.
 
-
-This thesis will go over the different wavelength regimes, from the longer
-infrared (IR) down to X-rays, and introduce the different mechanisms
-appearing or which are dominant.
-Figure
-\ref{fig:regimes} shows the different regimes in terms of both wavelengths and
-intensities. Most studies on clusters are performed on femtosecond IR laser
+Most studies on clusters are performed on femtosecond IR laser
 pulses which span a large range of intensity. These kind of lasers are
 widespread and dominated by Ti:sapphire pumped with another laser. The pump
 laser (Nd:YAG) lases at 1064 nm and is frequency-doubled to 534 nm in a
@@ -247,9 +241,18 @@ The advance of Free-Electron Lasers (FEL) allowed high intensity of VUV, XUV and
 even X-rays laser source. As described previously, FEL require large facilities,
 mainly due to the linear particle accelerator required to seed the ondulator
 with relativistic electrons and as such are scarce and their intensity is limited
-compared to Ti:sapphire lasers. Nevertheless, as will be shown later on, their
+compared to Ti:sapphire lasers. Nevertheless their
 tunable wavelength allows them to access different interesting regimes.
 
+The different regimes are shown on figure \ref{fig:regimes}.
+The vertical axis shows the different regimes as
+function of wavelengths. They will be presented, in the following subsection,
+in order of wavelength, from longest to shortest. At each regime, dominant
+processes will be presented.
+
+% http://www.spacewx.com/Docs/ISO_PRF_21348_e_review.pdf
+As can be seen on figure \ref{fig:regimes}, the laser's intensity also dictates
+the regime.
 The Keldysh adiabatic parameter $\gamma$ separates regimes where ionization
 processes are dominated by either photons or field\cite{Long2010} and reads
 \begin{align}
@@ -268,15 +271,14 @@ frequency:
 \omega_t & = \frac{e E}{\sqrt{2 m \textrm{Ip}}}
 \end{align}
 
-
 When $\gamma~\ll~1$, the laser field strength is large compared to the ionization
 potential. In that case, a bound electron will feel a significant bending of the
 atomic potential and will thus have a significant probability of tunnelling out.
 For this to happen, the ionization potential Ip must be
 smaller than the ponderomotive energy $U_p$. Figure \ref{fig:regimes} shows,
-as dashed lines, constant values of the ponderomotive force. In plain line,
-the (first) ionization potential of Xenon is plotted. The field dominated regime
-lies under this line.
+as dashed lines, constant values of the ponderomotive energy. The plain line shows
+a ponderomotive energy value equal to the (first) ionization potential of Xenon.
+The field dominated regime lies under this line.
 
 Otherwise, when $\gamma~\gg~1$, the laser field strength is weak compared to
 the ionization potential and the later is not as important as before in the
@@ -366,7 +368,7 @@ present in the different regimes, as well as some regime-independent processes.
 \subsubsection{Long wavelength: The IR regime}
 \label{section:intro:mechanisms:ir}
 
-Most femtosecond lasers are Ti:sapphire that have a wavelength of around 800 nm.
+Most femtosecond lasers are Ti:sapphire that have a wavelength centred around 800 nm.
 This type of lasers sparked the research on clusters. They cover a wide range of
 intensity and as such can touch different regimes, from the photon-dominated
 one at low intensities to the field-dominated one at larger intensities and
@@ -457,9 +459,22 @@ Krainov2002\cite{Krainov2002}}
 \subsubsection{Shorter wavelengths: Into the VUV and XUV regime}
 \label{section:intro:mechanisms:vuv}
 
+% http://www.laserfocusworld.com/blogs/what-the-hecht/2012/05/euv-xuv-acronym.html
+% http://www.spacewx.com/Docs/ISO_PRF_21348_e_review.pdf
+% http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=39911
+
 With the help of new FEL facilities, high laser intensities can be reached at
 lower wavelength (and thus larger photon energy) than with traditional
-femtosecond lasers.
+femtosecond lasers. \textit{Vacuum ultraviolet} (VUV) radiation, ranging from 200 to
+10~nm (6.2 to 124~eV), is normally absorbed by the atmosphere. Studying them
+requires vacuum chambers (hence the name) or a pure nitrogen propagation medium.
+At short wavelengths, the photons can start to ionize inner shell electrons. In
+that case, the term \textit{extreme ultraviolet} (XUV, or EUV) is used. XUV wavelengths
+range from 121~nm (hydrogen's Lyman alpha line, 10.25 eV) to 10~nm (124~eV).
+As the two regimes have overlapping wavelengths, they are often used
+interchangeably but XUV is generally used with wavelengths where no
+material is known to be transparent\cite{Laane2009}. Note that in other fields
+XUV can be used to describe soft X-rays\cite{Eichmeier2008,iso21348}
 
 At relatively low intensity (less than 10$^{14}$~W/cm$^2$
 \cite{Ramunno2008}), in the photon-dominated regime, atoms and ions
@@ -478,11 +493,7 @@ absorbs a photon from the laser and is promoted to the continuum where it is
 free to leave its parent ion. Figure~\ref{fig:ionization:single} shows a
 schematic of the mechanism. For example, the first energy level of atomic
 Xenon is at -12.27 eV requiring a photon wavelength equal or shorter than
-101.1 nm for ionization. These wavelengths are normally called
-\textit{vacuum ultra-violet} (VUV) or \textit{extreme ultra-violet} (XUV).
-
-\lrfatal[noinline,margin]{xuv is a different regime from vuv. to
-clarify, give the expected ranges for both regimes from a reliable source}
+101.1 nm for ionization.
 
 
 \begin{figure}
