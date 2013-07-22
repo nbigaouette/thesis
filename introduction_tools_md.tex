@@ -2,6 +2,9 @@
 \subsection{Molecular Dynamics (MD)}
 \label{section:tools:md}
 
+
+% somewhere you should mention that the order (N^2) scaling is only for long range potentials. for short range potentials, the scaling is order (N), so we should be clear here that in this thesis, we're interested in long range (ie, coulomb)
+
 Due to the high charge states seen in experiments with clusters the most
 practical method to microscopically study the ionization dynamics is
 \textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
@@ -94,8 +97,6 @@ $O\pa{N^2}$
 interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
-
-%you can mention here some improvements on this, tree code, multipole methods, etc
 
 An example cluster can be seen on figure \ref{fig:md:cluster}. 
 This
@@ -346,8 +347,11 @@ studies in later sections.
 The $O\pa{N^2}$ scaling of the MD algorithm can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
-exist to reduce the computational burden. These \textit{hierarchical tree}
-algorithms were introduced by Barnes and Hut in 1986\cite{Barnes1986}. To
+exist to reduce the computational burden. 
+%
+One class of methods uses
+\textit{hierarchical tree}
+algorithms as introduced by Barnes and Hut in 1986\cite{Barnes1986}. To
 reduce the computational burden, particles are grouped in a hierarchical tree
 (quadtree in two dimensions, octree in three). While Barnes used his
 \textit{treecode} to solve the N-body problem in the context of gravitational
