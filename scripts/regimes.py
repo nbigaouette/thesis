@@ -6,6 +6,8 @@ import plot
 from mpl_toolkits.axes_grid1.parasite_axes import SubplotHost
 import matplotlib.transforms as mtransforms
 import matplotlib.patches as mpatches
+from matplotlib.colors import LogNorm
+from matplotlib import cm
 
 import plot_params
 
@@ -101,11 +103,6 @@ Up_1keV = curve_from_loglog_pts(7e13,  1e20, 0.1, 120, I)
 Up_12eV = cst.J_to_eV * photon_energy(12.265625*cst.eV_to_J, I / ((cst.cm_to_m)**2))
 Up_16eV = cst.J_to_eV * photon_energy(16.0*cst.eV_to_J, I / ((cst.cm_to_m)**2))
 
-ax_eV.set_xlim((I_min, I_max))
-ax_eV.set_ylim((eV_min, eV_max))
-ax_wl.set_ylim((eV_to_nm(eV_min), eV_to_nm(eV_max)))
-
-
 # Make sure to set a Z-order less than the white background text in draw_text_box()
 ax_eV.plot(I, Up_1eV,  '--k', alpha = 0.5, label = '$U_p = 1 eV$', zorder = -10)
 ax_eV.plot(I, Up_1meV, '--k', alpha = 0.5, label = '$U_p = 1 meV$', zorder = -10)
@@ -151,24 +148,35 @@ draw_text_box(ax_eV, "Relativistic regime",
               color = (1., 1., 1.))
 
 #draw_text_box(ax_eV, "Optical femtosecond lasers (IR)",
-draw_text_box(ax_eV, "Infrared (IR) femtosecond lasers",
-              1.0e11, 1.0e20, 1.5, 3.5,
+draw_text_box(ax_eV, "Femtosecond lasers",
+              1.0e11, 1.0e20, 0.75, 3.5,
               color = 'red')
-
 draw_text_box(ax_eV, "Infrared FEL",
               1.0e11, 6.0e13, 0.1, 0.7,
               color = (255.0/255.0, 153.0/255.0, 255.0/255.0))
               #color = 'cyan')
 
+extent = (1.0e11, 1.0e15, 6.2, 124)
+x = np.linspace(0.0, 1.0, 3)
+y = np.linspace(0.0, 1.0, 100)
+X,Y = np.meshgrid(y, y)
+Z = np.exp(Y)
+x = np.linspace(extent[0], extent[1], len(x))
+y = np.linspace(extent[2], extent[3], len(y))
+X,Y = np.meshgrid(y, y)
+print "--> The warning 'UserWarning: Images are not supported on non-linear axes.' can be ignored."
+print "--> Even though the axes are log-scaled, the rectangle with the colormap should be shown on linear scale."
+print ""
+#im = ax_eV.imshow(Z, cmap=cm.cool, alpha=.9, interpolation='bilinear', extent=extent)
+#im = ax_eV.pcolormesh(x, y, Z, cmap=cm.cool, shading='gouraud')
+im = ax_eV.pcolorfast(x, y, Z, cmap=cm.cool, alpha=0.7)
+#im = ax_eV.pcolor(x, y, Z, cmap=cm.cool)
 draw_text_box(ax_eV, "VUV",
-              1.0e11, 1.0e15, 11, 33,
-              color = 'magenta')
-draw_text_box(ax_eV, "",
-              1.0e11, 1.0e15, 33, 75,
-              color = 'magenta')
+              1.0e11, 1.0e15, 6.2, 17,
+              color = 'none')
 draw_text_box(ax_eV, "XUV",
-              1.0e11, 1.0e15, 75, 200,
-              color = 'magenta')
+              1.0e11, 1.0e15, 47, 124,
+              color = 'none')
 
 draw_text_box(ax_eV, "XFEL",
               1.0e11, 1.0e17, 250, 1000,
@@ -176,8 +184,12 @@ draw_text_box(ax_eV, "XFEL",
 
 
 
+ax_eV.set_xlim((I_min, I_max))
+ax_eV.set_ylim((eV_min, eV_max))
+ax_wl.set_ylim((eV_to_nm(eV_min), eV_to_nm(eV_max)))
+
 
 for ext in ['pdf', 'svg']:
-  plot.savefig('regimes.' + ext)
+    plot.savefig('regimes.' + ext)
 plot.show()
 
