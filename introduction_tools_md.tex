@@ -282,9 +282,12 @@ respective electrostatic field.
 
 It was found that the potential given by the charge distribution of equation
 \eqref{eqn:md:smoothed:phi} and the associated electrostatic field of
-\eqref{eqn:md:smoothed:E} give the less numerical heating. As explained
+\eqref{eqn:md:smoothed:E} give the 
+%less 
+least numerical heating. As explained
 previously, the time discretization used to integrate the equations of motion
-assume that the change in force between two time steps is linear. As can be
+%assume
+assumes that the change in force between two time steps is linear. As can be
 seen on figure \ref{fig:potential:shapes}, the charge distribution curve
 (magenta) does not have a discontinuity and is therefore the prefered one.
 
@@ -293,20 +296,32 @@ on a single atom and the total energy calculated. In this ionization case, the
 electron comes out of the ion with a maximum of kinetic energy so that
 its total energy is the difference between the photon energy and the ionization
 potential. It is thus a
-good candidate to test quantitatively measure numerical heating. If the total
+good candidate %to test quantitatively measure numerical heating. 
+for a quantitative measurment of numerical heating.
+If the total
 energy is conserved, then the selected parameters (potential depth, smoothing
 curve and time step) can be used with good confidence. Figures
 \ref{fig:potential:heating:dt} and \ref{fig:potential:heating:depth} show the
 energy variation of the process as a function of time step (for different
-potential depth) and as a function of potential depth (for different time step).
-A time step of 0.5 attosecond is often taken as, as can be seen on figure
-\ref{fig:potential:heating:depth} it minimizes the energy variation for a large
-range of potential depth. Additionally, it is still above the limit where
-lowering the time step size does not reduce the error (around 0.05 as). This
-limit is due to the floating point precision of the computer. The specific
+potential %depth
+depths) and as a function of potential depth (for different time 
+%step
+steps).
+A time step of 0.5 attosecond is often taken as
+% switched order below
+it minimizes the energy variation for a large
+range of potential depths, as can be seen on figure
+\ref{fig:potential:heating:depth}. 
+%
+%Additionally, it is still above the limit where
+%lowering the time step size does not reduce the error (around 0.05 as).
+%
+It is important to note that at around 0.05 as, there is a 
+limit due to the floating point precision of the computer. The specific
 parameters (time step and potential depth) are specified in the different
 studies in later sections.
 
+%can you say something about why there is a floating point precision issue? because the code is written in SI units, right? I guess this is a limitation of the code....
 
 \begin{figure}
  \centering
