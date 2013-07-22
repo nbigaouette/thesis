@@ -4,8 +4,10 @@
 Additionally to the MD and QFDTD packages, eight libraries were developed to
 support some generic features shared between the two.
 
-\fxnote[noinline,margin]{Lora: Can I release these libraries on the internet?
-Reviewers could then see them (or use them!)}
+%\fxnote[noinline,margin]{Lora: Can I release these libraries on the internet?
+%Reviewers could then see them (or use them!)}
+
+% I don't see why not.
 
 \subsubsection{timing.git} \label{section:tools:libraries:timing}
 
@@ -102,7 +104,7 @@ electrons instead. The MD stores each electrons' nearest neighbour in a flag,
 allowing the ionization library to calculate the required values for ionization.
 
 To keep the library generic (so it can be used with other simulation packages,
-not just the MD developed here), the library does not explicitly creates
+not just the MD developed here), the library does not explicitly create
 electrons (or recombine them). It instead calls functions that \textit{must}
 be defined in the simulation package for the exact values to set.
 
