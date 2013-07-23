@@ -111,9 +111,7 @@ halted when either ionization is to be calculated (every femtosecond) or
 when data needs to be saved (to take a snapshot of the simulation for example).
 This prevents the GPU from being interrupted too often and reduces the amount of
 data transfers. Using this OpenCL implementation, MD simulations could be run
-80 times faster than on conventional CPUs.
-
-% 80 times faster on the GPU, right?
+80 times faster on GPUs than on conventional CPUs.
 
 As for the QFDTD, only the real time algorithm was implemented as OpenCL
 kernels since the imaginary time method did not require long simulation times.
