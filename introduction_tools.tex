@@ -14,7 +14,7 @@ Time-Dependent \schrodinger Equation (TDSE) directly and the Quantum Monte-Carlo
 systems of small numbers of electrons; clusters cannot be studied using these
 methods.
 
-% few workds about the quantum monte carlo method, and a citation?
+\lrnote{few workds about the quantum monte carlo method, and a citation?}
 
 Larger systems can be studied using \textit{ab initio} methods (``from
 first principles'') which covers a wide range of techniques. In this class of
@@ -29,11 +29,9 @@ correlation is added. An example is the \textit{Configuration Interaction} (CI)
 method. Because of their great accuracy, these methods are restricted to
 relatively small systems, generally less then 10 atoms. Full \textit{ab initio}
 treatment of clusters is also not possible.
+\lrfatal{citations for the above}
 
-%  citations for the above
-
-Larger systems %requires 
-require
+Larger systems require
 more approximations. \textit{Density Functional Theory}
 is an often used method for cluster studies requiring quantum aspects, with
 either quantum or semiclassical propagation. It starts by formulating an
@@ -43,8 +41,7 @@ dynamic equations from it. All approximations are done in the selection of this
 mainly computational power available. On the other side, because the chosen
 functional approximate the underlying quantum system, specific quantum effects
 might not be included, for example shell effects or tunnelling are neglected.
-
-% citation for the above
+\lrfatal{citation for the above}
 
 Because DFT methods are mean field in nature, they cannot account for the large
 field fluctuations seen in strong field cluster dynamics.
@@ -54,28 +51,23 @@ Dynamics (MD) solves Newton
 equations of motion with any kind of forces between particles. When used in
 laser-cluster simulations, MD generally uses the instantaneous electrostatic
 (Coulomb) force between charged particles. MD codes have the advantage of being
-%simple 
-straightforward
-% (dont' want to make the bulk of the thesis sound "simple" :)
-to implement and use, give macroscopic properties easily and allow a
+straightforward to implement and use, give macroscopic properties easily and allow a
 relatively large amount of particles to be simulated, while still allowing
 specific quantum treatment when necessary (for ionization events for example). For
-these reasons it is the method of choice for use in the present work. 
-%
-% for the below, want to emphasize that microscopic pic is a NEW method, rather than the estabilished methods you describe above. and you could say that it is an interesting future direction, or something like that.
-PIC
-methods, where particles interact with a grid which propagates the
+these reasons it is the method of choice for use in the present work.
+\lrnote[noinline,margin]{for the below, want to emphasize that microscopic pic
+is a NEW method, rather than the estabilished methods you describe above. and you
+could say that it is an interesting future direction, or something like that.}
+PIC methods, where particles interact with a grid which propagates the
 electromagnetic field (through Maxwell's equations) that other particles see,
 can also be successively used to model clusters\cite{Varin2012}, but they tend
 to be more complex and lack the simplicity of MD. Even though they can scale to
-larger number of particles, for smaller systems the grid 
-%add
-adds
-an extra overhead
-not present in MD.
+larger number of particles, for smaller systems the grid adds
+an extra overhead not present in MD.
 
-% add citation for MD method. might also mention that there are refinements on md, like treecode, and also
-% the limitation that it cannot account for field propagation effects, like the microscopic pic can.
+\lrnote{add citation for MD method. might also mention that there are
+refinements on md, like treecode, and also the limitation that it cannot account
+for field propagation effects, like the microscopic pic can.}
 
 On the end of the methods spectrum lies rate equations methods where a time
 dependence for parameters is written down and solved. Too many approximations
@@ -89,9 +81,7 @@ In the following section, the tools and their implementation used in the present
 work will be presented. Unless stated otherwise, all implementations are original
 and were done from scratch, except the Hartree-Fock-based Cowan code\cite{CowanCode} used to
 in the calculation of various required cross-sections.
-%calculated some cross-sections.
-
-%It is hartree-fock, isn't it? just want to verify
+\lrnote[noinline,margin]{It is hartree-fock, isn't it? just want to verify}
 
 
 \input{introduction_tools_md.tex}
@@ -99,4 +89,3 @@ in the calculation of various required cross-sections.
 \input{introduction_tools_opencl.tex}
 \input{introduction_tools_libraries.tex}
 
-g
