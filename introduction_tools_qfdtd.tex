@@ -33,8 +33,7 @@ it was decided to explore this idea since not much work could be found on this
 \textit{Quantum FDTD} (QFDTD) method and due to previous experiences
 implementing electrodynamics FDTD.
 
-FDTD is an %(old)
-established algorithm developed in 1966 by Yee\cite{Yee1966} to solve
+FDTD is an established algorithm developed in 1966 by Yee\cite{Yee1966} to solve
 Maxwell's equation on a grid using leap-frog integration.
 It is actually the method used in PIC simulations to propagate the electromagnetic
 field through the grid.
@@ -46,8 +45,6 @@ magnetic fields requires huge amount of memory that were definitely not present
 in the late '60s. The reader is invited to read the excellent book on FDTD by
 Allen Taflove and Susan Hagness\cite{Taflove2005} covering 40 years of FDTD
 development in electrodynamics simulations.
-
-% i heard there is an updated fdtd version
 
 Other simulation techniques like Finite-Element Methods (FEM) or Finite-Volume
 Methods (FVM) can be seen as more complex then Finite-Differences Methods
@@ -262,10 +259,10 @@ eigenvalues of all eigenstates present in the simulated wavefunction $\psi$.
 \subsubsection{Imaginary time}
 
 The second QFDTD method, called the \textit{imaginary-time} method, differs in
-that it first requires that the potential be constant in time (
-$V\pa{\vr, t} \rightarrow V\pa{\vr}$).
-Further, a Wick rotation is performed in time ($\im t
-\rightarrow \tau$) and the \schrodinger equation in imaginary time is
+that it first requires that the potential be constant in time
+($V\pa{\vr, t} \rightarrow V\pa{\vr}$).
+Further, a Wick rotation is performed in time ($\im t \rightarrow \tau$)
+and the \schrodinger equation in imaginary time is
 obtained:
 \begin{align}
 - \deli{}{\tau} \ket{\psi\pa{\vr, \tau}}
@@ -293,7 +290,8 @@ the different eigenstates from each other. I developed a novel method to isolate
 states, as described in the published article of section
 \ref{section:papers:qfdtd} (page \pageref{section:papers:qfdtd}).
 
-% I changed the wording a bit above; also describe briefly why you needed to develop a novel method to isolate those states
+\lrnote{I changed the wording a bit above; also describe briefly why you needed
+to develop a novel method to isolate those states}
 
 Because equation \eqref{eqn:schrodinger:imaginary} is real, only a single scalar
 field needs to be discretized on the grid. The discretization is similar to the
@@ -360,10 +358,8 @@ the Coulomb potential vary drastically close to the nucleus which requires
 a small grid cell size to efficiently sample, increasing uselessly the precision
 far from it and thus multiplying the memory requirement.
 
-In this thesis I developed a method to
-%novel method was developed to
-concentrate three dimensional grid cells close
-to centres of interest and thus reduce significantly the amount of memory
+In this thesis I developed a method to concentrate three dimensional grid cells
+close to centres of interest and thus reduce significantly the amount of memory
 required for a given precision. Dubbed \textit{nonlinear mapping}, it maps the
 discrete, integer based, space of a computer memory to the continuous regular
 space. Many interesting features of this mapping make it applicable to other
