@@ -6,11 +6,13 @@ One model proposed to explain the high charge states seen in some experiments
 is the lowering of the ionization barrier, used in conjunction with classical
 MD simulations. This model assumes that an electron can be ionized when
 the potential of a neighbouring ion lowers the potential of the electron's
-parent ion. An open question is how close this model, used
+parent ion - this is called "Barrier Lowering".
+\lrfatal{cite Rost and Fennel}
+An open question is how close this model, used
 with a classical MD, is to reality. Special care needs to be taken when a
 particle, evolving in a quantum world, is to be treated classically.
 How does
-the bound electron's wavefunction reacts to the presence of a second ion
+the bound electron's wavefunction react to the presence of a second ion
 perturbing the potential? How can the $U_b$ approximation to the cluster
 environment, described in section \ref{section:intro:Vb}, can be tested?
 Is the wavefunction really evolving into a state
@@ -21,7 +23,7 @@ cluster environment?
 These questions pushed us to look at the quantum aspects in more details. Many
 different tools exist to calculate the ground state of a system, even with
 multiple electrons (with different levels of approximations),
-as describe previously. Additionally, excited states are
+as described previously. Additionally, excited states are
 capital in ACI and as such we wanted a tool that could give us information not
 only on the ground state but also on excited states.
 
@@ -31,8 +33,8 @@ it was decided to explore this idea since not much work could be found on this
 \textit{Quantum FDTD} (QFDTD) method and due to previous experiences
 implementing electrodynamics FDTD.
 
-FDTD is an (old) algorithm developed in 1966 by Yee\cite{Yee1966} to solve
-Maxwell's equation on a grid using a leap-frog integration.
+FDTD is an established algorithm developed in 1966 by Yee\cite{Yee1966} to solve
+Maxwell's equation on a grid using leap-frog integration.
 It is actually the method used in PIC simulations to propagate the electromagnetic
 field through the grid.
 The number of
@@ -85,7 +87,7 @@ even released its code through the GPL v2
 license\footnote{\url{http://sourceforge.net/projects/quantumfdtd}}.
 
 
-Both real-time and imaginary-time methods were implemented. Let's describe the
+Both real-time and imaginary-time methods were implemented for this thesis. Let's describe the
 two algorithms.
 
 
@@ -206,7 +208,7 @@ Equations \eqref{eqn:schrodinger:real:imag:discretized},
 \eqref{eqn:laplacian:discretized} are then used to propagate in time the real
 and imaginary components of the electronic wavefunction. Note that, contrary
 to the Yee cell in the electrodynamics FDTD, the two components of the
-wavefunction don't have to be defined at different location inside the grid
+wavefunction do not have to be defined at different location inside the grid
 cell; they are defined at the same location as shown on figure
 \ref{fig:qfdtd:cell}.
 
@@ -257,9 +259,10 @@ eigenvalues of all eigenstates present in the simulated wavefunction $\psi$.
 \subsubsection{Imaginary time}
 
 The second QFDTD method, called the \textit{imaginary-time} method, differs in
-that it first requires that the potential be constant in time ($V\pa{\vr, t}
-\rightarrow V\pa{\vr}$). Further, a Wick rotation is performed in time ($\im t
-\rightarrow \tau$) and the \schrodinger equation in imaginary time is
+that it first requires that the potential be constant in time
+($V\pa{\vr, t} \rightarrow V\pa{\vr}$).
+Further, a Wick rotation is performed in time ($\im t \rightarrow \tau$)
+and the \schrodinger equation in imaginary time is
 obtained:
 \begin{align}
 - \deli{}{\tau} \ket{\psi\pa{\vr, \tau}}
@@ -283,9 +286,12 @@ and the wavefunctions evolution becomes:
 \end{align}
 The imaginary time evolution is thus an exponential growth with the different
 eigenstates having different growth rates. It thus becomes possible to isolate
-the different eigenstates from each other. A novel method to isolate these
-states is described in the published article of section
+the different eigenstates from each other. I developed a novel method to isolate these
+states, as described in the published article of section
 \ref{section:papers:qfdtd} (page \pageref{section:papers:qfdtd}).
+
+\lrnote{I changed the wording a bit above; also describe briefly why you needed
+to develop a novel method to isolate those states}
 
 Because equation \eqref{eqn:schrodinger:imaginary} is real, only a single scalar
 field needs to be discretized on the grid. The discretization is similar to the
@@ -350,10 +356,10 @@ wavefunction must span an infinite space, or at least be truncated where
 the wavefunction can be safely assumed always close to zero. Additionally,
 the Coulomb potential vary drastically close to the nucleus which requires
 a small grid cell size to efficiently sample, increasing uselessly the precision
-far from it and multiplying the memory requirement.
+far from it and thus multiplying the memory requirement.
 
-A novel method was developed to concentrate three dimensional grid cells close
-to centres of interest and thus reduces significantly the amount of memory
+In this thesis I developed a method to concentrate three dimensional grid cells
+close to centres of interest and thus reduce significantly the amount of memory
 required for a given precision. Dubbed \textit{nonlinear mapping}, it maps the
 discrete, integer based, space of a computer memory to the continuous regular
 space. Many interesting features of this mapping make it applicable to other

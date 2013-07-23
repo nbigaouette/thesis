@@ -1,7 +1,17 @@
 
-
 \subsection{Molecular Dynamics (MD)}
 \label{section:tools:md}
+
+
+\lrfatal{somewhere you should mention that the order (N2) scaling is only for
+long range potentials. for short range potentials, the scaling is order (N), so
+we should be clear here that in this thesis, we're interested in long range (ie,
+coulomb)}
+
+\lrfatal{you may also want to mention somewhere that we are treating ions and
+electrons, and that ions have different charge states possible. and that we
+choose our ion potentials so that they scale - so that a +3 ion + electron on
+top looks like a +2, for example.}
 
 Due to the high charge states seen in experiments with clusters the most
 practical method to microscopically study the ionization dynamics is
@@ -20,6 +30,12 @@ particles in the system is:
 m_i \va_i & = \vF_i = \sum_{j \ne i} \vF_{j \rightarrow i}
 \label{eqn:md:newton}
 \end{align}
+
+\lrnote{the above is only for two-body interactions. you can do MD with more
+than two-body interactions - remember when we were looking at Silicon years
+ago, it's 3 body, for example -  so i would specifically say it's for a
+two-body interaction}
+
 In the present work, the force between charged particles is the instantaneous
 electrostatic Coulomb force:
 \begin{align}
@@ -66,9 +82,8 @@ $i$ using the Velocity-Verlet~(VV) scheme:
 where $\Delta t$ is the integration time step, $\vx_{i}$ the position vector,
 $\vv_{i}$ the velocity vector and $\va_{i}$ the acceleration vector, all evaluated
 for particle $i$ at either the time step $n$ or the next one $n+1$.
-Equations \eqref{eqn:md:vv}, when applied to every particles $i$ of the system,
-can thus be used to propagate in time the whole cluster. Note that some
-variations of equations \eqref{eqn:md:vv} are possible but are equivalent.
+Equations \eqref{eqn:md:vv}, when applied to every particle $i$ of the system,
+can thus be used to propagate in time the whole cluster.
 
 Every particle in the system stores its position $\vx^{\pa{n}}$, its velocity
 $\vv^{\pa{n}}$ and also the total force acting on it $\vF^{\pa{n}}$. This total
@@ -76,13 +91,14 @@ force is the sum of all contribution of equation \eqref{eqn:md:coulomb:F} from
 all other particles in the system.
 
 The MD algorithm basically calculates the force between every pair of particles
-in the system. Since there is $N$ total particles, there is $O\pa{N^2}$
+in the system. Since there are $N$ total particles, there are $O\pa{N^2}$
 interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
-An example cluster can be seen on figure \ref{fig:md:cluster}. A cluster
-made of 147 xenon atoms (large blue spheres) absorbs some photons (red
+An example cluster can be seen on figure \ref{fig:md:cluster}.
+This cluster is comprised
+of 147 xenon atoms (large blue spheres) and absorbs some photons (red
 wave-packets) from the laser field. Atoms are ionized; electron are created
 (small grey spheres) which moves through the cluster. Ions are represented with
 colours going from blue for neutral to red for Xe$^{5+}$. The figure was
@@ -106,16 +122,22 @@ Schrödinger, LLC. \url{http://pymol.org/}} on actual simulation-created data.
 \subsection{Short range potential shapes}
 \label{section:intro:md:potentials}
 
-An important problem to consider is the close range behaviour of equation
-\eqref{eqn:md:coulomb:F} which diverges. Additionally, electrons should not be
-able to classically recombine to an ion under the atomic energy level. To
-prevent the later, electron recombination, as described in section
-\ref{section:intro:mechanisms}, can be enabled. But this does not prevent
-the divergence of the Coulomb force at $r~=~0$. Instead, the problem is resolved by
+An important problem to consider is the close range behaviour of the Coulomb force
+in equation \eqref{eqn:md:coulomb:F} which diverges. The problem is resolved by
 changing the shape of equation \eqref{eqn:md:coulomb:F} at close range.
 Different \textit{smoothing potentials} can be used to prevent the
 discontinuity of the Coulomb potential (or force).
 
+Additionally, from a quantum mechanical point-of-view, electrons should not be
+able to classically recombine to an ion below the ground state energy.
+A softened potential also prevents the electron from falling too deep within the
+potential well of an ion. If this were to happen, the cluster as a whole would
+become artificially heated. However, as we will see in chapter
+\ref{section:papers:100nm}, it can be
+important to account for the effect of a deeper potential on a hot electron. To
+account for this, and still prevent artificial cluster heating, we have
+implemented electron recombination to the ground state, as described in section
+\ref{section:intro:mechanisms}.
 
 Different potential shapes were investigated for the close range potential.
 Figure~\ref{fig:potential:shapes} plots the different shapes of potentials and
@@ -250,9 +272,9 @@ respective electrostatic field.
 
 It was found that the potential given by the charge distribution of equation
 \eqref{eqn:md:smoothed:phi} and the associated electrostatic field of
-\eqref{eqn:md:smoothed:E} give the less numerical heating. As explained
+\eqref{eqn:md:smoothed:E} give the least numerical heating. As explained
 previously, the time discretization used to integrate the equations of motion
-assume that the change in force between two time steps is linear. As can be
+assumes that the change in force between two time steps is linear. As can be
 seen on figure \ref{fig:potential:shapes}, the charge distribution curve
 (magenta) does not have a discontinuity and is therefore the prefered one.
 
@@ -260,21 +282,28 @@ To validate the selection of the smoothing curve, photo-ionization was forced
 on a single atom and the total energy calculated. In this ionization case, the
 electron comes out of the ion with a maximum of kinetic energy so that
 its total energy is the difference between the photon energy and the ionization
-potential. It is thus a
-good candidate to test quantitatively measure numerical heating. If the total
+potential. It is thus a good candidate for a quantitative measurment of
+numerical heating. If the total
 energy is conserved, then the selected parameters (potential depth, smoothing
 curve and time step) can be used with good confidence. Figures
 \ref{fig:potential:heating:dt} and \ref{fig:potential:heating:depth} show the
 energy variation of the process as a function of time step (for different
-potential depth) and as a function of potential depth (for different time step).
-A time step of 0.5 attosecond is often taken as, as can be seen on figure
-\ref{fig:potential:heating:depth} it minimizes the energy variation for a large
-range of potential depth. Additionally, it is still above the limit where
-lowering the time step size does not reduce the error (around 0.05 as). This
-limit is due to the floating point precision of the computer. The specific
+potential depths) and as a function of potential depth (for different time
+steps). A time step of 0.5 attosecond is often taken as
+it minimizes the energy variation for a large
+range of potential depths, as can be seen on figure
+\ref{fig:potential:heating:depth}.
+It is important to note that a better precision is not obtained by going
+under $\Delta~t~\approx~0.05~\textrm{as}$ as can be seen on figure
+\ref{fig:potential:heating:dt}. This is caused by the precision of the computer.
+While it is normal that such a limit exist, it is relatively high due to the
+actual code implementation. Indeed, the dynamical aspect of the code is
+implemented in SI units when large differences between numbers can be easily
+obtained. When these numbers are combined in the algorithm's implementation,
+the computer floating point precision is not enough. Nevertheless, a time-step
+of 0.05~as is sufficient for the work. The specific
 parameters (time step and potential depth) are specified in the different
 studies in later sections.
-
 
 \begin{figure}
  \centering
@@ -296,11 +325,13 @@ studies in later sections.
 
 \subsection{Long range potential: Hierarchical Tree algorithms}
 
-The $O\pa{N^2}$ scaling of the MD algorithm can be problematic when the number of
+The $O\pa{N^2}$ scaling of the MD algorithm for long-range forces
+can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
-exist to reduce the computational burden. These \textit{hierarchical tree}
-algorithms were introduced by Barnes and Hut in 1986\cite{Barnes1986}. To
+exist to reduce the computational burden. One class of methods uses
+\textit{hierarchical tree}
+algorithms as introduced by Barnes and Hut in 1986\cite{Barnes1986}. To
 reduce the computational burden, particles are grouped in a hierarchical tree
 (quadtree in two dimensions, octree in three). While Barnes used his
 \textit{treecode} to solve the N-body problem in the context of gravitational
@@ -310,7 +341,7 @@ The main issue with the direct calculation of forces in MD is the lack of
 distinction between the close particles and distant ones. While the resulting
 potential of a distant particle is small, the computational cost required to
 calculate it is the same as in the case of a nearby particle. Some MD
-calculation use an artificial cutoff; particles farther then this cutoff will
+calculations use an artificial cutoff: particles farther then this cutoff will
 be ignored in the calculation of the force on one particle. This is acceptable
 when the force acting on particles is short range, either due to screening or
 to the nature of the force (Lennard-Jones for example).
@@ -364,7 +395,7 @@ The tree algorithm first split the computational domain into an octree (in
 three dimension) or quadtree (in two dimensions) until
 only a maximum of one particle is present per cell as can be seen figure
 \ref{fig:tree:quadtree}. The deepest cells of the tree, containing only one particle,
-are called leaves. Once every particles in the system are inserted in the tree,
+are called leaves. Once every particle in the system is inserted in the tree,
 the electrostatic moments are propagated from the leaves up to the root cell,
 the top cell enclosing the whole domain.
 
@@ -459,7 +490,7 @@ multipole expansion is used and the cell is added to the interaction list.
 Because not all interaction pairs are considered in the calculation of the
 force and potential in this tree algorithm,
 a significant speedup is obtained. Due to the tree
-traversal algorithm, the scaling passes
+traversal algorithm, the scaling improves
 from $O\pa{N^2}$ to $O\pa{N \log{N}}$\cite{Barnes1986,Gibbon2002,Pfalzner1996}.
 
 A variation to the hierarchical treecode is obtained when a sufficiently large
@@ -487,7 +518,7 @@ force) with some ionization routines added (see for example reference
 written code, the maintenance burden introduced by many factors (initial
 implementation written in the C language, usage of global variables
 throughout the code, multiple coding styles from different people throughout
-the years, lack of vision, lack of revision control system to give the freedom
+the years, lack of revision control system to give the freedom
 of deleting code from the active version without loosing the ability to roll
 back, many subtle and important bugs, stability issues, etc.) pushed me
 to restart from scratch. This allowed using modern development techniques to be
@@ -521,10 +552,18 @@ Additionally, the knowledge and experience gained by writing from scratch such
 a package is invaluable.
 
 
+
+\lrfatal{need to have much better flow to the next section. an introductory
+paragraph of something. It's really jarring. perhaps move the MD implementation
+into the previous section somehow, and make the below on the implementation
+details of the quantum rates??}
+
+
 \subsubsection{Potential threshold $V_b$}
 \label{section:intro:Vb}
 
-Many ionization processes described previously consider an isolated atom but
+Many ionization processes described in the introduction
+consider an isolated atom but
 clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$) and
 so the environment cannot be ignored.
 
@@ -564,8 +603,8 @@ positive potential is negative, hence the negative curves on figure
 
 
 Continuing in the example case of figure \ref{fig:md:Vb}, we introduce a
-second ion that will simulate the cluster environment. This second ion, of
-charge state 5+ and located at $r$~=~-15 Bohr, is creating a
+second ion as an example of the simplest cluster environment. This second ion, of
+charge state 5+ in this example and located at $r$~=~-15 Bohr, is creating a
 potential that is not constant around the first ion (red-dashed line). The potential energy of
 the test particle in this potential is plotted as the red dashed line. The total
 potential energy of the test particle due to the two ions is plotted as a black
@@ -596,6 +635,8 @@ ionization processes. In this work, an ionization event is defined as one
 electron that leaves its parent ion, reaching infinity with a final kinetic
 energy of zero.
 
+\lrfatal{this is *not true* within the cluster environment, but only in the
+isolated atom picture. in the cluster environment, don't we use Vb?}
 
 \subsubsubsection{Single photon ionization}
 
@@ -603,7 +644,9 @@ In the case of single photon ionization, a new electron is created right on top
 of the ion with an updated charge state. At this point, all other particles in
 the cluster will not see the difference the potential created by this new
 particles pair $\frac{Z+1}{r} - \frac{1}{r}$ is the same as the previous ion's
-$Z/r$. For the new electron to reach infinity with a null kinetic energy, it
+$Z/r$.
+\lrfatal[noinline,margin]{refer to what it really is, with the softened potentials!}
+For the new electron to reach infinity with a null kinetic energy, it
 must have, at its creation time, enough kinetic energy to leave the ion. This
 kinetic energy must thus match the potential energy between the ion (with an
 updated charge state) and the electron so the total energy of the electron with
@@ -612,12 +655,19 @@ respect to the ion is zero.
 Additionally, the electron will contain in its kinetic energy the difference
 between the absorbed photon and the ionization potential of the ion.
 
+\lrfatal{stress that this zero at infinity is only for the isolated atom case,
+and that in the cluster environment it's influenced by Vb. because except for
+the very first ionization (where all are neutral, so there is no Vb), this will
+NOT be true for a cluster.}
+
 \subsubsubsection{Impact ionization}
 
 For impact ionization, the impacting electron's kinetic energy used in equation
 \eqref{eqn:impact:ionization:lotz} is the kinetic energy the electron has
 \textit{at infinity}, meaning that the impacting electron and the atom (or ion)
 are isolated from each other.
+
+\lrfatal{please clarify that the above and below paragraphs are only for the isolated atom case}
 
 At infinity, the electron's total energy only contains kinetic
 energy. We call this kinetic energy $K_{\textrm{thresh}}$ for ``kinetic energy
@@ -651,7 +701,7 @@ section.
 When an impact ionization event occurs and if the impacting electron has more kinetic
 energy, it can either keep the extra, give all the extra, or give a fraction of
 the extra to the new electron. We split the extra kinetic energy between the two
-electrons to assure that they do not fall back unto the ion.
+electrons to assure that they do not fall back into the ion.
 
 
 % Figure \ref{fig:impact:before:Z} shows the process of impact ionization when an
@@ -859,6 +909,9 @@ Implementing any kind of ionization in the model is done through cross-sections.
 Because cross-sections can be obtained from experiments for any kind of target,
 it is easily integrated into the model.
 
+\lrfatal{you might also want to mention that we use some calculated and some
+experimental cross sections.}
+
 
 \subsubsubsection{Single photon ionization}
 
@@ -883,7 +936,10 @@ a random number $r$ between 0 and 1:
 When the previous test succeeds, ionization takes place and a new electron is
 created in the code.
 Then, the intensity profile of the laser $I\pa{t}$ is decreased
-by one photon for better description of low fluence pulses.
+by one photon
+%
+to incorporate laser depletion. This is especially important
+for a more accurate description of cluster interaction with low fluence pulses.
 
 
 \subsubsubsection{Collisional processes}
@@ -923,23 +979,30 @@ cross-sections relative to the total one.
 
 In a classical simulation electrons could cool down into the ions' infinite Coulomb
 potential where they would have a total energy less then what is allowed
-according to quantum mechanics. Using a smoothing potential as in equation
+according to quantum mechanics. This would lead to artificial cluster heating,
+as this electron gives up its energy to the cluster as it cools.
+Using a smoothing potential as in equation
 \eqref{eqn:md:smoothed:phi} will prevent the singularity but if the potential
-depth used is deeper than the ionization potential, their can still be a problem.
-Recombination is thus used to prevent such unphysical events. When an electron's
-total energy (with respect to the ion) falls under the ionization potential,
-recombination happens: the electron disappear from the simulation and the ion
-charge state is updated.
+depth used is deeper than the ionization potential, there can still be a problem.
+Recombination to the ground state is thus used to prevent such nonphysical events.
+When an electron's total energy (with respect to the ion) falls below the energy
+of the lowest unoccupied state,
+\lrfatal[noinline,margin]{Nic: verify this is true - I think 'ionization
+potential' is very unclear here.}
+recombination is forced: the electron disappears from the simulation and the ion
+charge state is increased by one.
 
+\lrfatal{Revise the below to include the recomb paper:}
 Additionally, recombination plays an important role in the dynamics of the
 exploding cluster. Experiments at FLASH in 2009 on Xenon clusters in the XUV
 regime\cite{Thomas2009} could be reproduced by our models when recombination
-was enable; we found that the lower charge states detected would come from the
+was enabled; we found that the lower charge states detected would come from the
 cluster core where recombination is important. This study was published in
 May 2013's edition of \textit{New Journal of Physics}\cite{Ackad2013}
 
-Recombination was also included in the fifth study, included in section
-\ref{section:papers:100nm}, as it allowed to lower the potential depth of the
+
+Recombination was also required for the work in section
+\ref{section:papers:100nm}, as it allowed us to lower the potential depth of the
 ions for more physical simulations.
 
 % Recombination is tested by calculating the total energy of an electron and

@@ -6,17 +6,17 @@ through graphics cards. Similar to the ubiquitous Moore's Law in the CPU world,
 video cards power evolved exponentially during the last twenty years, pushed
 by the never ending need of more realistic video games. From ``dumb'' devices
 drawing primitive shapes on a display, they evolved to extremely powerful
-devices and started to act more like CPU by being programmable (shaders) during
-the first half of 2000. The term \textit{Graphical Processing Unit} (GPU) was
+devices and started to act more like CPUs by being programmable (shaders) during
+the first half decade  of 2000. The term \textit{Graphical Processing Unit} (GPU) was
 coined in 1999 by Nvidia, the biggest vendor of video cards, as a selling point
 to their product and to emphasize the fact that their chips were becoming more
-and more alike CPUs.
+and more like CPUs.
 
 
 \subsubsection{General-Programming GPU (GP-GPU)}
 
 Due to this increase in power, people tried to use these video cards as
-accelerators for other things than real video operations. Because GPUs have
+accelerators for computations other than real video operations. Because GPUs have
 intrinsically high parallelism (for example the same operation is performed on
 all pixels of an image in parallel) HPC users and developers got interested.
 In his 2005 book, Taflove described a way to use a video card's GPU to
@@ -35,18 +35,19 @@ OpenGL calls is one that only a few highly skilled and knowledgeable people can
 tackle.
 
 In 2007, Nvidia saw an opportunity for market expansion. Why not let
-non-videogames programmer use the powerful GPUs for something else then video
+the non-videogames programmer use the powerful GPUs for something other than video
 operations? For this to happen, a programming framework had to be released; the
-amount of programmers and scientists able to exploit OpenGL to their advantage
+number of programmers and scientists able to exploit OpenGL to their advantage
 was limited. They thus released their \textit{Compute Unified Device
-Architecture} (CUDA), later just renamed CUDA. CUDA allows writing normal C or
+Architecture}, later renamed CUDA.
+CUDA allows writing normal C or
 C++ programs with some extensions, called \textit{kernels}, that can be run on
 the GPU. These kernels have the same structure as C functions but are executed
 concurrently by every cores on the GPU\footnote{Technically, GPUs don't have
 ``cores'' \textit{per se} like CPUs but the comparison can still be made.}. The
 number of cores on a recent consumer grade video card is now of the order of
 many hundreds; a 50\$ Nvidia GT 620 has 96 CUDA cores and 1 GB of RAM, while the
-GTX TITAN has 2688 CUDA cores and 6 GB but cost more than 1,000 \$. Even though
+GTX TITAN has 2688 CUDA cores and 6 GB but costs more than 1,000 \$. Even though
 the highest priced GPU can be more expensive than complete workstations, no CPUs
 can offer close to three thousand cores for a still affordable price.
 
@@ -71,19 +72,19 @@ advantage of the GPU power while retaining portability.
 
 \subsubsection{GPU programming challenges}
 
-Unfortunately, porting a code to run on GPUs is not as simple as recompiling
-for the new architecture. While being portable, OpenCL does requires rewriting
+Porting a code to run on GPUs is not as simple as recompiling
+for the new architecture. While being portable, OpenCL does require, unfortunately, rewriting
 many parts of the code.
 
 
 \subsubsubsection{Refactoring}
 
 Some things are important to consider when porting codes to GPU frameworks.
-First, because a core on a GPU is quite slower than a core on a CPU,
+First, because a core on a GPU is much slower than a core on a CPU,
 parallelisms must be extracted from algorithms. The code must thus be
 completely refactored to exploit the parallelism. For example, a CPU
 implementation of the MD algorithm can be implemented by looping over particles
-and calculating all properties at once, for every particles. On the contrary,
+and calculating all properties at once, for every particle. On the contrary,
 due to the high vectorized nature of GPUs, it makes more sense to calculate
 only one particle property but for all particles before switching to the next
 property.
@@ -108,9 +109,9 @@ Each thread on the GPU will thus calculate the interaction between one particle
 and all others. Once the MD kernels are launched on the GPU, they are only
 halted when either ionization is to be calculated (every femtosecond) or
 when data needs to be saved (to take a snapshot of the simulation for example).
-This prevent the GPU from being interrupted too often and reduces the amount of
+This prevents the GPU from being interrupted too often and reduces the amount of
 data transfers. Using this OpenCL implementation, MD simulations could be run
-80 times faster than on conventional CPUs.
+80 times faster on GPUs than on conventional CPUs.
 
 As for the QFDTD, only the real time algorithm was implemented as OpenCL
 kernels since the imaginary time method did not require long simulation times.
@@ -124,7 +125,7 @@ transfers.
 
 One of the most problematic part of GPU programming is the lack of debugging
 tools. Many different tools and techniques exist to detect and fix problems in
-normal codes. The following describes them and their counterpart, when present,
+normal CPU codes. The following describes them and their counterpart, when present,
 on GPUs.
 
 
@@ -138,11 +139,11 @@ such printing function (such as C or C++'s \textit{printf()}) cannot be used at
 all on a GPU! The reason is that the main processor must be able to
 \textit{read} the variable from memory to be able to print it to screen and yet
 the variable's content is \textit{not} in main memory, only the video card's
-memory! It must be noted though that some OpenCL drivers (for example AMD's
+memory. It must be noted though that some OpenCL drivers (for example AMD's
 APP SDK\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-accelerated-parallel-processing-app-sdk/}}
 or Intel's SDK for OpenCL Applications
 2013\footnote{\url{http://software.intel.com/en-us/vcsource/tools/opencl-sdk}})
-have specific extensions that allows using \textit{printf()}-like functions
+have specific extensions that allow using \textit{printf()}-like functions
 inside OpenCL kernels. These extensions must explicitly be enabled in kernel
 files using
 \begin{verbatim}
@@ -187,7 +188,7 @@ take control of the program, allowing the developer to pause the execution
 at any time, inspect variables' values or even change them. A popular debugger
 on Linux is the free and open-source \textit{gdb}, the GNU Project
 debugger\footnote{\url{https://www.gnu.org/software/gdb/}}. Many more
-proprietary exists, some of them free and others expensive. Traditional
+proprietary debuggers exist, some of them free and others expensive. Traditional
 debuggers work by taking control of the program and accessing
 directly their memory content. It is not possible for them to access GPU memory
 or control functions inside the different SDKs. Some debuggers, like
@@ -211,11 +212,8 @@ SHARCNET\footnote{\url{https://www.sharcnet.ca/}}, a large HPC
 consortium, has two clusters containing GPUs (Angel and Monk) but they are
 obviously submerged by user demand.
 
-\fxnote[noinline,margin]{Is the wording ok?}
-Fortunately, a grant was awarded to Professor Paul Corkum of the University of
-Ottawa by the Canada Foundation for Innovation's (CFI) Leading Edge Fund and
-New Initiatives Fund, of which a percentage was given to both Thomas Brabec
-and my supervisor Lora Ramunno for the purchase of a GPU cluster.
+Prof. Thomas Brabec and my supervisor Prof. Lora Ramunno were able to purchase
+a GPU cluster, spurring the development of the GPU codes described above.
 
 Due to my experience with GPUs, I was placed in charge of the purchase process
 which consisted in building a solution that would maximize the performance
@@ -233,13 +231,15 @@ lab component that will be allow the research group to continue its high profile
 research.
 
 
+\lrfatal{Nic, should we move the following section forward, to where you discuss
+the potential shapes? I think it would make more sense there.}
 
 \subsubsection{Close-range: Look-up tables}
 \label{section:intro:lut}
 
-The preferred potential shape, the gaussian distribution described in section
+The preferred potential shape, the Gaussian distribution described in section
 \ref{section:intro:md:potentials}, uses the error function which has a major
-issue; it is slow, or at least too slow to be called at each interaction pair
+computational issue: it is slow, or at least too slow to be called at each interaction pair
 calculation. It was decided to move to a look-up table implementation instead,
 for both the CPU and GPU implementations.
 The potential and field functions are pre-calculated for a charge state of 1+.
