@@ -3,7 +3,10 @@
 \label{section:tools:md}
 
 
-% somewhere you should mention that the order (N^2) scaling is only for long range potentials. for short range potentials, the scaling is order (N), so we should be clear here that in this thesis, we're interested in long range (ie, coulomb)
+\lrfatal{somewhere you should mention that the order (N^2) scaling is only for
+long range potentials. for short range potentials, the scaling is order (N), so
+we should be clear here that in this thesis, we're interested in long range (ie,
+coulomb)}
 
 % you may also want to mention somewhere that we are treating ions and electrons, and that ions have different charge states possible. and that we choose our ion potentials so that they scale - so that a +3 ion + electron on top looks like a +2, for example.
 
@@ -326,9 +329,7 @@ for long-range forces
 can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
-exist to reduce the computational burden.
-%
-One class of methods uses
+exist to reduce the computational burden. One class of methods uses
 \textit{hierarchical tree}
 algorithms as introduced by Barnes and Hut in 1986\cite{Barnes1986}. To
 reduce the computational burden, particles are grouped in a hierarchical tree
