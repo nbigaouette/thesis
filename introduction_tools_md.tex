@@ -25,9 +25,11 @@ m_i \va_i & = \vF_i = \sum_{j \ne i} \vF_{j \rightarrow i}
 \label{eqn:md:newton}
 \end{align}
 
-%
-% the above is only for two-body interactions. you can do MD with more than two-body interactions - remember when we were looking at Silicon years ago, it's 3 body, for example -  so i would specifically say it's for a two-body interaction
-%
+\lrnote{the above is only for two-body interactions. you can do MD with more
+than two-body interactions - remember when we were looking at Silicon years
+ago, it's 3 body, for example -  so i would specifically say it's for a
+two-body interaction}
+
 In the present work, the force between charged particles is the instantaneous
 electrostatic Coulomb force:
 \begin{align}
@@ -74,16 +76,8 @@ $i$ using the Velocity-Verlet~(VV) scheme:
 where $\Delta t$ is the integration time step, $\vx_{i}$ the position vector,
 $\vv_{i}$ the velocity vector and $\va_{i}$ the acceleration vector, all evaluated
 for particle $i$ at either the time step $n$ or the next one $n+1$.
-Equations \eqref{eqn:md:vv}, when applied to every 
-%particles 
-particle
-$i$ of the system,
-can thus be used to propagate in time the whole cluster. 
-
-%Note that some
-%variations of equations \eqref{eqn:md:vv} are possible but are equivalent.
-
-%do we need the above sentence?
+Equations \eqref{eqn:md:vv}, when applied to every particle $i$ of the system,
+can thus be used to propagate in time the whole cluster.
 
 Every particle in the system stores its position $\vx^{\pa{n}}$, its velocity
 $\vv^{\pa{n}}$ and also the total force acting on it $\vF^{\pa{n}}$. This total
@@ -91,21 +85,13 @@ force is the sum of all contribution of equation \eqref{eqn:md:coulomb:F} from
 all other particles in the system.
 
 The MD algorithm basically calculates the force between every pair of particles
-in the system. Since there 
-%is 
-are $N$ total particles, there are
-%is 
-$O\pa{N^2}$
+in the system. Since there are $N$ total particles, there are $O\pa{N^2}$
 interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
-An example cluster can be seen on figure \ref{fig:md:cluster}. 
-This
-%A 
-cluster
-is comprised
-%made 
+An example cluster can be seen on figure \ref{fig:md:cluster}.
+This cluster is comprised
 of 147 xenon atoms (large blue spheres) and absorbs some photons (red
 wave-packets) from the laser field. Atoms are ionized; electron are created
 (small grey spheres) which moves through the cluster. Ions are represented with
@@ -130,26 +116,21 @@ Schrödinger, LLC. \url{http://pymol.org/}} on actual simulation-created data.
 \subsection{Short range potential shapes}
 \label{section:intro:md:potentials}
 
-
-%the following was changed a lot, see how you like it:
-
-An important problem to consider is the close range behaviour 
-%
-of the Coulomb force 
-%
-in equation
-\eqref{eqn:md:coulomb:F} which diverges. The problem is resolved by
+An important problem to consider is the close range behaviour of the Coulomb force
+in equation \eqref{eqn:md:coulomb:F} which diverges. The problem is resolved by
 changing the shape of equation \eqref{eqn:md:coulomb:F} at close range.
 Different \textit{smoothing potentials} can be used to prevent the
 discontinuity of the Coulomb potential (or force).
 
 Additionally, from a quantum mechanical point-of-view, electrons should not be
-able to classically recombine to an ion below the ground state energy. 
-%the atomic energy level. 
-A softened potential also prevents the electron from falling too deep within the potential well of an ion. If this were to happen, the cluster as a whole would become artifically heated.
-However, as we will see in chapter xx, it can be important to account for the effect of a deeper potential on 
-a hot electron. To
-account for this, and still prevent artifical cluster heating, we have implemented electron recombination to the ground state, as described in section
+able to classically recombine to an ion below the ground state energy.
+A softened potential also prevents the electron from falling too deep within the
+potential well of an ion. If this were to happen, the cluster as a whole would
+become artificially heated. However, as we will see in chapter
+\ref{section:papers:100nm}, it can be
+important to account for the effect of a deeper potential on a hot electron. To
+account for this, and still prevent artificial cluster heating, we have
+implemented electron recombination to the ground state, as described in section
 \ref{section:intro:mechanisms}.
 
 Different potential shapes were investigated for the close range potential.
@@ -285,8 +266,8 @@ respective electrostatic field.
 
 It was found that the potential given by the charge distribution of equation
 \eqref{eqn:md:smoothed:phi} and the associated electrostatic field of
-\eqref{eqn:md:smoothed:E} give the 
-%less 
+\eqref{eqn:md:smoothed:E} give the
+%less
 least numerical heating. As explained
 previously, the time discretization used to integrate the equations of motion
 %assume
@@ -299,7 +280,7 @@ on a single atom and the total energy calculated. In this ionization case, the
 electron comes out of the ion with a maximum of kinetic energy so that
 its total energy is the difference between the photon energy and the ionization
 potential. It is thus a
-good candidate %to test quantitatively measure numerical heating. 
+good candidate %to test quantitatively measure numerical heating.
 for a quantitative measurment of numerical heating.
 If the total
 energy is conserved, then the selected parameters (potential depth, smoothing
@@ -307,19 +288,19 @@ curve and time step) can be used with good confidence. Figures
 \ref{fig:potential:heating:dt} and \ref{fig:potential:heating:depth} show the
 energy variation of the process as a function of time step (for different
 potential %depth
-depths) and as a function of potential depth (for different time 
+depths) and as a function of potential depth (for different time
 %step
 steps).
 A time step of 0.5 attosecond is often taken as
 % switched order below
 it minimizes the energy variation for a large
 range of potential depths, as can be seen on figure
-\ref{fig:potential:heating:depth}. 
+\ref{fig:potential:heating:depth}.
 %
 %Additionally, it is still above the limit where
 %lowering the time step size does not reduce the error (around 0.05 as).
 %
-It is important to note that at around 0.05 as, there is a 
+It is important to note that at around 0.05 as, there is a
 limit due to the floating point precision of the computer. The specific
 parameters (time step and potential depth) are specified in the different
 studies in later sections.
@@ -346,14 +327,14 @@ studies in later sections.
 
 \subsection{Long range potential: Hierarchical Tree algorithms}
 
-The $O\pa{N^2}$ scaling of the MD algorithm 
+The $O\pa{N^2}$ scaling of the MD algorithm
 %
 for long-range forces
 %
 can be problematic when the number of
 particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
-exist to reduce the computational burden. 
+exist to reduce the computational burden.
 %
 One class of methods uses
 \textit{hierarchical tree}
@@ -546,8 +527,8 @@ force) with some ionization routines added (see for example reference
 written code, the maintenance burden introduced by many factors (initial
 implementation written in the C language, usage of global variables
 throughout the code, multiple coding styles from different people throughout
-the years, 
-%lack of vision, 
+the years,
+%lack of vision,
 % remember, Thomas is on your committee
 %
 lack of revision control system to give the freedom
@@ -591,7 +572,7 @@ a package is invaluable.
 \subsubsection{Potential threshold $V_b$}
 \label{section:intro:Vb}
 
-Many ionization processes described in the introduction %previously 
+Many ionization processes described in the introduction %previously
 consider an isolated atom but
 clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$) and
 so the environment cannot be ignored.
@@ -632,9 +613,9 @@ positive potential is negative, hence the negative curves on figure
 
 
 Continuing in the example case of figure \ref{fig:md:Vb}, we introduce a
-second ion 
-as an example of the simplest 
-%that will simulate the 
+second ion
+as an example of the simplest
+%that will simulate the
 cluster environment. This second ion, of
 charge state 5+ in this example and located at $r$~=~-15 Bohr, is creating a
 potential that is not constant around the first ion (red-dashed line). The potential energy of
@@ -675,7 +656,7 @@ In the case of single photon ionization, a new electron is created right on top
 of the ion with an updated charge state. At this point, all other particles in
 the cluster will not see the difference the potential created by this new
 particles pair $\frac{Z+1}{r} - \frac{1}{r}$ is the same as the previous ion's
-$Z/r$. 
+$Z/r$.
 % refer to what it really is, with the softened potentials!
 %
 For the new electron to reach infinity with a null kinetic energy, it
@@ -687,7 +668,7 @@ respect to the ion is zero.
 Additionally, the electron will contain in its kinetic energy the difference
 between the absorbed photon and the ionization potential of the ion.
 
-% stress that this zero at infinity is only for the isolated atom case, and that in the cluster environment it's influenced by Vb. because except for the very first ionization (where all are neutral, so there is no Vb), this will NOT be true for a cluster. 
+% stress that this zero at infinity is only for the isolated atom case, and that in the cluster environment it's influenced by Vb. because except for the very first ionization (where all are neutral, so there is no Vb), this will NOT be true for a cluster.
 
 \subsubsubsection{Impact ionization}
 
@@ -696,7 +677,7 @@ For impact ionization, the impacting electron's kinetic energy used in equation
 \textit{at infinity}, meaning that the impacting electron and the atom (or ion)
 are isolated from each other.
 
-% please clarify that the above and below paragraphs are only for the isolated atom case 
+% please clarify that the above and below paragraphs are only for the isolated atom case
 
 At infinity, the electron's total energy only contains kinetic
 energy. We call this kinetic energy $K_{\textrm{thresh}}$ for ``kinetic energy
@@ -730,8 +711,8 @@ section.
 When an impact ionization event occurs and if the impacting electron has more kinetic
 energy, it can either keep the extra, give all the extra, or give a fraction of
 the extra to the new electron. We split the extra kinetic energy between the two
-electrons to assure that they do not fall back 
-%unto 
+electrons to assure that they do not fall back
+%unto
 into the ion.
 
 
@@ -966,7 +947,7 @@ a random number $r$ between 0 and 1:
 When the previous test succeeds, ionization takes place and a new electron is
 created in the code.
 Then, the intensity profile of the laser $I\pa{t}$ is decreased
-by one photon 
+by one photon
 %
 to incorporate laser depletion. This is especially important
 for a more accurate description of cluster interaction with low fluence pulses.
