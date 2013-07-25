@@ -2,11 +2,6 @@
 \subsection{Molecular Dynamics (MD)}
 \label{section:tools:md}
 
-\lrfatal{you may also want to mention somewhere that we are treating ions and
-electrons, and that ions have different charge states possible. and that we
-choose our ion potentials so that they scale - so that a +3 ion + electron on
-top looks like a +2, for example.}
-
 Due to the high charge states seen in experiments with clusters the most
 practical method to microscopically study the ionization dynamics is
 \textit{Molecular Dynamics} (MD) methods where ions and electrons are treated
@@ -31,7 +26,12 @@ electrostatic Coulomb force:
 \vF_{C,j \rightarrow i}\pa{\vr} & =\frac{k q_i q_j}{r_{ji}^2} \hvr_{ji}.
 \label{eqn:md:coulomb:F}
 \end{align}
-which only depends on the distance between particles. Calculating $\vF_i$
+which only depends on the distance $\vr_{ji}$ between particles and the charge
+states $Z_i$ of these particles $q_i = Z_i e_0$ ($q_i$ is particle $i$'s charge
+and $e_0$ is the elementary charge). In the case of electrons, the charge
+state is simply -1.
+
+Calculating $\vF_i$
 from \eqref{eqn:md:newton} and \eqref{eqn:md:coulomb:F} requires one operation
 per particle present in the system; updating the force on one particle is an
 $O\pa{N}$ operation (doubling the number of particles will double the required
@@ -124,6 +124,28 @@ Schrödinger, LLC. \url{http://pymol.org/}} on actual simulation-created data.
 
 \subsection{Short range potential shapes}
 \label{section:intro:md:potentials}
+
+\subsubsection{Potential linearity}
+\label{section:intro:md:potentials:linear}
+
+In the present work, the potential (and field) is assumed to be linear in
+charge state. For example, the potential and field created by a 3+ ion will be
+three times larger than the one created by a 1+ ion, for short range as for the
+long range. The following close range potential derivations relies on this
+property.
+
+Additionally, the potential created by an electron is assumed to be equal in
+strength but of opposite sign from the one created by a 1+ ion.
+
+These properties greatly simplifies the case of ionization, described in section
+\ref{section:intro:mechanisms}, when a new electron is create in the code.
+Indeed, when an electron is located exactly on top of an ion, right after
+an ionization event for example, the resulting potential on the other particles
+will have not changed.
+
+
+\subsubsection{Coulomb potential singularity}
+\label{section:intro:md:potentials:singularity}
 
 An important problem to consider is the close range behaviour of the Coulomb force
 in equation \eqref{eqn:md:coulomb:F} which diverges. The problem is resolved by
