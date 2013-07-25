@@ -286,12 +286,12 @@ and the wavefunctions evolution becomes:
 \end{align}
 The imaginary time evolution is thus an exponential growth with the different
 eigenstates having different growth rates. It thus becomes possible to isolate
-the different eigenstates from each other. I developed a novel method to isolate these
+the different eigenstates from each other. Previous work used to isolate
+eigenstates once and continue, or restart, the simulation. This was not working
+well as the floating point error made by the computer during calculation let
+the ground state reappear shortly. I developed a novel method to isolate these
 states, as described in the published article of section
 \ref{section:papers:qfdtd} (page \pageref{section:papers:qfdtd}).
-
-\lrnote{I changed the wording a bit above; also describe briefly why you needed
-to develop a novel method to isolate those states}
 
 Because equation \eqref{eqn:schrodinger:imaginary} is real, only a single scalar
 field needs to be discretized on the grid. The discretization is similar to the
