@@ -320,6 +320,51 @@ studies in later sections.
 \end{figure}
 
 
+\subsubsection{Look-up tables}
+\label{section:intro:md:potentials:lut}
+
+The preferred potential shape, the Gaussian distribution described previously,
+uses the error function which has a major
+computational issue: it is slow, or at least too slow to be called at each interaction pair
+calculation. I was decided to implement a look-up table instead.
+The potential and field functions are pre-calculated for a charge state of 1+.
+Since both potential and field are linear in charge (the potential caused by a 2+
+ion is twice the one of a 1+), their value for any
+particle is simply scaled by its charge state.
+
+Once the potential and field curves are calculated, they are approximated using
+\begin{align}
+x_{\textrm{norm}} & = \frac{x}{\Delta x} \\
+i   & = \textrm{int}\pa{x_{\textrm{norm}}} \\
+A   &= lut\cro{i} + \pa{lut\cro{i+1}-lut\cro{i}} \pa{x_{\textrm{norm}}-\textrm{double}\pa{i}}
+\end{align}
+where $x$ is the distance between the two particles, $lut$ is the array
+containing the look-up table, $i$ the index of the look-up table and $A$ the
+value to approximate using the look-up table.
+
+The OpenCL implementation is different. The look-up tables are first transferred
+to the OpenCL device where they will be indexed using:
+\begin{align}
+x_{\textrm{norm}} & = \frac{x}{\Delta x} \\
+i   & = \textrm{convert\_int\_sat\_rtz}\pa{\textrm{floor}\pa{x_{\textrm{norm}}}} \\
+A   &= lut\cro{i} + \pa{lut\cro{i+1}-lut\cro{i}} \pa{x_{\textrm{norm}}-\textrm{convert\_float}\pa{i}}
+\end{align}
+The OpenCL function
+convert\_float() converts an integer to a floating point value
+and convert\_int\_sat\_rtz() converts a floating point to an integer,
+rounding towards zero (\_rtz) and saturating (\_sat) the conversion in case of
+out-of-range
+\footnote{\url{https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/convert_T.html}}
+(if the floating point value exceed the range of the integer type,
+the maximum value for the integer is used instead of a dangerous undefined
+behaviour).
+
+This effectively does a linear interpolation between the look-up table values.
+In the present work, 10,000 points are used for the table with a maximum value
+for $x$ at the potential shape cutoff distance. In the case of the gaussian
+distribution shape, four times the particle width $\sigma$ is used as the cutoff
+distance.
+
 
 
 
