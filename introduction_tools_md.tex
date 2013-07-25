@@ -235,6 +235,7 @@ of $\phi$ as $\vr$ reaches 0:
 \begin{align}
 \lim_{\vr \rightarrow 0} \phi_j\pa{\vr}
     & \equiv \phi_j\pa{0} = \frac{ k q_j }{ \sigma } \sqrt{\frac{2}{\pi}}
+\label{eqn:md:smoothed:phi0}
 \end{align}
 from which we get the particle width:
 \begin{align}
@@ -1027,33 +1028,25 @@ potential where they would have a total energy less then what is allowed
 according to quantum mechanics. This would lead to artificial cluster heating,
 as this electron gives up its energy to the cluster as it cools.
 Using a smoothing potential as in equation
-\eqref{eqn:md:smoothed:phi} will prevent the singularity but if the potential
-depth used is deeper than the ionization potential, there can still be a problem.
+\eqref{eqn:md:smoothed:phi} will prevent the singularity.
+Additionally, if the potential depth $\phi\pa{0}$ used (see
+equation \eqref{eqn:md:smoothed:phi0}) is deep enough, the total energy of an
+electron might fall below the energy of the state.
 Recombination to the ground state is thus used to prevent such nonphysical events.
 When an electron's total energy (with respect to the ion) falls below the energy
 of the lowest unoccupied state,
-\lrfatal[noinline,margin]{Nic: verify this is true - I think 'ionization
-potential' is very unclear here.}
 recombination is forced: the electron disappears from the simulation and the ion
 charge state is increased by one.
 
-\lrfatal{Revise the below to include the recomb paper:}
 Additionally, recombination plays an important role in the dynamics of the
 exploding cluster. Experiments at FLASH in 2009 on Xenon clusters in the XUV
 regime\cite{Thomas2009} could be reproduced by our models when recombination
 was enabled; we found that the lower charge states detected would come from the
 cluster core where recombination is important. This study was published in
-May 2013's edition of \textit{New Journal of Physics}\cite{Ackad2013}
-
+May 2013's edition of \textit{New Journal of Physics}\cite{Ackad2013} and is
+included in this thesis in section \ref{section:papers:recomb}.
 
 Recombination was also required for the work in section
 \ref{section:papers:100nm}, as it allowed us to lower the potential depth of the
 ions for more physical simulations.
-
-% Recombination is tested by calculating the total energy of an electron and
-% comparing it to the threshold $U_b$ -- see figure \ref{fig:md:Vb}. If
-% the energy is less then $U_b$, the electron is recombined; the ion charge is
-% decremented and the electron is removed from the ion. The electron's momentum
-% is transferred to the ion.\fxnote[margin,noinline]{Is the momentum really
-% transferred to the ion during recomb.?}
 
