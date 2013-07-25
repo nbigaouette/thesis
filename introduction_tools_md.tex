@@ -678,20 +678,31 @@ impact ionization cross-sections can be used, even in the cluster environment.
 
 Special care needs to be taken when calculating particle energies during
 ionization processes. In this work, an ionization event is defined as one
-electron that leaves its parent ion, reaching infinity with a final kinetic
-energy of zero.
+electron that leaves its isolated parent ion, reaching infinity with a final
+kinetic energy of zero.
 
-\lrfatal{this is *not true* within the cluster environment, but only in the
-isolated atom picture. in the cluster environment, don't we use Vb?}
+As described in the previous section \ref{section:intro:Vb}, the cluster
+influence on ionization is approximated as a new threshold, which we call $V_b$.
+
+The following paragraphs will discuss some specific details concerning single
+photon ionization and impact ionization, both in the special case of an isolated
+atom or ion. The generalization to the cluster environment is done through the
+updated threshold, as discussed in section \ref{section:intro:Vb}.
+
 
 \subsubsubsection{Single photon ionization}
 
 In the case of single photon ionization, a new electron is created right on top
 of the ion with an updated charge state. At this point, all other particles in
-the cluster will not see the difference the potential created by this new
-particles pair $\frac{Z+1}{r} - \frac{1}{r}$ is the same as the previous ion's
-$Z/r$.
-\lrfatal[noinline,margin]{refer to what it really is, with the softened potentials!}
+the cluster will not see a difference; the potential $\phi'\pa{\vr}$ created by
+this new particles pair
+\begin{align}
+\phi'\pa{\vr} & = \phi_{j}\pa{\vr;Z+1} + \phi_{k}\pa{\vr;-1}
+\end{align}
+is the same as the previous ion's $\phi_{j}\pa{\vr;Z}$ (see equation
+\eqref{eqn:md:smoothed:phi} for the potential shape mainly used).
+
+
 For the new electron to reach infinity with a null kinetic energy, it
 must have, at its creation time, enough kinetic energy to leave the ion. This
 kinetic energy must thus match the potential energy between the ion (with an
@@ -701,19 +712,14 @@ respect to the ion is zero.
 Additionally, the electron will contain in its kinetic energy the difference
 between the absorbed photon and the ionization potential of the ion.
 
-\lrfatal{stress that this zero at infinity is only for the isolated atom case,
-and that in the cluster environment it's influenced by Vb. because except for
-the very first ionization (where all are neutral, so there is no Vb), this will
-NOT be true for a cluster.}
 
 \subsubsubsection{Impact ionization}
 
-For impact ionization, the impacting electron's kinetic energy used in equation
+For impact ionization (still in the case of an isolated atom),
+the impacting electron's kinetic energy used in equation
 \eqref{eqn:impact:ionization:lotz} is the kinetic energy the electron has
-\textit{at infinity}, meaning that the impacting electron and the atom (or ion)
-are isolated from each other.
-
-\lrfatal{please clarify that the above and below paragraphs are only for the isolated atom case}
+\textit{at infinity}, meaning that the impacting electron and the isolated
+atom (or ion) are separated in an unbound system.
 
 At infinity, the electron's total energy only contains kinetic
 energy. We call this kinetic energy $K_{\textrm{thresh}}$ for ``kinetic energy
