@@ -24,17 +24,12 @@ of any nature; gravitational, van der Waals, Lennard-Jones, electrostatic, etc.
 The method numerically integrates Newton's equations of motion, resulting in a
 time evolution of the system.
 
-The total force acting on particle $i$ of mass $m_i$ from all other $N$
-particles in the system is:
+The total force (from two-body interactions) acting on particle $i$ of mass
+$m_i$ from all other $N$ particles in the system is:
 \begin{align}
 m_i \va_i & = \vF_i = \sum_{j \ne i} \vF_{j \rightarrow i}
 \label{eqn:md:newton}
 \end{align}
-
-\lrnote{the above is only for two-body interactions. you can do MD with more
-than two-body interactions - remember when we were looking at Silicon years
-ago, it's 3 body, for example -  so i would specifically say it's for a
-two-body interaction}
 
 In the present work, the force between charged particles is the instantaneous
 electrostatic Coulomb force:
