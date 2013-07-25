@@ -2,12 +2,6 @@
 \subsection{Molecular Dynamics (MD)}
 \label{section:tools:md}
 
-
-\lrfatal{somewhere you should mention that the order (N2) scaling is only for
-long range potentials. for short range potentials, the scaling is order (N), so
-we should be clear here that in this thesis, we're interested in long range (ie,
-coulomb)}
-
 \lrfatal{you may also want to mention somewhere that we are treating ions and
 electrons, and that ions have different charge states possible. and that we
 choose our ion potentials so that they scale - so that a +3 ion + electron on
@@ -37,7 +31,21 @@ electrostatic Coulomb force:
 \vF_{C,j \rightarrow i}\pa{\vr} & =\frac{k q_i q_j}{r_{ji}^2} \hvr_{ji}.
 \label{eqn:md:coulomb:F}
 \end{align}
-which only depends on the distance between particles. Figure
+which only depends on the distance between particles. Calculating $\vF_i$
+from \eqref{eqn:md:newton} and \eqref{eqn:md:coulomb:F} requires one operation
+per particle present in the system; updating the force on one particle is an
+$O\pa{N}$ operation (doubling the number of particles will double the required
+calculation time). Since there is $N$ particles, calculating the force for
+all particles has thus a scaling of $O\pa{N^2}$ (doubling the number of
+particles will quadruple the required calculation time). Some forces used in
+different research areas are short range and can then be cutoff at a certain
+distance. This effectively reduces the scaling from $O\pa{N^2}$ to $O\pa{N}$
+but the Coulomb potential, being long range, cannot be artificially cutoff.
+Section \ref{section:intro:md:tree} discuss a different algorithm that allows
+reducing the scale to $O\pa{N \log{N}}$.
+
+
+Figure
 \ref{fig:md:vectors} shows the vectors definition used throughout this work. We
 define particle $i$ the particle we are interested in (for example, the
 particle we are calculating the force on), and particle $j$ the particle that
@@ -365,6 +373,7 @@ distance.
 
 
 \subsection{Long range potential: Hierarchical Tree algorithms}
+\label{section:intro:md:tree}
 
 The $O\pa{N^2}$ scaling of the MD algorithm for long-range forces
 can be problematic when the number of
