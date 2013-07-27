@@ -282,10 +282,18 @@ The field dominated regime lies under this line.
 
 Otherwise, when $\gamma~\gg~1$, the laser field strength is weak compared to
 the ionization potential and the later is not as important as before in the
-subsequent dynamics. The quiver motion of electrons in the oscillating laser
-field is minimum and photon interactions with the cluster is thus dominant.
+subsequent dynamics. The amplitude of the electron's quiver motion in the laser
+field is given by
+\begin{align}
+% Georgescu2007a, page 3
+x_q & = \frac{F}{\omega^2}
+\label{eqn:quiver}
+\end{align}
+where $F$ is the force of the laser field and $\omega$ its angular frequency.
+When $\gamma~\gg~1$, the quiver amplitude $x_q$ is minimum; the electric field
+oscillates too rapidly for the electrons to feel it and photon interactions with
+the cluster is thus dominant.
 
-\lrfatal{you should define what you mean by quivery energy}
 
 Note that the two regimes are not clearly segregated; Keldysh parameter
 \lrfatal{states which kind of processes dominates but does not prevent them from happening.}
@@ -393,7 +401,7 @@ as shown on figure \ref{fig:ionization:tunnel}. Tunnel ionization is also
 sometimes called optical field ionization (OFI), or more simply field
 ionization, since one can describe the process as the laser field as the source
 of the potential bending and ionization.
-\lrfatal{I made the change to the last sentence, but
+\lrnote{I made the change to the last sentence, but
 am still not happy with it. it's b/c the laser field picture is really only a
 semiclassical quantum picture in the length gauge. i will clarify more when we
 talk and maybe we can edit it appropriately then.}
@@ -440,13 +448,9 @@ Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
 where an electron emits a photon when deflected, either by a heavier ion in the
 case of plasma, or by magnetic fields in the case of synchrotrons. IBH is thus
 the absorption of photons accelerating the electrons\cite{Schlessinger1979}.
-The amplitude of the electron's quiver is the laser field is given by
-\begin{align}
-% Georgescu2007a, page 3
-x_q & = \frac{F}{\omega^2}
-\end{align}
-where $F$ is the force of the laser field and $\omega$ its angular frequency. For
-large frequencies, the quiver amplitude is small; the electric field oscillates
+
+For large frequencies, the quiver amplitude of equation \eqref{eqn:quiver} is
+small; the electric field oscillates
 too rapidly for the electrons to gain significant acceleration. On the other
 hand, for smaller frequencies (larger wavelengths) the quiver amplitude can
 be significant. In the case of IR, electrons can be pushed outside the cluster
