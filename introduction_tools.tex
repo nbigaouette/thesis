@@ -48,7 +48,8 @@ field fluctuations seen in strong field cluster dynamics.
 
 Continuing on the spectrum of methods, classical methods likes Molecular
 Dynamics (MD) solves Newton
-equations of motion with any kind of forces between particles. When used in
+equations of motion with any kind of forces between particles\cite{Skeel1998}.
+When used in
 laser-cluster simulations, MD generally uses the instantaneous electrostatic
 (Coulomb) force between charged particles. MD codes have the advantage of being
 straightforward to implement and use, give macroscopic properties easily and allow a
@@ -58,16 +59,21 @@ these reasons it is the method of choice for use in the present work.
 \lrnote[noinline,margin]{for the below, want to emphasize that microscopic pic
 is a NEW method, rather than the estabilished methods you describe above. and you
 could say that it is an interesting future direction, or something like that.}
-PIC methods, where particles interact with a grid which propagates the
-electromagnetic field (through Maxwell's equations) that other particles see,
-can also be successively used to model clusters\cite{Varin2012}, but they tend
+A limitation of MD is that it cannot account for field propagation effects. For
+large clusters of more than tens of thousands of atoms, these effects can become
+important. PIC methods, where particles interact with a grid which propagates the
+electromagnetic field (through Maxwell's equations) that other particles see
+intrinsically describe these retardation effects. PIC can be successfully used
+to model large clusters\cite{Varin2012}, but they tend
 to be more complex and lack the simplicity of MD. Even though they can scale to
 larger number of particles, for smaller systems the grid adds
 an extra overhead not present in MD.
 
-\lrnote{add citation for MD method. might also mention that there are
-refinements on md, like treecode, and also the limitation that it cannot account
-for field propagation effects, like the microscopic pic can.}
+Some refinements to the MD algorithm allow it to be used for larger systems
+while still keeping the same underlying code structure. For example, organizing
+particles in a hierarchical tree\cite{Barnes1986,Gibbon2002} can speed up the force
+calculation from a $O\pa{N^2}$ scaling to $O\pa{N \log{N}}$. More details on the
+tree algorithm is presented in section \ref{section:intro:md:tree}.
 
 On the end of the methods spectrum lies rate equations methods where a time
 dependence for parameters is written down and solved. Too many approximations
