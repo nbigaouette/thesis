@@ -56,18 +56,24 @@ straightforward to implement and use, give macroscopic properties easily and all
 relatively large amount of particles to be simulated, while still allowing
 specific quantum treatment when necessary (for ionization events for example). For
 these reasons it is the method of choice for use in the present work.
-\lrnote[noinline,margin]{for the below, want to emphasize that microscopic pic
-is a NEW method, rather than the estabilished methods you describe above. and you
-could say that it is an interesting future direction, or something like that.}
+
 A limitation of MD is that it cannot account for field propagation effects. For
 large clusters of more than tens of thousands of atoms, these effects can become
 important. PIC methods, where particles interact with a grid which propagates the
 electromagnetic field (through Maxwell's equations) that other particles see
 intrinsically describe these retardation effects. PIC can be successfully used
-to model large clusters\cite{Varin2012}, but they tend
-to be more complex and lack the simplicity of MD. Even though they can scale to
-larger number of particles, for smaller systems the grid adds
-an extra overhead not present in MD.
+to model large clusters, but they tend to be more complex and so lack the
+simplicity of MD. Additionally, because they treat particles to be of the same
+size as the underlying grid, they do not describe close range interactions.
+Nevertheless, Varin \textit{et al.} developed a new method that add microscopic
+corrections to PIC close range interactions\cite{Varin2012}. With these microscopic
+corrections, collisions between particles are described similarly to MD, insuring
+that the a better description of the dynamics. This MPIC method has great prospects
+as not only can it describes what MD does but can go further by including the
+electromagnetic field propagation and its effects. Additionally, its scaling
+allows it to describe larger clusters and it can be parallelized more easily
+than MD. For smaller systems though, the complexity of PIC and MPIC and their
+grid's overhead gives MD a clear advantage.
 
 Some refinements to the MD algorithm allow it to be used for larger systems
 while still keeping the same underlying code structure. For example, organizing
