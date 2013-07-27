@@ -440,11 +440,26 @@ Inverse Bremsstrahlung Heating (IBH) is the inverse process of Bremsstrahlung
 where an electron emits a photon when deflected, either by a heavier ion in the
 case of plasma, or by magnetic fields in the case of synchrotrons. IBH is thus
 the absorption of photons accelerating the electrons\cite{Schlessinger1979}.
+The amplitude of the electron's quiver is the laser field is given by
+\begin{align}
+% Georgescu2007a, page 3
+x_q & = \frac{F}{\omega^2}
+\end{align}
+where $F$ is the force of the laser field and $\omega$ its angular frequency. For
+large frequencies, the quiver amplitude is small; the electric field oscillates
+too rapidly for the electrons to gain significant acceleration. On the other
+hand, for smaller frequencies (larger wavelengths) the quiver amplitude can
+be significant. In the case of IR, electrons can be pushed outside the cluster
+and back in; at $\ten{3}{16}$~W/cm$^2$ and 800~nm, the quiver
+amplitude is $x_q \approx 500 a_0$, where $a_0$ is the Bohr
+radius\cite{Georgescu2007}, while a Xe$_{1415}$ cluster is~115~$a_0$.
+
+The linear momentum gained by electrons in the laser field is then redistributed
+as thermal energy by collisions and scattering on heavier ions.
 IBH plays an important role in the IR regime where the laser field easily
 drives the electrons through the cluster\cite{Fennel2010}.
-\lrnote[noinline,margin]{relate this to the "excursion" length, which is related to quiver energy, and the cluster size to give an intuitive picture of why.}
-This linear momentum
-is redistributed as thermal energy by collisions and scattering on heavier ions.
+
+
 The IBH rate is given\cite{Fennel2010} by:
 \begin{align}
 \left< \dt{E} \right> & = 2 U_p \frac{\tau \omega^2}{\tau^2 \omega^2 + 1}
