@@ -580,6 +580,14 @@ algorithm was.
 
 \subsection{Implementation details}
 
+The following will go over some specifics details of the code implementation.
+An explanation as to why an new MD code was written is first presented. The
+model approximating the cluster environment for atomic processes is then
+presented, followed by specific details to photon and impact ionization.
+Next, the use of cross-sections for ionization events is explained and finally
+recombination as implemented in the code is presented.
+
+
 \subsubsection{MD code}
 
 Our group previously used Barnes and Hut's treecode implementation,
@@ -625,21 +633,16 @@ a package is invaluable.
 
 
 
-\lrfatal{need to have much better flow to the next section. an introductory
-paragraph of something. It's really jarring. perhaps move the MD implementation
-into the previous section somehow, and make the below on the implementation
-details of the quantum rates??}
-
 
 \subsubsection{Potential threshold $V_b$}
 \label{section:intro:Vb}
 
 Many ionization processes described in the introduction
 consider an isolated atom but
-clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$) and
-so the environment cannot be ignored.
+clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$);
+the cluster environment cannot be ignored.
 
-The cluster environment can be approximated by a constant value that shifts the
+This environment can be approximated by a constant value that shifts the
 potential\cite{Fennel2007}. This shift is $U_b = -e_0 V_b$ where $V_b$ is the
 potential due to the cluster at the ion's location (ignoring nearby electrons)
 and $U_b$ is the potential energy a test particle of charge state -1 (an electron)
