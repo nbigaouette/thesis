@@ -157,31 +157,42 @@ intensity, etc.) Transition cross-sections though are unique to each elements
 and must be calculated and added to the simulation package before use. Argon
 and xenon cross-sections where generated and are accessible. It is thus
 interesting to apply the model to different wavelength regimes. Other models were developed
-to explain Wabnitz \textit{et al.}'s 2002 VUV-xenon experiment at FLASH but when
-Bostedt \textit{et al.} published in 2010 a revised intensity (to lower values) it was
+to explain Wabnitz \textit{et~al.}'s 2002 VUV-xenon experiment at FLASH but when
+Bostedt \textit{et~al.} published in 2010 a revised intensity (to lower values) it was
 not clear if these models could still be able to reproduce the experimental results
 in light of the new, lower intensity. We decided to revisit the 2002 100~nm
 experiment in light of our ACI model at the revised, lower intensity.
 
 Thanks to my OpenCL implementation (and its 80 times speedup), it was possible
 to acquire significant statistics over a wide range of intensities, effectively
-reproducing the clusters distribution in the laser focus spacial profile. This
-is an important aspect to reproduce the charge state spectrum seen in experiment
-as the clusters normally do not all fall exactly at the laser focus' peak
-intensity. It also allowed acquiring significant data for valid statistics, an
-important requirement since MD simulations are chaotic.
+reproducing the clusters distribution in the laser focus spacial profile. The
+speedup gained was used to increase the number of simulations, thus increasing
+the statistical significance of the data, and to acquire data at different
+intensities to sample a non-uniform spacial distribution of the laser pulse.
 
-Interestingly, even at the 2.5 times lower intensity ($\ten{8}{12}$~W/cm$^{2}$
-vs. $\ten{2}{13}$~W/cm$^{2}$), the experiment's high charge states spectrum
-could still be reproduced with ACI. ACI had to
-be enabled to match the spectrum of the smallest clusters (Xe$_{90}$), both
-for the dominant charge state (Xe$^{1+}$) and the maximum charge state (Xe$^{4+}$).
-The change from dominant Xe$^{1+}$ to Xe$^{2+}$ was seen to take place at
-Xe$_{1,415}$ clusters in the simulations, something that couldn't be compared
-directly to the experiment due to lack of data. Nevertheless, this transition
-required ACI to be
-enabled, another indication that it plays a major role in cluster dynamics.
-Furthermore, the largest clusters in the 2002 experiment was Xe$_{90,000}$, a
+We showed that ACI increased the maximum charge states observed by two states in
+Xe$_{80}$ clusters at $8\times10^{12}$~W/cm$^2$ and Xe$_{1000}$ clusters
+at $1.5\times10^{13}$~W/cm$^2$. This maximum charge state went from Xe$^{3+}$ to
+Xe$^{5+}$ for the smaller clusters and from Xe$^{5+}$ to Xe$^{7+}$ for the
+larger clusters. For the simulation results to match the 2002 DESY experiment,
+ACI had to be enabled, a clear indication that ACI plays an important role in
+the cluster dynamics.
+
+We then looked at the cluster size influence on the charge state spectra
+at $8\times10^{12}$~W/cm$^2$. For the shapes to match the
+experimental data, a spacial averaging of the intensity in the laser profile
+had to be performed. ACI was vital to obtain both the same maximum charge state
+(Xe$^{4+}$) and the same most abundant one (Xe$^{1+}$) for Xe$_{90}$ clusters
+as the experiment.
+
+The influence of the potential depth used in the simulations was also
+investigated. By increasing IBH, a deeper potential allowed an increase of the
+maximum charge state seen as well as the most abundant one, up to a depth
+of around 27.2~eV (1~Eh), when ACI was enabled.
+
+The largest clusters simulated were Xe$_{5,083}$ (11
+icosahedral shells), much smaller than the experiment's Xe$_{90,000}$
+($\sim$30 icosahedral shells), a
 cluster size not possible with traditional MD simulations. A parallelized
 version of the MD algorithm could be implemented at a later time to explore such
 large clusters, or the tree algorithm could be used but would require more
@@ -192,15 +203,6 @@ scalable particle-mesh (PM) or even particle-particle, particle-mesh (P3M)
 technique. PIC for example scales as $O\pa{N_c^3}$ for the grid cells and
 $O\pa{N_p}$ for the number of particles, a lot better than the $O\pa{N_p^2}$
 scaling of MD simulations.
-
-An interesting aspect of MD simulations is the effect of the potential depth
-used. While many authors set this depth as the first ionization potential, it
-is not clear what exact values should be used. As was shown in the last article,
-this depth can have a strong influence on the cluster dynamics. In addition, a
-different potential shape for the ions (other than Coulombic) could be used to
-match the more realistic atomic potential of a mean field approximation. These
-kind of potentials were used in rate equations calculations, but could also be
-included in MD simulations.
 
 
 
