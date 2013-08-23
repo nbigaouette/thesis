@@ -66,8 +66,10 @@ Then, in 2010, Bosted \textit{et al.}
 re-calibrated the intensity used during the 2002 experiments.
 Instead of the previously thought $\ten{2}{13}$~W/cm$^2$, the intensity was
 re-calibrated to $\ten{8}{12}$~W/cm$^2$, less than half of the initial value.
+Additionally, the largest clusters was tripled in size, from Xe$_{30,000}$
+to Xe$_{90,000}$.
 Could the different models still produce the same amount of high charge states
-at the lower intensities?
+at the new, lower intensities?
 
 Additionally, in 2008 experiments \cite{Bostedt2008,Murphy2008b} were performed
 in the XUV regime near 30~nm~(41~eV). At this wavelength, the photon energy is
@@ -216,17 +218,19 @@ Afterwards, section \ref{section:papers:100nm} contains the draft of the article
 After Wabnitz \textit{et al.}'s
 2002 DESY-FEL experiment's intensity was re-calibrated in 2010, we hypothesized
 that our ACI model could still explain the high charge states seen in xenon
-clusters, even with the lower intensities. We included single photon ionization,
-impact ionization, ACI and recombination in simulations of Xe$_{90}$ to Xe$_{5,083}$
-interacting with a 100 fs, 98 nm (12.65 eV) laser pulse at different intensities.
-We compared our model
-with previous work with ACI disabled and found good agreement. Since these VUV
+clusters, even with the lower intensities.
+Since the VUV (98 nm, 12.65 eV)
 photons cannot ionize a Xe$^{1+}$ to Xe$^{2+}$ (see table \ref{tab:ips} for xenon
 ionization potentials), all charge states higher than Xe$^{1+}$ must be created
-with other processes, in agreement with experiments. The high performance of my
+with other processes.
+We included single photon ionization,
+impact ionization, ACI and recombination in simulations of Xe$_{80}$ to Xe$_{5,083}$
+interacting with DESY's 100 fs laser pulse at different intensities.
+We compared our model
+with previous work with ACI disabled and found good agreement.
+The high performance of my
 code implementation (see section \ref{section:tools:opencl} on GP-GPU) allowed
-running thousands of MD simulations in contrast with other groups where only
-a handful of simulations were performed. The chaotic nature of the many-body
+running thousands of MD simulations. The chaotic nature of the many-body
 problem requires acquiring vast amount of data for valid statistics, giving more
 weight to our results. On average, it was found that two more charge states are
 accessible when ACI is enabled, a clear indication that ACI has a central role
@@ -234,13 +238,11 @@ amongst the ionization channels.
 
 Due to the spacial intensity profile of the laser pulse, simulations were run
 at different intensities to simulate the effect of experimental data acquired
-from clusters dispersed in the spacial profile. This improves the validity of
-simulation data when comparing with experiments. Additionally, our spectrum
-was more complete than experiments as they included the neutral xenon,
-inaccessible to the time-of-flight (TOF) apparatus used to collect (real) ions.
+from clusters dispersed in the laser's spacial profile. This improves the validity of
+simulation data when comparing with experiments.
 Our data was in good agreement with the 2002 experiment. Both the dominant
 charge states and the highest charge states matched the experiment data. This
-was note the case of other models which used the old intensity.
+was not the case of other models which used the old intensity.
 
 The last part of the article discuss the influence of the potential depth
 of equation~\eqref{eqn:md:sigma}.
