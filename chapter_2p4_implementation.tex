@@ -146,7 +146,7 @@ of the ion with an updated charge state. At this point, all other particles in
 the cluster will not see a difference; the potential $\phi'\pa{\vr}$ created by
 this new particles pair
 \begin{align}
-\phi'\pa{\vr} & = \phi_{j}\pa{\vr;Z+1} + \phi_{k}\pa{\vr;-1}
+\phi'\pa{\vr} & = \phi_{j}\pa{\vr;Z+1} + \phi_{k}\pa{\vr;-1},
 \end{align}
 is the same as the previous ion's $\phi_{j}\pa{\vr;Z}$ (see equation
 \eqref{eqn:md:smoothed:phi} for the potential shape mainly used).
@@ -427,7 +427,7 @@ which is equivalent to equation \eqref{eqn:ionization:rate:mpi} with $\nu = 1$.
 Then, this rate is weighted\cite{Lax2006} by the time step size and compared to
 a random number $r$ between 0 and 1:
 \begin{align}
-1 - \e{-\Gamma \Delta t} > r
+1 - \e{-\Gamma \Delta t} > r.
 \label{eqn:ionization:prob}
 \end{align}
 When the previous test succeeds, ionization takes place and a new electron is
@@ -460,7 +460,7 @@ were considered (with $l<4$) for charge states up to 17+ for both xenon and argo
 
 The impact parameter of the impacting electron is calculated by:
 \begin{align}
-b & = \frac{\abs{\vv \times \vr}}{\abs{\vv}}
+b & = \frac{\abs{\vv \times \vr}}{\abs{\vv}},
 \label{eqn:ionization:impact:parameter}
 \end{align}
 where $\vv$ is the impacting electron's velocity vector and $\vr$ the vector

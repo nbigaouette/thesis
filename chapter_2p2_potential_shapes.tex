@@ -44,11 +44,11 @@ Different potential shapes were investigated for the close range potential.
 Figure~\ref{fig:potential:shapes} plots the different shapes of potentials and
 their respective electrostatic field. These shapes are obtained by simply
 finding the location $R$ where the value and the slope of the close-range shape
-$\phi_{cr}$ fits with the Coulomb potential $\phi_C$.
+$\phi_{cr}$ fits with the Coulomb potential $\phi_C$:
 \begin{subequations}
 \begin{align}
-\left. \phi_C        \right|_{R} & = \left. \phi_{cr} \right|_{R} \\
-\left. \delr{\phi_C} \right|_{R} & = \left. \delr{\phi_{cr}} \right|_{R}
+\left. \phi_C        \right|_{R} & = \left. \phi_{cr} \right|_{R}, \\
+\left. \delr{\phi_C} \right|_{R} & = \left. \delr{\phi_{cr}} \right|_{R}.
 \end{align}
 \label{eqn:potential:to_match}
 \end{subequations}
@@ -61,17 +61,17 @@ between the long range Coulomb potential and the short range potential.
 
 For the harmonic potential, we have:
 \begin{align}
-\phi_{j,H} & = -A r^2 + \phi_0
+\phi_{j,H} & = -A r^2 + \phi_0.
 \end{align}
 We note that at $r_{j,i} = 0$, the potential value is the ``potential depth''
 $\phi_0$.
 Matching equations \eqref{eqn:potential:to_match} at $R$ gives:
 \begin{subequations}
 \begin{align}
-\phi_{j,H}\pa{\vr_i} & = \frac{-4 \phi_0^3}{27 \pa{k q_j}^2} r_{j,i}^2 + \phi_0
+\phi_{j,H}\pa{\vr_i} & = \frac{-4 \phi_0^3}{27 \pa{k q_j}^2} r_{j,i}^2 + \phi_0,
 \\
-R & = \frac{3 k q_j}{2 \phi_0} \\
-\vE_{j,H}\pa{\vr_i} & = \frac{k q_j}{R^3} \vr_{j,i}
+R & = \frac{3 k q_j}{2 \phi_0}, \\
+\vE_{j,H}\pa{\vr_i} & = \frac{k q_j}{R^3} \vr_{j,i}.
 \end{align}
 \end{subequations}
 
@@ -82,7 +82,7 @@ The super-gaussian potential is given by:
 \begin{align}
 \phi_{j,SG}\pa{\vr_i} & = \phi_0 \ex{
                             -\frac{1}{2} \pa{\frac{r_{j,i}}{\sigma}}^{2m}
-                        }
+                        }.
 \label{eqn:potential:shapes:sg:pot}
 \end{align}
 In the case where $m = 1$, equation \eqref{eqn:potential:shapes:sg:pot} is simply
@@ -90,12 +90,12 @@ a gaussian shape. Matching equations~\eqref{eqn:potential:to_match} at $R$ gives
 values for $\sigma$ and $R$:
 \begin{subequations}
 \begin{align}
-\sigma  & = \frac{k q_j m^{1/2m}}{\phi_0} \ex{\frac{1}{2m}} \\
-R       & = \frac{k q_j}{\phi_0} \ex{\frac{1}{2m}} \\
+\sigma  & = \frac{k q_j m^{1/2m}}{\phi_0} \ex{\frac{1}{2m}}, \\
+R       & = \frac{k q_j}{\phi_0} \ex{\frac{1}{2m}}, \\
 \vE_{j,SG} & = \frac{\phi_0 m}{r_{j,i}}
                 \ex{-\frac{1}{2} \pa{\frac{r_{j,i}}{\sigma}}^{2m}}
                 \pa{ \frac{r_{j,i}}{\sigma} }^{2m}
-                \hvr_{j,i}
+                \hvr_{j,i}.
 \end{align}
 \label{eqn:potential:shapes:sg}
 \end{subequations}
@@ -112,7 +112,7 @@ discontinuity when the two charged distribution (particles) overlap. As such,
 the electrostatic potential due to a charged particle $j$
 (of gaussian shape of width $\sigma$) at location $\vr = r \hvr$ is
 \begin{align}
-\phi_{j}\pa{\vr} & = \frac{k q_j}{r} \erf{\frac{r}{\sigma \sqrt{2}}}
+\phi_{j}\pa{\vr} & = \frac{k q_j}{r} \erf{\frac{r}{\sigma \sqrt{2}}},
 \label{eqn:md:smoothed:phi}
 \end{align}
 where $\erf{}$ is the error function. The associated electrostatic field is thus
@@ -135,7 +135,7 @@ indetermination $\frac{0}{0}$ occurs. Using l'Hospital rule, we get the limit
 of $\phi$ as $\vr$ reaches 0:
 \begin{align}
 \lim_{\vr \rightarrow 0} \phi_j\pa{\vr}
-    & \equiv \phi_j\pa{0} = \frac{ k q_j }{ \sigma } \sqrt{\frac{2}{\pi}}
+    & \equiv \phi_j\pa{0} = \frac{ k q_j }{ \sigma } \sqrt{\frac{2}{\pi}},
 \label{eqn:md:smoothed:phi0}
 \end{align}
 from which we get the particle width:
@@ -236,9 +236,9 @@ particle is simply scaled by its charge state.
 
 Once the potential and field curves are calculated, they are approximated using
 \begin{align}
-x_{\textrm{norm}} & = \frac{x}{\Delta x} \\
-i   & = \textrm{int}\pa{x_{\textrm{norm}}} \\
-A   &= lut\cro{i} + \pa{lut\cro{i+1}-lut\cro{i}} \pa{x_{\textrm{norm}}-\textrm{double}\pa{i}}
+x_{\textrm{norm}} & = \frac{x}{\Delta x}, \\
+i   & = \textrm{int}\pa{x_{\textrm{norm}}}, \\
+A   &= lut\cro{i} + \pa{lut\cro{i+1}-lut\cro{i}} \pa{x_{\textrm{norm}}-\textrm{double}\pa{i}},
 \end{align}
 where $x$ is the distance between the two particles, $lut$ is the array
 containing the look-up table, $i$ the index of the look-up table and $A$ the
@@ -247,9 +247,9 @@ value to approximate using the look-up table.
 The OpenCL implementation is different. The look-up tables are first transferred
 to the OpenCL device where they will be indexed using:
 \begin{align}
-x_{\textrm{norm}} & = \frac{x}{\Delta x} \\
-i   & = \textrm{convert\_int\_sat\_rtz}\pa{\textrm{floor}\pa{x_{\textrm{norm}}}} \\
-A   &= lut\cro{i} + \pa{lut\cro{i+1}-lut\cro{i}} \pa{x_{\textrm{norm}}-\textrm{convert\_float}\pa{i}}
+x_{\textrm{norm}} & = \frac{x}{\Delta x}, \\
+i   & = \textrm{convert\_int\_sat\_rtz}\pa{\textrm{floor}\pa{x_{\textrm{norm}}}}, \\
+A   &= lut\cro{i} + \pa{lut\cro{i+1}-lut\cro{i}} \pa{x_{\textrm{norm}}-\textrm{convert\_float}\pa{i}}.
 \end{align}
 The OpenCL function
 convert\_float() converts an integer to a floating point value

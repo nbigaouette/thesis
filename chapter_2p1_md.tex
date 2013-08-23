@@ -15,7 +15,7 @@ time evolution of the system.
 The total force (from two-body interactions) acting on particle $i$ of mass
 $m_i$ from all other $N$ particles in the system is:
 \begin{align}
-m_i \va_i & = \vF_i = \sum_{j \ne i} \vF_{j \rightarrow i}
+m_i \va_i & = \vF_i = \sum_{j \ne i} \vF_{j \rightarrow i}.
 \label{eqn:md:newton}
 \end{align}
 
@@ -51,9 +51,9 @@ particle we are calculating the force on), and particle $j$ the particle that
 is generating the field or potential that is measured at location of particle
 $i$. We thus have:
 \begin{align}
-\vr_{j} + \vr_{j,i} & = \vr_{i} \\
-\vr_{j,i} & = \vr_{i} - \vr_{j} \\
-\hvr_{j,i} & = \frac{\vr_{j,i}}{\abs{\vr_{j,i}}}
+\vr_{j} + \vr_{j,i} & = \vr_{i}, \\
+\vr_{j,i} & = \vr_{i} - \vr_{j}, \\
+\hvr_{j,i} & = \frac{\vr_{j,i}}{\abs{\vr_{j,i}}}.
 \end{align}
 %       _j
 %       /|\
@@ -76,7 +76,7 @@ $i$ using the Velocity-Verlet~(VV) scheme:
 \begin{align}
 \vx_{i}^{\pa{n+1}} & = \vx_{i}^{\pa{n}} + \vv_{i}^{\pa{n}} \Delta t +
 \frac{\va_{i}^{\pa{n}}}{2} \Delta t^2, \\
-\va_{i}^{\pa{n+1}} & = \frac{\vF^{\pa{n}}}{m_i} \label{eqn:md:vv:a} \\
+\va_{i}^{\pa{n+1}} & = \frac{\vF^{\pa{n}}}{m_i}, \label{eqn:md:vv:a} \\
 \vv_{i}^{\pa{n+1}} & = \vv_{i}^{\pa{n}} + \frac{\va_{i}^{\pa{n}} +
 \va_{i}^{\pa{n+1}}}{2} \Delta t,
 \end{align}

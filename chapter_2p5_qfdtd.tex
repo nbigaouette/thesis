@@ -97,25 +97,25 @@ wavefunction $\psi$ inside a potential $V$:
 \begin{align}
 \im \hbar \delt{  } \ket{\psi\pa{\vr, t}}
     & = \pa{-\frac{\hbar^2}{2 m} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr,
-t}}
+t}}.
 \label{eqn:schrodinger:si}
 \end{align}
 To ease the calculation, let's switch to atomic units where $\hbar = 1$, $m
 = 1$ and $e_0 = 1$:
 \begin{align}
 \im \delt{  } \ket{\psi\pa{\vr, t}}
-    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr, t}}
+    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr, t} } \ket{\psi\pa{\vr, t}}.
 \label{eqn:schrodinger:au}
 \end{align}
 At initial time $t = 0$, the wavefunction $\ket{\psi\pa{\vr, t}}$ is
 decomposed into its eigenstates basis:
 \begin{align}
-\ket{\psi\pa{\vr, t=0}} & = \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
+\ket{\psi\pa{\vr, t=0}} & = \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}.
 \label{eqn:wavefunction:real:initial}
 \end{align}
 The time-evolution operator (or propagator) $\oU\pa{t}$ is, in atomic units:
 \begin{align}
-\oU\pa{t} & = \ex{ - \im t \oH }
+\oU\pa{t} & = \ex{ - \im t \oH },
 \label{eqn:propagator:real}
 \end{align}
 and when applied to the initial state \eqref{eqn:wavefunction:real:initial}
@@ -123,14 +123,14 @@ gives the time evolution of the wavefunction:
 \begin{align}
 \oU\pa{t} \ket{\psi\pa{\vr, t=0}}
     = \ket{\psi\pa{\vr, t}}
-  & = \e{ - \im t \oH } \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}
+  & = \e{ - \im t \oH } \sum_{n=0}^{\infty} c_n \ket{\phi_n\pa{\vr}}.
 \end{align}
 Since the operator $\oH$ applied to the eigenstates
 $\ket{\phi_n\pa{\vr}}$ gives the eigenvalues $E_n$, the previous equation
 becomes:
 \begin{align}
 \ket{\psi\pa{\vr, t}}
- & = \sum_{n=0}^{\infty} \e{ - \im t E_n } c_n \ket{\phi_n\pa{\vr}}
+ & = \sum_{n=0}^{\infty} \e{ - \im t E_n } c_n \ket{\phi_n\pa{\vr}}.
 \label{eqn:wavefunction:eigenstates:time_evolution:real}
 \end{align}
 The time evolution of each eigenstates is thus an oscillation between their real
@@ -146,7 +146,7 @@ Let's separate the real and imaginary components of equation
 \begin{align}
 \im \delt{  } \pa{ \psi_R + \im \psi_I}
     & = \pa{-\frac{1}{2} \laplacian{} + V }
-        \pa{ \psi_R + \im \psi_I}
+        \pa{ \psi_R + \im \psi_I},
 % \\
 % \im \delt{  } \psi_R - \delt{  } \psi_I
 %     & = \pa{-\frac{1}{2} \laplacian{} + V } \psi_R
@@ -155,9 +155,9 @@ Let's separate the real and imaginary components of equation
 giving two equations describing the time evolution of two effective fields:
 \begin{subequations}
 \begin{align}
-\delt{  } \psi_R & =   \pa{-\frac{1}{2} \laplacian{} + V } \psi_I
+\delt{  } \psi_R & =   \pa{-\frac{1}{2} \laplacian{} + V } \psi_I,
 \label{eqn:schrodinger:real:real} \\
-\delt{  } \psi_I & = - \pa{-\frac{1}{2} \laplacian{} + V } \psi_R
+\delt{  } \psi_I & = - \pa{-\frac{1}{2} \laplacian{} + V } \psi_R.
 \label{eqn:schrodinger:real:imag}
 \end{align}
 \label{eqn:schrodinger:real}
@@ -171,24 +171,24 @@ $\pa{i,j,k}$ and at time step $n$. Then equation equation
 (second order) central-differences, we get:
 \begin{align}
 \left. \delt{  } \psi_I \right|_{n}
-& = \left. - \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_R \right|_{n} \\
+& = \left. - \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_R \right|_{n}, \\
 \frac{\psi_{I}^{n+1/2} - \psi_{I}^{n-1/2}}{\Delta t}
-& = - \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_{R}^{n} \\
+& = - \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_{R}^{n}, \\
 \psi_{I}^{n+1/2}
 & = \psi_{I}^{n-1/2} - \Delta t \pa{-\frac{1}{2} \laplacian{} + V^{n} }
-\psi_{R}^{n}
+\psi_{R}^{n}.
 \label{eqn:schrodinger:real:imag:discretized}
 \end{align}
 Similarly, defining the time derivative in \eqref{eqn:schrodinger:real:real} at
 time step $n$ and again using (second order) central-differences:
 \begin{align}
 \left. \delt{  } \psi_R \right|_{n+1/2}
-& = \left. \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_I \right|_{n+1/2} \\
+& = \left. \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_I \right|_{n+1/2}, \\
 \frac{\psi_{R}^{n+1} - \psi_{R}^{n}}{\Delta t}
-& = \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_{I}^{n+1/2} \\
+& = \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_{I}^{n+1/2}. \\
 \psi_{R}^{n+1}
 & = \psi_{R}^{n} + \Delta t \pa{-\frac{1}{2} \laplacian{} + V^{n} }
-\psi_{I}^{n+1/2}
+\psi_{I}^{n+1/2},
 \label{eqn:schrodinger:real:real:discretized}
 \end{align}
 
@@ -198,7 +198,7 @@ central-differences:
 \laplacian{} \psi_{i,j,k}^{n} \approx
       \frac{ \psi_{i+1,j,k}^{n} - \psi_{i-1,j,k}^{n} }{2 \Delta x}
     + \frac{ \psi_{i,j+1,k}^{n} - \psi_{i,j-1,k}^{n} }{2 \Delta y}
-    + \frac{ \psi_{i,j,k+1}^{n} - \psi_{i,j,k-1}^{n} }{2 \Delta z}
+    + \frac{ \psi_{i,j,k+1}^{n} - \psi_{i,j,k-1}^{n} }{2 \Delta z}.
 \label{eqn:laplacian:discretized}
 \end{align}
 
@@ -265,7 +265,7 @@ and the \schrodinger equation in imaginary time is
 obtained:
 \begin{align}
 - \deli{}{\tau} \ket{\psi\pa{\vr, \tau}}
-    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr} } \ket{\psi\pa{\vr, \tau}}
+    & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr} } \ket{\psi\pa{\vr, \tau}}.
 \label{eqn:schrodinger:imaginary}
 \end{align}
 Note that equation \eqref{eqn:schrodinger:imaginary} is not complex and is
@@ -276,12 +276,12 @@ Contrary to the real-time method, the ``time'' evolution of the imaginary
 method is not oscillatory. Indeed, the propagator of equation
 \eqref{eqn:propagator:real} becomes, in imaginary time:
 \begin{align}
-\oU\pa{\tau} & = \ex{ - \tau \oH } \label{eqn:propagator:imag}
+\oU\pa{\tau} & = \ex{ - \tau \oH } \label{eqn:propagator:imag},
 \end{align}
 and the wavefunctions evolution becomes:
 \begin{align}
 \ket{\psi\pa{\vr, \tau}}
- & = \sum_{n=0}^{\infty} c_n \e{ - \tau E_n } \ket{\phi_n\pa{\vr}}
+ & = \sum_{n=0}^{\infty} c_n \e{ - \tau E_n } \ket{\phi_n\pa{\vr}}.
 \end{align}
 The imaginary time evolution is thus an exponential growth with the different
 eigenstates having different growth rates. It thus becomes possible to isolate
@@ -299,12 +299,12 @@ time step $n$ and the time derivative is discretized, in this case using (first
 order) forward-differences (and again simplifying the notation):
 \begin{align}
 - \left. \deli{}{\tau} \psi \right|_{n}
-    & = \cro{ \pa{-\frac{1}{2} \laplacian{} + V} \psi }_{n}
+    & = \cro{ \pa{-\frac{1}{2} \laplacian{} + V} \psi }_{n},
 \\
 \frac{\psi^{n+1} - \psi^{n}}{\Delta \tau}
-    & = \pa{\frac{1}{2} \laplacian{} - V} \psi_{n}
+    & = \pa{\frac{1}{2} \laplacian{} - V} \psi_{n},
 \\
-\psi^{n+1} & = \cro{1 + \Delta \tau \pa{\frac{1}{2} \laplacian{} - V}} \psi^{n}
+\psi^{n+1} & = \cro{1 + \Delta \tau \pa{\frac{1}{2} \laplacian{} - V}} \psi^{n}.
 \label{eqn:schrodinger:imaginary:discretized}
 \end{align}
 The Laplacian is discretized with equation \eqref{eqn:laplacian:discretized}.
@@ -338,7 +338,7 @@ potential:
         +\frac{1}{\Delta z}
         }
         + \textrm{max}\abs{V\pa{\vr}} / \hbar
-    }
+    }.
 \end{align}
 
 
