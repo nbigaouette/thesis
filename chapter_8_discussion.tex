@@ -124,31 +124,7 @@ way to obtain the eigenstates was described and successively used on the
 hydrogen atom and the simplest molecule: hydrogen cation molecule (H$_{2}^{+}$).
 Using the real-time method, it was possible to see ten excited states. This
 publication allowed to validate the whole technique, including the nonlinear
-mapping, and compare with known values from experiments. Going forward, it will
-be possible to validate and study some approximations used in the MD package,
-for example, what is the influence of the shape of the cluster environment,
-approximated as a constant $U_b$, over the cluster dynamics? How much is
-affected an electron wavefunction by a neighbouring ion?
-
-Another possibility given by my QFDTD implementation is to use a potential
-different then Coulombic. An atomic potential, similar to the one used in
-reference~\cite{Walters2006}, could be used to simulate an electron in a
-mean-field created by other electrons, effectively changing the one electron
-picture of the code to mean-field, Hartree-Fock, formulation of many electrons.
-Sullivan did developed a two-electrons formulation of QFDTD using the
-Hartree-Fock formulation but his systems were mostly 2D, considerably reducing
-the computational burden required. My package could be used to simulate one
-electron in an effective potential, using the nonlinear mapping to the
-calculation possible.
-
-Additionally, the potential used in the (real time) QFDTD does not have to be
-time independent. Using a time dependent potential could simulate the effect of
-a (classical) laser field (through the vector potential). It is hypothesized
-that transition rates could be obtained from the output of the real time QFDTD.
-If rates and cross-sections could be obtained for an isolated atom, the
-influence of the neighbouring ions and the cluster environment could be
-calculated.
-
+mapping, and compare with known values from experiments.
 
 % ******************************************************************************
 The ACI model, based on electron impact excitation cross-sections, is independent of the
@@ -190,19 +166,68 @@ investigated. By increasing IBH, a deeper potential allowed an increase of the
 maximum charge state seen as well as the most abundant one, up to a depth
 of around 27.2~eV (1~Eh), when ACI was enabled.
 
+
+\subsection{Future direction}
+
 The largest clusters simulated were Xe$_{5,083}$ (11
 icosahedral shells), much smaller than the experiment's Xe$_{90,000}$
-($\sim$30 icosahedral shells), a
-cluster size not possible with traditional MD simulations. A parallelized
-version of the MD algorithm could be implemented at a later time to explore such
-large clusters, or the tree algorithm could be used but would require more
-rigorous testing and validation. In any case, a lot of work still need to be
-invested to reach these cluster sizes. Another approach could even be taken,
+($\sim$30 icosahedral shells), a cluster size not possible with traditional 
+MD simulations. The MD's $O\pa{N^2}$ scaling makes it extremely difficult
+to increase the number of particles past a couple of thousands. While
+the OpenCL implementation is a nice addition that gives almost two orders 
+of magnitude speedup, the algorithm's scaling is always present.
+Parallelizing the MD algorithm is possible but a difficult task which does
+not free one from the its scaling. To push cluster sizes a different
+algorithm will have to be used.
+
+The tree algorithm would be the first step due to its $O\pa{N \log N}$ scaling.
+The algorithm is already implemented but would require more testing
+before being used in production. Its advantage would be to use the
+ionization library developed in the present work.
+
+Another approach could be taken instead,
 mainly switching from a direct particle-to-particle (PP) algorithm to a more
 scalable particle-mesh (PM) or even particle-particle, particle-mesh (P3M)
-technique. PIC for example scales as $O\pa{N_c^3}$ for the grid cells and
-$O\pa{N_p}$ for the number of particles, a lot better than the $O\pa{N_p^2}$
-scaling of MD simulations.
+technique. PIC for example scales as $O\pa{N_c^3}$ for the number of grid cells and
+$O\pa{N_p}$ for the number of particles.
+
+Simulating larger clusters is essential to reach the scale of biomolecules.
+While experiments have already been performed on some, for example
+on the mimivirus or photosynthesis proteins, theoretical tools are still
+in their infancy.
+
+The effects of excited states and ACI in clusters was shown to be significant
+in different intensity and wavelength regimes. Further investigation might
+reveal ACI to be present in other type of molecules or at other regimes.
+
+The Quantum FDTD model showed interesting potential for further investigation.
+While still based on the one electron picture, the potential used can
+be arbitrary in three dimensions. By changing the Coulombic potential
+for a Hartree–Fock self-consistent field, a multi-electrons system
+could be approached. Using this atomic potential could lead to a comparison 
+with reference~\cite{Walters2006}.
+Sullivan did develop a two-electrons QFDTD using the
+Hartree-Fock formulation but his systems were mostly 2D, considerably reducing
+the computational burden required. My package could be used to simulate one
+electron in an effective potential, using the nonlinear mapping to make the
+calculation possible.
+
+Additionally, the potential used in the (real time) QFDTD does not have to be
+time independent. Using a time dependent potential could simulate the effect of
+a (classical) laser field (through the vector potential). It is hypothesized
+that transition rates could be obtained from the output of the real time QFDTD.
+If rates and cross-sections could be obtained for an isolated atom, the
+influence of the neighbouring ions and the cluster environment could be
+calculated.
+
+Going forward, it will
+be possible to validate and study some approximations used in the MD package,
+for example, what is the influence of the shape of the cluster environment,
+approximated as a constant $U_b$, over the cluster dynamics? How much is
+affected an electron wavefunction by a neighbouring ion?
+
+Many tools were developed for the present work. These tools still show
+great promises for future work.
 
 
 
