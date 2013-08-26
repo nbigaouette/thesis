@@ -18,7 +18,7 @@ The main issue with the direct calculation of forces in MD is the lack of
 distinction between the close particles and distant ones. While the resulting
 potential of a distant particle is small, the computational cost required to
 calculate it is the same as in the case of a nearby particle. Some MD
-calculations use an artificial cutoff: particles farther then this cutoff will
+calculations use an artificial cutoff: particles farther than this cutoff will
 be ignored in the calculation of the force on one particle. This is acceptable
 when the force acting on particles is short range, either due to screening or
 to the nature of the force (Lennard-Jones for example).
@@ -69,7 +69,7 @@ particle of interest $i$.
 
 
 The tree algorithm first split the computational domain into an octree (in
-three dimension) or quadtree (in two dimensions) until
+three dimensions) or quadtree (in two dimensions) until
 only a maximum of one particle is present per cell as can be seen figure
 \ref{fig:tree:quadtree}. The deepest cells of the tree, containing only one particle,
 are called leaves. Once every particle in the system is inserted in the tree,
@@ -79,13 +79,13 @@ the top cell enclosing the whole domain.
 Then, instead of iterating through all particles for the calculation of the
 force on the particle of interest $i$, the tree is traversed. If the cell is
 ``far enough'' (with a given definition of far enough, discussed next) it can
-be added to the a cell interaction list for later processing through the cell's
+be added to the cell interaction list for later processing through the cell's
 moments. In the case of
 the cell being too close, it must be resolved into its  eight \textit{daughter}
 cells (or four in 2D). The daughter cells containing particles are visited, while the empty
-ones are ignored. The leaf cells can be reached using this process; in this
+ones are ignored. Leaf cells can be reached using this process; in this
 case, the particles in the leaves are considered close enough to the particle
-of interest $i$ and a direct interaction is wanted. The leaf particle will thus
+of interest $i$ and a direct interaction is wanted. Leaf particles will thus
 be added to a second interaction list containing particle-particle direct
 interactions. The process is recursively repeated until all particles
 are added to an interaction list, either directly or through a parent cell.
