@@ -46,6 +46,15 @@ Physics Department -- University of Ottawa}
 \setlength{\TPHorizModule}{\paperwidth}
 \setlength{\TPVertModule}{\paperheight}
 
+\newcommand{\framenumber}{
+% Place text @ page relative
+%					(x, y)
+\begin{textblock}{0}(0.01,0.967)
+\begin{scriptsize}
+{\color{gray}\insertframenumber/\inserttotalframenumber}
+\end{scriptsize}
+\end{textblock}
+}
 
 
 %\usepackage{algorithmic}
