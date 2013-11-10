@@ -10,10 +10,8 @@
 % \usepackage{beamerthemesplit}
 
 
-
-
-
-
+\usepackage{hyperref}
+\usepackage{media9}
 
 \title{Computational investigation of intense short-wavelength laser interaction with rare gas clusters}
 \subtitle{Ph.D. defence}
@@ -33,9 +31,11 @@ Physics Department -- University of Ottawa}
 %\usepackage{libertine}
 
 \usepackage{color}
+\usepackage{xcolor}
 
 \usepackage{bm}				% Needed for bold Greek letters
 
+\setbeamertemplate{caption}{\insertcaption}
 
 %%\usepackage{textpos}		% http://www.latex-community.org/forum/viewtopic.php?f=47\&t=9387
 %\usepackage[showboxes,absolute]{textpos} % http://handyfloss.net/2007.05/latex-the-textpos-package/
@@ -56,10 +56,6 @@ Physics Department -- University of Ottawa}
 \end{textblock}
 }
 
-
-%\usepackage{algorithmic}
-%\usepackage{animate}
-% \usepackage{movie15}
 
 \newcommand{\pa}[1]{\left( #1 \right)}
 \newcommand{\cro}[1]{\left[ #1 \right]}
@@ -104,6 +100,95 @@ Physics Department -- University of Ottawa}
 \end{frame}
 
 
+%% ###############################################################
+%\section{Laser-Cluster interaction}
+%
+%% ---------------------------------------------------------------
+%\subsection{Clusters of atoms and strong laser fields}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ---------------------------------------------------------------
+%\subsection{Mechanisms}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ...............................................................
+%\subsubsection{IR}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ...............................................................
+%\subsubsection{VUV \& XUV}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ...............................................................
+%\subsubsection{New processes}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%
+%% ###############################################################
+%\section{Methodology and Tools}
+%
+%% ---------------------------------------------------------------
+%\subsection{MD}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ---------------------------------------------------------------
+%\subsection{QFDTD}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%
+%% ###############################################################
+%\section{Papers}
+%
+%% ---------------------------------------------------------------
+%%\subsection{1. Augmented collisional ionization via excited states in XUV cluster interactions}
+%\subsection{1. ACI, XUV, Xenon: Introduction}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ---------------------------------------------------------------
+%%\subsection{2. Clusters in intense XUV pulses: Effects of cluster size on expansion dynamics and ionization}
+%\subsection{2. ACI, XUV, Argon: Cluster size}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ---------------------------------------------------------------
+%%\subsection{3. Effect of Augmented Collisional Ionization and potential depth in the VUV regime; a theoretical study}
+%\subsection{3. ACI, VUV, Xenon: 100nm experiment}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ---------------------------------------------------------------
+%%\subsection{4. Recombination effects in soft-x-ray cluster interactions at the xenon giant resonance}
+%\subsection{4. Recombination effects, Xenon}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+%
+%% ---------------------------------------------------------------
+%%\subsection{5. Nonlinear grid mapping applied to an FDTD-based, multi-center 3D Schr\"odinger equation solver}
+%\subsection{5. QFDTD}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
+
+
 % ###############################################################
 \section{Laser-Cluster interaction}
 
@@ -111,94 +196,195 @@ Physics Department -- University of Ottawa}
 \subsection{Clusters of atoms and strong laser fields}
 % ***************************************************************
 \begin{frame}{}\framenumber
+	\begin{columns}
+	\column{0.5\textwidth}
+		\begin{itemize}
+		\item Nanoscopic objects: properties greatly influenced by size
+		\item Single atom $\rightarrow$ large macromolecules
+		\item Rare gas clusters interaction + femtosecond lasers: merging of nano and ultrafast science
+		\item 800 nm $\rightarrow$ shorter $\lambda$ (FEL)
+		%\item CS spectrum can't be described with photo- only
+		%\item 800 nm (IR) lasers dominant, what about shorter wavelengths?
+		%\item FEL: New physics, new models, incomplete?
+		\end{itemize}
+	\column{0.5\textwidth}
+		%ffmpeg -i png/Xe5083_%04d.png -qscale:v 1 -r 30 Xe5083rotation.swf
+		\includemedia[label=Xe5083,activate=pagevisible,deactivate=onclick,width=\textwidth]
+					 {\includegraphics{figures/Xe5083rotation/png/Xe5083_0001.png}}{figures/Xe5083rotation/Xe5083rotation.swf}
+		\includegraphics[width=1.1\textwidth]{../figures/regimes}
+	\end{columns}
+\end{frame}
+
+% ***************************************************************
+\begin{frame}{Short $\lambda$}\framenumber
+	\begin{columns}
+		\column{0.5\textwidth}
+			\begin{itemize}
+			\item Important experiments in 2002
+			\item $\lambda$ = 98 nm, 12.65 eV (VUV), 100 fs, 2$\times$10$^{13}$~W/cm$^2$
+			\item Xe$^{0\rightarrow1+}$ = 12.13 eV $\rightarrow$ Where does higher CS come from?
+			\item Can't reproduce experiments; not enough ionization!
+			\end{itemize}
+		\column{0.5\textwidth}
+			\begin{figure}
+			\includegraphics[width=\textwidth]{figures/Wabnitz2002_fig1}
+			\caption{{\tiny Wabnitz \textit{et al}. Nature 420, 6915 482-5}}
+			\end{figure}
+	\end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
-\subsection{Mechanisms}
+\subsection{Excited states}
 % ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-% ...............................................................
-\subsubsection{IR}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-% ...............................................................
-\subsubsection{VUV \& XUV}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-% ...............................................................
-\subsubsection{New processes}
-% ***************************************************************
-\begin{frame}{}\framenumber
+\begin{frame}{Novel idea}\framenumber
+\begin{columns}
+	\column{0.5\textwidth}
+		\begin{itemize}
+		\item Suggested looking at excited states
+		\item Previously ignored
+		\item Developed a model:
+			\begin{itemize}
+			\item Two-step ionization process
+			\item Rapid energy absorption + redistribution through clusters
+			\item Model includes
+				\begin{itemize}
+					\item MD code (>16k LOC)
+					\item Ionization library (18k LOC)
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+	\column{0.55\textwidth}\centering
+		%\includegraphics[width=0.6\textwidth]{figures/ionization_aci}
+		\hspace{-21pt}\includegraphics[width=1.1\textwidth]{../figures/ionization_aci} \\
+		\hspace{-21pt}\includegraphics[width=1.1\textwidth]{figures/potential_landscape}
+\end{columns}
+{\uncover<2->{
+\begin{textblock}{0.4}(0.5,0.52)\textblockcolour{white}\centering\color{red}
+	\textbf{Augmented collisional ionization (ACI)}
+\end{textblock}
+}}
 \end{frame}
 
 
 % ###############################################################
-\section{Methodology and Tools}
+\section{Argon @ XUV}
 
 % ---------------------------------------------------------------
-\subsection{MD}
+\subsection{First results}
 % ***************************************************************
 \begin{frame}{}\framenumber
+\begin{columns}
+	\column{0.5\textwidth}
+		\begin{itemize}
+		\item 30 nm -- 30 eV regime
+			\begin{itemize}
+			\item too small for inner shell ionization
+			\item too large for field effects
+			\end{itemize}
+		\item Possible to isolate influence of internal electronic structures
+		\begin{itemize}
+			\item Single photon ionization starts dynamics
+			\item Study the remaining...
+		\end{itemize}
+		\end{itemize}
+
+	\column{0.5\textwidth}
+		\begin{figure}
+			\includegraphics[width=\textwidth]{figures/Murphy2008_fig3}
+			\caption{{\tiny Murphy \textit{et al.} PRL 101 (2008): 203401}}
+		\end{figure}
+\end{columns}
 \end{frame}
-
-% ---------------------------------------------------------------
-\subsection{QFDTD}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-
-% ###############################################################
-\section{Papers}
-
-% ---------------------------------------------------------------
-%\subsection{1. Augmented collisional ionization via excited states in XUV cluster interactions}
-\subsection{1. ACI, XUV, Xenon: Introduction}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-% ---------------------------------------------------------------
-%\subsection{2. Clusters in intense XUV pulses: Effects of cluster size on expansion dynamics and ionization}
-\subsection{2. ACI, XUV, Argon: Cluster size}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-% ---------------------------------------------------------------
-%\subsection{3. Effect of Augmented Collisional Ionization and potential depth in the VUV regime; a theoretical study}
-\subsection{3. ACI, VUV, Xenon: 100nm experiment}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-% ---------------------------------------------------------------
-%\subsection{4. Recombination effects in soft-x-ray cluster interactions at the xenon giant resonance}
-\subsection{4. Recombination effects, Xenon}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-% ---------------------------------------------------------------
-%\subsection{5. Nonlinear grid mapping applied to an FDTD-based, multi-center 3D Schr\"odinger equation solver}
-\subsection{5. QFDTD}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\end{frame}
-
-
-% ###############################################################
-\section{Conclusion}
 
 % ***************************************************************
-\begin{frame}{}\framenumber
+\begin{frame}{Results}\framenumber
+
+%http://latex-beamer-class.10966.n7.nabble.com/Uncovering-figures-td1854.html
+\setbeamercovered{invisible}
+
+\begin{columns}
+	\column{0.6\textwidth}
+		\begin{itemize}
+		\item Same parameters as Bostedt2008:
+		\begin{itemize}
+			\item 32 nm -- 38 eV
+			\item $5\times10^{13} \rightarrow 5\times10^{14}$ W/cm$^2$
+			\item 25 fs
+			\item Ar$_{80}$, Ar$_{147}$
+		\end{itemize}
+		\item 1 ps duration (no significant changes after)
+		\end{itemize}
+
+	\column{0.5\textwidth}
+\begin{center}
+
+%\begin{textblock}{0.48}(0.55,0.2)
+%    \only<2>{\includegraphics[width=0.9\textwidth]{figures/ionization_relative}}
+%\end{textblock}
+%\uncover<3->{ \includegraphics[width=0.5\textwidth]{figures/ionization_relative} }
+%\only<3>{     \includegraphics[width=0.9\textwidth]{figures/cs_evolution_wo_aci} }
+%\only<4->{ \includegraphics[width=0.9\textwidth]{figures/cs_evolution_wo_and_w_aci} }
+
+\begin{textblock}{0.48}(0.515,0.27)
+    \only<2>{\includegraphics[width=\textwidth]{figures/ionization_relative}}
+\end{textblock}
+\begin{textblock}{0.2}(0.67,0.1)
+    \only<3->{ \includegraphics[width=\textwidth]{figures/ionization_relative} }
+\end{textblock}
+\begin{textblock}{0.48}(0.515,0.27)
+    \only<3>{     \includegraphics[width=\textwidth]{figures/cs_evolution_wo_aci} }
+\end{textblock}
+\begin{textblock}{0.48}(0.515,0.27)
+    \only<4>{     \includegraphics[width=\textwidth]{figures/cs_evolution_wo_and_w_aci} }
+\end{textblock}
+\begin{textblock}{0.48}(0.515,0.27)
+    \only<5->{     \includegraphics[width=\textwidth]{figures/cs_evolution_wo_and_w_aci_es} }
+\end{textblock}
+
+
+\end{center}
+
+
+
+\end{columns}
+\uncover<6>{
+	\begin{center}
+	\vspace{40pt}
+	$\rightarrow$ ACI most important process!
+	\end{center}
+}
 \end{frame}
+
+
+
+
+%% ###############################################################
+%\section{Cluster size}
+%
+%
+%% ###############################################################
+%\section{Xenon @ VUV}
+%
+%
+%% ###############################################################
+%\section{Xenon @ XUV \& Recombination}
+%
+%
+%% ###############################################################
+%\section{Quantum Solver}
+
+
+
+
+
+
+
+%% ###############################################################
+%\section{Conclusion}
+%
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%\end{frame}
 
 
 
