@@ -194,7 +194,6 @@ Physics Department -- University of Ottawa}
 
 % ---------------------------------------------------------------
 \subsection{Clusters of atoms and strong laser fields}
-% ***************************************************************
 \begin{frame}{}\framenumber
 	\begin{columns}
 	\column{0.5\textwidth}
@@ -216,6 +215,7 @@ Physics Department -- University of Ottawa}
 \end{frame}
 
 % ***************************************************************
+\subsection{Some experiments}
 \begin{frame}{Short $\lambda$}\framenumber
 	\begin{columns}
 		\column{0.5\textwidth}
@@ -232,6 +232,11 @@ Physics Department -- University of Ottawa}
 			\end{figure}
 	\end{columns}
 \end{frame}
+
+
+
+% ###############################################################
+\section{Contributions: MD}
 
 % ---------------------------------------------------------------
 \subsection{Excited states}
@@ -259,18 +264,15 @@ Physics Department -- University of Ottawa}
 		\hspace{-21pt}\includegraphics[width=1.1\textwidth]{figures/potential_landscape}
 \end{columns}
 {\uncover<2->{
-\begin{textblock}{0.4}(0.5,0.52)\textblockcolour{white}\centering\color{red}
-	\textbf{Augmented collisional ionization (ACI)}
+\begin{textblock}{0.4}(0.5,0.52)\textblockcolour{white}\centering\textcolor{red}{
+	\textbf{Augmented collisional ionization (ACI)}}
 \end{textblock}
 }}
 \end{frame}
 
 
-% ###############################################################
-\section{Argon @ XUV}
-
 % ---------------------------------------------------------------
-\subsection{First results}
+\subsection{Argon @ XUV}
 % ***************************************************************
 \begin{frame}{}\framenumber
 \begin{columns}
@@ -313,17 +315,14 @@ Physics Department -- University of Ottawa}
 			\item Ar$_{80}$, Ar$_{147}$
 		\end{itemize}
 		\item 1 ps duration (no significant changes after)
+        \item<6-> {\color{red}$\rightarrow$ ACI most important process!}
+        \item<7->{
+            Journal of Physics B. 44(16), 2011, 165102.
+        }
 		\end{itemize}
 
 	\column{0.5\textwidth}
 \begin{center}
-
-%\begin{textblock}{0.48}(0.55,0.2)
-%    \only<2>{\includegraphics[width=0.9\textwidth]{figures/ionization_relative}}
-%\end{textblock}
-%\uncover<3->{ \includegraphics[width=0.5\textwidth]{figures/ionization_relative} }
-%\only<3>{     \includegraphics[width=0.9\textwidth]{figures/cs_evolution_wo_aci} }
-%\only<4->{ \includegraphics[width=0.9\textwidth]{figures/cs_evolution_wo_and_w_aci} }
 
 \begin{textblock}{0.48}(0.515,0.27)
     \only<2>{\includegraphics[width=\textwidth]{figures/ionization_relative}}
@@ -344,34 +343,109 @@ Physics Department -- University of Ottawa}
 
 \end{center}
 
-
-
 \end{columns}
-\uncover<6>{
-	\begin{center}
-	\vspace{40pt}
-	$\rightarrow$ ACI most important process!
-	\end{center}
-}
 \end{frame}
 
 
 
 
+% ###############################################################
+\subsection{Cluster size}
+\begin{frame}{}\framenumber
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{itemize}
+            \item<+-> Large clusters: $\searrow$ single-$\gamma$
+            \item<+-> Q: Cluster size influence on explosion dynamics?
+            \item<+-> Parameters:
+            \begin{itemize}
+                \item<.-> Ar$_{55}$, Ar$_{147}$, Ar$_{561}$ \& Ar$_{2057}$ (2, 3, 5, \& 8 shells)
+                \item<.-> 32.8 nm -- 37.8 eV, 5$\times$10$^{13}$~W/cm$^2$, 25 fs
+                \item<.-> 1 ps duration
+                \item<+-> Only Ar$^{2+}$ accessible through single-$\gamma$
+            \end{itemize}
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        Results...
+    \end{columns}
+\end{frame}
+
+% ###############################################################
+\subsection{Xenon @ VUV}
+% ---------------------------------------------------------------
+\subsubsection{100 nm}
+% ***************************************************************
+\begin{frame}{}\framenumber
+    \begin{columns}
+        \column{0.6\textwidth}
+        {\only<1>{ Wabnitz2002 (2$\times$10$^{13}$~W/cm$^2$):\\\includegraphics[width=\textwidth]{figures/Wabnitz2002_fig1}}}
+        {\only<2-3>{Bostedt2010 (8$\times$10$^{12}$~W/cm$^2$):\\\includegraphics[width=\textwidth]{figures/Bostedt2010_fig2}}}
+        {\only<4->{Bostedt2010 (8$\times$10$^{12}$~W/cm$^2$):\\\includegraphics[width=\textwidth]{figures/Bostedt2010_fig2_Xe70}}}
+
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item<1-> 98 nm -- 12.65 eV, 100~fs
+            \item<2-> Reduced ($\sim$40\%) intensity
+            \item<3-> Other models (FIXME: Cite others) used old intensity
+            \item<3-> Can ACI explain high CS seen?
+        \end{itemize}
+
+    \end{columns}
+\end{frame}
+
+% ***************************************************************
+\begin{frame}{}\framenumber
+\setbeamercovered{invisible}
+%charge_states_statistic_Xe100nmPart2BodstedIntensityScan_N00090_I08e12_linear
+\begin{columns}
+    \column{0.5\textwidth}
+    \begin{center}{\uncover<1->{Without ACI:\newline\includegraphics[width=\textwidth]{figures/cs_Xe100nm_N90_I8e12_wo_ACI}}}\end{center}
+    \column{0.5\textwidth}
+    \begin{center}{\uncover<2->{With ACI:\newline\includegraphics[width=\textwidth]{figures/cs_Xe100nm_N90_I8e12_w_ACI}}}\end{center}
+\end{columns}
+\begin{itemize}
+    \item<2-> Max CS: Increased from Xe$^{2+}$ $\rightarrow$ Xe$^{4+}$
+    \item<2-> Wabnitz2002: Siginificant signal for Xe$^{4+}$
+    \item<2-> Large proportion in excited state
+\end{itemize}
+\end{frame}
+
+
 %% ###############################################################
-%\section{Cluster size}
-%
-%
-%% ###############################################################
-%\section{Xenon @ VUV}
-%
-%
-%% ###############################################################
-%\section{Xenon @ XUV \& Recombination}
+%\subsection{Xenon @ XUV \& Recombination}
+%% ---------------------------------------------------------------
+%\subsubsection{Recombination}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%    \begin{columns}
+%        \column{0.6\textwidth}
+%        \begin{itemize}
+%            \item<+-> 
+%        \end{itemize}
+%        
+%        \column{0.5\textwidth}
+%        Results...
+%    \end{columns}
+%\end{frame}
 %
 %
 %% ###############################################################
 %\section{Quantum Solver}
+%% ---------------------------------------------------------------
+%\subsection{QFDTD}
+%% ***************************************************************
+%\begin{frame}{}\framenumber
+%    \begin{columns}
+%        \column{0.6\textwidth}
+%        \begin{itemize}
+%            \item<+-> 
+%        \end{itemize}
+%        
+%        \column{0.5\textwidth}
+%        Results...
+%    \end{columns}
+%\end{frame}
 
 
 
