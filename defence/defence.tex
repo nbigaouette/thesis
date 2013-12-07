@@ -262,40 +262,103 @@ Physics Department -- University of Ottawa}
 
 
 
+
 % ###############################################################
-\section{Contributions: MD}
+\section{Methodology}
+
+% ---------------------------------------------------------------
+\subsection{MD}
+% ***************************************************************
+\begin{frame}{}\framenumber
+\begin{columns}
+    \column{0.5\textwidth}
+    Tool of choice: Molecular Dynamics (MD)
+    \begin{itemize}
+     \item Large field gradients
+     \item Classical trajectories
+     \item Simple algorithm
+     \item Quantum effects
+     \begin{itemize}
+        \item Ionization (tunnel, photo-, impact)
+        \item Excited states
+     \end{itemize}
+     \item<6-> MD code (>16k LOC)
+     \item<6-> Ionization library (18k LOC) and others
+    \end{itemize}
+    \column{0.5\textwidth}
+    % Reserve space on frame 1
+    \color{white}\only<1>{\includegraphics[draft,width=\textwidth]{figures/md_1}}\color{black}
+    % http://tex.stackexchange.com/questions/55809/problem-with-only-and-alignment-of-graphics-pdf-in-beamer
+    \only<2>{\includegraphics[width=\textwidth]{figures/md_1}}%
+    \only<3>{\includegraphics[width=\textwidth]{figures/md_2}}%
+    \only<4>{\includegraphics[width=\textwidth]{figures/md_3}}%
+    \only<5->{\includegraphics[width=\textwidth]{figures/md_4}}%
+\end{columns}
+\end{frame}
 
 % ---------------------------------------------------------------
 \subsection{Excited states}
 % ***************************************************************
-\begin{frame}{Novel idea}\framenumber
+\begin{frame}{}\framenumber
 \begin{columns}
-	\column{0.5\textwidth}
-		\begin{itemize}
-		\item Suggested looking at excited states
-		\item Previously ignored
-		\item Developed a model:
-			\begin{itemize}
-			\item Two-step ionization process
-			\item Rapid energy absorption + redistribution through clusters
-			\item Model includes
-				\begin{itemize}
-					\item MD code (>16k LOC)
-					\item Ionization library (18k LOC)
-				\end{itemize}
-			\end{itemize}
-		\end{itemize}
-	\column{0.55\textwidth}\centering
-		%\includegraphics[width=0.6\textwidth]{figures/ionization_aci}
-		\hspace{-21pt}\includegraphics[width=1.1\textwidth]{../figures/ionization_aci} \\
-		\hspace{-21pt}\includegraphics[width=1.1\textwidth]{figures/potential_landscape}
+    \column{0.5\textwidth}
+        \begin{itemize}
+        \item Suggested looking at excited states
+        \item Previously ignored
+        \item Developed a model:
+            \begin{itemize}
+            \item Two-step ionization process
+            \item Rapid energy absorption + redistribution through clusters
+            \end{itemize}
+        \end{itemize}
+    \column{0.55\textwidth}\centering
+        %\includegraphics[width=0.6\textwidth]{figures/ionization_aci}
+        \hspace{-21pt}\includegraphics[width=1.1\textwidth]{../figures/ionization_aci} \\
+        \hspace{-21pt}\includegraphics[width=1.1\textwidth]{figures/potential_landscape}
 \end{columns}
 {\uncover<2->{
 \begin{textblock}{0.4}(0.5,0.52)\textblockcolour{white}\centering\textcolor{red}{
-	\textbf{Augmented collisional ionization (ACI)}}
+    \textbf{Augmented collisional ionization (ACI)}}
 \end{textblock}
 }}
 \end{frame}
+
+% ---------------------------------------------------------------
+\subsection{Acceleration}
+\begin{frame}{}\framenumber
+\begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+     \item Hierarchical Tree algorithms
+     \item General Purpose Graphical Processing Units (GP-GPU)
+        \begin{itemize}
+        \item CUDA vs OpenCL: Portability
+        \item Refactoring
+        \item Memory bandwidth and limit
+        \item HPC Facilities
+        \end{itemize}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{../figures/quadtree}\\
+    \includegraphics[width=\textwidth]{figures/tesla}
+
+
+\end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\subsection*{Example}
+\begin{frame}{}\framenumber
+% ffmpeg -i /home/nicolas/fichiers/documents/universite/doc/presentations.git/20120508_OCIP/movies/20110829_20h56_csec/mov%04d.png -qscale:v 1 -r 30 Xe1415_example.swf
+\includemedia[label=H,activate=pagevisible,deactivate=onclick,width=\textwidth]
+                {\includegraphics{figures/Xe_1415.png}}{figures/Xe1415_example.swf}
+\end{frame}
+
+
+
+% ###############################################################
+\section{Studies}
 
 
 % ---------------------------------------------------------------
@@ -531,12 +594,13 @@ Physics Department -- University of Ottawa}
        \column{0.5\textwidth}
 
         \begin{center}
-            % Reserve space on frame 1
-            %\color{white}\only<1>{\includegraphics[draft,width=0.7\textwidth]{../figures/auger_step_1}}\color{black}
+            \begin{overlayarea}{\textwidth}{\textheight}
+            \vspace{30pt}
             \only<1>{\includegraphics[width=\textwidth]{figures/Thomas2009_fig1}}
             \only<2>{\includegraphics[width=0.7\textwidth]{../figures/auger_step_1}}
             \only<3>{\includegraphics[width=0.7\textwidth]{../figures/auger_step_2}}
-            \uncover<2->{\\Auger decay}
+            \uncover<2->{\\ \centering Auger decay}
+            \end{overlayarea}
         \end{center}
 
    \end{columns}
@@ -580,8 +644,8 @@ Recombination effects (entire profile)
 \end{frame}
 
 
-% ###############################################################
-\section{Quantum Solver}
+% % ###############################################################
+% \section{Quantum Solver}
 % ---------------------------------------------------------------
 \subsection{QFDTD}
 % ***************************************************************
@@ -614,44 +678,48 @@ Recombination effects (entire profile)
 \end{center}
 }
 
+\uncover<4->{
 Discretization 1 $\rightarrow$ Real time algorithm \\
 Discretization 2 $\rightarrow$ Imaginary time algorithm
+}
 \end{frame}
 
 
 % ---------------------------------------------------------------
-\subsection{Real time vs Imaginary time}
+\subsubsection{Real time vs Imaginary time}
 % ***************************************************************
-\begin{frame}{}\framenumber
+\begin{frame}{}\framenumber\setbeamercovered{invisible}
    \begin{columns}[t]
 
    \column{0.5\textwidth}
    Real time:
        \begin{itemize}
            \item $\psi_R\pa{\vecr,t}$ \& $\psi_I\pa{\vecr,t}$
-           \item FT of time evolution $\rightarrow$ eigenvalues
-           \item Running FT gives eigenstates
-           \item Use whole domain for spectrum: all states!
+           \item FT $\rightarrow$ eigenvalues
+           \item Running FT $\rightarrow$ states
        \end{itemize}
-    \includegraphics[width=\textwidth]{figures/radial_5p_node}
+    \vspace{20pt}
+    \includegraphics[width=\textwidth]{figures/radial_5p_node}\\
+    Whole domain: all states!
 
 
    \column{0.6\textwidth}
+   \uncover<2->{
    Imaginary time:
        \begin{itemize}
-           \item Wick rotation of $\pi$/2 in complex plane
+           \item Wick rot. $\pi$/2 (complex plane)
            \item $\psi\pa{\vecr,\tau}=\sum_{n}\e{-E_n \tau}c_n\phi_n\pa{\vecr}$
-           \item Eigenstates \& Eigenvalues directly
+           \item Eigenstates \& Eigenvalues
            \item New method to extract excited states
        \end{itemize}
 
     \includegraphics[width=\textwidth]{figures/exponential_growths}
-
+    }
    \end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
-\subsection{Mapping}
+\subsubsection{Mapping}
 % ***************************************************************
 \begin{frame}{}\framenumber
    \begin{columns}[t]
@@ -679,12 +747,12 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
 \end{frame}
 
 % ---------------------------------------------------------------
-\subsection{Results}
+\subsubsection{Results}
 % ***************************************************************
-\begin{frame}{Real time}\framenumber
+\begin{frame}{Real time}\framenumber\setbeamercovered{invisible}
 \includegraphics[width=0.75\textwidth]{figures/h_spectrum}\\
 \begin{flushright}
-\includegraphics[width=0.75\textwidth]{figures/h2p_spectrum}
+\uncover<2->{\includegraphics[width=0.75\textwidth]{figures/h2p_spectrum}}
 \end{flushright}
 \end{frame}
 
@@ -694,7 +762,7 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
     \column{0.5\textwidth}
         \begin{center}
         H \\
-        \includegraphics[width=\textwidth]{figures/h_eigenstates}
+        \includegraphics[width=0.95\textwidth]{figures/h_eigenstates}
 
         \begin{textblock}{0.2}(0.291,0.59)
         % ffmpeg -i h_3d.gif -qscale:v 1 -r 30 h_3d.swf
@@ -707,7 +775,7 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
     \uncover<2->{
         \begin{center}
         H$_{2}^{+}$ \\
-        \includegraphics[width=\textwidth]{figures/h2p_eigenstates}\\
+        \includegraphics[width=0.95\textwidth]{figures/h2p_eigenstates}\\
         {
         \begin{tiny}
         \begin{tabular}[c]{|c|c|c|c|}\hline
@@ -726,6 +794,10 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
         }
     }
     \end{columns}
+
+\uncover<2->{
+\begin{tiny}Bigaouette \textit{et al.} Computer Physics Communications, 183(1), 2012, 38--45\end{tiny}
+}
 \end{frame}
 
 
