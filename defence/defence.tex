@@ -35,6 +35,10 @@ Physics Department -- University of Ottawa}
 
 \usepackage{bm}				% Needed for bold Greek letters
 
+\usepackage{appendixnumberbeamer}
+
+
+\setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{caption}{\insertcaption}
 
 %%\usepackage{textpos}		% http://www.latex-community.org/forum/viewtopic.php?f=47\&t=9387
@@ -57,27 +61,50 @@ Physics Department -- University of Ottawa}
 }
 
 
-\newcommand{\pa}[1]{\left( #1 \right)}
-\newcommand{\cro}[1]{\left[ #1 \right]}
-\newcommand{\abs}[1]{\left| #1 \right|}
-\newcommand{\ve}[1]{\textbf{#1}}
-\newcommand{\vecr}{\ve{r}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful macros
+\newcommand{\etal}{\emph{et~al.}}
+\newcommand{\htwoplus}{H$_2^+$~}
+\newcommand{\im}{\textrm{i}}
 \newcommand{\vecnabla}{\bm{\nabla}}
-\newcommand{\laplacien}[1]{\vecnabla^2 #1}           % Laplacien
+\newcommand{\laplacien}[1]{\vecnabla^2 #1}
 \newcommand{\laplacient}[1]{\vecnabla_{\bot}^{2} #1} % Laplacien transverse
 \newcommand{\gradient}[1]{\vecnabla #1}              % Gradient
 \newcommand{\grad}[1]{\vecnabla #1}                  % Gradient
 \newcommand{\divergence}[1]{\vecnabla \cdot #1}      % Divergence
 \newcommand{\rotationnel}[1]{\vecnabla \times #1}    % Rotationnel
+\newcommand{\onehalf}{\sfrac{1}{2}} % Needs ``\usepackage{ltugcomn}''
+\newcommand{\dd}[1]{~\textrm{d} #1}
+\newcommand{\del}{\partial}                                     % del
+\newcommand{\delx}[1]{\frac{\del #1}{\del x}}                   % del ? / delx
+\newcommand{\delt}[1]{\frac{\del #1}{\del t}}                   % del ? / delt
+\newcommand{\deli}[2]{\frac{\del #1}{\del #2}}                  % del ? / del?
+\newcommand{\delxs}[1]{\frac{\del^2 #1}{\del x^2}}              % del^2 ? / delx^2
+\newcommand{\delis}[2]{\frac{\del^2 #1}{\del #2^2}}             % del^2 ? / del?^2
+\newcommand{\e}[1]{\textrm{e}^{#1}}                             % e^?
+\newcommand{\ex}[1]{\exp{ \left\{ #1 \right\}}}                 % exp{?}
+\newcommand{\ve}[1]{\textbf{#1}}
+\newcommand{\vecr}{\ve{r}}
+\newcommand{\schrodinger}{Schr\"o\-din\-ger }
+\newcommand{\schrodingers}{Schr\"o\-din\-ger's }
+\newcommand{\pa}[1]{\left( #1 \right)}
+\newcommand{\cro}[1]{\left[ #1 \right]}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ket}[1]{\left| #1 \right>}
+\newcommand{\crossp}[2]{\left< #1 \left| #2 \right.\right>}
+\newcommand{\expectationsmall}[1]{\left< #1 \right>}
+\newcommand{\lnp}[1]{~\textrm{ln} \left( #1 \right)}
 \newcommand{\vE}{\ve{E}}
 \newcommand{\vB}{\ve{B}}
 \newcommand{\vD}{\ve{D}}
 \newcommand{\vH}{\ve{H}}
 \newcommand{\vJ}{\ve{J}}
-\newcommand{\del}{\partial}                                     % del
-\newcommand{\delt}[1]{\frac{\del #1}{\del t}}                   % del ? / delt
+
 
 \setbeamercovered{transparent}
+
+
+
 
 \begin{document}
 
@@ -207,7 +234,7 @@ Physics Department -- University of Ottawa}
 		%\item FEL: New physics, new models, incomplete?
 		\end{itemize}
 	\column{0.5\textwidth}
-		%ffmpeg -i png/Xe5083_%04d.png -qscale:v 1 -r 30 Xe5083rotation.swf
+		% ffmpeg -i png/Xe5083_%04d.png -qscale:v 1 -r 30 Xe5083rotation.swf
 		\includemedia[label=Xe5083,activate=pagevisible,deactivate=onclick,width=\textwidth]
 					 {\includegraphics{figures/Xe5083rotation/png/Xe5083_0001.png}}{figures/Xe5083rotation/Xe5083rotation.swf}
 		\includegraphics[width=1.1\textwidth]{../figures/regimes}
@@ -505,7 +532,8 @@ Physics Department -- University of Ottawa}
 
         \begin{center}
             % Reserve space on frame 1
-            \color{white}\only<1>{\includegraphics[draft,width=0.7\textwidth]{../figures/auger_step_1}}\color{black}
+            %\color{white}\only<1>{\includegraphics[draft,width=0.7\textwidth]{../figures/auger_step_1}}\color{black}
+            \only<1>{\includegraphics[width=\textwidth]{figures/Thomas2009_fig1}}
             \only<2>{\includegraphics[width=0.7\textwidth]{../figures/auger_step_1}}
             \only<3>{\includegraphics[width=0.7\textwidth]{../figures/auger_step_2}}
             \uncover<2->{\\Auger decay}
@@ -519,18 +547,38 @@ Physics Department -- University of Ottawa}
        \column{0.6\textwidth}
        \begin{itemize}
            \item Xe$_{147}$, 10~fs, 13.7~nm (90.5~eV), 5.8$\times$10$^{14}$~W/cm$^2$
+           \item<3-> Xe$^{7+}$ \& up: $\ge$5$\times$10$^{13}$~W/cm$^2$
+           \item<3-> Xe$^{7+}$: $\sim$30~\% from 3$\times$10$^{14}$~W/cm$^2$
+           \item<3-> Xe$^{10+}$ \& up: exclusively from 3$\times$10$^{14}$~W/cm$^2$
        \end{itemize}
 
        \column{0.5\textwidth}
 
         \begin{center}
-            \uncover<2>{\includegraphics[width=0.7\textwidth]{figures/recomb_Xe13nm_TOF}}
+            \uncover<2->{\includegraphics[width=\textwidth]{figures/Ackad2013_fig3}}
+            \uncover<3->{\includegraphics[width=\textwidth]{figures/Ackad2013_fig4b}}
         \end{center}
 
    \end{columns}
 \end{frame}
+% ***************************************************************
+\begin{frame}{}\framenumber\setbeamercovered{invisible}
+Recombination effects (entire profile)
+   \begin{columns}
+       \column{0.8\textwidth}
+        \includegraphics[width=\textwidth]{figures/Ackad2013_fig9}
 
-% recomb_Xe13nm_TOF
+        \column{0.37\textwidth}
+        \begin{itemize}
+           \item 3$^{\textrm{rd}}$ shell: Highest CS
+           \item Center: High CS but recombine $\rightarrow$ Low CS
+           \item 3$^{\textrm{rd}}$ shell: Low CS mostly from low Int. regions
+           \item Outer shells: $\searrow$~density $\Rightarrow$ $\searrow$~recomb.
+       \end{itemize}
+
+   \end{columns}
+\end{frame}
+
 
 % ###############################################################
 \section{Quantum Solver}
@@ -538,19 +586,147 @@ Physics Department -- University of Ottawa}
 \subsection{QFDTD}
 % ***************************************************************
 \begin{frame}{}\framenumber
-   \begin{columns}
+   \begin{columns}[t]
        \column{0.6\textwidth}
        \begin{itemize}
-           \item<+->
+           %\item<+-> Atomic ionization $\sigma$?
+           \item<1-> Cluster environment?
+           \item<1-> Quantum mechanical effects?
+           \item<2-> Finite-Difference Time-Domain (FDTD)
+            \begin{itemize}
+            \item<2-> Explicit solver (from E\&M) $\rightarrow$ Simple \& Easily //
+            \item<2-> Geometry independence
+            \end{itemize}
        \end{itemize}
 
        \column{0.5\textwidth}
-       Results...
+       \begin{itemize}
+           \item<1-> Neighbours' influence?
+           \item<1-> Validation of our models?
+           \item<3-> Maxwell's equations $\rightarrow$ \schrodinger equation
+           \item<3-> Solve for the 1-e$^{-}$ wavefunction $\ket{ \psi\pa{\vecr,t} }$
+       \end{itemize}
    \end{columns}
+
+\uncover<3->{
+\begin{center}
+    $\im \delt{} \ket{ \psi\pa{\vecr,t} } = \pa{ - \frac{1}{2} \laplacien{} + V\pa{\vecr,t} } \ket{ \psi\pa{\vecr,t} }$
+\end{center}
+}
+
+Discretization 1 $\rightarrow$ Real time algorithm \\
+Discretization 2 $\rightarrow$ Imaginary time algorithm
 \end{frame}
 
 
+% ---------------------------------------------------------------
+\subsection{Real time vs Imaginary time}
+% ***************************************************************
+\begin{frame}{}\framenumber
+   \begin{columns}[t]
 
+   \column{0.5\textwidth}
+   Real time:
+       \begin{itemize}
+           \item $\psi_R\pa{\vecr,t}$ \& $\psi_I\pa{\vecr,t}$
+           \item FT of time evolution $\rightarrow$ eigenvalues
+           \item Running FT gives eigenstates
+           \item Use whole domain for spectrum: all states!
+       \end{itemize}
+    \includegraphics[width=\textwidth]{figures/radial_5p_node}
+
+
+   \column{0.6\textwidth}
+   Imaginary time:
+       \begin{itemize}
+           \item Wick rotation of $\pi$/2 in complex plane
+           \item $\psi\pa{\vecr,\tau}=\sum_{n}\e{-E_n \tau}c_n\phi_n\pa{\vecr}$
+           \item Eigenstates \& Eigenvalues directly
+           \item New method to extract excited states
+       \end{itemize}
+
+    \includegraphics[width=\textwidth]{figures/exponential_growths}
+
+   \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\subsection{Mapping}
+% ***************************************************************
+\begin{frame}{}\framenumber
+   \begin{columns}[t]
+
+    \column{0.5\textwidth}
+    \begin{itemize}
+        \item Grid: Requires good resolution \& big domains
+        \item Problem: +++ memory
+        \item $\rightarrow$ Canonical coordinate transformation
+        \begin{itemize}
+            \item $x\pa{i\pa{x}} = x$
+            \item Monotonic
+            \item Differentiable
+        \end{itemize}
+    \end{itemize}
+
+    \column{0.5\textwidth}
+    \begin{itemize}
+        \item Plenty of coordinate transf.
+        \item Why not use system's properties for mapping?
+        \item Memory index $\leftrightarrow$ space
+        \item Arbitrary source fct
+    \end{itemize}
+    \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\subsection{Results}
+% ***************************************************************
+\begin{frame}{Real time}\framenumber
+\includegraphics[width=0.75\textwidth]{figures/h_spectrum}\\
+\begin{flushright}
+\includegraphics[width=0.75\textwidth]{figures/h2p_spectrum}
+\end{flushright}
+\end{frame}
+
+% ***************************************************************
+\begin{frame}{Imaginary time}\framenumber\setbeamercovered{invisible}
+   \begin{columns}[t]
+    \column{0.5\textwidth}
+        \begin{center}
+        H \\
+        \includegraphics[width=\textwidth]{figures/h_eigenstates}
+
+        \begin{textblock}{0.2}(0.291,0.59)
+        % ffmpeg -i h_3d.gif -qscale:v 1 -r 30 h_3d.swf
+        \includemedia[label=H,activate=pagevisible,deactivate=onclick,width=\textwidth]
+                     {\includegraphics{figures/h_3d.png}}{figures/h_3d.swf}
+        \end{textblock}
+        \end{center}
+
+    \column{0.5\textwidth}
+    \uncover<2->{
+        \begin{center}
+        H$_{2}^{+}$ \\
+        \includegraphics[width=\textwidth]{figures/h2p_eigenstates}\\
+        {
+        \begin{tiny}
+        \begin{tabular}[c]{|c|c|c|c|}\hline
+            States                      & $<E>$     & $<E_{\textrm{NL}}>$ & Error \\\hline\hline
+            1 s $\sigma_{\textrm{g}}$   & -1.1026   & -1.1054  & 0.25~\% \\ \hline
+            2 p $\sigma_{\textrm{u}}$   & -0.66753  & -0.67034 & 0.42~\% \\ \hline
+            2 p $\pi_{\textrm{u}}$      & -0.42877  & -0.43055 & 0.41~\% \\ \hline
+            2 s $\sigma_{\textrm{g}}$   & -0.36086  & -0.36242 & 0.43~\% \\ \hline
+            3 p $\sigma_{\textrm{u}}$   & -0.25541  & -0.25887 & 1.3~\% \\ \hline
+        \end{tabular}
+        \end{tiny}
+        }
+        \end{center}
+        \scalebox{.4}{
+        Madsen \textit{et al.} Atomic Data and Nuclear Data Tables 2 (1970): 171–204
+        }
+    }
+    \end{columns}
+\end{frame}
 
 
 
@@ -565,5 +741,47 @@ Physics Department -- University of Ottawa}
 
 
 \end{document}
+
+
+
+
+% ###############################################################
+% ###############################################################
+% ###############################################################
+\appendix
+
+
+% ###############################################################
+\section{QFDTD}
+% ---------------------------------------------------------------
+\subsection{}
+% ***************************************************************
+\begin{frame}{}\framenumber
+
+\begin{center}
+$\im \delt{} \ket{ \psi\pa{\vecr,t} } = \pa{ - \frac{1}{2} \laplacien{} + V\pa{\vecr,t} } \ket{ \psi\pa{\vecr,t} }$
+
+\begin{align}
+\ket{ \psi\pa{\vecr,t} } & =        \ket{ \psi_R\pa{\vecr,t} }
+                            + \im \ket{ \psi_I\pa{\vecr,t} } .
+\end{align}
+
+\end{center}
+\end{frame}
+
+% ---------------------------------------------------------------
+\subsection{Imaginary time: New method for eigenstates calculation}
+% ***************************************************************
+\begin{frame}{}\framenumber
+\begin{center}
+\begin{align}
+\ket{ \psi\pa{\tau_n}' } & = \ket{ \psi\pa{\tau_n} }
+                        - \ket{\phi_0} \crossp{\phi_0}{\psi\pa{\tau_n}} \\
+\ket{ \psi\pa{\tau_n}'' } & = \ket{ \psi\pa{\tau_n}' }
+                        - \ket{\phi_0} \crossp{\phi_0}{\psi\pa{\tau_n}'}
+                        - \ket{\phi_1} \crossp{\phi_1}{\psi\pa{\tau_n}'}
+\end{align}
+\end{center}
+\end{frame}
 
 
