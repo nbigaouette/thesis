@@ -441,7 +441,7 @@ Physics Department -- University of Ottawa}
 
 % ###############################################################
 \subsection{Cluster size}
-\begin{frame}{}\framenumber
+\begin{frame}{}\framenumber\setbeamercovered{invisible}
     \begin{columns}
         \column{0.6\textwidth}
         \begin{itemize}
@@ -452,13 +452,32 @@ Physics Department -- University of Ottawa}
                 \item<.-> Ar$_{55}$, Ar$_{147}$, Ar$_{561}$ \& Ar$_{2057}$ (2, 3, 5, \& 8 shells)
                 \item<.-> 32.8 nm -- 37.8 eV, 5$\times$10$^{13}$~W/cm$^2$, 25 fs
                 \item<.-> 1 ps duration
-                \item<+-> Only Ar$^{2+}$ accessible through single-$\gamma$
+                \item<+-> Single-$\gamma$: Only Ar$^{2+}$
             \end{itemize}
         \end{itemize}
+        % Reserve space on frame 1
+        %\only<1-4>{\color{white}\includegraphics[width=\textwidth]{figures/Ackad2011b_fig3a}\color{black}}%
+        \color{white}\only<1-4>{\includegraphics[draft,width=\textwidth]{figures/Ackad2011b_fig3a}}\color{black}
+        \only<5>{\includegraphics[width=\textwidth]{figures/Ackad2011b_fig3a}}%
+        \only<6->{\includegraphics[width=\textwidth]{figures/Ackad2011b_fig3a_3plus}}
 
         \column{0.5\textwidth}
-        Results...
+            \begin{itemize}
+            \item<+-> <CS> $\nearrow$ with size:\\
+            \uncover<.->{\includegraphics[width=0.9\textwidth]{figures/Ackad2011b_fig1}}\\%
+            \item<.-> Even with $\searrow$ in $\gamma$/atom
+            \item<+-> No IBH: High CS \textit{after} laser
+            \item<.-> Ar$_{2,057}$: $\uparrow$CS $\Rightarrow$ $\emptyset~\gamma$
+            \item<.-> $\searrow$ $\sim$40~\% $\gamma$
+            \item<.-> Collisionally Reduced Photoabsorbtion (CRP)
+            \end{itemize}
     \end{columns}
+
+\uncover<+->{
+    \begin{tiny}
+    Ackad \textit{et al.} Physical Review A 83(6), 2011, 063201
+    \end{tiny}
+}
 \end{frame}
 
 % ###############################################################
