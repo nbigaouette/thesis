@@ -13,10 +13,10 @@
 \usepackage{hyperref}
 \usepackage{media9}
 
-\title{Computational investigation of intense short-wavelength laser interaction with rare gas clusters}
+\title[Ph.D. defence]{Computational investigation of intense short-wavelength laser interaction with rare gas clusters}
 \subtitle{Ph.D. defence}
 \author{Nicolas Bigaouette}
-\date[December 2013]{\today}
+\date[December 17, 2013]{December 17, 2013}
 \institute{Computational Nanophotonics Group
 \newline
 Physics Department -- University of Ottawa}
@@ -138,11 +138,7 @@ Physics Department -- University of Ottawa}
 		\begin{itemize}
 		\item Nanoscopic objects: properties greatly influenced by size
 		\item Single atom $\rightarrow$ large macromolecules
-		\item Rare gas clusters interaction + femtosecond lasers: merging of nano and ultrafast science
 		\item 800 nm $\rightarrow$ shorter $\lambda$ (FEL)
-		%\item CS spectrum can't be described with photo- only
-		%\item 800 nm (IR) lasers dominant, what about shorter wavelengths?
-		%\item FEL: New physics, new models, incomplete?
 		\end{itemize}
 	\column{0.5\textwidth}
 		% ffmpeg -i png/Xe5083_%04d.png -qscale:v 1 -r 30 Xe5083rotation.swf
@@ -160,8 +156,7 @@ Physics Department -- University of Ottawa}
 			\begin{itemize}
 			\item Important experiments in 2002
 			\item $\lambda$ = 98 nm, 12.65 eV (VUV), 100 fs, 2$\times$10$^{13}$~W/cm$^2$
-			\item Xe$^{0\rightarrow1+}$ = 12.13 eV $\rightarrow$ Where does higher CS come from?
-			\item Can't reproduce experiments; not enough ionization!
+			\item Xe$^{0\rightarrow1+}$ = 12.13 eV\\Where does higher CS come from?
 			\end{itemize}
 		\column{0.4\textwidth}
 			\begin{figure}
@@ -193,8 +188,8 @@ Physics Department -- University of Ottawa}
         \item Ionization (tunnel, photo-, impact)
         \item Excited states
      \end{itemize}
-     \item<6-> MD code (>16k LOC)
-     \item<6-> Ionization library (18k LOC) and others
+     \item<6-> MD code (>16k LoC)
+     \item<6-> Ionization library (>18k LoC) and others
     \end{itemize}
     \column{0.5\textwidth}
     % Reserve space on frame 1
@@ -514,8 +509,11 @@ Physics Department -- University of Ottawa}
    \begin{columns}
        \column{0.6\textwidth}
        \begin{itemize}
-           \item Influence of recombination on dynamics?
-           \item Experimental comparison: Thomas \textit{et al.} J. Phys. B (42) 13 134018 (2009)
+           \item Thomas \textit{et al.} J. Phys. B (42) 13 134018 (2009)
+           \begin{itemize}
+            \item Coulomb explosion of outer-shell
+            \item Core expansion $\rightarrow$ Recombination important
+           \end{itemize}
            \item<2-> @ 13.7 nm (90.5 eV) \\ $\rightarrow$ $\sigma_\gamma$(4d) $\sim$ 10$\sigma_\gamma$(5p)
        \end{itemize}
 
@@ -734,9 +732,34 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
 
 % ###############################################################
 \section{Conclusion}
-
 % ***************************************************************
 \begin{frame}{}\framenumber
+
+\begin{columns}[t]
+\column{0.6\textwidth}
+    \begin{itemize}
+    \item<+-> Model for intense \& short-$\lambda$ laser interaction
+    \item<+-> Rare gas clusters; versatile tool \& stepping stone
+    \item<+-> Complete simulation package
+        \begin{itemize}
+        \item Molecular dynamics (MD)
+        \item Ionization library
+        \item Other supporting libraries
+        \item GPU accelerated (OpenCL)
+        \end{itemize}
+    \item<.-> Available on group's Gitlab:\\%
+        {\begin{tiny}\color{blue}\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette}\end{tiny}}
+    \end{itemize}
+
+\column{0.5\textwidth}
+    \begin{itemize}
+     \item<+-> Quantum solver: first step
+     \item<+-> Model can reproduce many experimental results
+     \item<.-> Lead to publications
+    \end{itemize}
+
+
+\end{columns}
 \end{frame}
 
 
@@ -755,10 +778,9 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
 % ###############################################################
 \section{QFDTD}
 % ---------------------------------------------------------------
-\subsection{}
+\subsection{Discretization}
 % ***************************************************************
 \begin{frame}{}\framenumber
-
 \begin{center}
 $\im \delt{} \ket{ \psi\pa{\vecr,t} } = \pa{ - \frac{1}{2} \laplacien{} + V\pa{\vecr,t} } \ket{ \psi\pa{\vecr,t} }$
 
