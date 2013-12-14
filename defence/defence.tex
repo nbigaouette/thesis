@@ -630,8 +630,8 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
            \item Running FT $\rightarrow$ states
        \end{itemize}
     \vspace{20pt}
-    \includegraphics[width=\textwidth]{figures/radial_5p_node}\\
-    Whole domain: all states!
+    \includegraphics[width=\textwidth]{figures/radial_5p_node}%\\
+    %Whole domain: all states!
 
 
    \column{0.6\textwidth}
@@ -641,7 +641,7 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
            \item Wick rot. $\pi$/2 (complex plane)
            \item $\psi\pa{\vecr,\tau}=\sum_{n}\e{-E_n \tau}c_n\phi_n\pa{\vecr}$
            \item Eigenstates \& Eigenvalues
-           \item New method to extract excited states
+           %\item New method to extract excited states
        \end{itemize}
 
     \includegraphics[width=\textwidth]{figures/exponential_growths}
@@ -652,29 +652,27 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
 % ---------------------------------------------------------------
 \subsubsection{Mapping}
 % ***************************************************************
-\begin{frame}{}\framenumber
-   \begin{columns}[t]
+\begin{frame}{}\framenumber\setbeamercovered{invisible}
+
+    \begin{columns}[t]
+    \column{0.5\textwidth}
+        Important contributions:
+        \begin{enumerate}
+            \item<+-> Actual implementation! $\sim$16k LoC
+            \item<+-> RT: Whole domain for spectrum (linearity~of~FT)
+            \item<+-> IT: New method for states extraction
+            \item<+-> Both: Mapping of memory index $\leftrightarrow$ space from arbitrary source function
+        \end{enumerate}
 
     \column{0.5\textwidth}
-    \begin{itemize}
-        \item Grid: Requires good resolution \& big domains
-        \item Problem: +++ memory
-        \item $\rightarrow$ Canonical coordinate transformation
-        \begin{itemize}
-            \item $x\pa{i\pa{x}} = x$
-            \item Monotonic
-            \item Differentiable
-        \end{itemize}
-    \end{itemize}
+    \begin{center}
+        {\uncover<2->{\includegraphics[width=0.9\textwidth]{figures/radial_5p_node}}}\\
+        {\uncover<3->{\includegraphics[width=0.8\textwidth]{figures/exponential_growths}}}\\
+        {\uncover<4->{\includegraphics[width=\textwidth]{figures/mapping}}}\\
+    \end{center}
 
-    \column{0.5\textwidth}
-    \begin{itemize}
-        \item Plenty of coordinate transf.
-        \item Why not use system's properties for mapping?
-        \item Memory index $\leftrightarrow$ space
-        \item Arbitrary source fct
-    \end{itemize}
     \end{columns}
+
 \end{frame}
 
 % ---------------------------------------------------------------
