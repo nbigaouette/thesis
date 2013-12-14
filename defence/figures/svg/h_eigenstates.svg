@@ -15,7 +15,7 @@
    viewBox="0 0 569.73877 546.74766"
    width="712.17346"
    id="svg2"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="h_eigenstates.svg"
    inkscape:export-filename="/home/nicolas/fichiers/documents/universite/doc/presentations.git/20120508_OCIP/images/h_eigenstates.png"
    inkscape:export-xdpi="90"
@@ -28,7 +28,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -42,13 +42,13 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1680"
-     inkscape:window-height="956"
+     inkscape:window-height="985"
      id="namedview425"
      showgrid="false"
      inkscape:zoom="1.0827664"
      inkscape:cx="356.08673"
      inkscape:cy="341.71729"
-     inkscape:window-x="-4"
+     inkscape:window-x="-2"
      inkscape:window-y="-3"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
@@ -3726,46 +3726,35 @@
   </g>
   <text
      xml:space="preserve"
-     style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:cmr10;-inkscape-font-specification:cmr10"
+     style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:BKM-cmr10;-inkscape-font-specification:BKM-cmr10"
      x="92.612228"
-     y="33.708099"
+     y="41.708092"
      id="text17711"
      sodipodi:linespacing="125%"><tspan
-       y="33.708099"
-       x="92.612228"
        sodipodi:role="line"
-       id="tspan3761">a)</tspan></text>
+       id="tspan3711"
+       x="92.612228"
+       y="41.708092">2p</tspan></text>
   <text
      xml:space="preserve"
-     style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:cmr10;-inkscape-font-specification:cmr10"
+     style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:BKM-cmr10;-inkscape-font-specification:BKM-cmr10"
      x="346.06229"
-     y="33.708099"
+     y="41.708092"
      id="text17711-7"
      sodipodi:linespacing="125%"><tspan
-       y="33.708099"
-       x="346.06229"
        sodipodi:role="line"
-       id="tspan3784">b)</tspan></text>
+       id="tspan3713"
+       x="346.06229"
+       y="41.708092">3p</tspan></text>
   <text
      xml:space="preserve"
-     style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:cmr10;-inkscape-font-specification:cmr10"
+     style="font-size:44.79999924px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:BKM-cmr10;-inkscape-font-specification:BKM-cmr10"
      x="93.627853"
-     y="282.63882"
+     y="290.63885"
      id="text17711-3"
      sodipodi:linespacing="125%"><tspan
-       y="282.63882"
+       sodipodi:role="line"
+       id="tspan3715"
        x="93.627853"
-       sodipodi:role="line"
-       id="tspan3795">c)</tspan></text>
-  <text
-     xml:space="preserve"
-     style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:cmr10;-inkscape-font-specification:cmr10"
-     x="345.82791"
-     y="282.63882"
-     id="text17711-3-7"
-     sodipodi:linespacing="125%"><tspan
-       y="282.63882"
-       x="345.82791"
-       sodipodi:role="line"
-       id="tspan3818">d)</tspan></text>
+       y="290.63885">3d</tspan></text>
 </svg>
