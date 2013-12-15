@@ -820,6 +820,88 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
 
 
 % ###############################################################
+\section{MD}
+
+% ---------------------------------------------------------------
+\subsection{Ionization}
+% ***************************************************************
+\begin{frame}{Single photon}\framenumber
+\begin{center}
+\includegraphics[width=0.8\textwidth]{../figures/ionization_single}
+\end{center}
+\end{frame}
+% ***************************************************************
+\begin{frame}{$\gamma$}\framenumber
+\begin{columns}[t]
+\column{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/appendix/photo_ionization_Xe_5p}
+\column{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/appendix/photo_ionization_Ar_3p}
+\column{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/appendix/photo_ionization_Ar1p_3p}
+\end{columns}
+
+\begin{columns}[t]
+\column{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/appendix/photo_ionization_Xe_4d}
+\column{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figures/appendix/photo_ionization_Xe_4d_Auger}
+\column{0.3\textwidth}
+    $\sigma_{4d}$: $\sim$ 23 Mb\\
+    $\sigma_{5p}$: $\sim$ 2 Mb
+\end{columns}
+\end{frame}
+% ***************************************************************
+\begin{frame}{Tunnel}\framenumber
+\begin{center}
+\includegraphics[width=0.8\textwidth]{../figures/ionization_tunnel}
+\end{center}
+\end{frame}
+% ***************************************************************
+\begin{frame}{Impact}\framenumber
+\begin{center}
+\includegraphics[width=0.8\textwidth]{../figures/ionization_impact}
+\end{center}
+\end{frame}
+
+% ---------------------------------------------------------------
+\subsection{Macromolecules}
+% ***************************************************************
+\begin{frame}{}\framenumber
+\begin{center}
+\includegraphics[width=0.8\textwidth]{figures/appendix/macromol_imag}
+\end{center}
+\begin{textblock}{0.15}(0.8,0.97)
+\begin{tiny}Source: SLAC\end{tiny}
+% \begin{tiny}Source: DESY\end{tiny}
+\end{textblock}
+
+\end{frame}
+% ***************************************************************
+\begin{frame}{}\framenumber
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/appendix/macromol_brigth}
+\end{center}
+\begin{textblock}{0.15}(0.8,0.97)
+\begin{tiny}Source: DESY\end{tiny}
+\end{textblock}
+\end{frame}
+% ***************************************************************
+\begin{frame}{}\framenumber
+\begin{columns}[t]
+\column{0.5\textwidth}
+    Long $\lambda$\\
+    \includegraphics[width=\textwidth]{figures/appendix/macromol_long}
+\column{0.5\textwidth}
+    Short $\lambda$\\
+    \includegraphics[width=\textwidth]{figures/appendix/macromol_short}
+\end{columns}
+\begin{textblock}{0.15}(0.8,0.97)
+\begin{tiny}Source: DESY\end{tiny}
+\end{textblock}
+\end{frame}
+
+
 % ---------------------------------------------------------------
 \subsection{Icosahedral shells}
 % ***************************************************************
@@ -876,6 +958,49 @@ Shell & \# atoms \\ \hline \hline
 \end{frame}
 
 
+
+% ---------------------------------------------------------------
+\subsection{Electron spectrum}
+% ***************************************************************
+\begin{frame}{Bostedt2008 vs Argon @ XUV}\framenumber
+(No log-normal size distribution)
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{figures/appendix/e_spec}
+\end{center}
+\end{frame}
+
+% ---------------------------------------------------------------
+\subsection{Excited States}
+% ***************************************************************
+\begin{frame}{Lifetime of excited states}\framenumber
+\begin{center}
+\includegraphics[width=\textwidth]{figures/appendix/lifetimes}
+\end{center}
+\end{frame}
+% ***************************************************************
+\begin{frame}{}\framenumber
+Barrier lowering: $\gamma$-excitation/inner ionization above classical barrier\\
+1D SE: Ar$_{80}$ (1+ ions $\times$ 5)\\
+$\gamma$: dipole transition $\rightarrow$ S \& D accessible
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figures/appendix/DOS_all}
+\includegraphics[width=0.5\textwidth]{../figures/heating_barrier_sup}
+\end{center}
+\end{frame}
+% ***************************************************************
+\begin{frame}{}\framenumber
+Modifications of ES from neighbouring ions; negligible since CS screened.
+Red line: Ar$^{4+}$ @ 6.4 Bohr, Green line: Ar$^{1+}$ @ 6.4 Bohr
+\begin{center}
+Electric field [au] vs Time [fs] \\
+\includegraphics[width=0.7\textwidth]{figures/appendix/screened_charge}
+\end{center}
+\end{frame}
+
+
+
+% ###############################################################
 \section{QFDTD}
 % ---------------------------------------------------------------
 \subsection{Discretization}
@@ -904,16 +1029,6 @@ $\im \delt{} \ket{ \psi\pa{\vecr,t} } = \pa{ - \frac{1}{2} \laplacien{} + V\pa{\
                         - \ket{\phi_0} \crossp{\phi_0}{\psi\pa{\tau_n}'}
                         - \ket{\phi_1} \crossp{\phi_1}{\psi\pa{\tau_n}'}
 \end{align}
-\end{center}
-\end{frame}
-
-
-% ---------------------------------------------------------------
-\subsection{Lifetime of excited states}
-% ***************************************************************
-\begin{frame}{}\framenumber
-\begin{center}
-\includegraphics[width=\textwidth]{figures/appendix/lifetimes}
 \end{center}
 \end{frame}
 
