@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="769.86371" height="422.49542" viewBox="0 0 769.86372 422.49542" id="svg5929" version="1.1" inkscape:version="0.48.2 r9819" inkscape:export-xdpi="90" inkscape:export-ydpi="90" sodipodi:docname="Periodic_table_(polyatomic).svg">
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1024" inkscape:window-height="719" id="namedview5417" showgrid="false" inkscape:zoom="1.113184" inkscape:cx="384.93185" inkscape:cy="211.24771" inkscape:window-x="-4" inkscape:window-y="-4" inkscape:window-maximized="1" inkscape:current-layer="svg5929" fit-margin-top="5" fit-margin-bottom="5" fit-margin-right="5" fit-margin-left="5" showborder="false" inkscape:showpageshadow="false" showguides="false" inkscape:guide-bbox="true" inkscape:snap-grids="false" borderlayer="false" inkscape:snap-bbox="true" inkscape:snap-bbox-edge-midpoints="true" inkscape:bbox-nodes="true" inkscape:snap-bbox-midpoints="true" inkscape:bbox-paths="true" inkscape:snap-to-guides="true" inkscape:snap-global="true">
+    <sodipodi:guide orientation="0,1" position="73.793812,410.84398" id="guide4487"/>
+    <sodipodi:guide orientation="0,1" position="-3.4066136,393.06326" id="guide4489"/>
+    <sodipodi:guide orientation="1,0" position="106.64575,303.06469" id="guide5722"/>
+    <sodipodi:guide orientation="1,0" position="66.344176,356.60322" id="guide5724"/>
+    <sodipodi:guide orientation="1,0" position="146.12655,57.218751" id="guide5726"/>
+    <sodipodi:guide orientation="1,0" position="186.11874,57.32422" id="guide5728"/>
+    <sodipodi:guide orientation="1,0" position="227.02108,57.332032" id="guide5730"/>
+    <sodipodi:guide orientation="1,0" position="266.39218,57.464845" id="guide5732"/>
+    <sodipodi:guide orientation="1,0" position="306.18124,57.332032" id="guide5734"/>
+    <sodipodi:guide orientation="1,0" position="346.0328,73.324219" id="guide5736"/>
+    <sodipodi:guide orientation="1,0" position="385.99374,73.324219" id="guide5738"/>
+    <sodipodi:guide orientation="1,0" position="426.19295,73.324219" id="guide5740"/>
+    <sodipodi:guide orientation="1,0" position="465.94295,73.324219" id="guide5742"/>
+    <sodipodi:guide orientation="1,0" position="506.13827,73.324219" id="guide5744"/>
+    <sodipodi:guide orientation="1,0" position="545.94686,73.324219" id="guide5746"/>
+    <sodipodi:guide orientation="1,0" position="586.07576,73.324219" id="guide5748"/>
+    <sodipodi:guide orientation="1,0" position="626.13826,73.324219" id="guide5750"/>
+    <sodipodi:guide orientation="1,0" position="665.97029,73.320313" id="guide5752"/>
+    <sodipodi:guide orientation="1,0" position="705.77889,73.332032" id="guide5754"/>
+    <sodipodi:guide orientation="1,0" position="746.62548,116.47039" id="guide5756"/>
+  </sodipodi:namedview>
+  <metadata id="metadata6730">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs6728"/>
+  <path style="fill:#ff99cc" id="path5933" d="m 128.3637,317.72424 v -36 h 36 v 36 z" inkscape:connector-curvature="0"/>
+  <path style="fill:#ffbfff" id="path5935" d="m 128.3637,277.72424 v -36 h 36 v 36 z" inkscape:connector-curvature="0"/>
+  <g transform="translate(368.3637,317.72424)" id="unknown class" style="fill:#e8e8e8;stroke:#000000;stroke-width:1">
+    <path d="M 0,0 V -36 H 36 V 0 z" id="path5940" inkscape:connector-curvature="0"/>
+    <path d="M 40,0 V -36 H 76 V 0 z" id="path5942" inkscape:connector-curvature="0"/>
+    <path d="m 80,0 v -36 h 36 V 0 z" id="path5944" inkscape:connector-curvature="0"/>
+    <path d="m 160,0 v -36 h 36 V 0 z" id="path5946" inkscape:connector-curvature="0"/>
+    <path d="m 200,0 v -36 h 36 V 0 z" id="path5948" inkscape:connector-curvature="0"/>
+    <path d="m 240,0 v -36 h 36 V 0 z" id="path5950" inkscape:connector-curvature="0"/>
+    <path d="m 280,0 v -36 h 36 V 0 z" id="path5952" inkscape:connector-curvature="0"/>
+    <path d="m 320,0 v -36 h 36 V 0 z" id="path5954" inkscape:connector-curvature="0"/>
+    <path d="m 360,0 v -36 h 36 V 0 z" id="path5956" inkscape:connector-curvature="0"/>
+  </g>
+  <g id="g6851" transform="translate(-15.136292,-12.775766)">
+    <path d="m 63.5,90.5 v -36 h 36 v 36 z" id="path5959" inkscape:connector-curvature="0" style="fill:#e7ff8f;fill-opacity:1;stroke:#000000;stroke-width:1"/>
+  </g>
+  <g id="g6871" transform="translate(-15.136292,-12.775766)">
+    <path d="m 663.5,210.5 v -36 h 36 v 36 z" id="path5961" inkscape:connector-curvature="0" style="fill:#a1ffc3;fill-opacity:1;stroke:#000000;stroke-width:1"/>
+    <path d="m 623.5,170.5 v -36 h 36 v 36 z" id="path5963" inkscape:connector-curvature="0" style="fill:#a1ffc3;fill-opacity:1;stroke:#000000;stroke-width:1"/>
+    <path d="m 663.5,170.5 v -36 h 36 v 36 z" id="path5965" inkscape:connector-curvature="0" style="fill:#a1ffc3;fill-opacity:1;stroke:#000000;stroke-width:1"/>
+    <path d="m 583.5,130.5 v -36 h 36 v 36 z" id="path5967" inkscape:connector-curvature="0" style="fill:#a1ffc3;fill-opacity:1;stroke:#000000;stroke-width:1"/>
+  </g>
+  <path style="fill:#e7ff8f;fill-opacity:1;stroke:#000000;stroke-width:1" inkscape:connector-curvature="0" id="path5969" d="M 608.3637,117.72424 V 81.724234 h 36 v 36.000006 z"/>
+  <path style="fill:#e7ff8f;fill-opacity:1;stroke:#000000;stroke-width:1" inkscape:connector-curvature="0" id="path5971" d="M 648.3637,117.72424 V 81.724234 h 36 v 36.000006 z"/>
+  <g transform="translate(48.363704,-69.275766)" id="alkali metals" style="fill:#ff6666;stroke:#000000;stroke-width:1">
+    <path d="m 0,387 v -36 h 36 v 36 z" id="path5974" inkscape:connector-curvature="0"/>
+    <path d="m 0,347 v -36 h 36 v 36 z" id="path5976" inkscape:connector-curvature="0"/>
+    <path d="m 0,267 v -36 h 36 v 36 z" id="path5978" inkscape:connector-curvature="0"/>
+    <path d="m 0,227 v -36 h 36 v 36 z" id="path5980" inkscape:connector-curvature="0"/>
+    <path d="m 0,187 v -36 h 36 v 36 z" id="path5982" inkscape:connector-curvature="0"/>
+    <path d="m 0,307 v -36 h 36 v 36 z" id="path5984" inkscape:connector-curvature="0"/>
+  </g>
+  <g transform="translate(88.363706,117.72424)" id="alkali earth metals" style="fill:#ffdead;stroke:#000000;stroke-width:1">
+    <path d="M 0,0 V -36 H 36 V 0 z" id="path5987" inkscape:connector-curvature="0"/>
+    <path d="M 0,40 V 4 h 36 v 36 z" id="path5989" inkscape:connector-curvature="0"/>
+    <path d="M 0,80 V 44 h 36 v 36 z" id="path5991" inkscape:connector-curvature="0"/>
+    <path d="M 0,120 V 84 h 36 v 36 z" id="path5993" inkscape:connector-curvature="0"/>
+    <path d="m 0,160 v -36 h 36 v 36 z" id="path5995" inkscape:connector-curvature="0"/>
+    <path d="m 0,200 v -36 h 36 v 36 z" id="path5997" inkscape:connector-curvature="0"/>
+  </g>
+  <path style="fill:#cccccc;stroke:#000000;stroke-width:1" id="path6012" d="m 648.3637,277.72424 v -36 h 36 v 36 z" inkscape:connector-curvature="0"/>
+  <path inkscape:connector-curvature="0" style="fill:#e7ff8f;fill-opacity:1;stroke:#000000;stroke-width:1" id="path6015" d="M 688.3637,117.72424 V 81.724234 h 36 v 36.000006 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#e7ff8f;fill-opacity:1;stroke:#000000;stroke-width:1" id="path6017" d="m 688.3637,157.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#e7ff8f;fill-opacity:1;stroke:#000000;stroke-width:1" id="path6019" d="m 688.3637,197.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#e7ff8f;fill-opacity:1;stroke:#000000;stroke-width:1" id="path6021" d="m 688.3637,237.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#cccc99;stroke:#000000;stroke-width:1" id="path6000" d="M 528.3637,117.72424 V 81.724234 h 36 v 36.000006 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#cccc99;stroke:#000000;stroke-width:1" id="path6002" d="m 568.3637,157.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#cccc99;stroke:#000000;stroke-width:1" id="path6004" d="m 568.3637,197.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#cccc99;stroke:#000000;stroke-width:1" id="path6006" d="m 608.3637,197.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#cccc99;stroke:#000000;stroke-width:1" id="path6008" d="m 608.3637,237.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#cccc99;stroke:#000000;stroke-width:1" id="path6010" d="m 648.3637,237.72424 v -36 h 36 v 36 z"/>
+  <path inkscape:connector-curvature="0" style="fill:#cccc99;fill-opacity:1;stroke:#000000;stroke-width:1" id="path6023" d="m 688.3637,277.72424 v -36 h 36 v 36 z"/>
+  <g transform="translate(728.3637,77.724234)" id="noble gases" style="fill:#c0ffff;stroke:#000000;stroke-width:1">
+    <path d="M 0,0 V -36 H 36 V 0 z" id="path6026" inkscape:connector-curvature="0"/>
+    <path d="M 0,40 V 4 h 36 v 36 z" id="path6028" inkscape:connector-curvature="0"/>
+    <path d="M 0,80 V 44 h 36 v 36 z" id="path6030" inkscape:connector-curvature="0"/>
+    <path d="M 0,120 V 84 h 36 v 36 z" id="path6032" inkscape:connector-curvature="0"/>
+    <path d="m 0,160 v -36 h 36 v 36 z" id="path6034" inkscape:connector-curvature="0"/>
+    <path d="m 0,200 v -36 h 36 v 36 z" id="path6036" inkscape:connector-curvature="0"/>
+  </g>
+  <g id="poor metals" style="fill:#cccccc;fill-opacity:1;stroke:#000000;stroke-width:1" transform="translate(-15.636292,-69.275766)">
+    <path d="m 544,227 v -36 h 36 v 36 z" id="path6039" inkscape:connector-curvature="0"/>
+    <path d="m 544,267 v -36 h 36 v 36 z" id="path6041" inkscape:connector-curvature="0"/>
+    <path d="m 544,307 v -36 h 36 v 36 z" id="path6043" inkscape:connector-curvature="0"/>
+    <path d="m 544,347 v -36 h 36 v 36 z" id="path6045" inkscape:connector-curvature="0"/>
+    <path d="m 584,307 v -36 h 36 v 36 z" id="path6047" inkscape:connector-curvature="0"/>
+    <path d="m 584,347 v -36 h 36 v 36 z" id="path6049" inkscape:connector-curvature="0"/>
+    <path d="m 624,347 v -36 h 36 v 36 z" id="path6051" inkscape:connector-curvature="0"/>
+  </g>
+  <g transform="translate(168.3637,197.72424)" id="transition metals" style="fill:#ffc0c0;stroke:#000000;stroke-width:1">
+    <path d="M 0,120 V 84 h 36 v 36 z" id="path6054" inkscape:connector-curvature="0"/>
+    <path d="M 40,120 V 84 h 36 v 36 z" id="path6056" inkscape:connector-curvature="0"/>
+    <path d="M 80,120 V 84 h 36 v 36 z" id="path6058" inkscape:connector-curvature="0"/>
+    <path d="M 120,120 V 84 h 36 v 36 z" id="path6060" inkscape:connector-curvature="0"/>
+    <path d="M 160,120 V 84 h 36 v 36 z" id="path6062" inkscape:connector-curvature="0"/>
+    <path d="M 320,120 V 84 h 36 v 36 z" id="path6064" inkscape:connector-curvature="0"/>
+    <path d="M 0,80 V 44 h 36 v 36 z" id="path6066" inkscape:connector-curvature="0"/>
+    <path d="M 40,80 V 44 h 36 v 36 z" id="path6068" inkscape:connector-curvature="0"/>
+    <path d="M 80,80 V 44 h 36 v 36 z" id="path6070" inkscape:connector-curvature="0"/>
+    <path d="M 120,80 V 44 h 36 v 36 z" id="path6072" inkscape:connector-curvature="0"/>
+    <path d="M 160,80 V 44 h 36 v 36 z" id="path6074" inkscape:connector-curvature="0"/>
+    <path d="M 200,80 V 44 h 36 v 36 z" id="path6076" inkscape:connector-curvature="0"/>
+    <path d="M 240,80 V 44 h 36 v 36 z" id="path6078" inkscape:connector-curvature="0"/>
+    <path d="M 280,80 V 44 h 36 v 36 z" id="path6080" inkscape:connector-curvature="0"/>
+    <path d="M 320,80 V 44 h 36 v 36 z" id="path6082" inkscape:connector-curvature="0"/>
+    <path d="M -40,40 V 4 h 36 v 36 z" id="path6084" inkscape:connector-curvature="0"/>
+    <path d="M 0,40 V 4 h 36 v 36 z" id="path6086" inkscape:connector-curvature="0"/>
+    <path d="M 40,40 V 4 h 36 v 36 z" id="path6088" inkscape:connector-curvature="0"/>
+    <path d="M 80,40 V 4 h 36 v 36 z" id="path6090" inkscape:connector-curvature="0"/>
+    <path d="M 120,40 V 4 h 36 v 36 z" id="path6092" inkscape:connector-curvature="0"/>
+    <path d="M 160,40 V 4 h 36 v 36 z" id="path6094" inkscape:connector-curvature="0"/>
+    <path d="M 200,40 V 4 h 36 v 36 z" id="path6096" inkscape:connector-curvature="0"/>
+    <path d="M 240,40 V 4 h 36 v 36 z" id="path6098" inkscape:connector-curvature="0"/>
+    <path d="M 280,40 V 4 h 36 v 36 z" id="path6100" inkscape:connector-curvature="0"/>
+    <path d="M 320,40 V 4 h 36 v 36 z" id="path6102" inkscape:connector-curvature="0"/>
+    <path d="M -40,0 V -36 H -4 V 0 z" id="path6104" inkscape:connector-curvature="0"/>
+    <path d="M 0,0 V -36 H 36 V 0 z" id="path6106" inkscape:connector-curvature="0"/>
+    <path d="M 40,0 V -36 H 76 V 0 z" id="path6108" inkscape:connector-curvature="0"/>
+    <path d="m 80,0 v -36 h 36 V 0 z" id="path6110" inkscape:connector-curvature="0"/>
+    <path d="m 120,0 v -36 h 36 V 0 z" id="path6112" inkscape:connector-curvature="0"/>
+    <path d="m 160,0 v -36 h 36 V 0 z" id="path6114" inkscape:connector-curvature="0"/>
+    <path d="m 200,0 v -36 h 36 V 0 z" id="path6116" inkscape:connector-curvature="0"/>
+    <path d="m 240,0 v -36 h 36 V 0 z" id="path6118" inkscape:connector-curvature="0"/>
+    <path d="m 280,0 v -36 h 36 V 0 z" id="path6120" inkscape:connector-curvature="0"/>
+    <path d="m 320,0 v -36 h 36 V 0 z" id="path6122" inkscape:connector-curvature="0"/>
+  </g>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="61.309021" y="17.483463" id="text6188">1</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="101.802" y="17.588932" id="text6190">2</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="141.26718" y="17.475651" id="text6192">3</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="181.2789" y="17.483463" id="text6194">4</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="222.03281" y="17.370182" id="text6196">5</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="261.22031" y="17.475651" id="text6198">6</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="301.32187" y="17.483463" id="text6200">7</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="340.94687" y="17.475651" id="text6202">8</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="380.82187" y="17.475651" id="text6204">9</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="415.87265" y="17.471745" id="text6206">10</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="455.81406" y="17.483463" id="text6208">11</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="495.87656" y="17.588932" id="text6210">12</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="535.72418" y="17.475651" id="text6212">13</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="575.65387" y="17.483463" id="text6214">14</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="615.96637" y="17.370182" id="text6216">15</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="655.60309" y="17.475651" id="text6218">16</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="695.60315" y="17.483463" id="text6220">17</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="736.3208" y="17.475651" id="text6222">18</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="26.363707" y="64.724228" id="text6224">1</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="26.363707" y="104.72421" id="text6226">2</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="26.363707" y="144.72423" id="text6228">3</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="26.363707" y="184.72423" id="text6230">4</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="26.363707" y="224.72423" id="text6232">5</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="26.363707" y="264.72424" id="text6234">6</text>
+  <text style="font-size:16px;font-family:DejaVu Sans Light" x="26.363707" y="304.72424" id="text6236">7</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6240" x="746.36377" y="55.724239">2</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6242" x="66.363708" y="55.724239">1</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6244" x="746.36377" y="71.724228">He</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6246" x="66.363708" y="71.724228">H</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6248" x="106.3637" y="95.724228">4</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6250" x="546.36377" y="95.724228">5</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6252" x="586.36377" y="95.724228">6</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6254" x="626.36377" y="95.724228">7</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6256" x="666.36377" y="95.724228">8</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6258" x="706.36377" y="95.724228">9</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6260" x="746.36377" y="95.724228">10</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6262" x="66.363708" y="95.724228">3</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6264" x="106.3637" y="111.72421">Be</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6266" x="546.36377" y="111.72421">B</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6268" x="586.36377" y="111.72421">C</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6270" x="626.36377" y="111.72421">N</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6272" x="666.36377" y="111.72421">O</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6274" x="706.36377" y="111.72421">F</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6276" x="746.36377" y="111.72421">Ne</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6278" x="66.363708" y="111.72421">Li</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6280" x="106.3637" y="135.72423">12</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6282" x="546.36377" y="135.72423">13</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6284" x="586.36377" y="135.72423">14</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6286" x="626.36377" y="135.72423">15</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6288" x="666.36377" y="135.72423">16</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6290" x="706.36377" y="135.72423">17</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6292" x="746.36377" y="135.72423">18</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6294" x="66.363708" y="135.72423">11</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6296" x="106.3637" y="151.72423">Mg</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6298" x="546.36377" y="151.72423">Al</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6300" x="586.36377" y="151.72423">Si</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6302" x="626.36377" y="151.72423">P</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6304" x="666.36377" y="151.72423">S</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6306" x="706.36377" y="151.72423">Cl</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6308" x="746.36377" y="151.72423">Ar</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6310" x="66.363708" y="151.72423">Na</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6312" x="106.3637" y="175.72423">20</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6314" x="146.36371" y="175.72423">21</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6316" x="186.36371" y="175.72423">22</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6318" x="226.36371" y="175.72423">23</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6320" x="266.36371" y="175.72423">24</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6322" x="306.36371" y="175.72423">25</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6324" x="346.36371" y="175.72423">26</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6326" x="386.36371" y="175.72423">27</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6328" x="426.36371" y="175.72423">28</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6330" x="466.36371" y="175.72423">29</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6332" x="506.36371" y="175.72423">30</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6334" x="546.36377" y="175.72423">31</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6336" x="586.36377" y="175.72423">32</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6338" x="626.36377" y="175.72423">33</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6340" x="666.36377" y="175.72423">34</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6342" x="706.36377" y="175.72423">35</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6344" x="746.36377" y="175.72423">36</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6346" x="66.363708" y="175.72423">19</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6348" x="106.3637" y="191.72423">Ca</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6350" x="146.36371" y="191.72423">Sc</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6352" x="186.36371" y="191.72423">Ti</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6354" x="226.36371" y="191.72423">V</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6356" x="266.36371" y="191.72423">Cr</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6358" x="306.36371" y="191.72423">Mn</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6360" x="346.36371" y="191.72423">Fe</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6362" x="386.36371" y="191.72423">Co</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6364" x="426.36371" y="191.72423">Ni</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6366" x="466.36371" y="191.72423">Cu</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6368" x="506.36371" y="191.72423">Zn</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6370" x="546.36377" y="191.72423">Ga</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6372" x="586.36377" y="191.72423">Ge</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6374" x="626.36377" y="191.72423">As</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6376" x="666.36377" y="191.72423">Se</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6378" x="706.36377" y="191.72423">Br</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6380" x="746.36377" y="191.72423">Kr</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6382" x="66.363708" y="191.72423">K</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6384" x="106.3637" y="215.72423">38</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6386" x="146.36371" y="215.72423">39</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6388" x="186.36371" y="215.72423">40</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6390" x="226.36371" y="215.72423">41</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6392" x="266.36371" y="215.72423">42</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6394" x="306.36371" y="215.72423">43</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6396" x="346.36371" y="215.72423">44</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6398" x="386.36371" y="215.72423">45</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6400" x="426.36371" y="215.72423">46</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6402" x="466.36371" y="215.72423">47</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6404" x="506.36371" y="215.72423">48</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6406" x="546.36377" y="215.72423">49</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6408" x="586.36377" y="215.72423">50</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6410" x="626.36377" y="215.72423">51</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6412" x="666.36377" y="215.72423">52</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6414" x="706.36377" y="215.72423">53</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6416" x="746.36377" y="215.72423">54</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6418" x="66.363708" y="215.72423">37</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6420" x="466.36371" y="231.72423">Ag</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6422" x="106.3637" y="231.72423">Sr</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6424" x="146.36371" y="231.72423">Y</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6426" x="186.36371" y="231.72423">Zr</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6428" x="226.36371" y="231.72423">Nb</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6430" x="266.36371" y="231.72423">Mo</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6432" x="306.36371" y="231.72423">Tc</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6434" x="346.36371" y="231.72423">Ru</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6436" x="386.36371" y="231.72423">Rh</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6438" x="426.36371" y="231.72423">Pd</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6440" x="506.36371" y="231.72423">Cd</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6442" x="546.36377" y="231.72423">In</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6444" x="586.36377" y="231.72423">Sn</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6446" x="626.36377" y="231.72423">Sb</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6448" x="666.36377" y="231.72423">Te</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6450" x="706.36377" y="231.72423">I</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6452" x="746.36377" y="231.72423">Xe</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6454" x="66.363708" y="231.72423">Rb</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6456" x="106.3637" y="255.72424">56</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6458" x="186.36371" y="255.72424">72</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6460" x="226.36371" y="255.72424">73</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6462" x="266.36371" y="255.72424">74</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6464" x="306.36371" y="255.72424">75</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6466" x="346.36371" y="255.72424">76</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6468" x="386.36371" y="255.72424">77</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6470" x="426.36371" y="255.72424">78</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6472" x="466.36371" y="255.72424">79</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6474" x="506.36371" y="255.72424">80</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6476" x="546.36377" y="255.72424">81</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6478" x="586.36377" y="255.72424">82</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6480" x="626.36377" y="255.72424">83</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6482" x="666.36377" y="255.72424">84</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6484" x="706.36377" y="255.72424">85</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6486" x="746.36377" y="255.72424">86</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6488" x="66.363708" y="255.72424">55</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6490" x="106.3637" y="271.72424">Ba</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6492" x="186.36371" y="271.72424">Hf</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6494" x="226.36371" y="271.72424">Ta</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6496" x="266.36371" y="271.72424">W</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6498" x="306.36371" y="271.72424">Re</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6500" x="346.36371" y="271.72424">Os</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6502" x="386.36371" y="271.72424">Ir</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6504" x="426.36371" y="271.72424">Pt</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6506" x="466.36371" y="271.72424">Au</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6508" x="506.36371" y="271.72424">Hg</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6510" x="546.36377" y="271.72424">Tl</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6512" x="586.36377" y="271.72424">Pb</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6514" x="626.36377" y="271.72424">Bi</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6516" x="666.36377" y="271.72424">Po</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6518" x="706.36377" y="271.72424">At</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6520" x="746.36377" y="271.72424">Rn</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6522" x="66.363708" y="271.72424">Cs</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6524" x="106.3637" y="295.72424">88</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6526" x="186.36371" y="295.72424">104</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6528" x="226.36371" y="295.72424">105</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6530" x="266.36371" y="295.72424">106</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6532" x="306.36371" y="295.72424">107</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6534" x="346.36371" y="295.72424">108</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6536" x="386.36371" y="295.72424">109</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6538" x="426.36371" y="295.72424">110</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6540" x="466.36371" y="295.72424">111</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6542" x="506.36371" y="295.72424">112</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6544" x="546.36377" y="295.72424">113</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6546" x="586.36377" y="295.72424">114</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6548" x="626.36377" y="295.72424">115</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6550" x="666.36377" y="295.72424">116</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6552" x="706.36377" y="295.72424">117</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6554" x="746.36377" y="295.72424">118</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6556" x="66.363708" y="295.72424">87</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6558" x="266.36371" y="311.72424">Sg</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6560" x="466.36371" y="311.72424">Rg</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6562" x="586.36377" y="311.72424">Fl</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6564" x="626.36377" y="311.72424">Uup</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6566" x="106.3637" y="311.72424">Ra</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6568" x="186.36371" y="311.72424">Rf</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6570" x="226.36371" y="311.72424">Db</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6572" x="306.36371" y="311.72424">Bh</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6574" x="346.36371" y="311.72424">Hs</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6576" x="386.36371" y="311.72424">Mt</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6578" x="426.36371" y="311.72424">Ds</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6580" x="506.36371" y="311.72424">Cn</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6582" x="546.36377" y="311.72424">Uut</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6584" x="666.36377" y="311.72424">Lv</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6586" x="706.36377" y="311.72424">Uus</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6588" x="746.36377" y="311.72424">Uuo</text>
+  <text style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light" id="text6590" x="66.363708" y="311.72424">Fr</text>
+  <g id="g3789" transform="translate(-55.439852,4.2590847)">
+    <g style="fill:#ffbfff;stroke:#000000;stroke-width:1" id="lanthanides" transform="translate(183.5,372.73633)">
+      <path inkscape:connector-curvature="0" id="path6125" d="M 0,0 V -36 H 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6127" d="M 40,0 V -36 H 76 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6129" d="m 80,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6131" d="m 120,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6133" d="m 160,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6135" d="m 200,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6137" d="m 240,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6139" d="m 280,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6141" d="m 320,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6143" d="m 360,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6145" d="m 400,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6147" d="m 440,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6149" d="m 480,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6151" d="m 520,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6153" d="m 560,0 v -36 h 36 V 0 z"/>
+    </g>
+    <g style="fill:#ff99cc;stroke:#000000;stroke-width:1" id="actinidess" transform="translate(183.5,412.73633)">
+      <path inkscape:connector-curvature="0" id="path6156" d="M 0,0 V -36 H 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6158" d="M 40,0 V -36 H 76 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6160" d="m 80,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6162" d="m 120,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6164" d="m 160,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6166" d="m 200,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6168" d="m 240,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6170" d="m 280,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6172" d="m 320,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6174" d="m 360,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6176" d="m 400,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6178" d="m 440,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6180" d="m 480,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6182" d="m 520,0 v -36 h 36 V 0 z"/>
+      <path inkscape:connector-curvature="0" id="path6184" d="m 560,0 v -36 h 36 V 0 z"/>
+    </g>
+    <text y="350.73633" x="201.5" id="text6592" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">57</text>
+    <text y="350.73633" x="241.5" id="text6594" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">58</text>
+    <text y="350.73633" x="281.5" id="text6596" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">59</text>
+    <text y="350.73633" x="321.5" id="text6598" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">60</text>
+    <text y="350.73633" x="361.5" id="text6600" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">61</text>
+    <text y="350.73633" x="401.5" id="text6602" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">62</text>
+    <text y="350.73633" x="441.5" id="text6604" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">63</text>
+    <text y="350.73633" x="481.5" id="text6606" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">64</text>
+    <text y="350.73633" x="521.5" id="text6608" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">65</text>
+    <text y="350.73633" x="561.5" id="text6610" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">66</text>
+    <text y="350.73633" x="601.5" id="text6612" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">67</text>
+    <text y="350.73633" x="641.5" id="text6614" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">68</text>
+    <text y="350.73633" x="681.5" id="text6616" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">69</text>
+    <text y="350.73633" x="721.5" id="text6618" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">70</text>
+    <text y="350.73633" x="761.5" id="text6620" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">71</text>
+    <text y="366.73633" x="561.5" id="text6622" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Dy</text>
+    <text y="366.73633" x="201.5" id="text6624" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">La</text>
+    <text y="366.73633" x="241.5" id="text6626" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Ce</text>
+    <text y="366.73633" x="281.5" id="text6628" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Pr</text>
+    <text y="366.73633" x="321.5" id="text6630" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Nd</text>
+    <text y="366.73633" x="361.5" id="text6632" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Pm</text>
+    <text y="366.73633" x="401.5" id="text6634" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Sm</text>
+    <text y="366.73633" x="441.5" id="text6636" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Eu</text>
+    <text y="366.73633" x="481.5" id="text6638" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Gd</text>
+    <text y="366.73633" x="521.5" id="text6640" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Tb</text>
+    <text y="366.73633" x="601.5" id="text6642" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Ho</text>
+    <text y="366.73633" x="641.5" id="text6644" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Er</text>
+    <text y="366.73633" x="681.5" id="text6646" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Tm</text>
+    <text y="366.73633" x="721.5" id="text6648" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Yb</text>
+    <text y="366.73633" x="761.5" id="text6650" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Lu</text>
+    <text y="390.73633" x="201.5" id="text6652" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">89</text>
+    <text y="390.73633" x="241.5" id="text6654" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">90</text>
+    <text y="390.73633" x="281.5" id="text6656" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">91</text>
+    <text y="390.73633" x="321.5" id="text6658" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">92</text>
+    <text y="390.73633" x="361.5" id="text6660" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">93</text>
+    <text y="390.73633" x="401.5" id="text6662" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">94</text>
+    <text y="390.73633" x="441.5" id="text6664" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">95</text>
+    <text y="390.73633" x="481.5" id="text6666" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">96</text>
+    <text y="390.73633" x="521.5" id="text6668" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">97</text>
+    <text y="390.73633" x="561.5" id="text6670" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">98</text>
+    <text y="390.73633" x="601.5" id="text6672" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">99</text>
+    <text y="390.73633" x="641.5" id="text6674" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">100</text>
+    <text y="390.73633" x="681.5" id="text6676" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">101</text>
+    <text y="390.73633" x="721.5" id="text6678" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">102</text>
+    <text y="390.73633" x="761.5" id="text6680" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">103</text>
+    <text y="406.73633" x="201.5" id="text6682" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Ac</text>
+    <text y="406.73633" x="241.5" id="text6684" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Th</text>
+    <text y="406.73633" x="281.5" id="text6686" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Pa</text>
+    <text y="406.73633" x="321.5" id="text6688" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">U</text>
+    <text y="406.73633" x="361.5" id="text6690" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Np</text>
+    <text y="406.73633" x="401.5" id="text6692" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Pu</text>
+    <text y="406.73633" x="441.5" id="text6694" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Am</text>
+    <text y="406.73633" x="481.5" id="text6696" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Cm</text>
+    <text y="406.73633" x="521.5" id="text6698" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Bk</text>
+    <text y="406.73633" x="561.5" id="text6700" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Cf</text>
+    <text y="406.73633" x="601.5" id="text6702" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Es</text>
+    <text y="406.73633" x="641.5" id="text6704" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Fm</text>
+    <text y="406.73633" x="681.5" id="text6706" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Md</text>
+    <text y="406.73633" x="721.5" id="text6708" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">No</text>
+    <text y="406.73633" x="761.5" id="text6710" style="font-size:16px;text-anchor:middle;font-family:DejaVu Sans Light">Lr</text>
+  </g>
+  <text style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:start;font-family:DejaVu Sans Light" id="text6712" y="15.39062" x="3.8310547">Group</text>
+  <text style="font-size:13.9854002px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-anchor:start;font-family:DejaVu Sans Light" id="text6714" y="34.423477" x="12.074293" transform="scale(0.99895718,1.0010439)">Period</text>
+  <g id="g3883" transform="translate(-48.315612,5.2172647)">
+    <g transform="translate(-0.50000171,-74.263672)" style="font-size:16px;text-anchor:end;font-family:DejaVu Sans Light" id="g6716" font-size="14px">
+      <text id="text6718" y="434" x="169">Lanthanides</text>
+      <text id="text6720" y="472" x="169">Actinides</text>
+    </g>
+  </g>
+  <path style="fill:#000000" id="path6724" d="m 49.346238,10.322513 v 1 h 7.970635 V 9.3225133 l 3.188254,2.4999997 -3.188254,2.5 v -2 h -7.970635" inkscape:connector-curvature="0"/>
+  <path style="fill:#000000" id="path6724-7" d="m 9.3005017,23.708504 -1.0181721,0 0,7.97064 2.0363444,0 -2.5454305,3.18825 -2.5454303,-3.18825 2.0363443,0 0,-7.97064" inkscape:connector-curvature="0"/>
+</svg>
