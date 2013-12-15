@@ -736,28 +736,40 @@ Discretization 2 $\rightarrow$ Imaginary time algorithm
 \begin{frame}{}\framenumber
 
 \begin{columns}[t]
-\column{0.6\textwidth}
+
+\column{0.5\textwidth}
     \begin{itemize}
-    \item<+-> Model for intense \& short-$\lambda$ laser interaction
-    \item<+-> Rare gas clusters; versatile tool \& stepping stone
-    \item<+-> Complete simulation package
+    \item<+-> Wrote from scratch 2 simulation packages + libraries
+    \item<+-> MD:
         \begin{itemize}
-        \item Molecular dynamics (MD)
-        \item Ionization library
-        \item Other supporting libraries
-        \item GPU accelerated (OpenCL)
+        \item<.-> Rare gas type
+        \item<.-> Cluster sizes
+        \item<.-> New model: ACI
         \end{itemize}
-    \item<.-> Available on group's Gitlab:\\%
-        {\begin{tiny}\color{blue}\url{https://gitlab.cphoton.science.uottawa.ca/nbigaouette}\end{tiny}}
+    \item<+-> QFDTD:
+        \begin{itemize}
+        \item<.-> 1 e$^{-}$ systems
+        \item<.-> Novel mapping technique
+        \end{itemize}
     \end{itemize}
 
 \column{0.5\textwidth}
     \begin{itemize}
-     \item<+-> Quantum solver: first step
-     \item<+-> Model can reproduce many experimental results
-     \item<.-> Lead to publications
+    \item<+-> Both: GPU accelerated
+    \item<.-> Experimental results are reproduced
+    \item<.-> Many publications
+    \item<.-> MD:
+        \begin{itemize}
+        \item<.-> ACI $\lambda$ independent: Other regimes?
+        \item<.-> Bigger clusters? Tree?
+        \end{itemize}
+    \item<.-> QFDTD:
+        \begin{itemize}
+        \item<.-> States inside bigger clusters
+        \item<.-> Transition rates
+        \item<.-> Cross-sections
+        \end{itemize}
     \end{itemize}
-
 
 \end{columns}
 \end{frame}
