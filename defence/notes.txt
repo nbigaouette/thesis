@@ -1,0 +1,124 @@
+http://www.cs.columbia.edu/~hgs/etc/defense-hints.html
+
+
+    Your presentation (and thesis) needs to address the following:
+        What is the problem you are studying?
+        Why is it important?
+        What results have you achieved? 
+    Some committee members will want to know if the works has been published and where and how it was received. For example, if you have written software, indicate where it is being used, either for follow-on work or in some production or test environment.
+    
+    If you have presented your work in a conference or at job talks, be sure to anticipate and address the most common questions asked there.
+    It's a nice gesture to provide snacks for the defense (coffee, bagels, cookies, fruit, etc.).
+    The committee should be handed a copy of your slides.
+    Be prepared to briefly summarize your background (undergraduate degree, how long at the university, etc.)
+    No more than 30 slides, plus "back up" slides with additional material in case of questions. The most effective way of making your committee members mad is to come unprepared with a stack of 80 slides and then madly skip through them.
+    Number your slides, particularly if one of your committee members is linked in via speakerphone. Consider using some kind of remote presentation software.
+    List your contributions early.
+    When presenting your contributions, be sure to use "I" and not "we" so that the committee will know what aspects of the work where yours, and which were group projects.
+    Keep discussions of related work very brief, but be prepared to answer questions of the "how does this differ from so-and-so's work" succinctly.
+    You will not be asked to prove results again.
+    Be prepared to back up any comparative statement with facts, in particular statements like "works better", "faster", "scalable" or "optimal". If you are presenting a protocol, how do you know that it works correctly?
+    If you have multiple parts in your dissertation, consult with the committee ahead of time as to whether it makes sense to omit some of them for the presentation. 
+
+http://fr.slideshare.net/phish108/prepare-your-phd-defense-presentation
+
+
+
+TODO
+----------------
+Read citations: write notes on them
+Read papers critics/comments before publications
+Try to figure out what questions I'll get
+
+
+
+Defence:
+----------------
+
+Problem:
+	-Clusters: nanoscopic objects --> properties greatly influenced by size
+	-Can range from single atom to large macromolecules
+	-Rare gas clusters interaction with femtosecond lasers: merging of nano and ultrafast science.
+	-CS spectrum can't be described with photo- only
+	-800 nm (IR) lasers dominant, what about shorter wavelengths?
+	-FEL: New physics, new models, incomplete?
+
+We realized something was missing; trouble reproducing experimental data, not enough ionization!
+We suggested looking at excited states, previously ignored
+Developed a model:
+	-Two-step ionization process
+	-Rapid energy absorption + redistribution through clusters
+	-Model includes: MD code (>16k LOC) + ionization library (& others, 18k LOC ++)
+
+Experiments @ XUV (30nm) (Murphy2008, Bostedt2008)
+	-Interesting: 30 nm is: too small for inner shell ionization, too large for field dominated regimes
+	-Possible to isolate influence of internal electronic structures
+
+Lead to paper 1: Augmented collisional ionization via excited states in XUV cluster interactions (2011)
+	-Impact of atomic excited states in rare gas clusters in intense XUV
+	-Two-step ionization process
+	-Rapid energy absorption + redistribution through clusters
+	-Called: "Augmented collisional ionization" (ACI)
+	-Description...
+	-Applied to: 32 nm @ 5e13-->5e14 (25 fs) + Ar_80, Ar_147 clusters (similar to Bostedt2008), 1 ps duration (after which ~nothing is seen)
+	-Results:
+		-First observation of Ar^4+
+		-ES: play a crucial role in CS spectrum and how quickly charge states are produced due to increased energy transfer between electrons and ions.
+		-ACI could be applied to other regimes (materials, wavelengths)
+		-Rapid energy absorption --> influence on cluster explosions, important in single-molecule imaging studies with intense x-
+		-Ar^4+ appears only at right intensity when ACI is on
+		-Influence of cluster size is less than ACI's
+		-Larger clusters --> more collisional
+		-ACI dominates Ar^2+ to Ar^4+ creation
+		-Dynamics: faster ionization levels with ACI (many fs earlier)
+		-ES population closely follows CS --> large population in ES
+		-ES < few fs
+	-Published as "Augmented collisional ionization via excited states in XUV cluster interactions" in Journal of Physics B: Atomic, Molecular and Optical Physics 44(16), August 2011, 165102  doi:10.1088/0953-4075/44/16/165102
+		
+-We saw a reduction of importance of single-photon for larger clusters
+-What is the influence of cluster size on cluster explosion dynamics?
+-Parameters:
+	-Argon clusters: 55, 147, 561 & 2057 (2, 3, 5, & 8 ico shells)
+	-32.8 nm, 5e13 W/cm^2, 25 fs, 1 ps duration
+	-32.8 nm: Only Ar^2+ accessible through photo-
+-Results:
+	-~20% in ES at all time
+	-More e- with small k & smaller ES->IS for small CS:
+		-More ES for higher CS (they stay in ES longer)
+	-Large clusters = fewer photons per atoms
+	-BUT: CS increases with cluster size (larger space charge) --> ++ES/ionization/targets
+	-First: energy is deposited through single-, then collisional processes
+	-collisional processes dominate for >Ar^1+
+	-Larger clusters == more Ar^3/4+, but Ar^4+ increases more rapidly than Ar^3+ --> collisional processes more important for large clusters
+	-Higher CS: only after end of laser, contrary to longer wavelengths (with IBH)
+	-Larger clusters: more rapid CS creation
+	-Larger clusters --> more efficient at energy redistribution
+	-Ar_2057: CS increase so fast, Ar^3+ dominant before end of laser --> no more photo-!
+	-Reduction of ~40% of photons, ~50% energy absorption (less important for smaller clusters)
+	-Collisionally Reduced Photoabsorbtion (CRP)
+	-Neglecting collisional processes can overestimate energy absorption (~30% for Ar_55)
+	-The larger the cluster the more rapidly the cluster becomes dominated by collisional processes and thus reaches higher charge states.
+	-Photo- x-section is twice for neutral compared to Ar^1+, but collisions affect resulting Ar^1+
+		-ACI creates more Ar^1+ than photo-
+	-Net charge per atom (total charge of all particles in that shell including ions and electrons classically bound to the ions, divided by the number of atoms in the shell) as a function of shell index.
+		-Smallest for inner shells
+		-Largest for outer shells (like Thomas2009)
+		-Inner shells quasi-neutral, outer charged == explosion
+		-Smaller clusters take longer to become collisional
+	-Outer-most shells: no screening --> largest K
+	-Inner shells: screened --> low K, even if largest CS
+	-Ar^1+ & Ar^2+ created in outer-shells by photo- are not screened: peak in K spectrum at end
+	-Electrons:
+		-Maxwellian @ ~90 fs
+		-Thermalize rapidly --> high degree of collisions
+		-Larger clusters disperse energy more rapidly than smaller ones
+		-Small clusters: highly non-isotropic v distrib --> less collisions
+		-No peak @ 1.27 Eh (3p photo-electron) for large clusters: isotropy lost by collisions
+	-Good agreement with Bosted2008: Same dominant electron K spectrum features
+-Published as "Clusters in intense XUV pulses: Effects of cluster size on expansion dynamics and ionization " in Physical Review A 83(6), June 2011, 063201 doi:10.1103/PhysRevA.83.063201
+
+-Further investigation: Xenon at 100 nm
+-Important experiments in 2002 at DESY-FEL
+-Different theoretical models proposed to explain high CS
+-In 2002, intensity was recalibrated to lower values; What does our model gives with lower intensity?
+

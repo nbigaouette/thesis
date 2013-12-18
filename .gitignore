@@ -20,3 +20,6 @@
 *.upa
 *.brf
 ._d
+*.nav
+*.snm
+*.synctex.gz
