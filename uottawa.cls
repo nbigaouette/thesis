@@ -168,6 +168,18 @@
 % Different kind of section titles
 \RequirePackage{titlesec}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Define own ``\listofpublications''
+% Requires using \publication{Paper title} instead of \section{Paper title}
+% http://www.math.mun.ca/tex-archive/macros/latex/contrib/tocloft/tocloft.pdf
+\RequirePackage{tocloft}
+\newcommand{\listpublicationsname}{List of Publications}
+\newlistof[chapter]{publications}{pub}{\listpublicationsname}
+\newcommand{\publication}[1]{%
+\refstepcounter{publications}
+\section{#1}
+\addcontentsline{pub}{publications}{\protect\numberline{\thepublications}{(Chapter \thesection)~}#1}\par}
+
 % ******************************************************************************
 % ******************************************************************************
 %        End of packages inclusion
@@ -328,6 +340,8 @@
     \addcontentsline{toc}{section}{\lofname}    % What appears on the ToC
     \listoffigures                              % List of figures
     \newpage                                    % Add a new page
+    \listofpublications
+    \newpage
 }
 
 % ******************************************************************************

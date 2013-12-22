@@ -40,12 +40,12 @@ particles will quadruple the required calculation time). Some forces used in
 different research areas are short range and can then be cutoff at a certain
 distance. This effectively reduces the scaling from $O\pa{N^2}$ to $O\pa{N}$
 but the Coulomb potential, being long range, cannot be artificially cutoff.
-Chapter \ref{section:intro:md:tree} discuss a different algorithm that allows
+Chapter \ref{section:intro:md:tree} discusses a different algorithm that allows
 reducing the scale to $O\pa{N \log{N}}$.
 
 
 Figure
-\ref{fig:md:vectors} shows the vectors definition used throughout this work. We
+\ref{fig:md:vectors} shows the vector definitions used throughout this work. We
 define particle $i$ the particle we are interested in (for example, the
 particle we are calculating the force on), and particle $j$ the particle that
 is generating the field or potential that is measured at location of particle

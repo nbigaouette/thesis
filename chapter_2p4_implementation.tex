@@ -35,7 +35,7 @@ their usage was considered instead of re-implementing a new one from scratch.
 Examples are GROMACS\footnote{GROMACS:
 \url{http://www.gromacs.org/}}, NAMD\footnote{NAMD:
 \url{http://www.ks.uiuc.edu/Research/namd/}} and
-LAMMPS\footnote{\url{http://lammps.sandia.gov/}}. A major issue with these
+LAMMPS\footnote{LAMMPS: \url{http://lammps.sandia.gov/}}. A major issue with these
 pre-existing MD packages is their target audience; they aim to simulate large
 bio-molecules with mostly short range interactions. Another important problem
 is the number of particles throughout the simulations; while many packages
@@ -92,8 +92,14 @@ positive potential is negative, hence the negative curves on figure
     \caption{\label{fig:md:Vb}Cluster environment potential energy landscape
              and the $U_b$ approximation. A 1+ ion at $r=0$ and a 5+ at
              $r=-15$~Bohr. The potential energy curves are those of a test
-             particle of charge state -1 (electron). See text for curves
-             description.}
+             particle of charge state -1 (electron).
+             The first ion's contribution is in blue-dashed line. The second ion's
+             contribution is in red-dashed line and represents the cluster environment.
+             The black-dashed line represents the total from the two ions.
+             The blue-dotted line is the first ion's potential shifted by $U_b$.
+             The upper horizontal magenta-dotted line is the isolated atom
+             threshold, while the lower one is the shifted one due to the cluster
+             environment.}
 \end{figure}
 
 
@@ -489,7 +495,7 @@ Recombination to the ground state is thus used to prevent such nonphysical event
 When an electron's total energy (with respect to the ion) falls below the energy
 of the lowest unoccupied state,
 recombination is forced: the electron disappears from the simulation and the ion
-charge state is increased by one.
+charge state is decreased by one.
 
 Additionally, recombination plays an important role in the dynamics of the
 exploding cluster. Experiments at FLASH in 2009 on xenon clusters in the XUV

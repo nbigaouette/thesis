@@ -125,7 +125,7 @@ where $\erf{}$ is the error function. The associated electrostatic field is thus
 \label{eqn:md:smoothed:E}
 \end{align}
 When the distance $r$ is large compared to $\sigma$, the error function
-is tends towards 1 and the exponential tends towards 0 (since it's a gaussian
+tends towards 1 and the exponential tends towards 0 (since it's a gaussian
 shape). The potential \eqref{eqn:md:smoothed:phi} and electric field
 \eqref{eqn:md:smoothed:E} thus tend towards Coulombic for large distances.
 
@@ -194,7 +194,7 @@ curve and time step) can be used with good confidence. Figures
 \ref{fig:potential:heating:dt} and \ref{fig:potential:heating:depth} show the
 energy variation of the process as a function of time step (for different
 potential depths) and as a function of potential depth (for different time
-steps). A time step of 0.5 attosecond is often taken as
+steps). A time step of 0.5 attosecond (as) is often taken as
 it minimizes the energy variation for a large
 range of potential depths, as can be seen on figure
 \ref{fig:potential:heating:depth}.
@@ -231,7 +231,7 @@ studies in later chapters.
 The preferred potential shape, the Gaussian distribution described previously,
 uses the error function which has a major
 computational issue: it is slow, or at least too slow to be called at each interaction pair
-calculation. I was decided to implement a look-up table instead.
+calculation. I decided to implement a look-up table instead.
 The potential and field functions are pre-calculated for a charge state of 1+.
 Since both potential and field are linear in charge (the potential caused by a 2+
 ion is twice the one of a 1+), their value for any
