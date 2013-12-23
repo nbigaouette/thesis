@@ -29,15 +29,15 @@ Many MD packages are available freely that could have been used for
 the current work. After a first try with one such package, it was decided to
 start from scratch a new one. The MD algorithm is relatively simple; having
 control on the rest of the package allowed flexibility in the development that
-would have not been possible with a third party package. Fore example, existing
-MD codes have specific target users that don't have the same requirements as what
-was required for this work such as varying number of particles during the
+would have not been possible with a third party package. For example, existing
+MD codes have specific target users that do not have the same requirements as what
+was required for this work, such as varying the number of particles during the
 simulation or long range interactions. By building the tools myself I was able
 to have more trust in it by subjecting it to rigorous tests and validations.
 Additionally, even though a lot of work was put into the creation of this code
-base, much time was saved trying to understand or even worst, debug, code from
+base, much time was saved trying to understand, or even worst, debug, a code from
 someone else. Having known at first the amount of time lost on an unstable code
-base I would have started my MD package right away as it proved a lot easier
+base, I would have started my MD package right away, as it proved a lot easier
 to move forward with it.
 
 
@@ -52,8 +52,8 @@ algorithm is implemented, it was not yet used in a publication. An interesting
 technology matured during the last decade; by running codes directly on GP-GPUs,
 the same algorithms could perform up to one hundred times faster than on
 conventional CPUs. The MD package was thus ported to the framework OpenCL where
-the MD algorithm shown a speedup of close to 80. This implementation was used
-in our publications since the cluster sizes we were interested in were
+the MD algorithm showed a speedup of close to 80. This implementation was used
+in our publications since the cluster sizes that we were interested in were
 in the range accessible through MD (and not requiring the tree). The
 hierarchical tree-based algorithm is still accessible through an input parameter
 (not as an OpenCL implementation though), making my MD package interesting for
