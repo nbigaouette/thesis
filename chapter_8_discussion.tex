@@ -117,7 +117,7 @@ integer-referenced memory location through a cumulative sum of a source function
 enforcing the monotonicity required. Due to the way the mapping function is
 obtained, any source function can be used, giving great flexibility to the
 mapping process. It is thus possible to concentrate grid points around centres
-of interest, in this case ions' location. Additionally to the nonlinear mapping,
+of interest, in this case ions' location. In addition to the nonlinear mapping,
 both real-time and imaginary-time methods were implemented, allowing to compare
 the two through the same package. In the case of the imaginary method, a new
 way to obtain the eigenstates was described and successively used on the
@@ -129,7 +129,7 @@ mapping, and compare with known values from experiments.
 % ******************************************************************************
 The ACI model, based on electron impact excitation cross-sections, is independent of the
 regime and does not depend on the laser parameters (pulse duration, wavelength,
-intensity, etc.) Transition cross-sections though are unique to each elements
+intensity, etc.). However, transition cross-sections are unique to each element
 and must be calculated and added to the simulation package before use. Argon
 and xenon cross-sections where generated and are accessible. It is thus
 interesting to apply the model to different wavelength regimes. Other models were developed
@@ -141,7 +141,7 @@ experiment in light of our ACI model at the revised, lower intensity.
 
 Thanks to my OpenCL implementation (and its 80 times speedup), it was possible
 to acquire significant statistics over a wide range of intensities, effectively
-reproducing the clusters distribution in the laser focus spacial profile. The
+reproducing the cluster distribution in the laser focus spacial profile. The
 speedup gained was used to increase the number of simulations, thus increasing
 the statistical significance of the data, and to acquire data at different
 intensities to sample a non-uniform spacial distribution of the laser pulse.
