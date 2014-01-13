@@ -15,22 +15,22 @@ reduce the computational burden, particles are grouped in a hierarchical tree
 interactions, it can also be applied in the electrostatic case.
 
 The main issue with the direct calculation of forces in MD is the lack of
-distinction between the close particles and distant ones. While the resulting
+distinction between the close and distant particles. While the resulting
 potential of a distant particle is small, the computational cost required to
 calculate it is the same as in the case of a nearby particle. Some MD
 calculations use an artificial cutoff: particles farther than this cutoff will
-be ignored in the calculation of the force on one particle. This is acceptable
-when the force acting on particles is short range, either due to screening or
+be ignored. This is acceptable
+when the force acting on particles is of short range, either due to screening or
 to the nature of the force (Lennard-Jones for example).
 In the present work, the dominant force is the
-Coulomb force and is a long range one by nature; it thus cannot be artificially
-cutoff as in the case of close range forces used in other fields.
+Coulomb force and is long range by nature; it thus cannot be artificially
+cut off as in the case of close range forces used in other fields.
 
 Could distant particles be grouped together, with their contribution to the
 force (or potential) being calculated only once (per ``group'')? Because
 individual particles which are part of a distant group will have a similar
 contribution to the potential at the location of particle $i$, the interaction
-with this group can be instead approximated through the multipole
+with this group can instead be approximated through the multipole
 expansion\cite{Gibbon2002} of the group of particles, or cell in terms of the
 tree algorithm:
 \begin{align}
