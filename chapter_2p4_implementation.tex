@@ -482,16 +482,16 @@ cross-sections relative to the total one.
 
 \subsubsection{Recombination}
 
-In a classical simulation electrons could cool down into the ions' infinite Coulomb
+In a classical simulation electrons might cool down into the ions' infinite Coulomb
 potential where they would have a total energy less than what is allowed
-according to quantum mechanics. This would lead to artificial cluster heating,
-as this electron gives up its energy to the cluster as it cools.
+in quantum mechanics. This would lead to artificial cluster heating,
+as this electron surrenders its energy to the cluster as it cools.
 Using a smoothing potential as in equation
 \eqref{eqn:md:smoothed:phi} will prevent the singularity.
 Additionally, if the potential depth $\phi\pa{0}$ used (see
 equation \eqref{eqn:md:smoothed:phi0}) is deep enough, the total energy of an
 electron might fall below the energy of the state.
-Recombination to the ground state is thus used to prevent such nonphysical events.
+Recombination to the ground state is thus used to prevent such non physical events.
 When an electron's total energy (with respect to the ion) falls below the energy
 of the lowest unoccupied state,
 recombination is forced: the electron disappears from the simulation and the ion
