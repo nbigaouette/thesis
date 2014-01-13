@@ -357,6 +357,10 @@
 \newcommand{\optprefix}[2]{% optional prefix
   #1\mbox{-}\nobreak\hspace{0pt}#2
 }
+% Version with a ``%'' at the end to prevent a newline created even when ``~'' is used after
+\newcommand{\optprefixp}[2]{% optional prefix
+  #1\mbox{-}\nobreak\hspace{0pt}#2%
+}
 
 \newcommand{\xray}{\optprefix{X}{ray}}
 \newcommand{\xrays}{\optprefix{X}{rays}}
