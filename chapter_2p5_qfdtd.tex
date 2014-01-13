@@ -166,8 +166,8 @@ The real and imaginary parts in equation~\eqref{eqn:schrodinger:real} can be
 compared to the electric and magnetic fields in the traditional electrodynamics
 FDTD method. The integration is performed using a leap-frog scheme. We
 first define $\psi_{i,j,k}^{n}$ the wavefunction located at the grid cell
-$\pa{i,j,k}$ and at time step $n$. Then equation
-\eqref{eqn:schrodinger:real:imag} is evaluated at time step $n$ and, using
+$\pa{i,j,k}$ and at time step~$n$. Then equation
+\eqref{eqn:schrodinger:real:imag} is evaluated at time step~$n$ and, using
 (second order) central-differences, we get:
 \begin{align}
 \left. \delt{  } \psi_I \right|_{n}
@@ -180,7 +180,7 @@ $\pa{i,j,k}$ and at time step $n$. Then equation
 \label{eqn:schrodinger:real:imag:discretized}
 \end{align}
 Similarly, defining the time derivative in~\eqref{eqn:schrodinger:real:real} at
-time step $n$ and again using (second order) central-differences:
+time step~$n$ and again using (second order) central-differences:
 \begin{align}
 \left. \delt{  } \psi_R \right|_{n+1/2}
 & = \left. \pa{-\frac{1}{2} \laplacian{} + V^{n} } \psi_I \right|_{n+1/2}, \\
@@ -295,7 +295,7 @@ states, as described in the published article of chapter
 Because equation~\eqref{eqn:schrodinger:imaginary} is real, only a single scalar
 field needs to be discretized on the grid. The discretization is similar to the
 real-time method: equation~\eqref{eqn:schrodinger:imaginary} is evaluated at
-time step $n$ and the time derivative is discretized, in this case using (first
+time step~$n$ and the time derivative is discretized, in this case using (first
 order) forward-differences (and again simplifying the notation):
 \begin{align}
 - \left. \deli{}{\tau} \psi \right|_{n}
@@ -311,7 +311,7 @@ The Laplacian is discretized with equation~\eqref{eqn:laplacian:discretized}.
 Since a single scalar field is used to describe $\psi$, special care needs to
 be taken in the code implementation. Indeed, equation
 \eqref{eqn:schrodinger:imaginary:discretized} uses the Laplacian of the
-wavefunction at the previous time step $n$ to update the wavefunction to
+wavefunction at the previous time step~$n$ to update the wavefunction to
 time step $n+1$. For example, calculating $\psi^{n+1}_{i,j,k}$ requires
 $\psi^{n}_{i-1,j,k}$ and $\psi^{n}_{i+1,j,k}$ (for the $x$ derivative in the
 Laplacian) but when calculating the next value in $x$ ($\psi^{n+1}_{i+1,j,k}$)
