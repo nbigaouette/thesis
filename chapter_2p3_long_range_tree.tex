@@ -170,14 +170,14 @@ a significant speedup is obtained. Due to the tree
 traversal algorithm, the scaling improves
 from $O\pa{N^2}$ to $O\pa{N \log{N}}$\cite{Barnes1986,Gibbon2002,Pfalzner1996}.
 
-A variation to the hierarchical treecode is obtained when a sufficiently large
+A variation of the hierarchical treecode is obtained when a sufficiently large
 $\theta$ is used. In this case, the root cell (the largest one) is never
 resolved into its daughters. By adding more moments to the approximation then
-the first three ones of equations \eqref{eqn:tree:moments} and removing
+the first three of equations \eqref{eqn:tree:moments} and removing
 contributions of nearby particles, the \textit{Fast Multipole Method} (FMM) is
 obtained\cite{Pfalzner1996}. FMM was developed by Greegard in
 1988\cite{Greengard1987} independently of Barnes' hierarchical tree method.
 While conceptually similar, its implementation details are quite different and
-has not been implemented in the current work while the hierarchical tree
+it has not been implemented in the current work while the hierarchical tree
 algorithm was.
 
