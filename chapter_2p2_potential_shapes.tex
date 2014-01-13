@@ -6,14 +6,14 @@
 
 In the present work, the potential (and field) is assumed to be linear in
 charge state. For example, the potential and field created by a 3+ ion will be
-three times larger than the one created by a 1+ ion, for short range as for the
-long range. The following close range potential derivations relies on this
+three times larger than the one created by a 1+ ion, for short range as for
+long range. The following close range potential derivations rely on this
 property.
 
 Additionally, the potential created by an electron is assumed to be equal in
 strength but of opposite sign from the one created by a 1+ ion.
 
-These properties greatly simplifies the case of ionization, described in chapter
+These properties greatly simplify the case of ionization, described in chapter
 \ref{section:intro:mechanisms} (page \pageref{section:intro:mechanisms}),
 when a new electron is created in the code.
 Indeed, when an electron is located exactly on top of an ion, right after
@@ -146,12 +146,12 @@ from which we get the particle width:
 \end{align}
 The free parameter is thus the ``potential depth'' $\phi_j\pa{0}$. Even
 though $\phi_j\pa{0} > 0$ we call this parameter ``depth'' since the potential
-energy of an electron on top of an ion would be minimum, similar to the
-gravitational potential energy of a ball is minimum at the bottom of a well.
+energy of an electron on top of an ion would be minimal, similar to the
+gravitational potential energy of a ball is minimal at the bottom of a well.
 
 Another problem that the smoothing of equations \eqref{eqn:md:smoothed:phi} and
-\eqref{eqn:md:smoothed:E} solve is the one of \textit{numerical heating} which
-occurs when particles artificially gain (or loose) energy during the
+\eqref{eqn:md:smoothed:E} solves is the one of \textit{numerical heating} which
+occurs when particles artificially gain (or lose) energy during the
 calculation of equations \eqref{eqn:md:vv}. This absence of conservation of
 energy is due to a too large time step $\Delta t$. Indeed, the
 discretization of equations \eqref{eqn:md:vv}, and most importantly of
@@ -162,7 +162,7 @@ particle between each time steps, then the energy will not be conserved.
 
 
 
-Figure \ref{fig:potential:shapes} show the different potential shapes and their
+Figure \ref{fig:potential:shapes} shows the different potential shapes and their
 respective electrostatic field.
 
 \begin{figure}
@@ -178,7 +178,7 @@ It was found that the potential given by the charge distribution of equation
 \eqref{eqn:md:smoothed:E} give the least numerical heating. As explained
 previously, the time discretization used to integrate the equations of motion
 assumes that the change in force between two time steps is linear. As can be
-seen on figure \ref{fig:potential:shapes}, the electric field curve from the
+seen in figure \ref{fig:potential:shapes}, the electric field curve from the
 charge distribution
 (magenta) does not have a discontinuity (in its first derivative)
 and is therefore the preferred one.
@@ -198,14 +198,14 @@ steps). A time step of 0.5 attosecond (as) is often taken as
 it minimizes the energy variation for a large
 range of potential depths, as can be seen on figure
 \ref{fig:potential:heating:depth}.
-It is important to note that a better precision is not obtained by going
+It is important to note that a greater precision is not obtained by going
 under $\Delta~t~\approx~0.05~\textrm{as}$ as can be seen on figure
 \ref{fig:potential:heating:dt}. This is caused by the precision of the computer.
 While it is normal that such a limit exist, it is relatively high due to the
 actual code implementation. Indeed, the dynamical aspect of the code is
 implemented in SI units when large differences between numbers can be easily
 obtained. When these numbers are combined in the algorithm's implementation,
-the computer floating point precision is not enough. Nevertheless, a time-step
+the computer floating point precision is insufficient. Nevertheless, a time-step
 of 0.05~as is sufficient for the work. The specific
 parameters (time step and potential depth) are specified in the different
 studies in later chapters.
@@ -229,7 +229,7 @@ studies in later chapters.
 \label{section:intro:md:potentials:lut}
 
 The preferred potential shape, the Gaussian distribution described previously,
-uses the error function which has a major
+uses the error function which raises a major
 computational issue: it is slow, or at least too slow to be called at each interaction pair
 calculation. I decided to implement a look-up table instead.
 The potential and field functions are pre-calculated for a charge state of 1+.
@@ -260,11 +260,11 @@ and convert\_int\_sat\_rtz() converts a floating point to an integer,
 rounding towards zero (\_rtz) and saturating (\_sat) the conversion in case of
 out-of-range
 \footnote{\url{https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/convert_T.html}}
-(if the floating point value exceed the range of the integer type,
+(if the floating point value exceeds the range of the integer type,
 the maximum value for the integer is used instead of a dangerous undefined
 behaviour).
 
-This effectively does a linear interpolation between the look-up table values.
+This effectively produces a linear interpolation between the look-up table values.
 In the present work, 10,000 points are used for the table with a maximum value
 for $x$ at the potential shape cutoff distance. In the case of the gaussian
 distribution shape, four times the particle width $\sigma$ is used as the cutoff

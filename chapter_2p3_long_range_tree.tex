@@ -15,22 +15,22 @@ reduce the computational burden, particles are grouped in a hierarchical tree
 interactions, it can also be applied in the electrostatic case.
 
 The main issue with the direct calculation of forces in MD is the lack of
-distinction between the close particles and distant ones. While the resulting
+distinction between the close and distant particles. While the resulting
 potential of a distant particle is small, the computational cost required to
 calculate it is the same as in the case of a nearby particle. Some MD
 calculations use an artificial cutoff: particles farther than this cutoff will
-be ignored in the calculation of the force on one particle. This is acceptable
-when the force acting on particles is short range, either due to screening or
+be ignored. This is acceptable
+when the force acting on particles is of short range, either due to screening or
 to the nature of the force (Lennard-Jones for example).
 In the present work, the dominant force is the
-Coulomb force and is a long range one by nature; it thus cannot be artificially
-cutoff as in the case of close range forces used in other fields.
+Coulomb force and is long range by nature; it thus cannot be artificially
+cut off as in the case of close range forces used in other fields.
 
 Could distant particles be grouped together, with their contribution to the
 force (or potential) being calculated only once (per ``group'')? Because
 individual particles which are part of a distant group will have a similar
 contribution to the potential at the location of particle $i$, the interaction
-with this group can be instead approximated through the multipole
+with this group can instead be approximated through the multipole
 expansion\cite{Gibbon2002} of the group of particles, or cell in terms of the
 tree algorithm:
 \begin{align}
@@ -62,7 +62,7 @@ particle of interest $i$.
  \caption{\label{fig:tree:quadtree}Quadtree: 2D's equivalent of the 3D octree.
           300 particles (half ions in blue, half electrons in magenta) represent
           an exploding cluster. Cells' moments are propagated up the tree to the
-          root cell. Particles far from a cell can interact directly with it
+          root cell. Particles distant from a cell can interact directly with it
           instead of resolving all particles contained in it, thus reducing the
           computational burden.}
 \end{figure}
@@ -90,13 +90,13 @@ be added to a second interaction list containing particle-particle direct
 interactions. The process is recursively repeated until all particles
 are added to an interaction list, either directly or through a parent cell.
 Note that an optimization done in the
-implementation is to allow many particles per leaves and automatically add them
+implementation allows many particles per leaves and automatically adds them
 to the particles interaction list when traversing the tree, preventing trees
 which are overly unbalanced.
 
 Different selection rules exist for the criteria of ``far enough''. These
 rules are called \textit{Multipole Acceptance Criteria} or
-MAC\cite{Pfalzner1996}. Barnes' original one simply referred as
+MAC\cite{Pfalzner1996}. Barnes' original rule simply referred to as
 ``\textit{s/d}'' compares an input parameter $\theta$ with the cell's size $s$
 divided by the distance between the cell's center-of-charge and particle of
 interest $i$ (see figure \ref{fig:tree:mac:1}).
@@ -108,7 +108,7 @@ In the limit where $\theta$ reaches zero, no more cells are added to the
 cells interaction list (they are all resolved) and the MD algorithm emerges, though
 with a large overhead due to the tree construction and traversal.
 
-Unfortunately, this MAC can cause huge errors when large amount of charge is
+Unfortunately, this MAC can cause huge errors when a large amount of charge is
 present in a corner of a cell\cite{Pfalzner1996}.
 % Page 85 (97), figure 4.13
 In this case, a cell could be added to the cell
@@ -170,14 +170,14 @@ a significant speedup is obtained. Due to the tree
 traversal algorithm, the scaling improves
 from $O\pa{N^2}$ to $O\pa{N \log{N}}$\cite{Barnes1986,Gibbon2002,Pfalzner1996}.
 
-A variation to the hierarchical treecode is obtained when a sufficiently large
+A variation of the hierarchical treecode is obtained when a sufficiently large
 $\theta$ is used. In this case, the root cell (the largest one) is never
 resolved into its daughters. By adding more moments to the approximation then
-the first three ones of equations \eqref{eqn:tree:moments} and removing
+the first three of equations \eqref{eqn:tree:moments} and removing
 contributions of nearby particles, the \textit{Fast Multipole Method} (FMM) is
 obtained\cite{Pfalzner1996}. FMM was developed by Greegard in
 1988\cite{Greengard1987} independently of Barnes' hierarchical tree method.
 While conceptually similar, its implementation details are quite different and
-has not been implemented in the current work while the hierarchical tree
+it has not been implemented in the current work while the hierarchical tree
 algorithm was.
 

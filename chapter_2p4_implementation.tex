@@ -1,6 +1,6 @@
 \subsection{Implementation details}
 
-The following will go over some specifics details of the code implementation.
+The following will go over some specific details of the code implementation.
 An explanation as to why a new MD code was written is first presented. The
 model approximating the cluster environment for atomic processes is then
 presented, followed by specific details to photon and impact ionization.
@@ -18,10 +18,10 @@ force) with some ionization routines added (see for example reference
 written code, the maintenance burden introduced by many factors (initial
 implementation written in the C language, usage of global variables
 throughout the code, multiple coding styles from different people throughout
-the years, lack of revision control system to give the freedom
+the years, lack of revision control system giving freedom
 of deleting code from the active version without losing the ability to roll
-back, many subtle and important bugs, stability issues, etc.) pushed me
-to restart from scratch. This allowed using modern development techniques to be
+back, many subtle and important bugs, stability issues, etc.) convinced me
+to start from scratch. This allowed modern development techniques to be
 used. For example, all development was done through a revision control system
 (subversion\cite{svn} at first, then switched to git\cite{git}) in the C++
 language instead of C. The object oriented nature of C++ allowed encapsulation
@@ -31,16 +31,16 @@ code, a required asset to
 push further the development of features.
 
 A substantial number of MD packages are freely available and
-their usage was considered instead of re-implementing a new one from scratch.
+their use was considered instead of re-implementing a new one from scratch.
 Examples are GROMACS\footnote{GROMACS:
 \url{http://www.gromacs.org/}}, NAMD\footnote{NAMD:
 \url{http://www.ks.uiuc.edu/Research/namd/}} and
 LAMMPS\footnote{LAMMPS: \url{http://lammps.sandia.gov/}}. A major issue with these
 pre-existing MD packages is their target audience; they aim to simulate large
 bio-molecules with mostly short range interactions. Another important problem
-is the number of particles throughout the simulations; while many packages
+is the number of particles throughout the simulations. While many packages
 assume a constant number of particles, the present work required creating
-(ionization) and annihilating (recombination) particles throughout simulations.
+(ionization) and annihilating (recombination) particles during simulations.
 Controlling the MD part of the code allowed better integration of the
 ionization aspects.
 
@@ -48,8 +48,8 @@ Additionally, other MD packages were not mature enough or simply non-existent at
 For example the largely used HOOMD-blue\footnote{HOOMD-blue:
 \url{http://codeblue.umich.edu/hoomd-blue/}} which uses extensively
 Nvidia GPUs released its first version (v0.6.0) in February 2008.
-Additionally, the knowledge and experience gained by writing from scratch such
-a package is invaluable.
+The knowledge and experience gained by writing from scratch such
+a package is also invaluable.
 
 
 
@@ -66,7 +66,7 @@ This environment can be approximated by a constant value that shifts the
 potential\cite{Fennel2007}. The shift is $U_b = -e_0 V_b$ where $V_b$ is the
 potential due to the cluster at the ion's location (ignoring nearby electrons)
 and $U_b$ is the potential energy a test particle of charge state -1 (an electron)
-would have if it was placed right on top of the ion. This can be justified by
+would have if it were placed right on top of the ion. This can be justified by
 the fact that bound states of rare gas atoms are localized close to the nucleus
 and the cluster potential spatial variation around atoms is small.
 
@@ -140,7 +140,7 @@ As described in the previous chapter \ref{section:intro:Vb} (page
 \pageref{section:intro:Vb}), the cluster
 influence on ionization is approximated as a new threshold, which we call $V_b$.
 
-The following paragraphs will discuss some specific details concerning single
+The following paragraphs will discuss specific details concerning single
 photon ionization and impact ionization, both in the special case of an isolated
 atom or ion. The generalization to the cluster environment is done through the
 updated threshold, as discussed in chapter \ref{section:intro:Vb} (page
@@ -475,23 +475,23 @@ where $\vv$ is the impacting electron's velocity vector and $\vr$ the vector
 from the impacting electron to the target. If the impacting parameter lies
 inside the calculated cross-section, excitation or ionization takes place. In
 the case of excitation, the total cross-section of all excited states are used
-and a final state randomly selected between all accessible, weighted by their
+and a final state randomly selected from all those accessible, weighted by their
 cross-sections relative to the total one.
 
 % http://en.wikipedia.org/wiki/Neutron_cross_section#Link_to_reaction_rate_and_interpretation
 
 \subsubsection{Recombination}
 
-In a classical simulation electrons could cool down into the ions' infinite Coulomb
+In a classical simulation electrons might cool down into the ions' infinite Coulomb
 potential where they would have a total energy less than what is allowed
-according to quantum mechanics. This would lead to artificial cluster heating,
-as this electron gives up its energy to the cluster as it cools.
+in quantum mechanics. This would lead to artificial cluster heating,
+as this electron surrenders its energy to the cluster as it cools.
 Using a smoothing potential as in equation
 \eqref{eqn:md:smoothed:phi} will prevent the singularity.
 Additionally, if the potential depth $\phi\pa{0}$ used (see
 equation \eqref{eqn:md:smoothed:phi0}) is deep enough, the total energy of an
 electron might fall below the energy of the state.
-Recombination to the ground state is thus used to prevent such nonphysical events.
+Recombination to the ground state is thus used to prevent such non physical events.
 When an electron's total energy (with respect to the ion) falls below the energy
 of the lowest unoccupied state,
 recombination is forced: the electron disappears from the simulation and the ion
