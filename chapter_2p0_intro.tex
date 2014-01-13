@@ -67,7 +67,7 @@ as not only can it describe what MD does but can go further by including the
 electromagnetic field propagation and its effects. Additionally, its scaling
 allows it to describe larger clusters and it can be parallelized more easily
 than MD. For smaller systems though, the complexity of PIC and MPIC and their
-grid's overhead gives MD a clear advantage.
+grid's overhead give MD a clear advantage.
 
 Some refinements to the MD algorithm allow it to be used for larger systems
 while still keeping the same underlying code structure. For example, organizing
@@ -76,16 +76,17 @@ calculation from a $O\pa{N^2}$ scaling to $O\pa{N \log{N}}$. More details on the
 tree algorithm is presented in chapter \ref{section:intro:md:tree} (page
 \pageref{section:intro:md:tree}).
 
-On the end of the methods spectrum lies rate equation methods where a time
-dependence for parameters is written down and solved. Too many approximations
+On the end of the methods spectrum are rate equation methods. In these, an
+expression for the time dependence of some parameters is written down and solved,
+analytically or numerically. Too many approximations
 are made by rate equations for use in the current work. For example, they often
 assume an infinite bulk. They also cannot describe the large variation in field
 and charge present in the clusters.
 
 For a detailed review of the different methods, see Ref. \cite{Fennel2010}.
 
-In the following chapter, the tools and their implementation used in the present
-work will be presented. Unless stated otherwise, all implementations are original
+In the following chapter, the tools and their implementation applied in this
+thesis will be presented. Unless stated otherwise, all implementations are original
 and were done from scratch, except the Hartree-Fock-based Cowan code\cite{CowanCode} used
 in the calculation of various required cross-sections.
 
