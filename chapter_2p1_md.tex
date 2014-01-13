@@ -34,14 +34,14 @@ Calculating $\vF_i$
 from \eqref{eqn:md:newton} and \eqref{eqn:md:coulomb:F} requires one operation
 per particle present in the system; updating the force on one particle is an
 $O\pa{N}$ operation (doubling the number of particles will double the required
-calculation time). Since there is $N$ particles, calculating the force for
-all particles has thus a scaling of $O\pa{N^2}$ (doubling the number of
+calculation time). Since there are $N$ particles, calculating the force for
+all particles has a scaling of $O\pa{N^2}$ (doubling the number of
 particles will quadruple the required calculation time). Some forces used in
-different research areas are short range and can then be cutoff at a certain
+different research areas are short range and can then be cut off at a certain
 distance. This effectively reduces the scaling from $O\pa{N^2}$ to $O\pa{N}$
-but the Coulomb potential, being long range, cannot be artificially cutoff.
+but the Coulomb potential, being long range, cannot be artificially cut off.
 Chapter \ref{section:intro:md:tree} discusses a different algorithm that allows
-reducing the scale to $O\pa{N \log{N}}$.
+a reduction to $O\pa{N \log{N}}$.
 
 
 Figure
@@ -69,7 +69,7 @@ $i$. We thus have:
 \end{figure}
 %
 %
-Equation \eqref{eqn:md:newton} can be time integrated for every particles
+Equation \eqref{eqn:md:newton} can be time integrated for every particle
 $i$ using the Velocity-Verlet~(VV) scheme:
 \begin{subequations}
 \label{eqn:md:vv}
