@@ -229,7 +229,7 @@ studies in later chapters.
 \label{section:intro:md:potentials:lut}
 
 The preferred potential shape, the Gaussian distribution described previously,
-uses the error function which has a major
+uses the error function which raises a major
 computational issue: it is slow, or at least too slow to be called at each interaction pair
 calculation. I decided to implement a look-up table instead.
 The potential and field functions are pre-calculated for a charge state of 1+.
@@ -260,11 +260,11 @@ and convert\_int\_sat\_rtz() converts a floating point to an integer,
 rounding towards zero (\_rtz) and saturating (\_sat) the conversion in case of
 out-of-range
 \footnote{\url{https://www.khronos.org/registry/cl/sdk/1.2/docs/man/xhtml/convert_T.html}}
-(if the floating point value exceed the range of the integer type,
+(if the floating point value exceeds the range of the integer type,
 the maximum value for the integer is used instead of a dangerous undefined
 behaviour).
 
-This effectively does a linear interpolation between the look-up table values.
+This effectively produces a linear interpolation between the look-up table values.
 In the present work, 10,000 points are used for the table with a maximum value
 for $x$ at the potential shape cutoff distance. In the case of the gaussian
 distribution shape, four times the particle width $\sigma$ is used as the cutoff
