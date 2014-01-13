@@ -146,12 +146,12 @@ from which we get the particle width:
 \end{align}
 The free parameter is thus the ``potential depth'' $\phi_j\pa{0}$. Even
 though $\phi_j\pa{0} > 0$ we call this parameter ``depth'' since the potential
-energy of an electron on top of an ion would be minimum, similar to the
-gravitational potential energy of a ball is minimum at the bottom of a well.
+energy of an electron on top of an ion would be minimal, similar to the
+gravitational potential energy of a ball is minimal at the bottom of a well.
 
 Another problem that the smoothing of equations \eqref{eqn:md:smoothed:phi} and
-\eqref{eqn:md:smoothed:E} solve is the one of \textit{numerical heating} which
-occurs when particles artificially gain (or loose) energy during the
+\eqref{eqn:md:smoothed:E} solves is the one of \textit{numerical heating} which
+occurs when particles artificially gain (or lose) energy during the
 calculation of equations \eqref{eqn:md:vv}. This absence of conservation of
 energy is due to a too large time step $\Delta t$. Indeed, the
 discretization of equations \eqref{eqn:md:vv}, and most importantly of
@@ -162,7 +162,7 @@ particle between each time steps, then the energy will not be conserved.
 
 
 
-Figure \ref{fig:potential:shapes} show the different potential shapes and their
+Figure \ref{fig:potential:shapes} shows the different potential shapes and their
 respective electrostatic field.
 
 \begin{figure}
@@ -178,7 +178,7 @@ It was found that the potential given by the charge distribution of equation
 \eqref{eqn:md:smoothed:E} give the least numerical heating. As explained
 previously, the time discretization used to integrate the equations of motion
 assumes that the change in force between two time steps is linear. As can be
-seen on figure \ref{fig:potential:shapes}, the electric field curve from the
+seen in figure \ref{fig:potential:shapes}, the electric field curve from the
 charge distribution
 (magenta) does not have a discontinuity (in its first derivative)
 and is therefore the preferred one.
