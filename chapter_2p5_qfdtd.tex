@@ -6,7 +6,7 @@ One model proposed to explain the high charge states seen in some experiments
 is the lowering of the ionization barrier, used in conjunction with classical
 MD simulations. This model assumes that an electron can be ionized when
 the potential of a neighbouring ion lowers the potential of the electron's
-parent ion - this is called "Barrier Lowering"\cite{Georgescu2007,Fennel2010}.
+parent ion - this is called "Barrier Lowering"~\cite{Georgescu2007,Fennel2010}.
 An open question is how close this model, used
 with a classical MD, is to reality. Special care needs to be taken when a
 particle, evolving in a quantum world, is to be treated classically.
@@ -27,12 +27,12 @@ capital in ACI and as such we wanted a tool that could give us information not
 only on the ground state but also on excited states.
 
 After stumbling on an interesting article that used the Finite-Difference
-Time-Domain (FDTD) algorithm to solve \schrodinger equation\cite{Sudiarta2007}
+Time-Domain (FDTD) algorithm to solve \schrodinger equation~\cite{Sudiarta2007}
 it was decided to explore this idea since not much work could be found on this
 \textit{Quantum FDTD} (QFDTD) method and due to previous experiences
 implementing electrodynamics FDTD.
 
-FDTD is an established algorithm developed in 1966 by Yee\cite{Yee1966} to solve
+FDTD is an established algorithm developed in 1966 by Yee~\cite{Yee1966} to solve
 Maxwell's equation on a grid using leap-frog integration.
 It is actually the method used in PIC simulations to propagate the electromagnetic
 field through the grid.
@@ -42,7 +42,7 @@ largely due to the increase in computational resources. Indeed, a three
 dimensional grid with the three vector components of both the electric and
 magnetic fields requires huge amount of memory that were definitely not present
 in the late '60s. The reader is invited to read the excellent book on FDTD by
-Allen Taflove and Susan Hagness\cite{Taflove2005} covering 40 years of FDTD
+Allen Taflove and Susan Hagness~\cite{Taflove2005} covering 40 years of FDTD
 development in electrodynamics simulations.
 
 Other simulation techniques like Finite-Element Methods (FEM) or Finite-Volume
@@ -53,35 +53,35 @@ generally easy and efficient and the local nature of the algorithm makes it
 easily parallelizable on distributed memory systems.
 
 Sullivan was the first to apply the FDTD method to solve the \schrodinger
-equation in his 2000 book\cite{Sullivan2000} where he obtains the wavefunction
+equation in his 2000 book~\cite{Sullivan2000} where he obtains the wavefunction
 of an electron hitting a potential barrier in one dimension.
 Latter in 2001 he used the FDTD
-method to simulate one and two electrons in a quantum dot\cite{Sullivan2001}.
+method to simulate one and two electrons in a quantum dot~\cite{Sullivan2001}.
 The Hartree-Fock approximation was used to describe the two electrons problem
 and thus required the use of Fourier transforms to calculate the Coulomb
 and exchange terms. Due to this extra required calculation, the problem was
 restricted to two dimensions only. The following year, he introduced a method
 to calculate the eigenstates of an arbitrary system using
-FDTD\cite{Sullivan2002}. This method requires two distinct simulations: the
+FDTD~\cite{Sullivan2002}. This method requires two distinct simulations: the
 first one finds the eigenvalues and the second one stores the states
 corresponding to these eigenvalues, doubling the simulation time required.
 The interaction with a magnetic field was included through the vector potential
-and later\cite{Sullivan2003,Sullivan2004} used to calculate spin interaction.
+and later~\cite{Sullivan2003,Sullivan2004} used to calculate spin interaction.
 Only in 2005 did the first three dimensional
-simulations\cite{Sullivan2005a} were performed as proof of concept; only a
+simulations~\cite{Sullivan2005a} were performed as proof of concept; only a
 single electron was simulated. Eigenstates and eigenvalues were obtained for an
 example quantum well in addition as a two ions system. A more complicated three
-dimensional system was later simulated in \cite{Sullivan2005b}, still with a
+dimensional system was later simulated in~\cite{Sullivan2005b}, still with a
 single electron.
 
-Later Sudiarta suggested\cite{Sudiarta2007} a new way to use the FDTD method to
+Later Sudiarta suggested~\cite{Sudiarta2007} a new way to use the FDTD method to
 solve the \schrodinger equation for a single electron system. By switching to
 \textit{imaginary time}, \schrodinger equation can be solved more easily and
 more efficiently to get the eigenvalues and eigenstates of the system. It was
 later shown that the interaction with a magnetic field could also be added to
-the imaginary-time method\cite{Sudiarta2008} and that FDTD could be used to
-construct the thermal density matrix of single particle\cite{Sudiarta2009}.
-Strickland \textit{et al.} parallelized the method \cite{Strickland2010} and
+the imaginary-time method~\cite{Sudiarta2008} and that FDTD could be used to
+construct the thermal density matrix of single particle~\cite{Sudiarta2009}.
+Strickland \textit{et al.} parallelized the method~\cite{Strickland2010} and
 even released its code through the GPL v2
 license\footnote{\url{http://sourceforge.net/projects/quantumfdtd}}.
 
@@ -328,7 +328,7 @@ Due to the explicit nature of the FDTD algorithm (values can be obtained at the
 next time step from values at the current time step only) the method is
 conditionally stable; an upper bound on the time step size must be taken. The
 Courant-Friedrichs-Lewy (CFL) condition gives the upper bound. Dai \textit{et
-al.} derive\cite{Dai2005} the stability condition for a constant in time
+al.} derive~\cite{Dai2005} the stability condition for a constant in time
 potential:
 \begin{align}
 \Delta t < \frac{2}{

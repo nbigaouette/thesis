@@ -8,7 +8,7 @@ particles simulated is more than many thousands, which is a potential target
 for laser-cluster interaction. Some interesting variations of the MD algorithm
 exist to reduce the computational burden. One class of methods uses
 \textit{hierarchical tree}
-algorithms as introduced by Barnes and Hut in 1986\cite{Barnes1986}. To
+algorithms as introduced by Barnes and Hut in 1986~\cite{Barnes1986}. To
 reduce the computational burden, particles are grouped in a hierarchical tree
 (quadtree in two dimensions, octree in three). While Barnes used his
 \textit{treecode} to solve the N-body problem in the context of gravitational
@@ -31,7 +31,7 @@ force (or potential) being calculated only once (per ``group'')? Because
 individual particles which are part of a distant group will have a similar
 contribution to the potential at the location of particle $i$, the interaction
 with this group can instead be approximated through the multipole
-expansion\cite{Gibbon2002} of the group of particles, or cell in terms of the
+expansion~\cite{Gibbon2002} of the group of particles, or cell in terms of the
 tree algorithm:
 \begin{align}
 \phi_i & = \sum_{j~\textrm{cell}} \phi_{j \rightarrow i} = \sum_{j~{\rm cell}}
@@ -96,7 +96,7 @@ which are overly unbalanced.
 
 Different selection rules exist for the criteria of ``far enough''. These
 rules are called \textit{Multipole Acceptance Criteria} or
-MAC\cite{Pfalzner1996}. Barnes' original rule simply referred to as
+MAC~\cite{Pfalzner1996}. Barnes' original rule simply referred to as
 ``\textit{s/d}'' compares an input parameter $\theta$ with the cell's size $s$
 divided by the distance between the cell's center-of-charge and particle of
 interest $i$ (see figure \ref{fig:tree:mac:1}).
@@ -109,7 +109,7 @@ cells interaction list (they are all resolved) and the MD algorithm emerges, tho
 with a large overhead due to the tree construction and traversal.
 
 Unfortunately, this MAC can cause huge errors when a large amount of charge is
-present in a corner of a cell\cite{Pfalzner1996}.
+present in a corner of a cell~\cite{Pfalzner1996}.
 % Page 85 (97), figure 4.13
 In this case, a cell could be added to the cell
 interaction list even though the error introduced by the multipole expansion is
@@ -156,7 +156,7 @@ multipole expansion is used and the cell is added to the interaction list.
     \begin{subfigure}{0.15\columnwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/mac_4}
-        \caption{Bédorf\cite{Bedorf2012}}
+        \caption{Bédorf~\cite{Bedorf2012}}
         \label{fig:tree:mac:4}
     \end{subfigure}
 \caption{Different Multipole Acceptance Criteria (MAC). See text for descriptions.}
@@ -168,15 +168,15 @@ Because not all interaction pairs are considered in the calculation of the
 force and potential in this tree algorithm,
 a significant speedup is obtained. Due to the tree
 traversal algorithm, the scaling improves
-from $O\pa{N^2}$ to $O\pa{N \log{N}}$\cite{Barnes1986,Gibbon2002,Pfalzner1996}.
+from $O\pa{N^2}$ to $O\pa{N \log{N}}$~\cite{Barnes1986,Gibbon2002,Pfalzner1996}.
 
 A variation of the hierarchical treecode is obtained when a sufficiently large
 $\theta$ is used. In this case, the root cell (the largest one) is never
 resolved into its daughters. By adding more moments to the approximation then
 the first three of equations \eqref{eqn:tree:moments} and removing
 contributions of nearby particles, the \textit{Fast Multipole Method} (FMM) is
-obtained\cite{Pfalzner1996}. FMM was developed by Greegard in
-1988\cite{Greengard1987} independently of Barnes' hierarchical tree method.
+obtained~\cite{Pfalzner1996}. FMM was developed by Greegard in
+1988~\cite{Greengard1987} independently of Barnes' hierarchical tree method.
 While conceptually similar, its implementation details are quite different and
 it has not been implemented in the current work while the hierarchical tree
 algorithm was.

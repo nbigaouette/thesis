@@ -11,10 +11,10 @@ recombination as implemented in the code is presented.
 \subsubsection{MD code}
 
 Our group previously used Barnes and Hut's treecode implementation,
-freely available\cite{treecode} (through the GPL version 2 license). The code was adapted
+freely available~\cite{treecode} (through the GPL version 2 license). The code was adapted
 to simulate charged particles (Coulomb force) instead of masses (gravitational
-force) with some ionization routines added (see for example reference
-\cite{Jungreuthmayer2005}). While reducing development time by re-using already
+force) with some ionization routines added (see for example reference~\cite{Jungreuthmayer2005}).
+While reducing development time by re-using already
 written code, the maintenance burden introduced by many factors (initial
 implementation written in the C language, usage of global variables
 throughout the code, multiple coding styles from different people throughout
@@ -23,7 +23,7 @@ of deleting code from the active version without losing the ability to roll
 back, many subtle and important bugs, stability issues, etc.) convinced me
 to start from scratch. This allowed modern development techniques to be
 used. For example, all development was done through a revision control system
-(subversion\cite{svn} at first, then switched to git\cite{git}) in the C++
+(subversion~\cite{svn} at first, then switched to git~\cite{git}) in the C++
 language instead of C. The object oriented nature of C++ allowed encapsulation
 of different parts of the code which could then be tested and validated
 individually through unit testing. This gave much better flexibility to the
@@ -63,7 +63,7 @@ clusters have close to solid density (10$^{22}$ -- 10$^{23}$ cm$^{-3}$);
 the cluster environment cannot be ignored.
 
 This environment can be approximated by a constant value that shifts the
-potential\cite{Fennel2007}. The shift is $U_b = -e_0 V_b$ where $V_b$ is the
+potential~\cite{Fennel2007}. The shift is $U_b = -e_0 V_b$ where $V_b$ is the
 potential due to the cluster at the ion's location (ignoring nearby electrons)
 and $U_b$ is the potential energy a test particle of charge state -1 (an electron)
 would have if it were placed right on top of the ion. This can be justified by
@@ -421,8 +421,8 @@ it is easily integrated into the model.
 \subsubsubsection{Single photon ionization}
 
 For single-photon ionization, experimental cross-sections $\sigma\pa{\omega}$
-for xenon were obtained from reference \cite{West1978} and from
-reference \cite{Marr1976} for argon.
+for xenon were obtained from reference~\cite{West1978} and from
+reference~\cite{Marr1976} for argon.
 
 Once cross-sections are obtained, they are converted to a rate of ionization
 using
@@ -432,7 +432,7 @@ using
 \end{align}
 which is equivalent to equation \eqref{eqn:ionization:rate:mpi} with $\nu = 1$.
 
-Then, this rate is weighted\cite{Lax2006} by the time step size and compared to
+Then, this rate is weighted~\cite{Lax2006} by the time step size and compared to
 a random number $r$ between 0 and 1:
 \begin{align}
 1 - \e{-\Gamma \Delta t} > r.
@@ -451,19 +451,19 @@ for a more accurate description of cluster interaction with low fluence pulses.
 
 For impact ionization cross-sections, Lotz formula of equation
 \eqref{eqn:impact:ionization:lotz} is used with experimental parameters obtained
-from reference \cite{Tawara1987} (for neutral xenon)
+from reference~\cite{Tawara1987} (for neutral xenon)
 % Figure 254, page 317
-and \cite{Heidenreich2005} (for higher charge states).
+and~\cite{Heidenreich2005} (for higher charge states).
 % Parameters were taken from figure 1 (a), (b) and (c)
 % Note that parameters from figure 1 (a) and (b) for
 % the 4+ and 5+ do not give satisfactory results. They were
 % obtained by fitting the data directly from the figures
-For argon, data from \cite{Lotz1967} and \cite{Lotz1970} is used.
+For argon, data from~\cite{Lotz1967} and~\cite{Lotz1970} is used.
 When $K_{\textrm{thresh}} \le 0$, a null cross-section is simply used.
 
 As for ACI, numerical cross-sections from ground state to excited state and from
 excited state to continuum were calculated by Edward Ackad using a
-Hartree-Fock code from Cowan\cite{Cowan1981,CowanCode}. Only the first eight excited states
+Hartree-Fock code from Cowan~\cite{Cowan1981,CowanCode}. Only the first eight excited states
 were considered (with $l<4$) for charge states up to 17+ for both xenon and argon.
 
 The impact parameter of the impacting electron is calculated by:
@@ -499,10 +499,10 @@ charge state is decreased by one.
 
 Additionally, recombination plays an important role in the dynamics of the
 exploding cluster. Experiments at FLASH in 2009 on xenon clusters in the XUV
-regime\cite{Thomas2009} could be reproduced by our models when recombination
+regime~\cite{Thomas2009} could be reproduced by our models when recombination
 was enabled; we found that the lower charge states detected would come from the
 cluster core where recombination is important. This study was published in
-May 2013's edition of \textit{New Journal of Physics}\cite{Ackad2013} and is
+May 2013's edition of \textit{New Journal of Physics}~\cite{Ackad2013} and is
 included in this thesis in chapter \ref{section:papers:recomb}
 (page \pageref{section:papers:recomb}).
 

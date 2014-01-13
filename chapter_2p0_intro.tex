@@ -6,7 +6,7 @@ intractable. Theoretical investigations thus require some degree of
 approximation, a compromise between feasibility and exactitude. On one end of
 the spectrum, the most general methods involve solving the
 Time-Dependent \schrodinger Equation (TDSE) directly and Quantum Monte-Carlo
-(QMC) methods\cite{Nightingale1998}. Unfortunately, these methods can only be applied to the simplest
+(QMC) methods~\cite{Nightingale1998}. Unfortunately, these methods can only be applied to the simplest
 systems of small numbers of electrons; clusters cannot be studied by these
 methods.
 
@@ -14,13 +14,13 @@ Larger systems can be studied using \textit{ab initio} methods (``from
 first principles'') which cover a wide range of techniques. This class of
 methods includes \textit{Hartree-Fock} (HF) methods which consist of
 approximating the ground state wavefunction by a single Slater
-determinant\cite{Laaksonen1986,Schafer2009}.
+determinant~\cite{Laaksonen1986,Schafer2009}.
 In HF methods, instantaneous electron-electron Coulomb repulsion is not
 included directly in the system's Hamiltonian. Instead, only the average field
 resulting from other electrons is used, giving the often used name of
 \textit{self-consistent field} methods. Other \textit{ab
 initio} methods are the \textit{Post Hartree-Fock} methods where electron
-correlation is added\cite{Cramer2004}. An example is the \textit{Configuration Interaction} (CI)
+correlation is added~\cite{Cramer2004}. An example is the \textit{Configuration Interaction} (CI)
 method. Because of their great accuracy, these methods are restricted to
 relatively small systems, generally less than 10 atoms. Full \textit{ab initio}
 treatment of clusters is also not possible.
@@ -28,7 +28,7 @@ treatment of clusters is also not possible.
 Larger systems require
 more approximations. \textit{Density Functional Theory} (DFT)
 is an often used method for cluster studies requiring quantum aspects, with
-either quantum or semiclassical propagation\cite{Schafer2009,Fennel2010}.
+either quantum or semiclassical propagation~\cite{Schafer2009,Fennel2010}.
 It begins by formulating an
 expression for the total energy of electrons and ions and derives static and
 dynamic equations from it. All approximations are done in the selection of this
@@ -42,7 +42,7 @@ field fluctuations seen in strong field cluster dynamics.
 
 Continuing on the spectrum of methods, classical methods like Molecular
 Dynamics (MD) solve Newton
-equations of motion with any type of forces between particles\cite{Skeel1998}.
+equations of motion with any type of forces between particles~\cite{Skeel1998}.
 When used in
 laser-cluster simulations, MD generally uses the instantaneous electrostatic
 (Coulomb) force between charged particles. MD codes have the advantage of being
@@ -60,7 +60,7 @@ modelling large clusters, but they tend to be more complex and lack the
 simplicity of MD. Additionally, because they model particles as having the same
 size as the underlying grid, they do not describe close range interactions.
 Nevertheless, Varin \textit{et al.} developed a new method that adds microscopic
-corrections to PIC close range interactions\cite{Varin2012}. With these microscopic
+corrections to PIC close range interactions~\cite{Varin2012}. With these microscopic
 corrections, collisions between particles are described similarly to MD, ensuring
 a better description of the dynamics. This MPIC method has great prospects
 as not only can it describe what MD does but can go further by including the
@@ -71,7 +71,7 @@ grid's overhead give MD a clear advantage.
 
 Some refinements to the MD algorithm allow it to be used for larger systems
 while still keeping the same underlying code structure. For example, organizing
-particles in a hierarchical tree\cite{Barnes1986,Gibbon2002} can speed up the force
+particles in a hierarchical tree~\cite{Barnes1986,Gibbon2002} can speed up the force
 calculation from a $O\pa{N^2}$ scaling to $O\pa{N \log{N}}$. More details on the
 tree algorithm is presented in chapter \ref{section:intro:md:tree} (page
 \pageref{section:intro:md:tree}).
@@ -83,11 +83,11 @@ are made by rate equations for use in the current work. For example, they often
 assume an infinite bulk. They also cannot describe the large variation in field
 and charge present in the clusters.
 
-For a detailed review of the different methods, see Ref. \cite{Fennel2010}.
+For a detailed review of the different methods, see Ref.~\cite{Fennel2010}.
 
 In the following chapter, the tools and their implementation applied in this
 thesis will be presented. Unless stated otherwise, all implementations are original
-and were done from scratch, except the Hartree-Fock-based Cowan code\cite{CowanCode} used
+and were done from scratch, except the Hartree-Fock-based Cowan code~\cite{CowanCode} used
 in the calculation of various required cross-sections.
 
 
