@@ -99,7 +99,7 @@ rules are called \textit{Multipole Acceptance Criteria} or
 MAC~\cite{Pfalzner1996}. Barnes' original rule simply referred to as
 ``\textit{s/d}'' compares an input parameter $\theta$ with the cell's size $s$
 divided by the distance between the cell's center-of-charge and particle of
-interest $i$ (see figure \ref{fig:tree:mac:1}).
+interest $i$ (see figure~\ref{fig:tree:mac:1}).
 If the ratio $s/d$ is smaller than the parameter $\theta$, the
 group of particles contained inside the cell is approximated through the cell's
 moments and the cell is added to the cells interaction list. At the opposite, if
@@ -115,10 +115,10 @@ In this case, a cell could be added to the cell
 interaction list even though the error introduced by the multipole expansion is
 significant. Different MAC have thus been proposed to mitigate this problem.
 The \textit{minimum distance} MAC replaces the distance $d$ in the MAC with the
-minimum distance to one of the cell's edge (figure \ref{fig:tree:mac:2}).
+minimum distance to one of the cell's edge (figure~\ref{fig:tree:mac:2}).
 The \textit{B-max} MAC instead
 replaces the size of the cell with the largest distance between one of the
-cell's corner to the center-of-charge (figure \ref{fig:tree:mac:3}).
+cell's corner to the center-of-charge (figure~\ref{fig:tree:mac:3}).
 Another MAC was proposed by
 B\'edorf~\textit{et.~al.}~\cite{Bedorf2012} and is a mix of the two previous.
 The MAC reads:
@@ -126,7 +126,7 @@ The MAC reads:
 d > \frac{s}{\theta} + \delta,
 \end{align}
 where $\delta$ is the distance between the cell's geometric center and its
-center-of-charge (figure \ref{fig:tree:mac:4}).
+center-of-charge (figure~\ref{fig:tree:mac:4}).
 If the previous equation holds ($d$ is large enough) then the
 multipole expansion is used and the cell is added to the interaction list.
 

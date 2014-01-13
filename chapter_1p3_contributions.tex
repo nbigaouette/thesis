@@ -25,25 +25,25 @@ regmies in plasma physics... we might add that discussion here.}
 
 \subsubsection{Tools}
 
-Chapter \ref{section:tools} describes the different tools and models
+Chapter~\ref{section:tools} describes the different tools and models
 that were developed and implemented to answer our questions. While chapter
 \ref{section:tools:md} concentrates on the classical aspect of the problem,
-chapter \ref{section:tools:qfdtd} describes in detail use of a quantum approach
+chapter~\ref{section:tools:qfdtd} describes in detail use of a quantum approach
 named QFDTD for Quantum Finite-Difference Time-Domain.
 Note that all implementations used are original work; all code packages
 were developed from scratch by me or under my direction and no external packages
 were used. The MD package described in
-chapter \ref{section:tools:md} ($\sim$16k lines of code) contains 86~\% of code
+chapter~\ref{section:tools:md} ($\sim$16k lines of code) contains 86~\% of code
 written by me, 12~\% by Edward Ackad (postdoctoral fellow) and smaller contributions from
 Julien Roy (undergraduate student) during his summer 2012 internship. Furthermore, the QFDTD package
 ($\sim$16k lines of code) contains 3~\% of code written by Stan Hatko (undergraduate student) while the
 rest is my original work. Most tools were written in C++ with Python being used
 for analysis and plotting.
 
-For libraries described in chapter \ref{section:tools:libraries}, 79~\% of the
+For libraries described in chapter~\ref{section:tools:libraries}, 79~\% of the
 ionization library was written by me, 20~\% by Edward Ackad with smaller
 contributions from Stan Hatko during his summer 2012 internship. All other
-libraries described in chapter \ref{section:tools:libraries} were fully
+libraries described in chapter~\ref{section:tools:libraries} were fully
 written and developed by me.
 
 These powerful tools were extremely useful and will allow
@@ -51,7 +51,7 @@ the group to continue its investigation of laser-clusters interaction
 after my departure.
 
 In addition to the models described in
-chapter \ref{section:intro:mechanisms}, a notable new one was
+chapter~\ref{section:intro:mechanisms}, a notable new one was
 developed that revealed itself to be of great importance in the description of
 laser-clusters interaction. This new model is discussed next.
 
@@ -137,11 +137,11 @@ the process.
 % \end{figure}
 
 
-Figure \ref{fig:ionization:aci} shows an energy diagram of ACI and the
+Figure~\ref{fig:ionization:aci} shows an energy diagram of ACI and the
 different transitions possible. This two-step model is implemented using
 cross-sections for collisional transition (ground state to excited state and
 excited state to continuum), similarly to traditional impact
-ionization. See chapter \ref{section:intro:md:cross-sections} for more
+ionization. See chapter~\ref{section:intro:md:cross-sections} for more
 details on cross-sections.
 
 The ACI model revealed to be an important contribution to the field. As will be
@@ -152,7 +152,7 @@ model.
 
 \subsubsection{Publications}
 
-After the tools are presented in chapter \ref{section:tools}, the present thesis
+After the tools are presented in chapter~\ref{section:tools}, the present thesis
 consists of a series of four published articles and one article in preparation
 where the models and tools are tested and used.
 
@@ -178,7 +178,7 @@ showed the validity of the model, as simple as it could be.
 
 \subsubsubsection{Cluster size influence}
 
-Chapter \ref{section:papers:size} presents the article ``Clusters in
+Chapter~\ref{section:papers:size} presents the article ``Clusters in
 intense XUV pulses: Effects of cluster size on expansion dynamics and
 ionization''. Also published in 2011 (\textit{Physical Review~A}~\cite{Ackad2011b}),
 argon clusters were simulated in the XUV regime (32.8~nm,
@@ -213,14 +213,14 @@ clusters keep the anisotropy coming from photoionization.
 
 \subsubsubsection{Revisiting the 100 nm experiment}
 
-Chapter \ref{section:papers:100nm} contains the draft of the article
+Chapter~\ref{section:papers:100nm} contains the draft of the article
 ``Augmented Collisional Ionization in the VUV regime; a theoretical study''.
 After Wabnitz \textit{et al.}'s
 2002 DESY-FEL experiment's intensity was re-calibrated in 2010, we hypothesized
 that our ACI model could still explain the high charge states seen in xenon
 clusters, even with the lower intensities.
 Since the VUV (98~nm, 12.65~eV)
-photons cannot ionize a Xe$^{1+}$ to Xe$^{2+}$ (see table \ref{tab:ips} for xenon
+photons cannot ionize a Xe$^{1+}$ to Xe$^{2+}$ (see table~\ref{tab:ips} for xenon
 ionization potentials), all charge states higher than Xe$^{1+}$ must be created
 with other processes.
 We included single photon ionization,
@@ -229,7 +229,7 @@ interacting with DESY's 100~fs laser pulse at different intensities.
 We compared our model
 with previous work with ACI disabled and found good agreement.
 The high performance of my
-code implementation (see chapter \ref{section:tools:opencl} on GP-GPU) allowed
+code implementation (see chapter~\ref{section:tools:opencl} on GP-GPU) allowed
 running thousands of MD simulations. The chaotic nature of the many-body
 problem requires acquiring vast amount of data for valid statistics, giving more
 weight to our results. On average, it was found that two more charge states are
@@ -261,7 +261,7 @@ the ion's eigenvalues which would not be allowed according to quantum mechanics.
 
 \subsubsubsection{Recombination }
 
-Finally, chapter \ref{section:papers:recomb} presents the article ``Recombination
+Finally, chapter~\ref{section:papers:recomb} presents the article ``Recombination
 effects in soft-\xray cluster interactions at the xenon giant resonance''
 published in May 2013 in New Journal of Physics.
 
@@ -300,11 +300,11 @@ for quantum calculations. I was curious how far could the FDTD method be
 applied to quantum problems and if it could answer some of our questions.
 A QFDTD simulation package was thus developed, again from scratch,  implementing
 two kinds of time evolution; real and imaginary. The model and its implementation details
-are discussed in chapter \ref{section:tools:qfdtd}.
+are discussed in chapter~\ref{section:tools:qfdtd}.
 
-The work developed in chapter \ref{section:tools:qfdtd} was published in the article
+The work developed in chapter~\ref{section:tools:qfdtd} was published in the article
 ``Nonlinear grid mapping applied to an FDTD-based, multi-center 3D
-Schr\"odinger equation solver'' presented in chapter \ref{section:papers:qfdtd}.
+Schr\"odinger equation solver'' presented in chapter~\ref{section:papers:qfdtd}.
 Published in 2012 in \textit{Computer Physics Communications}~\cite{Bigaouette2011}, it
 explains the QFDTD method and its implementation, with emphasis on the new
 nonlinear mapping introduced for faster calculation. The QFDTD package is the

@@ -31,7 +31,7 @@ and $e_0$ is the elementary charge). In the case of electrons, the charge
 state is simply -1.
 
 Calculating $\vF_i$
-from \eqref{eqn:md:newton} and \eqref{eqn:md:coulomb:F} requires one operation
+from~\eqref{eqn:md:newton} and~\eqref{eqn:md:coulomb:F} requires one operation
 per particle present in the system; updating the force on one particle is an
 $O\pa{N}$ operation (doubling the number of particles will double the required
 calculation time). Since there are $N$ particles, calculating the force for
@@ -40,7 +40,7 @@ particles will quadruple the required calculation time). Some forces used in
 different research areas are short range and can then be cut off at a certain
 distance. This effectively reduces the scaling from $O\pa{N^2}$ to $O\pa{N}$
 but the Coulomb potential, being long range, cannot be artificially cut off.
-Chapter \ref{section:intro:md:tree} discusses a different algorithm that allows
+Chapter~\ref{section:intro:md:tree} discusses a different algorithm that allows
 a reduction to $O\pa{N \log{N}}$.
 
 
@@ -69,7 +69,7 @@ $i$. We thus have:
 \end{figure}
 %
 %
-Equation \eqref{eqn:md:newton} can be time integrated for every particle
+Equation~\eqref{eqn:md:newton} can be time integrated for every particle
 $i$ using the Velocity-Verlet~(VV) scheme:
 \begin{subequations}
 \label{eqn:md:vv}
@@ -84,12 +84,12 @@ $i$ using the Velocity-Verlet~(VV) scheme:
 where $\Delta t$ is the integration time step, $\vx_{i}$ the position vector,
 $\vv_{i}$ the velocity vector and $\va_{i}$ the acceleration vector, all evaluated
 for particle $i$ at either the time step $n$ or the next one $n+1$.
-Equations \eqref{eqn:md:vv}, when applied to every particle $i$ of the system,
+Equations~\eqref{eqn:md:vv}, when applied to every particle $i$ of the system,
 can thus be used to propagate in time the whole cluster.
 
 Every particle in the system stores its position $\vx^{\pa{n}}$, its velocity
 $\vv^{\pa{n}}$ and also the total force acting on it $\vF^{\pa{n}}$. This total
-force is the sum of all contribution of equation \eqref{eqn:md:coulomb:F} from
+force is the sum of all contribution of equation~\eqref{eqn:md:coulomb:F} from
 all other particles in the system.
 
 The MD algorithm basically calculates the force between every pair of particles
@@ -98,7 +98,7 @@ interactions to calculate. Doubling the number of particles will quadruple the
 computational burden, effectively putting an upper limit on the number of
 particles that can be simulated to tens of thousands.
 
-A cluster example can be seen in figure \ref{fig:md:cluster}.
+A cluster example can be seen in figure~\ref{fig:md:cluster}.
 This cluster is composed
 of 147 xenon atoms (large blue spheres) and absorbs some photons (red
 wave-packets) from the laser field. Atoms are ionized; electron are created

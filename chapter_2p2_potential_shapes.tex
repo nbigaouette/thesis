@@ -25,8 +25,8 @@ will have not changed.
 \label{section:intro:md:potentials:singularity}
 
 An important problem to consider is the close range behaviour of the Coulomb force
-in equation \eqref{eqn:md:coulomb:F} which diverges. The problem is resolved by
-changing the shape of equation \eqref{eqn:md:coulomb:F} at close range.
+in equation~\eqref{eqn:md:coulomb:F} which diverges. The problem is resolved by
+changing the shape of equation~\eqref{eqn:md:coulomb:F} at close range.
 Different \textit{smoothing potentials} can be used to prevent the
 discontinuity of the Coulomb potential (or force).
 
@@ -66,7 +66,7 @@ For the harmonic potential, we have:
 \end{align}
 We note that at $r_{j,i} = 0$, the potential value is the ``potential depth''
 $\phi_0$.
-Matching equations \eqref{eqn:potential:to_match} at $R$ gives:
+Matching equations~\eqref{eqn:potential:to_match} at $R$ gives:
 \begin{subequations}
 \begin{align}
 \phi_{j,H}\pa{\vr_i} & = \frac{-4 \phi_0^3}{27 \pa{k q_j}^2} r_{j,i}^2 + \phi_0,
@@ -86,7 +86,7 @@ The super-gaussian potential is given by:
                         }.
 \label{eqn:potential:shapes:sg:pot}
 \end{align}
-In the case where $m = 1$, equation \eqref{eqn:potential:shapes:sg:pot} is simply
+In the case where $m = 1$, equation~\eqref{eqn:potential:shapes:sg:pot} is simply
 a gaussian shape. Matching equations~\eqref{eqn:potential:to_match} at $R$ gives
 values for $\sigma$ and $R$:
 \begin{subequations}
@@ -126,7 +126,7 @@ where $\erf{}$ is the error function. The associated electrostatic field is thus
 \end{align}
 When the distance $r$ is large compared to $\sigma$, the error function
 tends towards 1 and the exponential tends towards 0 (since it's a gaussian
-shape). The potential \eqref{eqn:md:smoothed:phi} and electric field
+shape). The potential~\eqref{eqn:md:smoothed:phi} and electric field
 \eqref{eqn:md:smoothed:E} thus tend towards Coulombic for large distances.
 
 The value of $\sigma$ is arbitrary: the smaller it is, the closer the potential
@@ -149,20 +149,20 @@ though $\phi_j\pa{0} > 0$ we call this parameter ``depth'' since the potential
 energy of an electron on top of an ion would be minimal, similar to the
 gravitational potential energy of a ball is minimal at the bottom of a well.
 
-Another problem that the smoothing of equations \eqref{eqn:md:smoothed:phi} and
+Another problem that the smoothing of equations~\eqref{eqn:md:smoothed:phi} and
 \eqref{eqn:md:smoothed:E} solves is the one of \textit{numerical heating} which
 occurs when particles artificially gain (or lose) energy during the
-calculation of equations \eqref{eqn:md:vv}. This absence of conservation of
+calculation of equations~\eqref{eqn:md:vv}. This absence of conservation of
 energy is due to a too large time step $\Delta t$. Indeed, the
-discretization of equations \eqref{eqn:md:vv}, and most importantly of
-subequation \eqref{eqn:md:vv:a}, assumes the force on each particle to have a
+discretization of equations~\eqref{eqn:md:vv}, and most importantly of
+subequation~\eqref{eqn:md:vv:a}, assumes the force on each particle to have a
 linear variation between time steps. If the time step is too large and the
-curvature of equation \eqref{eqn:md:smoothed:E} cannot be sampled by the moving
+curvature of equation~\eqref{eqn:md:smoothed:E} cannot be sampled by the moving
 particle between each time steps, then the energy will not be conserved.
 
 
 
-Figure \ref{fig:potential:shapes} shows the different potential shapes and their
+Figure~\ref{fig:potential:shapes} shows the different potential shapes and their
 respective electrostatic field.
 
 \begin{figure}
@@ -178,7 +178,7 @@ It was found that the potential given by the charge distribution of equation
 \eqref{eqn:md:smoothed:E} give the least numerical heating. As explained
 previously, the time discretization used to integrate the equations of motion
 assumes that the change in force between two time steps is linear. As can be
-seen in figure \ref{fig:potential:shapes}, the electric field curve from the
+seen in figure~\ref{fig:potential:shapes}, the electric field curve from the
 charge distribution
 (magenta) does not have a discontinuity (in its first derivative)
 and is therefore the preferred one.
@@ -191,7 +191,7 @@ potential. It is thus a good candidate for a quantitative measurement of
 numerical heating. If the total
 energy is conserved, then the selected parameters (potential depth, smoothing
 curve and time step) can be used with good confidence. Figures
-\ref{fig:potential:heating:dt} and \ref{fig:potential:heating:depth} show the
+\ref{fig:potential:heating:dt} and~\ref{fig:potential:heating:depth} show the
 energy variation of the process as a function of time step (for different
 potential depths) and as a function of potential depth (for different time
 steps). A time step of 0.5 attosecond (as) is often taken as

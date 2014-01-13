@@ -13,7 +13,7 @@ particle, evolving in a quantum world, is to be treated classically.
 How does
 the bound electron's wavefunction react to the presence of a second ion
 perturbing the potential? How can the $U_b$ approximation to the cluster
-environment, described in chapter \ref{section:intro:Vb}, be tested?
+environment, described in chapter~\ref{section:intro:Vb}, be tested?
 Is the wavefunction really evolving into a state
 where we can say the electron is shared by the two ions? If the electron is
 really shared by the two ions, can we classically let it evolve inside the
@@ -118,7 +118,7 @@ The time-evolution operator (or propagator) $\oU\pa{t}$ is, in atomic units:
 \oU\pa{t} & = \ex{ - \im t \oH },
 \label{eqn:propagator:real}
 \end{align}
-and when applied to the initial state \eqref{eqn:wavefunction:real:initial}
+and when applied to the initial state~\eqref{eqn:wavefunction:real:initial}
 gives the time evolution of the wavefunction:
 \begin{align}
 \oU\pa{t} \ket{\psi\pa{\vr, t=0}}
@@ -138,7 +138,7 @@ and imaginary parts of which the frequency is given by the eigenvalue $E_n$.
 
 
 
-Equation \eqref{eqn:schrodinger:au} can now be solved either in real-time or
+Equation~\eqref{eqn:schrodinger:au} can now be solved either in real-time or
 imaginary-time, the former being explained first.
 
 Let's separate the real and imaginary components of equation
@@ -162,7 +162,7 @@ giving two equations describing the time evolution of two effective fields:
 \end{align}
 \label{eqn:schrodinger:real}
 \end{subequations}
-The real and imaginary parts in equation \eqref{eqn:schrodinger:real} can be
+The real and imaginary parts in equation~\eqref{eqn:schrodinger:real} can be
 compared to the electric and magnetic fields in the traditional electrodynamics
 FDTD method. The integration is performed using a leap-frog scheme. We
 first define $\psi_{i,j,k}^{n}$ the wavefunction located at the grid cell
@@ -179,7 +179,7 @@ $\pa{i,j,k}$ and at time step $n$. Then equation
 \psi_{R}^{n}.
 \label{eqn:schrodinger:real:imag:discretized}
 \end{align}
-Similarly, defining the time derivative in \eqref{eqn:schrodinger:real:real} at
+Similarly, defining the time derivative in~\eqref{eqn:schrodinger:real:real} at
 time step $n$ and again using (second order) central-differences:
 \begin{align}
 \left. \delt{  } \psi_R \right|_{n+1/2}
@@ -202,7 +202,7 @@ central-differences:
 \label{eqn:laplacian:discretized}
 \end{align}
 
-Equations \eqref{eqn:schrodinger:real:imag:discretized},
+Equations~\eqref{eqn:schrodinger:real:imag:discretized},
 \eqref{eqn:schrodinger:real:real:discretized} and
 \eqref{eqn:laplacian:discretized} are then used to propagate in time the real
 and imaginary components of the electronic wavefunction. Note that, contrary
@@ -235,7 +235,7 @@ cell; they are defined at the same location as shown in figure
 
 
 
-Equations \eqref{eqn:schrodinger:real:imag:discretized} and
+Equations~\eqref{eqn:schrodinger:real:imag:discretized} and
 \eqref{eqn:schrodinger:real:real:discretized} by themselves only describe the
 time evolution of a wavefunction inside a potential; it does not give a direct
 way to obtain the eigenstates of an Hamiltonian. Different approaches exist to
@@ -268,7 +268,7 @@ obtained:
     & = \pa{-\frac{1}{2} \laplacian{} + V\pa{\vr} } \ket{\psi\pa{\vr, \tau}}.
 \label{eqn:schrodinger:imaginary}
 \end{align}
-Note that equation \eqref{eqn:schrodinger:imaginary} is not complex and is
+Note that equation~\eqref{eqn:schrodinger:imaginary} is not complex and is
 similar to the heat equation.
 
 
@@ -292,9 +292,9 @@ the ground state reappear shortly. I developed a novel method to isolate these
 states, as described in the published article of chapter
 \ref{section:papers:qfdtd} (page \pageref{section:papers:qfdtd}).
 
-Because equation \eqref{eqn:schrodinger:imaginary} is real, only a single scalar
+Because equation~\eqref{eqn:schrodinger:imaginary} is real, only a single scalar
 field needs to be discretized on the grid. The discretization is similar to the
-real-time method: equation \eqref{eqn:schrodinger:imaginary} is evaluated at
+real-time method: equation~\eqref{eqn:schrodinger:imaginary} is evaluated at
 time step $n$ and the time derivative is discretized, in this case using (first
 order) forward-differences (and again simplifying the notation):
 \begin{align}
@@ -307,7 +307,7 @@ order) forward-differences (and again simplifying the notation):
 \psi^{n+1} & = \cro{1 + \Delta \tau \pa{\frac{1}{2} \laplacian{} - V}} \psi^{n}.
 \label{eqn:schrodinger:imaginary:discretized}
 \end{align}
-The Laplacian is discretized with equation \eqref{eqn:laplacian:discretized}.
+The Laplacian is discretized with equation~\eqref{eqn:laplacian:discretized}.
 Since a single scalar field is used to describe $\psi$, special care needs to
 be taken in the code implementation. Indeed, equation
 \eqref{eqn:schrodinger:imaginary:discretized} uses the Laplacian of the
@@ -365,6 +365,6 @@ space. Many interesting features of this mapping make it applicable to other
 type of solvers in the most generic way.
 
 The reader will find the full details of this work in the article published
-in 2011 and included in chapter \ref{section:papers:qfdtd}.
+in 2011 and included in chapter~\ref{section:papers:qfdtd}.
 
 
