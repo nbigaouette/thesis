@@ -43,7 +43,7 @@ Architecture}, later renamed CUDA.
 CUDA allows writing normal C or
 C++ programs with some extensions, called \textit{kernels}, that can be run on
 the GPU. These kernels have the same structure as C functions but are executed
-concurrently by every cores on the GPU\footnote{Technically, GPUs don't have
+concurrently by every core on the GPU\footnote{Technically, GPUs don't have
 ``cores'' \textit{per se} like CPUs but the comparison can still be made.}. The
 number of cores on a recent consumer grade video card is now of the order of
 many hundreds; a 50\$ Nvidia GT 620 has 96 CUDA cores and 1 GB of RAM, while the
@@ -79,8 +79,8 @@ many parts of the code.
 
 \subsubsubsection{Refactoring}
 
-Some things are important to consider when porting codes to GPU frameworks.
-First, because a core on a GPU is much slower than a core on a CPU,
+Certain factors must be considered when porting codes to GPU frameworks.
+First, because GPU cores are much slower than a core on a CPU,
 parallelisms must be extracted from algorithms. The code must thus be
 completely refactored to exploit the parallelism. For example, a CPU
 implementation of the MD algorithm can be implemented by looping over particles
