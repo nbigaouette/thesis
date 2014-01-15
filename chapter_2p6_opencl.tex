@@ -131,7 +131,7 @@ on GPUs.
 
 \subsubsubsubsection{Printing}
 
-The simplest case of debugging is printing the variables' values to the screen
+The simplest method of debugging is printing the variables' values to the screen
 and inspecting them for
 erroneous values. While not really efficient, it is sometimes useful, quick
 and simple ``hack'' to get an insight of how the code is working. Unfortunately,
@@ -155,7 +155,7 @@ for the Intel SDK, or
 \end{verbatim}
 for the AMD SDK. These extensions are possible since these drivers support
 running the kernels directly on the CPU. In the case of AMD, the extension only
-works when the kernel are executed on the CPU (not on an AMD video card). Nvidia
+works when the kernels are executed on the CPU (not on an AMD video card). Nvidia
 does not have a similar extension for their OpenCL driver. Debugging using
 printf() is thus easier when running on a CPU with either Intel's or AMD SDK.
 
@@ -167,7 +167,7 @@ Another useful bug squashing weapon used in debugging on Linux is called
 \textit{valgrind}\footnote{\url{http://www.valgrind.org/}}. This extremely
 useful tool verifies memory access and can thus report on out-of-bound accesses
 (accessing memory locations which are out of range of an array), a major
-type of error in programming that one \textit{has} to expect to happen.
+type of error in programming that one \textit{has} to expect will happen.
 Valgrind can also detect uses of uninitialized variables, a dangerous type of
 error that can be hard to detect otherwise.
 
