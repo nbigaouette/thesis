@@ -109,22 +109,22 @@ which was actually relatively quick. The video cards could run the code faster,
 but video cards have their own discrete memory which is a lot smaller than main
 memory. A novel mapping method was thus developed to reduce the number of grid
 cell size in the QFDTD computational domain. This new method's innovation comes
-from the two space being mapped. Traditionally, one space is mapped to another
+from the two spaces being mapped. Traditionally, one space is mapped to another
 one where some physical feature is either enhanced or reduced to ease the numerical
-burden. In my nonlinear mapping, one of the space mapped is the actual
+burden. In my nonlinear mapping, one of the spaces mapped is the actual
 discrete memory of the computer; the physical space is mapped to the
 integer-referenced memory location through a cumulative sum of a source function,
-enforcing the monotonicity required. Due to the way the mapping function is
+enforcing the monotonicity required. Due to the manner the mapping function is
 obtained, any source function can be used, giving great flexibility to the
 mapping process. It is thus possible to concentrate grid points around centres
 of interest, in this case ions' location. In addition to the nonlinear mapping,
-both real-time and imaginary-time methods were implemented, allowing to compare
+both real-time and imaginary-time methods were implemented, allowing comparison of
 the two through the same package. In the case of the imaginary method, a new
 way to obtain the eigenstates was described and successively used on the
 hydrogen atom and the simplest molecule: hydrogen cation molecule (H$_{2}^{+}$).
 Using the real-time method, it was possible to see ten excited states. This
-publication allowed to validate the whole technique, including the nonlinear
-mapping, and compare with known values from experiments.
+publication allowed validation of the whole technique, including the nonlinear
+mapping, and comparison with known values from experiments.
 
 % ******************************************************************************
 The ACI model, based on electron impact excitation cross-sections, is independent of the
@@ -157,7 +157,7 @@ the cluster dynamics.
 We then looked at the cluster size influence on the charge state spectra
 at \\ $\ten{8}{12}$~W/cm$^2$. For the shapes to match the
 experimental data, a spatial averaging of the intensity in the laser profile
-had to be performed. ACI was vital to obtain both the same maximum charge state
+had to be performed. ACI was vital in obtaining both the same maximum charge state
 (Xe$^{4+}$) and the same most abundant one (Xe$^{1+}$) for Xe$_{90}$ clusters
 as the experiment.
 
@@ -176,8 +176,9 @@ MD simulations. The MD's $O\pa{N^2}$ scaling makes it extremely difficult
 to increase the number of particles past a couple of thousands. While
 the OpenCL implementation is a nice addition that gives almost two orders
 of magnitude speedup, the algorithm's scaling is always present.
-Parallelizing the MD algorithm is possible but a difficult task which does
-not free one from the its scaling. To push cluster sizes a different
+Parallelizing the MD code (for shared or distributed memory machines)
+is also possible but a difficult task which does
+not free one from the algorithm's scaling. To increase cluster sizes a different
 algorithm will have to be used.
 
 The tree algorithm would be the first step due to its $O\pa{N \log N}$ scaling.
