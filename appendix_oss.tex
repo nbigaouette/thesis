@@ -136,8 +136,8 @@ errors. For example, arrays' out-of-range access or using uninitialized
 variables are problems that can be quite hard to diagnose but still have
 significant consequences.
 
-One of the first tip I can give to someone writing any kind of software is to
-run the program through Valgrind. In all but the trivial cases Valgrind
+One piece of advise I can give to someone writing any kind of software is to
+run the program through Valgrind. In all but trivial programs Valgrind
 \textit{will} detect problems, even for experienced programmers. It must be
 noted that while the MD, QFDTD and all other libraries developed for this work
 had errors, Valgrind detected them and I am proud to say that the packages are
@@ -161,9 +161,9 @@ Git has, unfortunately, a relatively steep learning curve. New users are often
 overwhelmed by the vast amount of options or even by its flexibility; Git can
 be used in many different workflow.
 
-Keeping a history of one's work is invaluable. Not only it is a good way to keep
-track of the development, it can also help debugging. Often, one realize
-something broke in the program; what modification introduced the bug? These can
+Keeping a history of one's work is invaluable. Not only is it a good way to keep
+track of the development, it can also help debugging. Often, one realizes
+something has broken in the program; what modification introduced the bug? These can
 be extremely hard problems to debug. Using a revision control system, it is
 possible to pinpoint the exact modification that created the problem.
 
