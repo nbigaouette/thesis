@@ -96,7 +96,7 @@ required for kernel calculation must thus be first transferred to the device's
 memory and similarly the resulting data must be transferred back to the host
 memory where it can be further processed by the rest of the main program. Video
 cards today are connected to a computer through PCI-Express (PCIe) connections.
-While fast, it can still be a bottleneck if data is to be transferred back and
+While fast, there can still be a bottleneck if data is to be transferred back and
 forth similarly to main memory. It is thus necessary to reduce to a minimum the
 data transfer between the host and the device, similarly to communications in a
 distributed memory parallel programming paradigm.
@@ -123,7 +123,7 @@ transfers.
 
 \subsubsubsection{Debugging}
 
-One of the most problematic part of GPU programming is the lack of debugging
+One of the most problematic aspects of GPU programming is the lack of debugging
 tools. Many tools and techniques exist to detect and fix problems in
 normal CPU codes. The following describes them and their counterpart, when present,
 on GPUs.
