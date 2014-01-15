@@ -21,22 +21,22 @@ can be assumed, allowing theoretical and numerical studies to be performed.
 
 Our numerical tool of choice is Molecular Dynamics where we track, classically,
 the dynamics of electrons and ions during and after a laser pulse. MD simulations,
-being classical systems, allows a larger number of particles than full quantum
+being classical systems, allow a larger number of particles than full quantum
 simulations but can still describe the large fluctuations in charge and field
 generated inside a cluster.
 
-Many MD packages are available freely that could have been used for
-the current work. After a first try with one such package, it was decided to
-start from scratch a new one. The MD algorithm is relatively simple; having
+Many MD packages are freely available that could have been used for
+the current work. After a first attempt with one such package, it was decided to
+develop a new one from scratch. The MD algorithm is relatively simple; having
 control on the rest of the package allowed flexibility in the development that
 would have not been possible with a third party package. For example, existing
-MD codes have specific target users that do not have the same requirements as what
-was required for this work, such as varying the number of particles during the
+MD codes have specific target users that do not have the same requirements as
+those required for this work, such as varying the number of particles during the
 simulation or long range interactions. By building the tools myself I was able
-to have more trust in it by subjecting it to rigorous tests and validations.
+to have more confidence in it by subjecting it to rigorous tests and validations.
 Additionally, even though a lot of work was put into the creation of this code
-base, much time was saved trying to understand, or even worst, debug, a code from
-someone else. Having known at first the amount of time lost on an unstable code
+base, much time was saved by not trying to understand, or worse, debug, a code from
+someone else. Having known beforehand the amount of time lost on an unstable code
 base, I would have started my MD package right away, as it proved a lot easier
 to move forward with it.
 
@@ -47,8 +47,8 @@ For bigger systems, some algorithm changes can be done to speed the force
 calculation on particles. Using a hierarchical tree can change the algorithm
 scaling from $O(N^2)$ to $O(N \textrm{log}\pa{N})$ and thus push the limit on
 cluster size upward. Having control and full understanding of the code had
-the added benefit of easing the process of adding new feature. While the tree
-algorithm is implemented, it was not yet used in a publication. An interesting
+the added benefit of easing the process of adding new features. While the tree
+algorithm was implemented, it was not yet used in a publication. An interesting
 technology matured during the last decade; by running codes directly on GP-GPUs,
 the same algorithms could perform up to one hundred times faster than on
 conventional CPUs. The MD package was thus ported to the framework OpenCL where
