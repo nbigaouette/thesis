@@ -70,7 +70,7 @@ collisional ionization.
 The first study concentrated on argon clusters in the 32.8~nm (37.8~eV) regime.
 At this wavelength, only the first two ionization states of (atomic) argon are
 accessible but experiments in 2008 saw up to Ar$^{4+}$. The small cluster sizes
-used in the experiment ($\sim$100 atoms per cluster) allowed to quickly test and
+used in the experiment ($\sim$100 atoms per cluster) allowed us to quickly test and
 validate our model. It was found that ACI plays a crucial role in the cluster
 dynamics and can explain the high charge states seen in the experiment, with
 intensities from $\ten{5}{13}$ to $\ten{10}{13}$~W/cm$^{2}$. When ACI was
@@ -86,15 +86,15 @@ that as clusters get bigger and bigger -- from Ar$_{55}$ to Ar$_{2,057}$ --
 the importance of collisions increased. As clusters ionize progressively they
 become transparent to photons; ACI accelerates the rate at which Ar$^{2+}$ are
 created and Ar$^{2+}$ cannot be photo-ionized (37.8~eV photon vs. 48.7~eV IP).
-This process was baptized collisionally reduced photoabsorption. Once clusters
-are ionized, the bigger ones will thermalize faster and the electron velocity
+This process was baptized \textit{collisionally reduced photoabsorption}. Once clusters
+are ionized, the larger ones will thermalize faster and the electron velocity
 distribution will become isotropic in contrast, with smaller clusters which
 keep their photo-ionization-created anisotropy.
 
 
 % ******************************************************************************
-Later on, a question presented itself; What is the influence of the cluster
-environment on the different states? One of the first books on the
+Later on, a question presented itself; what is the influence of the cluster
+environment on the different states? One of the first works on the
 electrodynamics solver called FDTD by Sullivan contained a section on using
 this method to solve the \schrodinger equation. Since I was familiar with
 the electrodynamics FDTD that I implemented during my masters degree I decided
@@ -104,7 +104,7 @@ at least as a first step. A major problem with FDTD is the amount of memory
 required to resolve a three dimensional grid. Normally, FDTD is parallelized
 using a shared memory model so it can be distributed on many
 computational nodes. After the work done on implementing the MD algorithm in
-OpenCL to run on a GP-GPU, I decided to port the QFDTD to OpenCL too
+OpenCL to run on a GP-GPU, I decided to also port the QFDTD to OpenCL
 which was actually relatively quick. The video cards could run the code faster,
 but video cards have their own discrete memory which is a lot smaller than main
 memory. A novel mapping method was thus developed to reduce the number of grid
