@@ -7,8 +7,8 @@ and laser technologies, it became possible to gain a significant understanding
 on how light interacts with matter. Cluster studies then became an important
 physics research area.
 
-At the simplest level, quantum mechanics describes the dynamics but exact solutions
-are not possible for systems of more than two electrons.
+At the simplest level, quantum mechanics describe the dynamics but cannot provide
+exact solutions for systems of more than two electrons.
 The process of photo-ionization of single atoms is known, but the high density
 of atoms inside clusters gives rise to interesting phenomena. It was a surprise
 to scientists ten years ago to see highly charged ions coming out of experiments
@@ -17,26 +17,26 @@ using rare gas clusters with short duration (tens of femtoseconds), high intensi
 More than ten years later, our understanding of the different mechanisms of energy
 absorption and diffusion throughout the cluster is taking shape. Even though full
 quantum mechanical description of clusters is not possible, some level of approximations
-can be taken, allowing theoretical and numerical studies to be performed.
+can be assumed, allowing theoretical and numerical studies to be performed.
 
 Our numerical tool of choice is Molecular Dynamics where we track, classically,
 the dynamics of electrons and ions during and after a laser pulse. MD simulations,
-being classical systems, allows a larger number of particles than full quantum
+being classical systems, allow a larger number of particles than full quantum
 simulations but can still describe the large fluctuations in charge and field
 generated inside a cluster.
 
-Many MD packages are available freely that could have been used for
-the current work. After a first try with one such package, it was decided to
-start from scratch a new one. The MD algorithm is relatively simple; having
+Many MD packages are freely available that could have been used for
+the current work. After a first attempt with one such package, it was decided to
+develop a new one from scratch. The MD algorithm is relatively simple; having
 control on the rest of the package allowed flexibility in the development that
 would have not been possible with a third party package. For example, existing
-MD codes have specific target users that do not have the same requirements as what
-was required for this work, such as varying the number of particles during the
+MD codes have specific target users that do not have the same requirements as
+those required for this work, such as varying the number of particles during the
 simulation or long range interactions. By building the tools myself I was able
-to have more trust in it by subjecting it to rigorous tests and validations.
+to have more confidence in it by subjecting it to rigorous tests and validations.
 Additionally, even though a lot of work was put into the creation of this code
-base, much time was saved trying to understand, or even worst, debug, a code from
-someone else. Having known at first the amount of time lost on an unstable code
+base, much time was saved by not trying to understand, or worse, debug, a code from
+someone else. Having known beforehand the amount of time lost on an unstable code
 base, I would have started my MD package right away, as it proved a lot easier
 to move forward with it.
 
@@ -47,8 +47,8 @@ For bigger systems, some algorithm changes can be done to speed the force
 calculation on particles. Using a hierarchical tree can change the algorithm
 scaling from $O(N^2)$ to $O(N \textrm{log}\pa{N})$ and thus push the limit on
 cluster size upward. Having control and full understanding of the code had
-the added benefit of easing the process of adding new feature. While the tree
-algorithm is implemented, it was not yet used in a publication. An interesting
+the added benefit of easing the process of adding new features. While the tree
+algorithm was implemented, it was not yet used in a publication. An interesting
 technology matured during the last decade; by running codes directly on GP-GPUs,
 the same algorithms could perform up to one hundred times faster than on
 conventional CPUs. The MD package was thus ported to the framework OpenCL where
@@ -70,7 +70,7 @@ collisional ionization.
 The first study concentrated on argon clusters in the 32.8~nm (37.8~eV) regime.
 At this wavelength, only the first two ionization states of (atomic) argon are
 accessible but experiments in 2008 saw up to Ar$^{4+}$. The small cluster sizes
-used in the experiment ($\sim$100 atoms per cluster) allowed to quickly test and
+used in the experiment ($\sim$100 atoms per cluster) allowed us to quickly test and
 validate our model. It was found that ACI plays a crucial role in the cluster
 dynamics and can explain the high charge states seen in the experiment, with
 intensities from $\ten{5}{13}$ to $\ten{10}{13}$~W/cm$^{2}$. When ACI was
@@ -86,15 +86,15 @@ that as clusters get bigger and bigger -- from Ar$_{55}$ to Ar$_{2,057}$ --
 the importance of collisions increased. As clusters ionize progressively they
 become transparent to photons; ACI accelerates the rate at which Ar$^{2+}$ are
 created and Ar$^{2+}$ cannot be photo-ionized (37.8~eV photon vs. 48.7~eV IP).
-This process was baptized collisionally reduced photoabsorption. Once clusters
-are ionized, the bigger ones will thermalize faster and the electron velocity
+This process was baptized \textit{collisionally reduced photoabsorption}. Once clusters
+are ionized, the larger ones will thermalize faster and the electron velocity
 distribution will become isotropic in contrast, with smaller clusters which
 keep their photo-ionization-created anisotropy.
 
 
 % ******************************************************************************
-Later on, a question presented itself; What is the influence of the cluster
-environment on the different states? One of the first books on the
+Later on, a question presented itself; what is the influence of the cluster
+environment on the different states? One of the first works on the
 electrodynamics solver called FDTD by Sullivan contained a section on using
 this method to solve the \schrodinger equation. Since I was familiar with
 the electrodynamics FDTD that I implemented during my masters degree I decided
@@ -104,27 +104,27 @@ at least as a first step. A major problem with FDTD is the amount of memory
 required to resolve a three dimensional grid. Normally, FDTD is parallelized
 using a shared memory model so it can be distributed on many
 computational nodes. After the work done on implementing the MD algorithm in
-OpenCL to run on a GP-GPU, I decided to port the QFDTD to OpenCL too
+OpenCL to run on a GP-GPU, I decided to also port the QFDTD to OpenCL
 which was actually relatively quick. The video cards could run the code faster,
 but video cards have their own discrete memory which is a lot smaller than main
 memory. A novel mapping method was thus developed to reduce the number of grid
 cell size in the QFDTD computational domain. This new method's innovation comes
-from the two space being mapped. Traditionally, one space is mapped to another
+from the two spaces being mapped. Traditionally, one space is mapped to another
 one where some physical feature is either enhanced or reduced to ease the numerical
-burden. In my nonlinear mapping, one of the space mapped is the actual
+burden. In my nonlinear mapping, one of the spaces mapped is the actual
 discrete memory of the computer; the physical space is mapped to the
 integer-referenced memory location through a cumulative sum of a source function,
-enforcing the monotonicity required. Due to the way the mapping function is
+enforcing the monotonicity required. Due to the manner the mapping function is
 obtained, any source function can be used, giving great flexibility to the
 mapping process. It is thus possible to concentrate grid points around centres
 of interest, in this case ions' location. In addition to the nonlinear mapping,
-both real-time and imaginary-time methods were implemented, allowing to compare
+both real-time and imaginary-time methods were implemented, allowing comparison of
 the two through the same package. In the case of the imaginary method, a new
 way to obtain the eigenstates was described and successively used on the
 hydrogen atom and the simplest molecule: hydrogen cation molecule (H$_{2}^{+}$).
 Using the real-time method, it was possible to see ten excited states. This
-publication allowed to validate the whole technique, including the nonlinear
-mapping, and compare with known values from experiments.
+publication allowed validation of the whole technique, including the nonlinear
+mapping, and comparison with known values from experiments.
 
 % ******************************************************************************
 The ACI model, based on electron impact excitation cross-sections, is independent of the
@@ -157,7 +157,7 @@ the cluster dynamics.
 We then looked at the cluster size influence on the charge state spectra
 at \\ $\ten{8}{12}$~W/cm$^2$. For the shapes to match the
 experimental data, a spatial averaging of the intensity in the laser profile
-had to be performed. ACI was vital to obtain both the same maximum charge state
+had to be performed. ACI was vital in obtaining both the same maximum charge state
 (Xe$^{4+}$) and the same most abundant one (Xe$^{1+}$) for Xe$_{90}$ clusters
 as the experiment.
 
@@ -176,8 +176,9 @@ MD simulations. The MD's $O\pa{N^2}$ scaling makes it extremely difficult
 to increase the number of particles past a couple of thousands. While
 the OpenCL implementation is a nice addition that gives almost two orders
 of magnitude speedup, the algorithm's scaling is always present.
-Parallelizing the MD algorithm is possible but a difficult task which does
-not free one from the its scaling. To push cluster sizes a different
+Parallelizing the MD code (for shared or distributed memory machines)
+is also possible but a difficult task which does
+not free one from the algorithm's scaling. To increase cluster sizes a different
 algorithm will have to be used.
 
 The tree algorithm would be the first step due to its $O\pa{N \log N}$ scaling.
@@ -196,9 +197,9 @@ While experiments have already been performed on some, for example
 on the mimivirus or photosynthesis proteins, theoretical tools are still
 in their infancy.
 
-The effects of excited states and ACI in clusters was shown to be significant
+The effects of excited states and ACI in clusters were shown to be significant
 in different intensity and wavelength regimes. Further investigation might
-reveal ACI to be present in other type of molecules or at other regimes.
+reveal ACI to be present in other types of molecules or at other regimes.
 
 The Quantum FDTD model showed interesting potential for further investigation.
 While still based on the one electron picture, the potential used can
@@ -220,20 +221,20 @@ If rates and cross-sections could be obtained for an isolated atom, the
 influence of the neighbouring ions and the cluster environment could be
 calculated.
 
-Going forward, it will
-be possible to validate and study some approximations used in the MD package,
-for example, what is the influence of the shape of the cluster environment,
+In the future, it will
+be possible to validate and study some approximations used in the MD package.
+For example, what is the influence of the shape of the cluster environment,
 approximated as a constant $U_b$, over the cluster dynamics? How much is
 an electron wavefunction affected by a neighbouring ion?
 
 Many tools were developed for the present work. These tools still show
-great promises for future work.
+great promise for future work.
 
 
 
 \subsection{Final words}
 
-Theoretical laser-clusters studies is a nice amalgam of many challenging
+Theoretical laser-clusters studies is an interesting amalgam of many challenging
 fields of physics. Clusters, being nanoscopic objects, live in a quantum world
 where particles are described by wavefunctions. When free inside the cluster
 the particles' dynamics can be treated classically through Newtonian mechanics.
@@ -242,7 +243,7 @@ also showing up in astronomy, is not solvable analytically.
 Computers must be used to calculate these simple trajectories
 using many algorithms, bringing computer science into the picture
 with all its quirks, problems, bugs, crashes and high expectation algorithms or
-new technologies. Lasers are the tool of choice to study the small objects
+new technologies. Lasers are the tool of choice to study atomic
 clusters. Electrodynamics, classical or quantum, describes light, the purest
 form of energy. After clusters get ionized,
 the plasma generated can be described with the language of statistical mechanics.
@@ -250,8 +251,8 @@ Additionally to all these fields, clusters can be used as a first-order model
 for biomolecules or can be used in biological systems. As if physics wasn't
 complex enough, life and biology bring so many more questions to the picture.
 
-It is easy to be impressed and even overwhelmed by the wide range of fields
+One is easily impressed and even overwhelmed by the wide range of fields
 touched by clusters studies, but how satisfying can it be to reach so many
 topics at once? Clusters are quite fascinating and I hope to have
-brought my little contributions, through this thesis, to the height of the giants'
+brought my humble contributions, through this thesis, to the height of the giants'
 shoulders so next generations will see even further.

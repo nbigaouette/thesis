@@ -1,7 +1,7 @@
 \subsection{Acceleration through video cards and OpenCL}
 \label{section:tools:opencl}
 
-A new trend lately in High Performance Computing (HPC) is code acceleration
+A new trend in High Performance Computing (HPC) is code acceleration
 through graphics cards. Similar to the ubiquitous Moore's Law in the CPU world,
 video cards power evolved exponentially during the last twenty years, pushed
 by the never ending need of more realistic video games. From ``dumb'' devices
@@ -9,22 +9,22 @@ drawing primitive shapes on a display, they evolved to extremely powerful
 devices and started to act more like CPUs by being programmable (shaders) during
 the first half decade  of 2000. The term \textit{Graphical Processing Unit} (GPU) was
 coined in 1999 by Nvidia, the biggest vendor of video cards, as a selling point
-to their product and to emphasize the fact that their chips were becoming more
+for their product and to emphasize the fact that their chips were becoming more
 and more like CPUs.
 
 
 \subsubsection{General-Programming GPU (GP-GPU)}
 
-Due to this increase in power, people tried to use these video cards as
+Due to this increase in power, attempts were made to use these video cards as
 accelerators for computations other than real video operations. Because GPUs have
 intrinsically high parallelism (for example the same operation is performed on
-all pixels of an image in parallel) HPC users and developers got interested.
+all pixels of an image in parallel) HPC users and developers became interested.
 In his 2005 book, Taflove described a way to use a video card's GPU to
 accelerate his electrodynamics FDTD solver~\cite{Taflove2005}. At that time no
 General-Programming GPU (GP-GPU) framework existed so Taflove (and anyone
 interested in using GPUs at that time) had to ``translate'' the FDTD algorithm
 into one that could be understood by a video card. This process was extremely
-hard as it required using low level graphic primitives; in his case, OpenGL
+difficult as it required using low level graphic primitives; in his case, OpenGL
 calls.
 Normally OpenGL, the Open Graphics Library,
 is used to draw animated scenes on the user's screen; it must not be confused
@@ -43,7 +43,7 @@ Architecture}, later renamed CUDA.
 CUDA allows writing normal C or
 C++ programs with some extensions, called \textit{kernels}, that can be run on
 the GPU. These kernels have the same structure as C functions but are executed
-concurrently by every cores on the GPU\footnote{Technically, GPUs don't have
+concurrently by every core on the GPU\footnote{Technically, GPUs don't have
 ``cores'' \textit{per se} like CPUs but the comparison can still be made.}. The
 number of cores on a recent consumer grade video card is now of the order of
 many hundreds; a 50\$ Nvidia GT 620 has 96 CUDA cores and 1 GB of RAM, while the
@@ -79,8 +79,8 @@ many parts of the code.
 
 \subsubsubsection{Refactoring}
 
-Some things are important to consider when porting codes to GPU frameworks.
-First, because a core on a GPU is much slower than a core on a CPU,
+Certain factors must be considered when porting codes to GPU frameworks.
+First, because GPU cores are much slower than a core on a CPU,
 parallelisms must be extracted from algorithms. The code must thus be
 completely refactored to exploit the parallelism. For example, a CPU
 implementation of the MD algorithm can be implemented by looping over particles
@@ -96,7 +96,7 @@ required for kernel calculation must thus be first transferred to the device's
 memory and similarly the resulting data must be transferred back to the host
 memory where it can be further processed by the rest of the main program. Video
 cards today are connected to a computer through PCI-Express (PCIe) connections.
-While fast, it can still be a bottleneck if data is to be transferred back and
+While fast, there can still be a bottleneck if data is to be transferred back and
 forth similarly to main memory. It is thus necessary to reduce to a minimum the
 data transfer between the host and the device, similarly to communications in a
 distributed memory parallel programming paradigm.
@@ -123,7 +123,7 @@ transfers.
 
 \subsubsubsection{Debugging}
 
-One of the most problematic part of GPU programming is the lack of debugging
+One of the most problematic aspects of GPU programming is the lack of debugging
 tools. Many tools and techniques exist to detect and fix problems in
 normal CPU codes. The following describes them and their counterpart, when present,
 on GPUs.
@@ -131,7 +131,7 @@ on GPUs.
 
 \subsubsubsubsection{Printing}
 
-The simplest case of debugging is printing the variables' values to the screen
+The simplest method of debugging is printing the variables' values to the screen
 and inspecting them for
 erroneous values. While not really efficient, it is sometimes useful, quick
 and simple ``hack'' to get an insight of how the code is working. Unfortunately,
@@ -155,7 +155,7 @@ for the Intel SDK, or
 \end{verbatim}
 for the AMD SDK. These extensions are possible since these drivers support
 running the kernels directly on the CPU. In the case of AMD, the extension only
-works when the kernel are executed on the CPU (not on an AMD video card). Nvidia
+works when the kernels are executed on the CPU (not on an AMD video card). Nvidia
 does not have a similar extension for their OpenCL driver. Debugging using
 printf() is thus easier when running on a CPU with either Intel's or AMD SDK.
 
@@ -167,7 +167,7 @@ Another useful bug squashing weapon used in debugging on Linux is called
 \textit{valgrind}\footnote{\url{http://www.valgrind.org/}}. This extremely
 useful tool verifies memory access and can thus report on out-of-bound accesses
 (accessing memory locations which are out of range of an array), a major
-type of error in programming that one \textit{has} to expect to happen.
+type of error in programming that one \textit{has} to expect will happen.
 Valgrind can also detect uses of uninitialized variables, a dangerous type of
 error that can be hard to detect otherwise.
 
@@ -199,7 +199,7 @@ debugging OpenCL kernels. It was acquired by AMD which released an updated
 version\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/amd-gdebugger/}}
 in April 2012 but discontinued it. It was superseded by
 CodeXL\footnote{\url{http://developer.amd.com/tools-and-sdks/heterogeneous-computing/codexl/}}
-released in February 2013. As can be seen, at the time of the code was developed
+released in February 2013. As can be seen, at the time the code was developed
 the different debuggers available were scarce, limited or expensive but are now
 maturing.
 
@@ -216,7 +216,7 @@ Prof. Thomas Brabec and my supervisor Prof. Lora Ramunno were able to purchase
 a GPU cluster, spurring the development of the GPU codes described above.
 
 Due to my experience with GPUs, I was placed in charge of the purchase process
-which consisted in building a solution that would maximize the performance
+which consisted in building a solution that would maximize performance
 while staying under-budget, communicating with multiple vendors to validate
 the solution, writing a Request for Proposals (RFP) and transparently evaluating
 vendors offering. Additionally, I (remotely) installed and configured the
@@ -227,7 +227,7 @@ resources and even submitting new
 features\footnote{\url{http://slurm.schedmd.com/team.html}}.
 
 This HPC cluster (Primus), containing 20 Nvidia Tesla M2075 video cards, is an important
-lab component that will be allow the research group to continue its high profile
+lab component that will allow the research group to continue its high profile
 research.
 
 
