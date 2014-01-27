@@ -353,6 +353,19 @@
 \end{figure}
 }
 
+% http://tex.stackexchange.com/questions/103608/how-to-force-latex-not-to-break-the-line-after-a-hyphen
+\newcommand{\optprefix}[2]{% optional prefix
+  #1\mbox{-}\nobreak\hspace{0pt}#2
+}
+% Version with a ``%'' at the end to prevent a newline created even when ``~'' is used after
+\newcommand{\optprefixp}[2]{% optional prefix
+  #1\mbox{-}\nobreak\hspace{0pt}#2%
+}
+
+\newcommand{\xray}{\optprefix{X}{ray}}
+\newcommand{\xrays}{\optprefix{X}{rays}}
+\newcommand{\xrayp}{\optprefixp{X}{ray}}
+\newcommand{\xraysp}{\optprefixp{X}{rays}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
